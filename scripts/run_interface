@@ -1,0 +1,26 @@
+#!/usr/bin/perl -w
+
+use File::stat;
+
+@files = (
+  'frontend_interface.def',
+  'allocate_interface.def',
+  'schedule_interface.def',
+  'exec_interface.def',
+  'retire_interface.def',
+);
+
+foreach $file (@files) {
+  $def_file = "../def/$file";
+  $outfile = "../src/$file";
+  $outfile =~ s/\.def/\.h/;
+
+  if (!-e $outfile or stat($def_file)->mtime > stat($outfile)->mtime) {
+    print "./interface-pp.pl $def_file > $outfile";
+    system "./interface-pp.pl $def_file > $outfile";
+  }
+}
+
+system "perl knobgen.pl";
+system "perl statgen.pl"; 
+

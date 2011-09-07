@@ -1,0 +1,9 @@
+-iris:noc_topology     RING # knob for specifying the topology of the noc
+-iris:no_mcs            0 # total no of mcs
+-iris:no_ports      3
+-iris:no_vcs        4
+-iris:int_buff_width    4
+-iris:credits    3
+-iris:rc_method         RING_ROUTING
+-iris:link_width        128
+-iris:max_simtime       1000000000

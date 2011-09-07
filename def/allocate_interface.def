@@ -1,0 +1,10 @@
+#interface ALLOCATE
+#param( int                core_id        )
+#param( pqueue_c<int*>*      q_frontend     )
+#param( pqueue_c<int>**      q_iaq          )
+#param( pqueue_c<gpu_allocq_entry_s>**  gpu_q_iaq)
+#param( pool_c<uop_c>*        uop_pool       )
+#param( rob_c*             rob            )
+#param( smc_rob_c*         gpu_rob        )
+#param( memory_c*   mem_system     )
+#param( Unit_Type   	   unit_type      )
