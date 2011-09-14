@@ -176,20 +176,3 @@ Index: Makefile.am
 +
 +libmacsimComponent_la_LDFLAGS = -module -avoid-version
 +libmacsimComponent_la_LIBADD  = -lz
-Index: macsim-sst.patch
-===================================================================
---- macsim-sst.patch	(revision 8)
-+++ macsim-sst.patch	(working copy)
-@@ -1,10 +1,10 @@
- Index: Makefile.am
- ===================================================================
----- Makefile.am	(revision 5)
-+--- Makefile.am	(revision 8)
- +++ Makefile.am	(working copy)
- @@ -1,37 +1,136 @@
- -AUTOMAKE_OPTIONS = foreign
---SUBDIRS = scripts .obj tools 
-+-SUBDIRS = .obj tools 
- -
- -all:
- -	-test -z .obj/macsim_opt || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_opt macsim
