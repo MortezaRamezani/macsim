@@ -61,4 +61,4 @@ AC_TYPE_UINT8_T
 AC_FUNC_MALLOC
 AC_CHECK_FUNCS([floor gettimeofday memset mkdir pow sqrt strdup strerror static_assert])
 
-AC_OUTPUT(Makefile .obj/Makefile bin/Makefile src/Makefile scripts/Makefile tools/Makefile tools/trace_reader/Makefile)
+AC_OUTPUT(Makefile .obj/Makefile bin/Makefile src/Makefile tools/Makefile tools/trace_reader/Makefile)
