@@ -58,6 +58,7 @@ all_sources = ../src/all_knobs.cc \
 	../src/trace_read.cc \
 	../src/utils.cc \
 	../src/uop.cc \
+	../src/tadip.cc \
 	../src/internal/fetch_internal.cc \
 	../src/internal/bp_internal.cc \
 	../src/internal/dram_internal.cc \

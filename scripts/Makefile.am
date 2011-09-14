@@ -2,6 +2,9 @@
 all:
 	./run_interface
 
+install:
+	./run_interface
+
 dbg:
 	./run_interface
 

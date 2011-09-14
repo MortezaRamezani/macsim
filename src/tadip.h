@@ -6,8 +6,8 @@
  * Description  : TADIP (Jaleel et al. PACT 2008) 
  *********************************************************************************************/
 
-#ifndef RRIP_H
-#define RRIP_H
+#ifndef TADIP_H
+#define TADIP_H
 
 #include "cache.h"
 
@@ -20,9 +20,9 @@ class cache_tadip_c : public cache_c
     /**
      * Constructor
      */
-    cache_tadip_c(int max_bit, string name, uns num_set, uns assoc, uns line_size, 
-        uns data_size, uns bank_num, bool cache_by_pass, int core_id, 
-        Cache_Type cache_type_info, bool enable_partition); 
+    cache_tadip_c(string name, uns num_set, uns assoc, uns line_size, uns data_size, 
+        uns bank_num, bool cache_by_pass, int core_id, Cache_Type cache_type_info, 
+        bool enable_partition, macsim_c* simBase); 
 
     /**
      * Destructor
@@ -57,7 +57,8 @@ class cache_tadip_c : public cache_c
     int m_max_lru_value; /**< maximum lru value in RRIP */
     int m_insertion_value; /**< lru value upon insertion */
     int m_modulo; /**< modulo value for set monitorning */
-    int m_sdm_counter[m_max_application];
+    int *m_sdm_counter;
+    Counter *m_total_miss;
     int m_sdm_max_counter_value;
     int m_bip_epsilon;
 };
