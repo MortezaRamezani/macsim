@@ -58,16 +58,7 @@ all_sources = ../src/all_knobs.cc \
 	../src/trace_read.cc \
 	../src/utils.cc \
 	../src/uop.cc \
-	../src/tadip.cc \
-	../src/internal/fetch_internal.cc \
-	../src/internal/bp_internal.cc \
-	../src/internal/dram_internal.cc \
-	../src/internal/pref_internal.cc \
-	../src/internal/pref_2dc.cc \
-	../src/internal/pref_ghb.cc \
-	../src/internal/pref_phase.cc \
-	../src/internal/pref_stream.cc \
-	../src/internal/pref_stridepc.cc 
+	../src/tadip.cc 
 
 iris_kernel_srcs = ../src/manifold/kernel/src/clock.cc \
                    ../src/manifold/kernel/src/component.cc \
