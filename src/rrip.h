@@ -39,7 +39,7 @@ class cache_rrip_c : public cache_c
      * Initialize a new cache line
      */
     void initialize_cache_line(cache_entry_c *ins_line, Addr tag, Addr addr, int appl_id, 
-        bool gpuline, int set_id);
+        bool gpuline, int set_id, bool skip);
     
     /**
      * Update LRU value on cache hit
@@ -50,6 +50,8 @@ class cache_rrip_c : public cache_c
      * Update cache on cache misses - for set dueling
      */
     void update_cache_on_miss(int set_id, int appl_id);
+    
+    void update_cache_on_access(Addr tag, int set, int appl_id);
 
   private:
     /**
@@ -62,9 +64,16 @@ class cache_rrip_c : public cache_c
     int m_max_lru_value; /**< maximum lru value in RRIP */
     int m_insertion_value; /**< lru value upon insertion */
     int m_modulo; /**< modulo value for set monitorning */
-    int m_sdm_counter[m_max_application];
+    int *m_sdm_counter;
+    Counter *m_total_miss;
+    //int *m_sdm_counter[m_max_application];
     int m_sdm_max_counter_value;
     int m_bip_epsilon;
+
+    int m_access_count_by_type[2];
+    Counter m_total_access_count;
+    Counter m_total_insert_count;
+    float m_access_ratio;
 };
 
 #endif

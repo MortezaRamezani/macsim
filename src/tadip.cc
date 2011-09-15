@@ -76,7 +76,7 @@ cache_entry_c* cache_tadip_c::find_replacement_line(uns set, int appl_id)
 
 // initialize a cache line
 void cache_tadip_c::initialize_cache_line(cache_entry_c *ins_line, Addr tag, Addr addr, 
-    int appl_id, bool gpuline, int set_id) 
+    int appl_id, bool gpuline, int set_id, bool skip) 
 {
   ins_line->m_valid            = true;
   ins_line->m_tag              = tag;
@@ -85,13 +85,10 @@ void cache_tadip_c::initialize_cache_line(cache_entry_c *ins_line, Addr tag, Add
   ins_line->m_pref             = false;
   ins_line->m_appl_id          = appl_id;
   ins_line->m_gpuline          = gpuline;
+  ins_line->m_skip             = skip;
 
-  // LRU 
-  if (set_id % m_modulo == (appl_id * 2)) {
-    ins_line->m_last_access_time = m_simBase->m_simulation_cycle;
-  }
   // BIMODAL
-  else if (set_id % m_modulo == (appl_id * 2 + 1)) {
+  if (*m_simBase->m_knobs->KNOB_RRIP_BIP_ALWAYS || set_id % m_modulo == (appl_id * 2 + 1)) {
     // LRU
     if (rand() % 100 < m_bip_epsilon) {
       ins_line->m_last_access_time = m_simBase->m_simulation_cycle;
@@ -100,6 +97,10 @@ void cache_tadip_c::initialize_cache_line(cache_entry_c *ins_line, Addr tag, Add
     else {
       ins_line->m_last_access_time = 0;
     }
+  }
+  // LRU 
+  else if (set_id % m_modulo == (appl_id * 2)) {
+    ins_line->m_last_access_time = m_simBase->m_simulation_cycle;
   }
   // Followers
   else {
@@ -135,24 +136,26 @@ void cache_tadip_c::initialize_cache_line(cache_entry_c *ins_line, Addr tag, Add
 // update miss counter if a set is in SDM
 void cache_tadip_c::update_cache_on_miss(int set_id, int appl_id)
 {
-  // LRU 
   ++m_total_miss[appl_id];
+  // LRU - miss (+ is non-LRU) 
   if (set_id % m_modulo == (appl_id * 2)) {
     ++m_sdm_counter[appl_id];
     if (m_sdm_counter[appl_id] > m_sdm_max_counter_value) {
       m_sdm_counter[appl_id] = m_sdm_max_counter_value;
     }
+//    cout << "TADIP(L3-" << m_core_id << ")" << appl_id << " " << m_sdm_counter[appl_id] << "\n";
   }
-  // BIMODAL
+  // BIMODAL - miss (- is non-BIP)
   else if (set_id % m_modulo == (appl_id * 2 + 1)) {
     --m_sdm_counter[appl_id];
     if (m_sdm_counter[appl_id] < -1 * m_sdm_max_counter_value) {
       m_sdm_counter[appl_id] = m_sdm_max_counter_value * -1;
     }
+//    cout << "TADIP(L3-" << m_core_id << ")" << appl_id << " " << m_sdm_counter[appl_id] << "\n";
   }
 
-  if (m_total_miss[appl_id] % 50000 == 0) {
-    cout << "TADIP" << appl_id << " " << m_sdm_counter[appl_id] << "\n";
+  if (m_total_miss[appl_id] % 100 == 0) {
+    cout << "TADIP(L3-" << m_core_id << ")" << appl_id << " " << m_sdm_counter[appl_id] << "\n";
   }
 }
 

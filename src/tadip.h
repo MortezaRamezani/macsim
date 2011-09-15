@@ -39,7 +39,7 @@ class cache_tadip_c : public cache_c
      * Initialize a new cache line
      */
     void initialize_cache_line(cache_entry_c *ins_line, Addr tag, Addr addr, int appl_id, 
-        bool gpuline, int set_id);
+        bool gpuline, int set_id, bool skip);
 
     /**
      * Update cache on cache misses - for set dueling
