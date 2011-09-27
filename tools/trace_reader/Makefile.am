@@ -15,5 +15,6 @@ trace_reader_CPPFLAGS = -O3 -std=c++0x -funroll-loops -Werror $(DEBUG_FLAGS) $(W
 trace_reader_SOURCES = \
 	main.cc \
 	all_knobs.cc \
-	../../src/knob.cc
+	../../src/knob.cc \
+	trace_reader.cc
 
