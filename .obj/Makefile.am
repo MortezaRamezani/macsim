@@ -46,7 +46,6 @@ all_sources = ../src/all_knobs.cc \
 	../src/process_manager.cc \
 	../src/readonly_cache.cc \
 	../src/retire.cc \
-	../src/rrip.cc \
 	../src/rob.cc \
 	../src/rob_smc.cc \
 	../src/schedule.cc \
@@ -57,8 +56,7 @@ all_sources = ../src/all_knobs.cc \
 	../src/sw_managed_cache.cc \
 	../src/trace_read.cc \
 	../src/utils.cc \
-	../src/uop.cc \
-	../src/tadip.cc 
+	../src/uop.cc 
 
 iris_kernel_srcs = ../src/manifold/kernel/src/clock.cc \
                    ../src/manifold/kernel/src/component.cc \
