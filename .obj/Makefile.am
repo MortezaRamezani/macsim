@@ -5,7 +5,7 @@ WARN_FLAGS  = -Wunused-function -Wreturn-type -Wpointer-arith -Wno-write-strings
 DEBUG_FLAGS = -DNO_DEBUG
 COMMON_FLAGS = -DNO_MPI
 
-EI_DIR = energy_introspector/EnergyIntrospector0.3
+EI_DIR = energy_introspector
 
 
 CFLAGS =
@@ -56,7 +56,8 @@ all_sources = ../src/all_knobs.cc \
 	../src/sw_managed_cache.cc \
 	../src/trace_read.cc \
 	../src/utils.cc \
-	../src/uop.cc 
+	../src/uop.cc \
+	../src/ei_power.cc
 
 iris_kernel_srcs = ../src/manifold/kernel/src/clock.cc \
                    ../src/manifold/kernel/src/component.cc \
@@ -82,11 +83,11 @@ iris_srcs = ../src/manifold/models/iris/iris_srcs/data_types/networkPacket.cc \
 #            ../src/manifold/models/iris/iris_srcs/components/simpleMC.cc 
 
 ei_srcs = ../src/$(EI_DIR)/parameters.cc \
-          ../src/$(EI_DIR)/technology.cc \
-          ../src/$(EI_DIR)/energy-introspector.cc \
-          ../src/$(EI_DIR)/McPAT-interface.cc \
-          ../src/$(EI_DIR)/IntSim-interface.cc \
-          ../src/$(EI_DIR)/HotSpot-interface.cc
+            ../src/$(EI_DIR)/parser.cc \
+            ../src/$(EI_DIR)/energy_introspector.cc \
+            ../src/$(EI_DIR)/ENERGYLIB_McPAT.cc \
+            ../src/$(EI_DIR)/ENERGYLIB_IntSim.cc \
+            ../src/$(EI_DIR)/THERMALLIB_HotSpot.cc
 
 all_sources += $(iris_kernel_srcs) $(iris_srcs) $(ei_srcs)
 
