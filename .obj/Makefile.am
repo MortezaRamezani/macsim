@@ -102,11 +102,11 @@ check_PROGRAMS = macsim_dbg macsim_gpf
 
 macsim_opt_CPPFLAGS = -O3 -std=c++0x -funroll-loops -Werror $(DEBUG_FLAGS) $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
 macsim_opt_SOURCES = $(all_sources)
-macsim_opt_LDFLAGS = 
+macsim_opt_LDFLAGS = -static 
 
 macsim_dbg_CPPFLAGS = -g3 -std=c++0x $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
 macsim_dbg_SOURCES = $(all_sources)
-macsim_dbg_LDFLAGS = -g3
+macsim_dbg_LDFLAGS = -g3 -static
 
 macsim_gpf_CPPFLAGS = $(macsim_opt_CPPFLAGS) $(COMMON_FLAGS) -pg -I .
 macsim_gpf_SOURCES = $(all_sources)
