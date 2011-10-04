@@ -1,5 +1,0 @@
-
-param<TLB_SIZE, tlb_size, uns, 128>
-param<PAGE_SIZE, page_size, uns, 4096>
-param<TLB_BUFFER_SIZE, tlb_buffer_size, uns, 128>
-param<TLB_MISS_LATENCY, tlb_miss_latency, uns, 100>
