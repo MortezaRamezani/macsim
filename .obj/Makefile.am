@@ -1,21 +1,14 @@
 # what flags you want to pass to the C compiler & linker
 
-XFLAGS   = -DLONG_COUNTERS
-WARN_FLAGS  = -Wunused-function -Wreturn-type -Wpointer-arith -Wno-write-strings
+XFLAGS = -DLONG_COUNTERS
+WARN_FLAGS = -Wunused-function -Wreturn-type -Wpointer-arith -Wno-write-strings
 DEBUG_FLAGS = -DNO_DEBUG
 COMMON_FLAGS = -DNO_MPI
 
 EI_DIR = energy_introspector
 
-
-CFLAGS =
-CXXFLAGS =
-CPPFLAGS =
-LDFLAGS =
-#AM_CXXFLAGS = -I../src/manifold/kernel/include/kernel
 AM_CXXFLAGS = -I ../src/$(EI_DIR)/ -I../src/manifold/kernel/include/kernel -I ../src/manifold/kernel/include/ -I ../src/manifold/models/iris/interfaces -I ../src -I /usr/include
 AM_LDFLAGS = -lz -lpthread -lgsl -lgslc++
-
 
 all_sources = ../src/all_knobs.cc \
 	../src/all_stats.cc \
@@ -57,7 +50,7 @@ all_sources = ../src/all_knobs.cc \
 	../src/trace_read.cc \
 	../src/utils.cc \
 	../src/uop.cc \
-	../src/ei_power.cc
+	../src/ei_power.cc 
 
 iris_kernel_srcs = ../src/manifold/kernel/src/clock.cc \
                    ../src/manifold/kernel/src/component.cc \
