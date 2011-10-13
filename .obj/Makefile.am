@@ -3,7 +3,7 @@
 XFLAGS = -DLONG_COUNTERS
 WARN_FLAGS = -Wunused-function -Wreturn-type -Wpointer-arith -Wno-write-strings
 DEBUG_FLAGS = -DNO_DEBUG
-COMMON_FLAGS = -DNO_MPI
+COMMON_FLAGS = -DNO_MPI -DIRIS
 
 EI_DIR = energy_introspector
 
@@ -50,7 +50,21 @@ all_sources = ../src/all_knobs.cc \
 	../src/trace_read.cc \
 	../src/utils.cc \
 	../src/uop.cc \
-	../src/ei_power.cc 
+	../src/ei_power.cc \
+	../src/internal/fetch_internal.cc \
+	../src/internal/bp_internal.cc \
+	../src/internal/dram_internal.cc \
+	../src/internal/pref_internal.cc \
+	../src/internal/pref_2dc.cc \
+	../src/internal/pref_ghb.cc \
+	../src/internal/pref_phase.cc \
+	../src/internal/pref_stream.cc \
+	../src/internal/pref_stridepc.cc \
+  ../src/internal/tadip.cc \
+  ../src/internal/rrip.cc \
+  ../src/internal/cache_internal.cc	\
+	../src/internal/ucp.cc \
+	../src/internal/abip.cc
 
 iris_kernel_srcs = ../src/manifold/kernel/src/clock.cc \
                    ../src/manifold/kernel/src/component.cc \
@@ -63,6 +77,7 @@ iris_srcs = ../src/manifold/models/iris/iris_srcs/data_types/networkPacket.cc \
             ../src/manifold/models/iris/iris_srcs/data_types/linkData.cc \
             ../src/manifold/models/iris/iris_srcs/topology/twoNode.cc \
             ../src/manifold/models/iris/iris_srcs/topology/ring.cc \
+            ../src/manifold/models/iris/iris_srcs/topology/torus.cc \
             ../src/manifold/models/iris/iris_srcs/topology/util.cc \
             ../src/manifold/models/iris/iris_srcs/components/genericBuffer.cc \
             ../src/manifold/models/iris/iris_srcs/components/genericRC.cc \
