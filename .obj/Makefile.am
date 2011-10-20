@@ -3,7 +3,7 @@
 XFLAGS = -DLONG_COUNTERS
 WARN_FLAGS = -Wunused-function -Wreturn-type -Wpointer-arith -Wno-write-strings
 DEBUG_FLAGS = -DNO_DEBUG
-COMMON_FLAGS = -DNO_MPI -DIRIS
+COMMON_FLAGS = -DNO_MPI
 
 EI_DIR = energy_introspector
 
