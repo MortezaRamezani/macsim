@@ -32,6 +32,9 @@ class ei_power_c
 		void ei_config_gen_small_mod(FILE* fp, int core_id);
 		void ei_config_gen_top();
 		void ei_main();
+		void mcpat_config_gen_tech(FILE* fp, int core_id);
+		void mcpat_config_gen_large(FILE* fp, int core_id);
+		void mcpat_config_gen_top();
 		
 	public:
 		int test_var;
