@@ -39,7 +39,7 @@ ei_power_c::ei_power_c(macsim_c* simBase)
 ei_power_c::~ei_power_c()
 {
 }
-
+/*
 void ei_power_c::ei_config_gen_large_tech(FILE* fp, int core_id)
 {
 
@@ -1019,31 +1019,42 @@ void ei_power_c::ei_config_gen_top()
 	}
 	fclose(fp);
 }
+*/
 
 // one more arg: core_type: large, medium, small
 void ei_power_c::mcpat_config_gen_tech(FILE *fp, int core_id)
 {
 	fprintf(fp, "<component id=\"root\" name=\"root\">\n");
 	fprintf(fp, "\t<component id=\"system\" name=\"system\">\n");
-	fprintf(fp, "\t\t<param name=\"number_of_cores\" value=\"2\"/>\n");
-	//fprintf(fp, "\t\t<param name=\"number_of_cores\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_NUM_SIM_CORES->getValue());
+	fprintf(fp, "\t\t<param name=\"number_of_cores\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_NUM_SIM_CORES->getValue());
 	fprintf(fp, "\t\t<param name=\"number_of_L1Directories\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t<param name=\"number_of_L2Directories\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t<param name=\"number_of_L2s\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_NUM_SIM_CORES->getValue()); 
 	fprintf(fp, "\t\t<param name=\"Private_L2\" value=\"1\"/>\n"); 
 	fprintf(fp, "\t\t<param name=\"number_of_L3s\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_NUM_L3->getValue()); 
 	fprintf(fp, "\t\t<param name=\"number_of_NoCs\" value=\"1\"/>\n");
-	fprintf(fp, "\t\t<param name=\"homogeneous_cores\" value=\"1\"/>\n");	// fixme
+
+	int large = m_simBase->m_knobs->KNOB_NUM_SIM_LARGE_CORES->getValue();
+	int medium = m_simBase->m_knobs->KNOB_NUM_SIM_MEDIUM_CORES->getValue();
+	int small = m_simBase->m_knobs->KNOB_NUM_SIM_SMALL_CORES->getValue();
+	int is_homo = !(large&&medium || medium&&small || small&&large);
+
+	fprintf(fp, "\t\t<param name=\"homogeneous_cores\" value=\"%d\"/>\n", is_homo);	
 	fprintf(fp, "\t\t<param name=\"homogeneous_L2s\" value=\"1\"/>\n");
 	fprintf(fp, "\t\t<param name=\"homogeneous_L1Directorys\" value=\"1\"/>\n");
 	fprintf(fp, "\t\t<param name=\"homogeneous_L2Directorys\" value=\"1\"/>\n");
 	fprintf(fp, "\t\t<param name=\"homogeneous_L3s\" value=\"1\"/>\n");
 	fprintf(fp, "\t\t<param name=\"homogeneous_ccs\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t<param name=\"homogeneous_NoCs\" value=\"1\"/>\n");
-	fprintf(fp, "\t\t<param name=\"core_tech_node\" value=\"65\"/>\n");
+	fprintf(fp, "\t\t<param name=\"core_tech_node\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_FEATURE_SIZE->getValue());
 	fprintf(fp, "\t\t<param name=\"target_core_clockrate\" value=\"%d\"/>\n", (int)(m_simBase->m_knobs->KNOB_CPU_FREQUENCY->getValue() *1000));
 	fprintf(fp, "\t\t<param name=\"temperature\" value=\"380\"/>\n"); 
-	fprintf(fp, "\t\t<param name=\"number_cache_levels\" value=\"3\"/>\n");	// fixme
+	int l1_bypass = m_simBase->m_knobs->KNOB_L1_LARGE_BYPASS->getValue();	// fixme: should include gpu feature
+	int l2_bypass = m_simBase->m_knobs->KNOB_L2_LARGE_BYPASS->getValue();	// fixme: should include gpu feature
+	int is_l3 = m_simBase->m_knobs->KNOB_NUM_L3 == 0? 1 : 0;
+	int num_cache_levels = 3 - l1_bypass - l2_bypass - is_l3; 
+
+	fprintf(fp, "\t\t<param name=\"number_cache_levels\" value=\"%d\"/>\n", num_cache_levels);	
 	fprintf(fp, "\t\t<param name=\"interconnect_projection_type\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t<param name=\"device_type\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t<param name=\"longer_channel_device\" value=\"0\"/>\n");
@@ -1051,9 +1062,9 @@ void ei_power_c::mcpat_config_gen_tech(FILE *fp, int core_id)
 	fprintf(fp, "\t\t<param name=\"virtual_address_width\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_32_64_ISA->getValue());
 	fprintf(fp, "\t\t<param name=\"physical_address_width\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_32_64_ISA->getValue());
 	fprintf(fp, "\t\t<param name=\"virtual_memory_page_size\" value=\"4096\"/>\n");
-	fprintf(fp, "\t\t<stat name=\"total_cycles\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[CYC_COUNT-PER_CORE_STATS_ENUM_FIRST].getCount());
+	fprintf(fp, "\t\t<stat name=\"total_cycles\" value=\"%lld\"/>\n", (*m_simBase->m_ProcessorStats)[CYC_COUNT_TOT].getCount());
 	fprintf(fp, "\t\t<stat name=\"idle_cycles\" value=\"0\"/>\n");
-	fprintf(fp, "\t\t<stat name=\"busy_cycles\"  value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[CYC_COUNT-PER_CORE_STATS_ENUM_FIRST].getCount());
+	fprintf(fp, "\t\t<stat name=\"busy_cycles\"  value=\"%lld\"/>\n", (*m_simBase->m_ProcessorStats)[CYC_COUNT_TOT].getCount());
 }
 
 // fixme: variable including "LARGE" should be changed according to the core type
@@ -1066,17 +1077,17 @@ void ei_power_c::mcpat_config_gen_large(FILE *fp, int core_id)
 	fprintf(fp, "\t\t\t<param name=\"x86\" value=\"1\"/>\n");	// fixme: add gpu
 	fprintf(fp, "\t\t\t<param name=\"micro_opcode_width\" value=\"8\"/>\n");
 	fprintf(fp, "\t\t\t<param name=\"machine_type\" value=\"%d\"/>\n", (m_simBase->m_knobs->KNOB_LARGE_CORE_SCHEDULE->getValue() == "ooo")? 0 : 1 );	
-	fprintf(fp, "\t\t\t<param name=\"number_hardware_threads\" value=\"1\"/>\n");
+	fprintf(fp, "\t\t\t<param name=\"number_hardware_threads\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_MAX_THREADS_PER_LARGE_CORE->getValue());	// fixme: gpu
 	fprintf(fp, "\t\t\t<param name=\"fetch_width\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_LARGE_WIDTH->getValue());
-	fprintf(fp, "\t\t\t<param name=\"number_instruction_fetch_ports\" value=\"1\"/>\n");
+	fprintf(fp, "\t\t\t<param name=\"number_instruction_fetch_ports\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_ICACHE_READ_PORTS->getValue());
 	fprintf(fp, "\t\t\t<param name=\"decode_width\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_LARGE_WIDTH->getValue());
 	fprintf(fp, "\t\t\t<param name=\"issue_width\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_LARGE_WIDTH->getValue());
-	fprintf(fp, "\t\t\t<param name=\"peak_issue_width\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_LARGE_WIDTH->getValue());	// fixme 
+	fprintf(fp, "\t\t\t<param name=\"peak_issue_width\" value=\"%d\"/>\n", max((int)m_simBase->m_knobs->KNOB_LARGE_WIDTH->getValue(), (int)m_simBase->m_knobs->KNOB_ICACHE_READ_PORTS->getValue()));	// fixme 
 	fprintf(fp, "\t\t\t<param name=\"commit_width\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_LARGE_WIDTH->getValue());	// fixme: gpu:# threads 
 	fprintf(fp, "\t\t\t<param name=\"fp_issue_width\" value=\"1\"/>\n");
 	fprintf(fp, "\t\t\t<param name=\"prediction_width\" value=\"1\"/>\n"); 
 	fprintf(fp, "\t\t\t<param name=\"pipelines_per_core\" value=\"1,1\"/>\n");
-	int pipeline_depth = m_simBase->m_knobs->KNOB_LARGE_CORE_FETCH_LATENCY->getValue()+ m_simBase->m_knobs->KNOB_LARGE_CORE_ALLOC_LATENCY->getValue();
+	int pipeline_depth = m_simBase->m_knobs->KNOB_LARGE_CORE_FETCH_LATENCY->getValue()+ m_simBase->m_knobs->KNOB_LARGE_CORE_ALLOC_LATENCY->getValue() + 2;
 	fprintf(fp, "\t\t\t<param name=\"pipeline_depth\" value=\"%d,%d\"/>\n", pipeline_depth, pipeline_depth);
 	fprintf(fp, "\t\t\t<param name=\"ALU_per_core\" value=\"5\"/>\n");
 	fprintf(fp, "\t\t\t<param name=\"MUL_per_core\" value=\"1\"/>\n");    
@@ -1090,8 +1101,8 @@ void ei_power_c::mcpat_config_gen_large(FILE *fp, int core_id)
 	fprintf(fp, "\t\t\t<param name=\"ROB_size\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_ROB_LARGE_SIZE->getValue());
 	fprintf(fp, "\t\t\t<param name=\"archi_Regs_IRF_size\" value=\"8\"/>\n");    
 	fprintf(fp, "\t\t\t<param name=\"archi_Regs_FRF_size\" value=\"8\"/>\n");
-	fprintf(fp, "\t\t\t<param name=\"phy_Regs_IRF_size\" value=\"40\"/>\n");
-	fprintf(fp, "\t\t\t<param name=\"phy_Regs_FRF_size\" value=\"40\"/>\n");
+	fprintf(fp, "\t\t\t<param name=\"phy_Regs_IRF_size\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_INT_REGFILE_SIZE->getValue());
+	fprintf(fp, "\t\t\t<param name=\"phy_Regs_FRF_size\" value=\"%d\"/>\n", m_simBase->m_knobs->KNOB_FP_REGFILE_SIZE->getValue());
 	fprintf(fp, "\t\t\t<param name=\"rename_scheme\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t\t<param name=\"register_windows_size\" value=\"8\"/>\n");
 	fprintf(fp, "\t\t\t<param name=\"LSU_order\" value=\"inorder\"/>\n");
@@ -1104,12 +1115,12 @@ void ei_power_c::mcpat_config_gen_large(FILE *fp, int core_id)
 	fprintf(fp, "\t\t\t<stat name=\"int_instructions\" value=\"%d\"/>\n", num_int_inst);	// fixme
 	fprintf(fp, "\t\t\t<stat name=\"fp_instructions\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P0_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());	// fixme: #inst? or #uop?
 	fprintf(fp, "\t\t\t<stat name=\"branch_instructions\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_BR_PRED_R-PER_CORE_STATS_ENUM_FIRST].getCount());
-	fprintf(fp, "\t\t\t<stat name=\"branch_mispredictions\" value=\"0\"/>\n");	// fixme
+	fprintf(fp, "\t\t\t<stat name=\"branch_mispredictions\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[BP_ON_PATH_MISPREDICT-PER_CORE_STATS_ENUM_FIRST].getCount() + m_simBase->m_ProcessorStats->core(core_id)[BP_OFF_PATH_MISPREDICT-PER_CORE_STATS_ENUM_FIRST].getCount());	// fixme
 	fprintf(fp, "\t\t\t<stat name=\"load_instructions\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_LOAD_QUEUE_R-PER_CORE_STATS_ENUM_FIRST].getCount());
 	fprintf(fp, "\t\t\t<stat name=\"store_instructions\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_STORE_QUEUE_R-PER_CORE_STATS_ENUM_FIRST].getCount());
 	fprintf(fp, "\t\t\t<stat name=\"committed_instructions\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[INST_COUNT-PER_CORE_STATS_ENUM_FIRST].getCount());
-	fprintf(fp, "\t\t\t<stat name=\"committed_int_instructions\" value=\"%d\"/>\n", num_int_inst);	// fixme
-	fprintf(fp, "\t\t\t<stat name=\"committed_fp_instructions\" value=\"0\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P0_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());
+	fprintf(fp, "\t\t\t<stat name=\"committed_int_instructions\" value=\"%d\"/>\n", num_int_inst);	// fixme: now only allow the completed? execution
+	fprintf(fp, "\t\t\t<stat name=\"committed_fp_instructions\" value=\"0\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P0_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());	// fixme: = committed_int_instructions
 	fprintf(fp, "\t\t\t<stat name=\"pipeline_duty_cycle\" value=\"1\"/>\n");	// fixme
 	fprintf(fp, "\t\t\t<stat name=\"total_cycles\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[CYC_COUNT-PER_CORE_STATS_ENUM_FIRST].getCount());
 	fprintf(fp, "\t\t\t<stat name=\"idle_cycles\" value=\"0\"/>\n");
@@ -1129,7 +1140,7 @@ void ei_power_c::mcpat_config_gen_large(FILE *fp, int core_id)
 	fprintf(fp, "\t\t\t<stat name=\"int_regfile_reads\" value=\"%d\"/>\n", num_int_inst*2);
 	fprintf(fp, "\t\t\t<stat name=\"float_regfile_reads\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P0_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount()*2);
 	fprintf(fp, "\t\t\t<stat name=\"int_regfile_writes\" value=\"%d\"/>\n", num_int_inst);
-	fprintf(fp, "\t\t\t<stat name=\"float_regfile_writes\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P0_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount() / 2);
+	fprintf(fp, "\t\t\t<stat name=\"float_regfile_writes\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P0_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());
 	fprintf(fp, "\t\t\t<stat name=\"function_calls\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t\t<stat name=\"context_switches\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t\t<stat name=\"ialu_accesses\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P1_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());
@@ -1137,9 +1148,9 @@ void ei_power_c::mcpat_config_gen_large(FILE *fp, int core_id)
 	fprintf(fp, "\t\t\t<stat name=\"mul_accesses\" value=\"0\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P2_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());
 
 	// fixme
-	fprintf(fp, "\t\t\t<stat name=\"cdb_alu_accesses\" value=\"300000\"/>\n");
-	fprintf(fp, "\t\t\t<stat name=\"cdb_mul_accesses\" value=\"200000\"/>\n");
-	fprintf(fp, "\t\t\t<stat name=\"cdb_fpu_accesses\" value=\"100000\"/>\n");
+	fprintf(fp, "\t\t\t<stat name=\"cdb_alu_accesses\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P1_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());
+	fprintf(fp, "\t\t\t<stat name=\"cdb_mul_accesses\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P0_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());
+	fprintf(fp, "\t\t\t<stat name=\"cdb_fpu_accesses\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_EX_P2_FU_R-PER_CORE_STATS_ENUM_FIRST].getCount());
 	fprintf(fp, "\t\t\t<stat name=\"IFU_duty_cycle\" value=\"1\"/>\n");
 	fprintf(fp, "\t\t\t<stat name=\"LSU_duty_cycle\" value=\"0.5\"/>\n");
 	fprintf(fp, "\t\t\t<stat name=\"MemManU_I_duty_cycle\" value=\"1\"/>\n");
