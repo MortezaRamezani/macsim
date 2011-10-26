@@ -1,16 +1,21 @@
 Index: Makefile.am
 ===================================================================
---- Makefile.am	(revision 18)
+--- Makefile.am	(revision 85)
 +++ Makefile.am	(working copy)
-@@ -1,37 +1,136 @@
+@@ -1,42 +1,136 @@
 -AUTOMAKE_OPTIONS = foreign
 -SUBDIRS = scripts .obj tools 
 -
 -all:
+-	@echo Build optimized executable
+-	make -C scripts
+-	make opt -C .obj
 -	-test -z .obj/macsim_opt || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_opt macsim
+-#	-test -z .obj/macsim_opt || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_opt macsim
 -
 -opt:
 -	@echo Build optimized executable
+-	make -C scripts
 -	make opt -C .obj
 -	-test -z .obj/macsim_opt || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_opt macsim
 -
