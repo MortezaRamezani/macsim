@@ -15,6 +15,7 @@ all_sources = ../src/all_knobs.cc \
 	../src/allocate.cc \
 	../src/allocate_smc.cc \
 	../src/bp.cc \
+	../src/bp_targ.cc \
 	../src/bp_gshare.cc \
 	../src/bug_detector.cc \
 	../src/cache.cc \
