@@ -3,11 +3,15 @@
 XFLAGS = -DLONG_COUNTERS
 WARN_FLAGS = -Wunused-function -Wreturn-type -Wpointer-arith -Wno-write-strings
 DEBUG_FLAGS = -DNO_DEBUG
-COMMON_FLAGS = -DNO_MPI
+COMMON_FLAGS = -DNO_MPI 
 
 EI_DIR = energy_introspector
+ORION_DIR = orion
 
-AM_CXXFLAGS = -I ../src/$(EI_DIR)/ -I../src/manifold/kernel/include/kernel -I ../src/manifold/kernel/include/ -I ../src/manifold/models/iris/interfaces -I ../src -I /usr/include
+DEP_LIBS = -L../src/$(ORION_DIR) -lorion
+
+LIBS = -lz -lpthread $(DEP_LIBS)
+AM_CXXFLAGS = -I ../src/$(EI_DIR)/ -I../src/$(ORION_DIR) -I../src/manifold/kernel/include/kernel -I ../src/manifold/kernel/include/ -I ../src/manifold/models/iris/interfaces -I ../src -I /usr/include
 AM_LDFLAGS = -lz -lpthread -lgsl -lgslc++
 
 all_sources = ../src/all_knobs.cc \
@@ -64,6 +68,7 @@ iris_srcs = ../src/manifold/models/iris/iris_srcs/data_types/networkPacket.cc \
             ../src/manifold/models/iris/iris_srcs/data_types/linkData.cc \
             ../src/manifold/models/iris/iris_srcs/topology/twoNode.cc \
             ../src/manifold/models/iris/iris_srcs/topology/ring.cc \
+            ../src/manifold/models/iris/iris_srcs/topology/mesh.cc \
             ../src/manifold/models/iris/iris_srcs/topology/torus.cc \
             ../src/manifold/models/iris/iris_srcs/topology/util.cc \
             ../src/manifold/models/iris/iris_srcs/components/genericBuffer.cc \
@@ -97,7 +102,7 @@ check_PROGRAMS = macsim_dbg macsim_gpf
 
 macsim_opt_CPPFLAGS = -O3 -std=c++0x -funroll-loops -Werror $(DEBUG_FLAGS) $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
 macsim_opt_SOURCES = $(all_sources)
-macsim_opt_LDFLAGS = -static 
+macsim_opt_LDFLAGS = -static
 
 macsim_dbg_CPPFLAGS = -g3 -std=c++0x $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
 macsim_dbg_SOURCES = $(all_sources)
@@ -105,8 +110,7 @@ macsim_dbg_LDFLAGS = -g3 -static
 
 macsim_gpf_CPPFLAGS = $(macsim_opt_CPPFLAGS) $(COMMON_FLAGS) -pg -I .
 macsim_gpf_SOURCES = $(all_sources)
-macsim_gpf_LDFLAGS = -pg -static 
-
+macsim_gpf_LDFLAGS = -pg -static
 
 opt: macsim_opt
 
