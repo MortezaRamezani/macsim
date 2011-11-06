@@ -10,9 +10,7 @@ Note
 
      2) The compilation might be failed as well.
 
-     Here are steps to modify the pintool.
-
-     $PINHOME/extras/xed2-intel64/include/xed-iclass-enum.h
+     Once fixing pintool, also some simulator logic needs to be modified.
 
      Simulator
        trace_read.h : 
@@ -26,20 +24,19 @@ Note
          3) g_tr_opcode_names
      
 
-MUL
-
-DIV
-
-FDIV
-
-FMUL
-
-CF
-
-
 Changes
 
   1. November 2011 
 
     Register compression logic is replace by REG_FullRegName, which
     translate partial register to full register.
+
+
+How to generate x86 traces
+
+  1. Simpoint - Mostly we use SimPoint (PinPoint). Follow instruction
+     in $PINHOME/source/tools/PinPoints
+
+  2. Otherwise - Fix trace generator module based on your needs. Then,
+     pin -t trace_generator.so -- $BIN $ARGS
+
