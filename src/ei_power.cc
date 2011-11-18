@@ -1250,7 +1250,7 @@ void ei_power_c::mcpat_config_gen_large(FILE *fp, int core_id)
 	fprintf(fp, "\t\t\t\t<param name=\"L2_config\" value=\"%d,%d,%d,%d,%d,%d,%d,%d\"/>\n", m_simBase->m_knobs->KNOB_L2_LARGE_NUM_SET->getValue()*1024, 32, m_simBase->m_knobs->KNOB_L2_LARGE_ASSOC->getValue(), m_simBase->m_knobs->KNOB_L2_LARGE_NUM_BANK->getValue(), 2, m_simBase->m_knobs->KNOB_L2_LARGE_LATENCY->getValue(), 16, 1 );
 	fprintf(fp, "\t\t\t\t<param name=\"buffer_sizes\" value=\"%d, %d, %d, %d\"/>\n", m_simBase->m_knobs->KNOB_MEM_MSHR_SIZE->getValue(), 16, 16, 16 );
 	fprintf(fp, "\t\t\t\t<param name=\"clockrate\" value=\"%d\"/>\n", (int)(m_simBase->m_knobs->KNOB_CPU_FREQUENCY->getValue() *1000));
-	fprintf(fp, "\t\t\t\t<param name=\"ports\" value=\"%d,%d,%d\"/>\n", m_simBase->m_knobs->KNOB_DCACHE_READ_PORTS->getValue(), m_simBase->m_knobs->KNOB_DCACHE_WRITE_PORTS->getValue(), 0 );
+	fprintf(fp, "\t\t\t\t<param name=\"ports\" value=\"%d,%d,%d\"/>\n", m_simBase->m_knobs->KNOB_L2_READ_PORTS->getValue(), m_simBase->m_knobs->KNOB_L2_WRITE_PORTS->getValue(), 0 );
 	fprintf(fp, "\t\t\t\t<param name=\"device_type\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t\t\t<stat name=\"read_accesses\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_L2CACHE_R-PER_CORE_STATS_ENUM_FIRST].getCount());
 	fprintf(fp, "\t\t\t\t<stat name=\"write_accesses\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_L2CACHE_W-PER_CORE_STATS_ENUM_FIRST].getCount());
@@ -1262,7 +1262,7 @@ void ei_power_c::mcpat_config_gen_large(FILE *fp, int core_id)
 	fprintf(fp, "\t\t<component id=\"system.L3%d\" name=\"L30\">\n", core_id);
 	fprintf(fp, "\t\t\t\t<param name=\"L3_config\" value=\"%d,%d,%d,%d,%d,%d,%d,%d\"/>\n", m_simBase->m_knobs->KNOB_L3_NUM_SET->getValue()*1024, 32, m_simBase->m_knobs->KNOB_L3_ASSOC->getValue(), m_simBase->m_knobs->KNOB_L3_NUM_BANK->getValue(), 2, m_simBase->m_knobs->KNOB_L3_LATENCY->getValue(), 16, 1 );
 	fprintf(fp, "\t\t\t\t<param name=\"clockrate\" value=\"%d\"/>\n", (int)(m_simBase->m_knobs->KNOB_CPU_FREQUENCY->getValue() *1000));
-	fprintf(fp, "\t\t\t\t<param name=\"ports\" value=\"%d,%d,%d\"/>\n", m_simBase->m_knobs->KNOB_DCACHE_READ_PORTS->getValue(), m_simBase->m_knobs->KNOB_DCACHE_WRITE_PORTS->getValue(), 0 );
+	fprintf(fp, "\t\t\t\t<param name=\"ports\" value=\"%d,%d,%d\"/>\n", m_simBase->m_knobs->KNOB_L3_READ_PORTS->getValue(), m_simBase->m_knobs->KNOB_L3_WRITE_PORTS->getValue(), 0 );
 	fprintf(fp, "\t\t\t\t<param name=\"device_type\" value=\"0\"/>\n");
 	fprintf(fp, "\t\t\t\t<param name=\"buffer_sizes\" value=\"%d, %d, %d, %d\"/>\n", m_simBase->m_knobs->KNOB_MEM_MSHR_SIZE->getValue(), 16, 16, 16 );
 	fprintf(fp, "\t\t\t\t<stat name=\"read_accesses\" value=\"%lld\"/>\n", m_simBase->m_ProcessorStats->core(core_id)[POWER_L3CACHE_R-PER_CORE_STATS_ENUM_FIRST].getCount());
