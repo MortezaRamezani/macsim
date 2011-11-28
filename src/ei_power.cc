@@ -1037,7 +1037,7 @@ void ei_power_c::mcpat_config_gen_tech(FILE *fp, int core_id)
 	int large = m_simBase->m_knobs->KNOB_NUM_SIM_LARGE_CORES->getValue();
 	int medium = m_simBase->m_knobs->KNOB_NUM_SIM_MEDIUM_CORES->getValue();
 	int small = m_simBase->m_knobs->KNOB_NUM_SIM_SMALL_CORES->getValue();
-	int is_homo = !(large&&medium || medium&&small || small&&large);
+	int is_homo = !((large&&medium) || (medium&&small) || (small&&large));
 
 	fprintf(fp, "\t\t<param name=\"homogeneous_cores\" value=\"%d\"/>\n", is_homo);	
 	fprintf(fp, "\t\t<param name=\"homogeneous_L2s\" value=\"1\"/>\n");

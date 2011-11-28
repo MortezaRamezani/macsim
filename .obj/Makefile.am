@@ -1,7 +1,7 @@
 # what flags you want to pass to the C compiler & linker
 
 XFLAGS = -DLONG_COUNTERS
-WARN_FLAGS = -Wunused-function -Wreturn-type -Wpointer-arith -Wno-write-strings
+WARN_FLAGS = -Wunused-function -Wreturn-type -Wpointer-arith -Wno-write-strings #-Wall -Wno-sign-conversion -Wno-sign-compare
 DEBUG_FLAGS = -DNO_DEBUG
 COMMON_FLAGS = -DNO_MPI 
 
@@ -9,12 +9,18 @@ EI_DIR = energy_introspector
 ORION_DIR = orion
 
 DEP_LIBS = -L../src/$(ORION_DIR) -lorion
-
 LIBS = -lz -lpthread $(DEP_LIBS)
-AM_CXXFLAGS = -I ../src/$(EI_DIR)/ -I../src/$(ORION_DIR) -I../src/manifold/kernel/include/kernel -I ../src/manifold/kernel/include/ -I ../src/manifold/models/iris/interfaces -I ../src -I /usr/include
+
+AM_CXXFLAGS = -I ../src/$(EI_DIR)/ \
+							-I../src/$(ORION_DIR) \
+							-I../src/manifold/kernel/include/kernel \
+							-I ../src/manifold/kernel/include/ \
+							-I ../src/manifold/models/iris/interfaces \
+							-I ../src -I /usr/include
 AM_LDFLAGS = -lz -lpthread -lgsl -lgslc++
 
-all_sources = ../src/all_knobs.cc \
+all_sources = \
+	../src/all_knobs.cc \
 	../src/all_stats.cc \
 	../src/allocate.cc \
 	../src/allocate_smc.cc \
@@ -83,13 +89,14 @@ iris_srcs = ../src/manifold/models/iris/iris_srcs/data_types/networkPacket.cc \
 #            ../src/manifold/models/iris/iris_srcs/components/simpleMC.cc 
 
 ei_srcs = ../src/$(EI_DIR)/parameters.cc \
-            ../src/$(EI_DIR)/parser.cc \
-            ../src/$(EI_DIR)/energy_introspector.cc \
-            ../src/$(EI_DIR)/ENERGYLIB_McPAT.cc \
-            ../src/$(EI_DIR)/ENERGYLIB_IntSim.cc \
-            ../src/$(EI_DIR)/THERMALLIB_HotSpot.cc
+          ../src/$(EI_DIR)/parser.cc \
+          ../src/$(EI_DIR)/energy_introspector.cc \
+          ../src/$(EI_DIR)/ENERGYLIB_McPAT.cc \
+          ../src/$(EI_DIR)/ENERGYLIB_IntSim.cc \
+          ../src/$(EI_DIR)/THERMALLIB_HotSpot.cc
 
 all_sources += $(iris_kernel_srcs) $(iris_srcs) $(ei_srcs)
+
 
 # this lists the binaries to produce, the (non-PHONY, binary) targets in
 # the previous manual Makefile
