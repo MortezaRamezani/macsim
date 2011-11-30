@@ -1,14 +1,15 @@
 Index: Makefile.am
 ===================================================================
---- Makefile.am	(revision 85)
+--- Makefile.am	(revision 143)
 +++ Makefile.am	(working copy)
-@@ -1,42 +1,136 @@
+@@ -1,46 +1,142 @@
 -AUTOMAKE_OPTIONS = foreign
--SUBDIRS = scripts .obj tools 
+-SUBDIRS = scripts src/orion .obj tools 
 -
 -all:
 -	@echo Build optimized executable
 -	make -C scripts
+-	make -C src/orion
 -	make opt -C .obj
 -	-test -z .obj/macsim_opt || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_opt macsim
 -#	-test -z .obj/macsim_opt || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_opt macsim
@@ -16,18 +17,21 @@ Index: Makefile.am
 -opt:
 -	@echo Build optimized executable
 -	make -C scripts
+-	make -C src/orion
 -	make opt -C .obj
 -	-test -z .obj/macsim_opt || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_opt macsim
 -
 -dbg:
 -	@echo Build debugging executable
 -	make -C scripts
+-	make -C src/orion
 -	make dbg -C .obj
 -	-test -z .obj/macsim_dbg || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_dbg macsim
 -
 -gpf:
 -	@echo Build gprof-capable executable
 -	make -C scripts
+-	make -C src/orion
 -	make gpf -C .obj
 -	-test -z .obj/macsim_gpf || (test -z ./bin/macsim || rm -f ./bin/macsim) && cd bin && ln -s ../.obj/macsim_gpf macsim
 -
@@ -59,6 +63,7 @@ Index: Makefile.am
 +  -I$(srcdir)/src/manifold/models/iris/iris_srcs/topology \
 +  -I$(srcdir)/src/manifold/kernel/include \
 +  -I$(srcdir)/src/manifold/kernel/include/kernel \
++	-I$(srcdir)/src/orion \
 +  -std=c++0x \
 +	-DUSING_SST
 +
@@ -76,6 +81,7 @@ Index: Makefile.am
 +src/assert_macros.h                                                    \
 +src/bp.cc                    src/bp.h                                  \
 +src/bp_gshare.cc             src/bp_gshare.h                           \
++src/bp_targ.cc               src/bp_targ.h                             \
 +src/bug_detector.cc          src/bug_detector.h                        \
 +src/cache.cc                 src/cache.h                               \
 +src/config.h                                                           \
@@ -117,6 +123,7 @@ Index: Makefile.am
 +src/trace_read.cc            src/trace_read.h                          \
 +src/uop.cc                   src/uop.h                                 \
 +src/utils.cc                 src/utils.h                               \
++src/ei_power.cc              src/ei_power.h                            \
 +                                                                       \
 +src/allocate_interface.h                                               \
 +src/exec_interface.h                                                   \
@@ -174,7 +181,10 @@ Index: Makefile.am
 +src/manifold/models/iris/iris_srcs/topology/ring.h                     \
 +src/manifold/models/iris/iris_srcs/topology/twoNode.cc                 \
 +src/manifold/models/iris/iris_srcs/topology/twoNode.h                  \
-+src/manifold/models/iris/iris_srcs/topology/util.cc                    
++src/manifold/models/iris/iris_srcs/topology/util.cc                    \
++                                                                       \
++src/orion/SIM_router.c                                                 \
++src/orion/SIM_router.h                                                 
 +
 +
 +EXTRA_DIST = 
