@@ -1,9 +1,0 @@
--iris:noc_topology        ring # knob for specifying the topology of the noc
--iris:no_mcs              1    # total no of mcs
--iris:no_nodes            17
--iris:no_ports            3
--iris:no_vcs              4
--iris:int_buff_width      4
--iris:credits             4
--iris:mean_irt            128
--iris:mapping             0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16
