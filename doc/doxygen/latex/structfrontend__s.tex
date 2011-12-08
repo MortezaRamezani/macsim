@@ -1,0 +1,178 @@
+\hypertarget{structfrontend__s}{
+\section{frontend\_\-s Struct Reference}
+\label{structfrontend__s}\index{frontend\_\-s@{frontend\_\-s}}
+}
+
+
+fetch data structure  
+
+
+
+
+{\ttfamily \#include $<$frontend.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{structfrontend__s_aa8924323b6538859e5d896b1a02de550}{init} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+FRONTEND\_\-MODE \hyperlink{structfrontend__s_adf08ea8a939c74abbd38f5b20f478afb}{m\_\-fe\_\-mode}
+\item 
+FRONTEND\_\-MODE \hyperlink{structfrontend__s_a47a245627b16da594ae17822dfba1fa3}{m\_\-fe\_\-prev\_\-mode}
+\item 
+bool \hyperlink{structfrontend__s_a552f1819ab43b5fa3388bc4f334954ce}{m\_\-fetch\_\-blocked}
+\item 
+int \hyperlink{structfrontend__s_a93d8c54a2f3e0a300bd658f6b1c4655a}{m\_\-next\_\-bid}
+\item 
+int \hyperlink{structfrontend__s_a7a185d5c19de542ec9e69cb19cc713a3}{m\_\-next\_\-rowid}
+\item 
+uint64\_\-t \hyperlink{structfrontend__s_a6f7aa38f4fe827d94f5aab6a201363ac}{m\_\-sync\_\-wait\_\-start}
+\item 
+uint64\_\-t \hyperlink{structfrontend__s_a35c7f50fd30081b6a017241177098407}{m\_\-sync\_\-wait\_\-count}
+\item 
+uint32\_\-t \hyperlink{structfrontend__s_afc743be3a1d726ca426c592a458fc29f}{m\_\-sync\_\-count}
+\item 
+uint32\_\-t \hyperlink{structfrontend__s_a3d10c239a82e97daca4ac26337055e85}{m\_\-extra\_\-fetch}
+\item 
+bool \hyperlink{structfrontend__s_aa6d2610315e51c45c127bed07a4d188d}{m\_\-first\_\-time}
+\item 
+int \hyperlink{structfrontend__s_ae06574214d7918161e7483fce9853330}{m\_\-MT\_\-load\_\-waiting}
+\item 
+bool \hyperlink{structfrontend__s_a6565486357402733c4b2c1486054551f}{m\_\-MT\_\-br\_\-waiting}
+\item 
+Addr \hyperlink{structfrontend__s_a10ac2fa31ffde8759fc710b754041e3e}{m\_\-fetch\_\-ready\_\-addr}
+\item 
+\hyperlink{structreconv__data__s}{reconv\_\-data\_\-s} \hyperlink{structfrontend__s_a8cff27ec3c03d739f4dccce4dcb31072}{m\_\-reconv\_\-data}
+\item 
+\hyperlink{structmt__scheduler__s}{mt\_\-scheduler\_\-s} \hyperlink{structfrontend__s_a448e3c3264b1dead315e8e1690405ecf}{m\_\-MT\_\-scheduler}
+\item 
+\hyperlink{classuop__c}{uop\_\-c} $\ast$ \hyperlink{structfrontend__s_a6c09302921435eaa8a904b258f8b351b}{m\_\-prev\_\-uop}
+\item 
+Counter \hyperlink{structfrontend__s_ae0b61c16c88f0061c2fc1c8c9db61709}{m\_\-prev\_\-uop\_\-num}
+\item 
+Counter \hyperlink{structfrontend__s_a4fec072ee6013132f739110f1928447c}{m\_\-prev\_\-uop\_\-thread\_\-num}
+\item 
+map$<$ Counter, bool $>$ \hyperlink{structfrontend__s_a01c6f3f474a3bc339d5b89bbb8a06096}{m\_\-load\_\-waiting}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+fetch data structure 
+
+\subsection{Member Function Documentation}
+\hypertarget{structfrontend__s_aa8924323b6538859e5d896b1a02de550}{
+\index{frontend\_\-s@{frontend\_\-s}!init@{init}}
+\index{init@{init}!frontend_s@{frontend\_\-s}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-s::init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{structfrontend__s_aa8924323b6538859e5d896b1a02de550}
+Initialize 
+
+\subsection{Member Data Documentation}
+\hypertarget{structfrontend__s_a3d10c239a82e97daca4ac26337055e85}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-extra\_\-fetch@{m\_\-extra\_\-fetch}}
+\index{m\_\-extra\_\-fetch@{m\_\-extra\_\-fetch}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-extra\_\-fetch}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t {\bf frontend\_\-s::m\_\-extra\_\-fetch}}}
+\label{structfrontend__s_a3d10c239a82e97daca4ac26337055e85}
+extra fetch \hypertarget{structfrontend__s_adf08ea8a939c74abbd38f5b20f478afb}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-fe\_\-mode@{m\_\-fe\_\-mode}}
+\index{m\_\-fe\_\-mode@{m\_\-fe\_\-mode}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-fe\_\-mode}]{\setlength{\rightskip}{0pt plus 5cm}FRONTEND\_\-MODE {\bf frontend\_\-s::m\_\-fe\_\-mode}}}
+\label{structfrontend__s_adf08ea8a939c74abbd38f5b20f478afb}
+current frontend mode for thread \hypertarget{structfrontend__s_a47a245627b16da594ae17822dfba1fa3}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-fe\_\-prev\_\-mode@{m\_\-fe\_\-prev\_\-mode}}
+\index{m\_\-fe\_\-prev\_\-mode@{m\_\-fe\_\-prev\_\-mode}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-fe\_\-prev\_\-mode}]{\setlength{\rightskip}{0pt plus 5cm}FRONTEND\_\-MODE {\bf frontend\_\-s::m\_\-fe\_\-prev\_\-mode}}}
+\label{structfrontend__s_a47a245627b16da594ae17822dfba1fa3}
+previous frontend mode for thread \hypertarget{structfrontend__s_a552f1819ab43b5fa3388bc4f334954ce}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-fetch\_\-blocked@{m\_\-fetch\_\-blocked}}
+\index{m\_\-fetch\_\-blocked@{m\_\-fetch\_\-blocked}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-fetch\_\-blocked}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf frontend\_\-s::m\_\-fetch\_\-blocked}}}
+\label{structfrontend__s_a552f1819ab43b5fa3388bc4f334954ce}
+fetch blocked \hypertarget{structfrontend__s_a10ac2fa31ffde8759fc710b754041e3e}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-fetch\_\-ready\_\-addr@{m\_\-fetch\_\-ready\_\-addr}}
+\index{m\_\-fetch\_\-ready\_\-addr@{m\_\-fetch\_\-ready\_\-addr}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-fetch\_\-ready\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}Addr {\bf frontend\_\-s::m\_\-fetch\_\-ready\_\-addr}}}
+\label{structfrontend__s_a10ac2fa31ffde8759fc710b754041e3e}
+fetch address waiting for begin serviced \hypertarget{structfrontend__s_aa6d2610315e51c45c127bed07a4d188d}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-first\_\-time@{m\_\-first\_\-time}}
+\index{m\_\-first\_\-time@{m\_\-first\_\-time}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-first\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf frontend\_\-s::m\_\-first\_\-time}}}
+\label{structfrontend__s_aa6d2610315e51c45c127bed07a4d188d}
+first time to be called \hypertarget{structfrontend__s_a01c6f3f474a3bc339d5b89bbb8a06096}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-load\_\-waiting@{m\_\-load\_\-waiting}}
+\index{m\_\-load\_\-waiting@{m\_\-load\_\-waiting}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-load\_\-waiting}]{\setlength{\rightskip}{0pt plus 5cm}map$<$Counter, bool$>$ {\bf frontend\_\-s::m\_\-load\_\-waiting}}}
+\label{structfrontend__s_a01c6f3f474a3bc339d5b89bbb8a06096}
+uop is waiting a load begin serviced \hypertarget{structfrontend__s_a6565486357402733c4b2c1486054551f}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-MT\_\-br\_\-waiting@{m\_\-MT\_\-br\_\-waiting}}
+\index{m\_\-MT\_\-br\_\-waiting@{m\_\-MT\_\-br\_\-waiting}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-MT\_\-br\_\-waiting}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf frontend\_\-s::m\_\-MT\_\-br\_\-waiting}}}
+\label{structfrontend__s_a6565486357402733c4b2c1486054551f}
+MT waiting for the branch \hypertarget{structfrontend__s_ae06574214d7918161e7483fce9853330}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-MT\_\-load\_\-waiting@{m\_\-MT\_\-load\_\-waiting}}
+\index{m\_\-MT\_\-load\_\-waiting@{m\_\-MT\_\-load\_\-waiting}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-MT\_\-load\_\-waiting}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf frontend\_\-s::m\_\-MT\_\-load\_\-waiting}}}
+\label{structfrontend__s_ae06574214d7918161e7483fce9853330}
+MT waiting for the load \hypertarget{structfrontend__s_a448e3c3264b1dead315e8e1690405ecf}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-MT\_\-scheduler@{m\_\-MT\_\-scheduler}}
+\index{m\_\-MT\_\-scheduler@{m\_\-MT\_\-scheduler}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-MT\_\-scheduler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mt\_\-scheduler\_\-s} {\bf frontend\_\-s::m\_\-MT\_\-scheduler}}}
+\label{structfrontend__s_a448e3c3264b1dead315e8e1690405ecf}
+MT scheduler \hypertarget{structfrontend__s_a93d8c54a2f3e0a300bd658f6b1c4655a}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-next\_\-bid@{m\_\-next\_\-bid}}
+\index{m\_\-next\_\-bid@{m\_\-next\_\-bid}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-next\_\-bid}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf frontend\_\-s::m\_\-next\_\-bid}}}
+\label{structfrontend__s_a93d8c54a2f3e0a300bd658f6b1c4655a}
+next block id \hypertarget{structfrontend__s_a7a185d5c19de542ec9e69cb19cc713a3}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-next\_\-rowid@{m\_\-next\_\-rowid}}
+\index{m\_\-next\_\-rowid@{m\_\-next\_\-rowid}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-next\_\-rowid}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf frontend\_\-s::m\_\-next\_\-rowid}}}
+\label{structfrontend__s_a7a185d5c19de542ec9e69cb19cc713a3}
+next dram row id \hypertarget{structfrontend__s_a6c09302921435eaa8a904b258f8b351b}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-prev\_\-uop@{m\_\-prev\_\-uop}}
+\index{m\_\-prev\_\-uop@{m\_\-prev\_\-uop}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-prev\_\-uop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uop\_\-c}$\ast$ {\bf frontend\_\-s::m\_\-prev\_\-uop}}}
+\label{structfrontend__s_a6c09302921435eaa8a904b258f8b351b}
+previous uop \hypertarget{structfrontend__s_ae0b61c16c88f0061c2fc1c8c9db61709}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-prev\_\-uop\_\-num@{m\_\-prev\_\-uop\_\-num}}
+\index{m\_\-prev\_\-uop\_\-num@{m\_\-prev\_\-uop\_\-num}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-prev\_\-uop\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf frontend\_\-s::m\_\-prev\_\-uop\_\-num}}}
+\label{structfrontend__s_ae0b61c16c88f0061c2fc1c8c9db61709}
+previous uop number \hypertarget{structfrontend__s_a4fec072ee6013132f739110f1928447c}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-prev\_\-uop\_\-thread\_\-num@{m\_\-prev\_\-uop\_\-thread\_\-num}}
+\index{m\_\-prev\_\-uop\_\-thread\_\-num@{m\_\-prev\_\-uop\_\-thread\_\-num}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-prev\_\-uop\_\-thread\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf frontend\_\-s::m\_\-prev\_\-uop\_\-thread\_\-num}}}
+\label{structfrontend__s_a4fec072ee6013132f739110f1928447c}
+previous thread id of the uop \hypertarget{structfrontend__s_a8cff27ec3c03d739f4dccce4dcb31072}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-reconv\_\-data@{m\_\-reconv\_\-data}}
+\index{m\_\-reconv\_\-data@{m\_\-reconv\_\-data}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-reconv\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf reconv\_\-data\_\-s} {\bf frontend\_\-s::m\_\-reconv\_\-data}}}
+\label{structfrontend__s_a8cff27ec3c03d739f4dccce4dcb31072}
+GPU : reconvergence data \hypertarget{structfrontend__s_afc743be3a1d726ca426c592a458fc29f}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-sync\_\-count@{m\_\-sync\_\-count}}
+\index{m\_\-sync\_\-count@{m\_\-sync\_\-count}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-sync\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint32\_\-t {\bf frontend\_\-s::m\_\-sync\_\-count}}}
+\label{structfrontend__s_afc743be3a1d726ca426c592a458fc29f}
+sync count \hypertarget{structfrontend__s_a35c7f50fd30081b6a017241177098407}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-sync\_\-wait\_\-count@{m\_\-sync\_\-wait\_\-count}}
+\index{m\_\-sync\_\-wait\_\-count@{m\_\-sync\_\-wait\_\-count}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-sync\_\-wait\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t {\bf frontend\_\-s::m\_\-sync\_\-wait\_\-count}}}
+\label{structfrontend__s_a35c7f50fd30081b6a017241177098407}
+sync wait count \hypertarget{structfrontend__s_a6f7aa38f4fe827d94f5aab6a201363ac}{
+\index{frontend\_\-s@{frontend\_\-s}!m\_\-sync\_\-wait\_\-start@{m\_\-sync\_\-wait\_\-start}}
+\index{m\_\-sync\_\-wait\_\-start@{m\_\-sync\_\-wait\_\-start}!frontend_s@{frontend\_\-s}}
+\subsubsection[{m\_\-sync\_\-wait\_\-start}]{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t {\bf frontend\_\-s::m\_\-sync\_\-wait\_\-start}}}
+\label{structfrontend__s_a6f7aa38f4fe827d94f5aab6a201363ac}
+sync wait start 
+
+The documentation for this struct was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+frontend.h\item 
+frontend.cc\end{DoxyCompactItemize}

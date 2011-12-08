@@ -1,0 +1,441 @@
+\hypertarget{classtrace__read__c}{
+\section{trace\_\-read\_\-c Class Reference}
+\label{classtrace__read__c}\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}}
+}
+
+
+Trace reader class.  
+
+
+
+
+{\ttfamily \#include $<$trace\_\-read.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtrace__read__c_af1e97f217786742f927a8cfb19e75b4e}{trace\_\-read\_\-c} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classtrace__read__c_a6e68015f7b152374329a8228215213e6}{$\sim$trace\_\-read\_\-c} ()
+\item 
+bool \hyperlink{classtrace__read__c_a262fb0303f53144c30c267dc3e454c6c}{get\_\-uops\_\-from\_\-traces} (int core\_\-id, \hyperlink{classuop__c}{uop\_\-c} $\ast$uop, int sim\_\-thread\_\-id)
+\item 
+void \hyperlink{classtrace__read__c_a4552577d58bbc847977cdba517a58c10}{pre\_\-read\_\-trace} (\hyperlink{structthread__s}{thread\_\-s} $\ast$trace\_\-info)
+\item 
+void \hyperlink{classtrace__read__c_ad4b1b2fec74a627bb1d39d40d3a68b80}{setup\_\-trace} (int core\_\-id, int sim\_\-thread\_\-id)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classtrace__read__c_a10174761af18a3353195cd71f66aa6f5}{
+static const char $\ast$ {\bfseries g\_\-tr\_\-reg\_\-names} \mbox{[}MAX\_\-TR\_\-REG\mbox{]}}
+\label{classtrace__read__c_a10174761af18a3353195cd71f66aa6f5}
+
+\item 
+\hypertarget{classtrace__read__c_af27cab2059c89a18a7e0a22f52d74779}{
+static const char $\ast$ {\bfseries g\_\-tr\_\-opcode\_\-names} \mbox{[}MAX\_\-TR\_\-OPCODE\_\-NAME\mbox{]}}
+\label{classtrace__read__c_af27cab2059c89a18a7e0a22f52d74779}
+
+\item 
+static const char $\ast$ {\bfseries g\_\-tr\_\-cf\_\-names} \mbox{[}10\mbox{]}
+\item 
+static const char $\ast$ {\bfseries g\_\-optype\_\-names} \mbox{[}37\mbox{]}
+\item 
+static const char $\ast$ {\bfseries g\_\-mem\_\-type\_\-names} \mbox{[}20\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classtrace__read__c_a3a85825f5248721194c5b94535146459}{init\_\-pin\_\-convert} ()
+\item 
+\hyperlink{classinst__info__s}{inst\_\-info\_\-s} $\ast$ \hyperlink{classtrace__read__c_ae9df5fd9d3fcad53f061f93bfb6c5c7d}{convert\_\-pinuop\_\-to\_\-t\_\-uop} (\hyperlink{structtrace__info__s}{trace\_\-info\_\-s} $\ast$pi, \hyperlink{structtrace__uop__s}{trace\_\-uop\_\-s} $\ast$$\ast$trace\_\-uop, int core\_\-id, int sim\_\-thread\_\-id)
+\item 
+void \hyperlink{classtrace__read__c_a32c8483c87d146d86ac4f9dc3074e03b}{convert\_\-t\_\-uop\_\-to\_\-info} (\hyperlink{structtrace__uop__s}{trace\_\-uop\_\-s} $\ast$t\_\-uop, \hyperlink{classinst__info__s}{inst\_\-info\_\-s} $\ast$info)
+\item 
+void \hyperlink{classtrace__read__c_ae63f967e03e75fe66268da01b731ac43}{convert\_\-info\_\-uop} (\hyperlink{classinst__info__s}{inst\_\-info\_\-s} $\ast$info, \hyperlink{structtrace__uop__s}{trace\_\-uop\_\-s} $\ast$trace\_\-uop)
+\item 
+void \hyperlink{classtrace__read__c_af639d4cd3a4fb4970fccdc48d577ea58}{convert\_\-dyn\_\-uop} (\hyperlink{classinst__info__s}{inst\_\-info\_\-s} $\ast$info, \hyperlink{structtrace__info__s}{trace\_\-info\_\-s} $\ast$pi, \hyperlink{structtrace__uop__s}{trace\_\-uop\_\-s} $\ast$trace\_\-uop, Addr rep\_\-offset, int core\_\-id)
+\item 
+void \hyperlink{classtrace__read__c_a4c8ae23acf255d1fa06b6da7cd67f4ae}{dprint\_\-inst} (\hyperlink{structtrace__info__s}{trace\_\-info\_\-s} $\ast$t\_\-info, int core\_\-id, int thread\_\-id)
+\item 
+bool \hyperlink{classtrace__read__c_a03c129b83858f7687afb067160fc2f38}{read\_\-trace} (int core\_\-id, \hyperlink{structtrace__info__s}{trace\_\-info\_\-s} $\ast$trace\_\-info, int sim\_\-thread\_\-id, bool $\ast$inst\_\-read)
+\item 
+bool \hyperlink{classtrace__read__c_a15c95901d6feaf0a968aad03858eef4c}{ungetch\_\-trace} (int core\_\-id, int sim\_\-thread\_\-id, int num\_\-inst)
+\item 
+bool \hyperlink{classtrace__read__c_a8f641d8f18e9c7a2be45e500f6f5cec8}{peek\_\-trace} (int core\_\-id, \hyperlink{structtrace__info__s}{trace\_\-info\_\-s} $\ast$trace\_\-info, int sim\_\-thread\_\-id, bool $\ast$inst\_\-read)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classtrace__read__c_a7ca8b07aa548cbeac42c78fa5dcdc856}{m\_\-int\_\-uop\_\-table} \mbox{[}TR\_\-OPCODE\_\-LAST\mbox{]}
+\item 
+int \hyperlink{classtrace__read__c_a71e9a814021a699d19a3b61fdc53d9f4}{m\_\-fp\_\-uop\_\-table} \mbox{[}TR\_\-OPCODE\_\-LAST\mbox{]}
+\item 
+\hypertarget{classtrace__read__c_a447f055cd46c4894c8b6c67debaa70a4}{
+uint32\_\-t {\bfseries dprint\_\-count}}
+\label{classtrace__read__c_a447f055cd46c4894c8b6c67debaa70a4}
+
+\item 
+\hypertarget{classtrace__read__c_a8f95dd5961dceaf284795a7d5618cc82}{
+ofstream $\ast$ {\bfseries dprint\_\-output}}
+\label{classtrace__read__c_a8f95dd5961dceaf284795a7d5618cc82}
+
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classtrace__read__c_a5056a52a94eb0fc5a3ab6e6ccb1d113b}{m\_\-simBase}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{classtrace__read__c_a8853b7e1571b86ffba1ee31b185d0e91}{k\_\-trace\_\-buffer\_\-size} = 1000
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Trace reader class. This class handles all trace related operations. Read instructions from the file, decode, split to micro ops, uop setups ... 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classtrace__read__c_af1e97f217786742f927a8cfb19e75b4e}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!trace\_\-read\_\-c@{trace\_\-read\_\-c}}
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{trace\_\-read\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}trace\_\-read\_\-c::trace\_\-read\_\-c (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classtrace__read__c_af1e97f217786742f927a8cfb19e75b4e}
+Constructor \hypertarget{classtrace__read__c_a6e68015f7b152374329a8228215213e6}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!$\sim$trace\_\-read\_\-c@{$\sim$trace\_\-read\_\-c}}
+\index{$\sim$trace\_\-read\_\-c@{$\sim$trace\_\-read\_\-c}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{$\sim$trace\_\-read\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}trace\_\-read\_\-c::$\sim$trace\_\-read\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classtrace__read__c_a6e68015f7b152374329a8228215213e6}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classtrace__read__c_af639d4cd3a4fb4970fccdc48d577ea58}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!convert\_\-dyn\_\-uop@{convert\_\-dyn\_\-uop}}
+\index{convert\_\-dyn\_\-uop@{convert\_\-dyn\_\-uop}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{convert\_\-dyn\_\-uop}]{\setlength{\rightskip}{0pt plus 5cm}void trace\_\-read\_\-c::convert\_\-dyn\_\-uop (
+\begin{DoxyParamCaption}
+\item[{{\bf inst\_\-info\_\-s} $\ast$}]{ info, }
+\item[{{\bf trace\_\-info\_\-s} $\ast$}]{ pi, }
+\item[{{\bf trace\_\-uop\_\-s} $\ast$}]{ trace\_\-uop, }
+\item[{Addr}]{ rep\_\-offset, }
+\item[{int}]{ core\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_af639d4cd3a4fb4970fccdc48d577ea58}
+From statis instruction, add dynamic information such as load address, branch target, ... 
+\begin{DoxyParams}{Parameters}
+\item[{\em info}]-\/ instruction information from the hash table \item[{\em pi}]-\/ raw trace information \item[{\em trace\_\-uop}]-\/ MacSim uop type \item[{\em rep\_\-offset}]-\/ repetition offet \item[{\em core\_\-id}]-\/ core id \end{DoxyParams}
+\hypertarget{classtrace__read__c_ae63f967e03e75fe66268da01b731ac43}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!convert\_\-info\_\-uop@{convert\_\-info\_\-uop}}
+\index{convert\_\-info\_\-uop@{convert\_\-info\_\-uop}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{convert\_\-info\_\-uop}]{\setlength{\rightskip}{0pt plus 5cm}void trace\_\-read\_\-c::convert\_\-info\_\-uop (
+\begin{DoxyParamCaption}
+\item[{{\bf inst\_\-info\_\-s} $\ast$}]{ info, }
+\item[{{\bf trace\_\-uop\_\-s} $\ast$}]{ trace\_\-uop}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_ae63f967e03e75fe66268da01b731ac43}
+Convert instruction information (from hash table) to trace uop 
+\begin{DoxyParams}{Parameters}
+\item[{\em info}]-\/ instruction information from the hash table \item[{\em trace\_\-uop}]-\/ MacSim trace format \end{DoxyParams}
+\hypertarget{classtrace__read__c_ae9df5fd9d3fcad53f061f93bfb6c5c7d}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!convert\_\-pinuop\_\-to\_\-t\_\-uop@{convert\_\-pinuop\_\-to\_\-t\_\-uop}}
+\index{convert\_\-pinuop\_\-to\_\-t\_\-uop@{convert\_\-pinuop\_\-to\_\-t\_\-uop}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{convert\_\-pinuop\_\-to\_\-t\_\-uop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf inst\_\-info\_\-s} $\ast$ trace\_\-read\_\-c::convert\_\-pinuop\_\-to\_\-t\_\-uop (
+\begin{DoxyParamCaption}
+\item[{{\bf trace\_\-info\_\-s} $\ast$}]{ pi, }
+\item[{{\bf trace\_\-uop\_\-s} $\ast$$\ast$}]{ trace\_\-uop, }
+\item[{int}]{ core\_\-id, }
+\item[{int}]{ sim\_\-thread\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_ae9df5fd9d3fcad53f061f93bfb6c5c7d}
+Function to decode an instruction from the trace file into a sequence of uops 
+\begin{DoxyParams}{Parameters}
+\item[{\em pi}]-\/ raw trace format \item[{\em trace\_\-uop}]-\/ micro uops storage for this instruction \item[{\em core\_\-id}]-\/ core id \item[{\em sim\_\-thread\_\-id}]-\/ thread id \end{DoxyParams}
+
+
+1. This instruction has a memory load operation
+
+There are two load operations in an instruction. Note that now array index becomes 1
+
+2. Instruction has a memory store operation
+
+3. Instruction has a branch operation
+
+Non-\/memory, non-\/branch instruction
+
+Process each static uop to dynamic uop
+
+Hash table already has matching instruction, we can skip above decoding process
+
+Repeat move
+
+\hypertarget{classtrace__read__c_a32c8483c87d146d86ac4f9dc3074e03b}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!convert\_\-t\_\-uop\_\-to\_\-info@{convert\_\-t\_\-uop\_\-to\_\-info}}
+\index{convert\_\-t\_\-uop\_\-to\_\-info@{convert\_\-t\_\-uop\_\-to\_\-info}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{convert\_\-t\_\-uop\_\-to\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}void trace\_\-read\_\-c::convert\_\-t\_\-uop\_\-to\_\-info (
+\begin{DoxyParamCaption}
+\item[{{\bf trace\_\-uop\_\-s} $\ast$}]{ t\_\-uop, }
+\item[{{\bf inst\_\-info\_\-s} $\ast$}]{ info}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a32c8483c87d146d86ac4f9dc3074e03b}
+Convert MacSim trace to instruction information (hash table) 
+\begin{DoxyParams}{Parameters}
+\item[{\em t\_\-uop}]-\/ MacSim trace \item[{\em info}]-\/ instruction information in hash table \end{DoxyParams}
+\hypertarget{classtrace__read__c_a4c8ae23acf255d1fa06b6da7cd67f4ae}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!dprint\_\-inst@{dprint\_\-inst}}
+\index{dprint\_\-inst@{dprint\_\-inst}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{dprint\_\-inst}]{\setlength{\rightskip}{0pt plus 5cm}void trace\_\-read\_\-c::dprint\_\-inst (
+\begin{DoxyParamCaption}
+\item[{{\bf trace\_\-info\_\-s} $\ast$}]{ t\_\-info, }
+\item[{int}]{ core\_\-id, }
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a4c8ae23acf255d1fa06b6da7cd67f4ae}
+Dump out instruction information to the file. At most 50000 instructions will be printed 
+\begin{DoxyParams}{Parameters}
+\item[{\em t\_\-info}]-\/ trace information \item[{\em core\_\-id}]-\/ core id \item[{\em thread\_\-id}]-\/ thread id \end{DoxyParams}
+\hypertarget{classtrace__read__c_a262fb0303f53144c30c267dc3e454c6c}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!get\_\-uops\_\-from\_\-traces@{get\_\-uops\_\-from\_\-traces}}
+\index{get\_\-uops\_\-from\_\-traces@{get\_\-uops\_\-from\_\-traces}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{get\_\-uops\_\-from\_\-traces}]{\setlength{\rightskip}{0pt plus 5cm}bool trace\_\-read\_\-c::get\_\-uops\_\-from\_\-traces (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{{\bf uop\_\-c} $\ast$}]{ uop, }
+\item[{int}]{ sim\_\-thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classtrace__read__c_a262fb0303f53144c30c267dc3e454c6c}
+Get an uop from trace Called by frontend.cc 
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ core id \item[{\em uop}]-\/ uop object to hold instruction information \item[{\em sim\_\-thread\_\-id}]thread id \end{DoxyParams}
+
+
+BOM (beginning of macro) : need to get a next instruction
+
+Trace read failed
+
+Set up actual uop data structure
+
+GPU simulation : handling uncoalesced accesses
+
+\hypertarget{classtrace__read__c_a3a85825f5248721194c5b94535146459}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!init\_\-pin\_\-convert@{init\_\-pin\_\-convert}}
+\index{init\_\-pin\_\-convert@{init\_\-pin\_\-convert}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{init\_\-pin\_\-convert}]{\setlength{\rightskip}{0pt plus 5cm}void trace\_\-read\_\-c::init\_\-pin\_\-convert (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a3a85825f5248721194c5b94535146459}
+Initialize the mapping between trace opcode and uop type \hypertarget{classtrace__read__c_a8f641d8f18e9c7a2be45e500f6f5cec8}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!peek\_\-trace@{peek\_\-trace}}
+\index{peek\_\-trace@{peek\_\-trace}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{peek\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}bool trace\_\-read\_\-c::peek\_\-trace (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{{\bf trace\_\-info\_\-s} $\ast$}]{ trace\_\-info, }
+\item[{int}]{ sim\_\-thread\_\-id, }
+\item[{bool $\ast$}]{ inst\_\-read}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a8f641d8f18e9c7a2be45e500f6f5cec8}
+In case of GPU simulation, from our design, each uncoalcesd accesses will be one trace instruction. To make these accesses in one instruction, we need to read trace file ahead. 
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ core id \item[{\em trace\_\-info}]-\/ trace information to store an instruction \item[{\em sim\_\-thread\_\-id}]-\/ thread id \item[{\em inst\_\-read}]-\/ indicate instruction read successful \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classtrace__read__c_a262fb0303f53144c30c267dc3e454c6c}{get\_\-uops\_\-from\_\-traces} 
+\end{DoxySeeAlso}
+\hypertarget{classtrace__read__c_a4552577d58bbc847977cdba517a58c10}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!pre\_\-read\_\-trace@{pre\_\-read\_\-trace}}
+\index{pre\_\-read\_\-trace@{pre\_\-read\_\-trace}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{pre\_\-read\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}void trace\_\-read\_\-c::pre\_\-read\_\-trace (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-s} $\ast$}]{ trace\_\-info}
+\end{DoxyParamCaption}
+)}}
+\label{classtrace__read__c_a4552577d58bbc847977cdba517a58c10}
+GPU simulation : Read trace ahead to read synchronization information 
+\begin{DoxyParams}{Parameters}
+\item[{\em trace\_\-info}]-\/ trace information \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classprocess__manager__c_af6aa8eb4d2257fc6e0f6c054e298fad4}{process\_\-manager\_\-c::sim\_\-thread\_\-schedule} 
+\end{DoxySeeAlso}
+\hypertarget{classtrace__read__c_a03c129b83858f7687afb067160fc2f38}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!read\_\-trace@{read\_\-trace}}
+\index{read\_\-trace@{read\_\-trace}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{read\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}bool trace\_\-read\_\-c::read\_\-trace (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{{\bf trace\_\-info\_\-s} $\ast$}]{ trace\_\-info, }
+\item[{int}]{ sim\_\-thread\_\-id, }
+\item[{bool $\ast$}]{ inst\_\-read}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a03c129b83858f7687afb067160fc2f38}
+
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ core id \item[{\em trace\_\-info}]-\/ trace information \item[{\em sim\_\-thread\_\-id}]-\/ thread id \item[{\em inst\_\-read}]-\/ set true if instruction read successful \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classtrace__read__c_a262fb0303f53144c30c267dc3e454c6c}{get\_\-uops\_\-from\_\-traces} 
+\end{DoxySeeAlso}
+
+
+First read chunk of instructions, instead of reading one by one, then read from buffer using buffer\_\-index. When all instruction have been read (by checking buffer index), read another chunk, and so on.
+
+When an application is created, only the main thread will be allocated to the trace scheduler. When the main thread is executed in trace\_\-read, allocate all other threads. Each thread can start after certain instruction relative to the main thread (in case of spawned threads).
+
+\hypertarget{classtrace__read__c_ad4b1b2fec74a627bb1d39d40d3a68b80}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!setup\_\-trace@{setup\_\-trace}}
+\index{setup\_\-trace@{setup\_\-trace}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{setup\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}void trace\_\-read\_\-c::setup\_\-trace (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{int}]{ sim\_\-thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classtrace__read__c_ad4b1b2fec74a627bb1d39d40d3a68b80}
+This function is called once for each thread/warp when the thread/warp is started. The simulator does read-\/ahead of the trace file to get next pc address 
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ core id \item[{\em sim\_\-thread\_\-id}]-\/ thread id \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classfrontend__c_a5de715a12e87c609121b884ebc880a27}{frontend\_\-c::process\_\-ifetch}
+\end{DoxySeeAlso}
+This function is called once for each thread/warp when the thread/warp is started. The simulator does read-\/ahead of the trace file to get next pc address 
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ core id \item[{\em sim\_\-thread\_\-id}]-\/ thread id \end{DoxyParams}
+\hypertarget{classtrace__read__c_a15c95901d6feaf0a968aad03858eef4c}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!ungetch\_\-trace@{ungetch\_\-trace}}
+\index{ungetch\_\-trace@{ungetch\_\-trace}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{ungetch\_\-trace}]{\setlength{\rightskip}{0pt plus 5cm}bool trace\_\-read\_\-c::ungetch\_\-trace (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{int}]{ sim\_\-thread\_\-id, }
+\item[{int}]{ num\_\-inst}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a15c95901d6feaf0a968aad03858eef4c}
+After peeking trace, in case of failture, we need to rewind trace file. 
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ core id \item[{\em sim\_\-thread\_\-id}]-\/ thread id \item[{\em num\_\-inst}]-\/ number of instructions to rewind \end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{classtrace__read__c_a8f641d8f18e9c7a2be45e500f6f5cec8}{peek\_\-trace} 
+\end{DoxySeeAlso}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classtrace__read__c_a13eedea145a5a0da15a67415d49fb1a0}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!g\_\-mem\_\-type\_\-names@{g\_\-mem\_\-type\_\-names}}
+\index{g\_\-mem\_\-type\_\-names@{g\_\-mem\_\-type\_\-names}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{g\_\-mem\_\-type\_\-names}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ trace\_\-read\_\-c::g\_\-mem\_\-type\_\-names\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classtrace__read__c_a13eedea145a5a0da15a67415d49fb1a0}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ {
+  "NOT_MEM",     
+  "MEM_LD",       
+  "MEM_ST",       
+  "MEM_PF",       
+  "MEM_WH",       
+  "MEM_EVICT",     
+  "MEM_SWPREF_NTA", 
+  "MEM_SWPREF_T0",
+  "MEM_SWPREF_T1",
+  "MEM_SWPREF_T2",
+  "MEM_LD_LM",
+  "MEM_LD_SM",
+  "MEM_LD_GM",
+  "MEM_ST_LM",
+  "MEM_ST_SM",
+  "MEM_ST_GM",
+  "NUM_MEM_TYPES"
+}
+\end{DoxyCode}
+\hypertarget{classtrace__read__c_ac4d2f34707899a37bf014db6c326ccba}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!g\_\-optype\_\-names@{g\_\-optype\_\-names}}
+\index{g\_\-optype\_\-names@{g\_\-optype\_\-names}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{g\_\-optype\_\-names}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ trace\_\-read\_\-c::g\_\-optype\_\-names\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classtrace__read__c_ac4d2f34707899a37bf014db6c326ccba}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ {
+  "OP_INV",       
+  "OP_SPEC",      
+  "OP_NOP",       
+  "OP_CF",       
+  "OP_CMOV",      
+  "OP_LDA",         
+  "OP_IMEM",      
+  "OP_IADD",      
+  "OP_IMUL",      
+  "OP_ICMP",      
+  "OP_LOGIC",      
+  "OP_SHIFT",      
+  "OP_BYTE",      
+  "OP_MM",       
+  "OP_FMEM",      
+  "OP_FCF",
+  "OP_FCVT",      
+  "OP_FADD",      
+  "OP_FMUL",      
+  "OP_FDIV",      
+  "OP_FCMP",      
+  "OP_FBIT",      
+  "OP_FCMOV"        
+}
+\end{DoxyCode}
+\hypertarget{classtrace__read__c_aef64643d21fa5c4c5b76f3f2f61fd391}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!g\_\-tr\_\-cf\_\-names@{g\_\-tr\_\-cf\_\-names}}
+\index{g\_\-tr\_\-cf\_\-names@{g\_\-tr\_\-cf\_\-names}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{g\_\-tr\_\-cf\_\-names}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ trace\_\-read\_\-c::g\_\-tr\_\-cf\_\-names\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classtrace__read__c_aef64643d21fa5c4c5b76f3f2f61fd391}
+{\bfseries Initial value:}
+\begin{DoxyCode}
+ {
+  "NOT_CF",       
+  "CF_BR",       
+  "CF_CBR",       
+  "CF_CALL",      
+  "CF_IBR",       
+  "CF_ICALL",      
+  "CF_ICO",       
+  "CF_RET",       
+  "CF_SYS",
+  "CF_ICBR"
+}
+\end{DoxyCode}
+\hypertarget{classtrace__read__c_a8853b7e1571b86ffba1ee31b185d0e91}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!k\_\-trace\_\-buffer\_\-size@{k\_\-trace\_\-buffer\_\-size}}
+\index{k\_\-trace\_\-buffer\_\-size@{k\_\-trace\_\-buffer\_\-size}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{k\_\-trace\_\-buffer\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf trace\_\-read\_\-c::k\_\-trace\_\-buffer\_\-size} = 1000\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}}
+\label{classtrace__read__c_a8853b7e1571b86ffba1ee31b185d0e91}
+maximum buffer size \hypertarget{classtrace__read__c_a71e9a814021a699d19a3b61fdc53d9f4}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!m\_\-fp\_\-uop\_\-table@{m\_\-fp\_\-uop\_\-table}}
+\index{m\_\-fp\_\-uop\_\-table@{m\_\-fp\_\-uop\_\-table}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{m\_\-fp\_\-uop\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf trace\_\-read\_\-c::m\_\-fp\_\-uop\_\-table}\mbox{[}TR\_\-OPCODE\_\-LAST\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a71e9a814021a699d19a3b61fdc53d9f4}
+opcode to uop type mapping tabpe (fp) \hypertarget{classtrace__read__c_a7ca8b07aa548cbeac42c78fa5dcdc856}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!m\_\-int\_\-uop\_\-table@{m\_\-int\_\-uop\_\-table}}
+\index{m\_\-int\_\-uop\_\-table@{m\_\-int\_\-uop\_\-table}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{m\_\-int\_\-uop\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf trace\_\-read\_\-c::m\_\-int\_\-uop\_\-table}\mbox{[}TR\_\-OPCODE\_\-LAST\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a7ca8b07aa548cbeac42c78fa5dcdc856}
+opcode to uop type mapping table (int) \hypertarget{classtrace__read__c_a5056a52a94eb0fc5a3ab6e6ccb1d113b}{
+\index{trace\_\-read\_\-c@{trace\_\-read\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!trace_read_c@{trace\_\-read\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf trace\_\-read\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classtrace__read__c_a5056a52a94eb0fc5a3ab6e6ccb1d113b}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+trace\_\-read.h\item 
+trace\_\-read.cc\end{DoxyCompactItemize}

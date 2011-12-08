@@ -1,0 +1,87 @@
+\hypertarget{structthread__stat__s}{
+\section{thread\_\-stat\_\-s Struct Reference}
+\label{structthread__stat__s}\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}}
+}
+
+
+Thread statistics class.  
+
+
+
+
+{\ttfamily \#include $<$process\_\-manager.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structthread__stat__s_a720c46384903b933a5bbd988e463f2c9}{thread\_\-stat\_\-s} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int32 \hyperlink{structthread__stat__s_a73159fa4a36b03ae2affe98e351a3c14}{m\_\-thread\_\-id}
+\item 
+int32 \hyperlink{structthread__stat__s_a9422613d9040a649e0dbc709222194cc}{m\_\-unique\_\-thread\_\-id}
+\item 
+int32 \hyperlink{structthread__stat__s_aeed9fab1f2482c5e5c8596701fe9ad59}{m\_\-block\_\-id}
+\item 
+uns64 \hyperlink{structthread__stat__s_ae566a7e5f2c647c9fcae9d6699f4263d}{m\_\-thread\_\-sched\_\-cycle}
+\item 
+uns64 \hyperlink{structthread__stat__s_abb0486417fb29d4f3bd94afd3d26cd44}{m\_\-thread\_\-fetch\_\-cycle}
+\item 
+uns64 \hyperlink{structthread__stat__s_afce91d61a581f23a661f057cf0e535a6}{m\_\-thread\_\-end\_\-cycle}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Thread statistics class. structure that stores the sched cycle (cycle in which the thread was assigned to a core) and end cycle 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structthread__stat__s_a720c46384903b933a5bbd988e463f2c9}{
+\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}!thread\_\-stat\_\-s@{thread\_\-stat\_\-s}}
+\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}!thread_stat_s@{thread\_\-stat\_\-s}}
+\subsubsection[{thread\_\-stat\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}thread\_\-stat\_\-s::thread\_\-stat\_\-s (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{structthread__stat__s_a720c46384903b933a5bbd988e463f2c9}
+Constructor 
+
+\subsection{Member Data Documentation}
+\hypertarget{structthread__stat__s_aeed9fab1f2482c5e5c8596701fe9ad59}{
+\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}!m\_\-block\_\-id@{m\_\-block\_\-id}}
+\index{m\_\-block\_\-id@{m\_\-block\_\-id}!thread_stat_s@{thread\_\-stat\_\-s}}
+\subsubsection[{m\_\-block\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int32 {\bf thread\_\-stat\_\-s::m\_\-block\_\-id}}}
+\label{structthread__stat__s_aeed9fab1f2482c5e5c8596701fe9ad59}
+block id \hypertarget{structthread__stat__s_afce91d61a581f23a661f057cf0e535a6}{
+\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}!m\_\-thread\_\-end\_\-cycle@{m\_\-thread\_\-end\_\-cycle}}
+\index{m\_\-thread\_\-end\_\-cycle@{m\_\-thread\_\-end\_\-cycle}!thread_stat_s@{thread\_\-stat\_\-s}}
+\subsubsection[{m\_\-thread\_\-end\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}uns64 {\bf thread\_\-stat\_\-s::m\_\-thread\_\-end\_\-cycle}}}
+\label{structthread__stat__s_afce91d61a581f23a661f057cf0e535a6}
+thread end cycle \hypertarget{structthread__stat__s_abb0486417fb29d4f3bd94afd3d26cd44}{
+\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}!m\_\-thread\_\-fetch\_\-cycle@{m\_\-thread\_\-fetch\_\-cycle}}
+\index{m\_\-thread\_\-fetch\_\-cycle@{m\_\-thread\_\-fetch\_\-cycle}!thread_stat_s@{thread\_\-stat\_\-s}}
+\subsubsection[{m\_\-thread\_\-fetch\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}uns64 {\bf thread\_\-stat\_\-s::m\_\-thread\_\-fetch\_\-cycle}}}
+\label{structthread__stat__s_abb0486417fb29d4f3bd94afd3d26cd44}
+thread fetched cycle \hypertarget{structthread__stat__s_a73159fa4a36b03ae2affe98e351a3c14}{
+\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}!m\_\-thread\_\-id@{m\_\-thread\_\-id}}
+\index{m\_\-thread\_\-id@{m\_\-thread\_\-id}!thread_stat_s@{thread\_\-stat\_\-s}}
+\subsubsection[{m\_\-thread\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int32 {\bf thread\_\-stat\_\-s::m\_\-thread\_\-id}}}
+\label{structthread__stat__s_a73159fa4a36b03ae2affe98e351a3c14}
+thread id \hypertarget{structthread__stat__s_ae566a7e5f2c647c9fcae9d6699f4263d}{
+\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}!m\_\-thread\_\-sched\_\-cycle@{m\_\-thread\_\-sched\_\-cycle}}
+\index{m\_\-thread\_\-sched\_\-cycle@{m\_\-thread\_\-sched\_\-cycle}!thread_stat_s@{thread\_\-stat\_\-s}}
+\subsubsection[{m\_\-thread\_\-sched\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}uns64 {\bf thread\_\-stat\_\-s::m\_\-thread\_\-sched\_\-cycle}}}
+\label{structthread__stat__s_ae566a7e5f2c647c9fcae9d6699f4263d}
+thread scheduled cycle \hypertarget{structthread__stat__s_a9422613d9040a649e0dbc709222194cc}{
+\index{thread\_\-stat\_\-s@{thread\_\-stat\_\-s}!m\_\-unique\_\-thread\_\-id@{m\_\-unique\_\-thread\_\-id}}
+\index{m\_\-unique\_\-thread\_\-id@{m\_\-unique\_\-thread\_\-id}!thread_stat_s@{thread\_\-stat\_\-s}}
+\subsubsection[{m\_\-unique\_\-thread\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int32 {\bf thread\_\-stat\_\-s::m\_\-unique\_\-thread\_\-id}}}
+\label{structthread__stat__s_a9422613d9040a649e0dbc709222194cc}
+unique thread id 
+
+The documentation for this struct was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+process\_\-manager.h\item 
+process\_\-manager.cc\end{DoxyCompactItemize}

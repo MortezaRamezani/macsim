@@ -1,0 +1,130 @@
+\hypertarget{classRATIO__Stat}{
+\section{RATIO\_\-Stat Class Reference}
+\label{classRATIO__Stat}\index{RATIO\_\-Stat@{RATIO\_\-Stat}}
+}
+
+
+RATIO type stat.  
+
+
+
+
+{\ttfamily \#include $<$statistics.h$>$}
+
+Inheritance diagram for RATIO\_\-Stat:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classRATIO__Stat}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classRATIO__Stat_a4f4a78937a9e1c409fd1bffd69b19869}{RATIO\_\-Stat} (const string \&str, const string \&outputfilename, long ID, long RatioID, \hyperlink{classProcessorStatistics}{ProcessorStatistics} $\ast$procStat)
+\item 
+virtual \hyperlink{classRATIO__Stat_a5adc98be975fc5f84f0de874a188cf68}{$\sim$RATIO\_\-Stat} ()
+\item 
+virtual \hyperlink{classAbstractStat}{AbstractStat} $\ast$ \hyperlink{classRATIO__Stat_af0050320d2f308a6c076992e52c9ad27}{clone} (unsigned int coreID)
+\item 
+void \hyperlink{classRATIO__Stat_a5b5a26cf2443e041d5c5988e9ffa6c05}{setRatioReference} (long ID)
+\item 
+virtual void \hyperlink{classRATIO__Stat_a0bf776a3a5dbd304185c2fce9d04934e}{writeTo} (ofstream \&stream)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{classRATIO__Stat_ad9389292fb4a07b1c5495e4e25ba0ecc}{m\_\-RatioID}
+\item 
+float \hyperlink{classRATIO__Stat_acf9ee3f1943b126e2d824117de380a28}{ratio}
+\item 
+\hyperlink{classProcessorStatistics}{ProcessorStatistics} $\ast$ \hyperlink{classRATIO__Stat_a1b31197fd3cb0740bdb32d50c4daec4c}{m\_\-ProcStat}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+RATIO type stat. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classRATIO__Stat_a4f4a78937a9e1c409fd1bffd69b19869}{
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!RATIO\_\-Stat@{RATIO\_\-Stat}}
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!RATIO_Stat@{RATIO\_\-Stat}}
+\subsubsection[{RATIO\_\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}RATIO\_\-Stat::RATIO\_\-Stat (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ str, }
+\item[{const string \&}]{ outputfilename, }
+\item[{long}]{ ID, }
+\item[{long}]{ RatioID, }
+\item[{{\bf ProcessorStatistics} $\ast$}]{ procStat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classRATIO__Stat_a4f4a78937a9e1c409fd1bffd69b19869}
+Constructor. \hypertarget{classRATIO__Stat_a5adc98be975fc5f84f0de874a188cf68}{
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!$\sim$RATIO\_\-Stat@{$\sim$RATIO\_\-Stat}}
+\index{$\sim$RATIO\_\-Stat@{$\sim$RATIO\_\-Stat}!RATIO_Stat@{RATIO\_\-Stat}}
+\subsubsection[{$\sim$RATIO\_\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}virtual RATIO\_\-Stat::$\sim$RATIO\_\-Stat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classRATIO__Stat_a5adc98be975fc5f84f0de874a188cf68}
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classRATIO__Stat_af0050320d2f308a6c076992e52c9ad27}{
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!clone@{clone}}
+\index{clone@{clone}!RATIO_Stat@{RATIO\_\-Stat}}
+\subsubsection[{clone}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf AbstractStat}$\ast$ RATIO\_\-Stat::clone (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{ coreID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classRATIO__Stat_af0050320d2f308a6c076992e52c9ad27}
+Clone a stat. 
+
+Implements \hyperlink{classAbstractStat_aed9a458491d92fb2cc3c458990d9fab1}{AbstractStat}.
+
+\hypertarget{classRATIO__Stat_a5b5a26cf2443e041d5c5988e9ffa6c05}{
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!setRatioReference@{setRatioReference}}
+\index{setRatioReference@{setRatioReference}!RATIO_Stat@{RATIO\_\-Stat}}
+\subsubsection[{setRatioReference}]{\setlength{\rightskip}{0pt plus 5cm}void RATIO\_\-Stat::setRatioReference (
+\begin{DoxyParamCaption}
+\item[{long}]{ ID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classRATIO__Stat_a5b5a26cf2443e041d5c5988e9ffa6c05}
+Set ratio reference id. \hypertarget{classRATIO__Stat_a0bf776a3a5dbd304185c2fce9d04934e}{
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!writeTo@{writeTo}}
+\index{writeTo@{writeTo}!RATIO_Stat@{RATIO\_\-Stat}}
+\subsubsection[{writeTo}]{\setlength{\rightskip}{0pt plus 5cm}virtual void RATIO\_\-Stat::writeTo (
+\begin{DoxyParamCaption}
+\item[{ofstream \&}]{ stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classRATIO__Stat_a0bf776a3a5dbd304185c2fce9d04934e}
+Dump out all stats to the file. 
+
+Reimplemented from \hyperlink{classAbstractStat_aa4760247da47c70d7345de5d881f59cb}{AbstractStat}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classRATIO__Stat_a1b31197fd3cb0740bdb32d50c4daec4c}{
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!m\_\-ProcStat@{m\_\-ProcStat}}
+\index{m\_\-ProcStat@{m\_\-ProcStat}!RATIO_Stat@{RATIO\_\-Stat}}
+\subsubsection[{m\_\-ProcStat}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ProcessorStatistics}$\ast$ {\bf RATIO\_\-Stat::m\_\-ProcStat}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classRATIO__Stat_a1b31197fd3cb0740bdb32d50c4daec4c}
+reference to simulation-\/scoped processor stats \hypertarget{classRATIO__Stat_ad9389292fb4a07b1c5495e4e25ba0ecc}{
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!m\_\-RatioID@{m\_\-RatioID}}
+\index{m\_\-RatioID@{m\_\-RatioID}!RATIO_Stat@{RATIO\_\-Stat}}
+\subsubsection[{m\_\-RatioID}]{\setlength{\rightskip}{0pt plus 5cm}long {\bf RATIO\_\-Stat::m\_\-RatioID}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classRATIO__Stat_ad9389292fb4a07b1c5495e4e25ba0ecc}
+ratio id \hypertarget{classRATIO__Stat_acf9ee3f1943b126e2d824117de380a28}{
+\index{RATIO\_\-Stat@{RATIO\_\-Stat}!ratio@{ratio}}
+\index{ratio@{ratio}!RATIO_Stat@{RATIO\_\-Stat}}
+\subsubsection[{ratio}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf RATIO\_\-Stat::ratio}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classRATIO__Stat_acf9ee3f1943b126e2d824117de380a28}
+ratio 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+statistics.h\end{DoxyCompactItemize}

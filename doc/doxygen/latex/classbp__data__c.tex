@@ -1,0 +1,111 @@
+\hypertarget{classbp__data__c}{
+\section{bp\_\-data\_\-c Class Reference}
+\label{classbp__data__c}\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}}
+}
+
+
+Branch predictor wrapper Class.  
+
+
+
+
+{\ttfamily \#include $<$bp.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbp__data__c_aa27d8149d4736e5cfc1346699066e268}{bp\_\-data\_\-c} (int core\_\-id, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classbp__data__c_ae49ed5776a7a2bf0817e706691089f5c}{$\sim$bp\_\-data\_\-c} (void)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classbp__data__c_aec4f8430aef4c0bcd64ce66d102babd4}{m\_\-core\_\-id}
+\item 
+\hyperlink{classbp__dir__base__c}{bp\_\-dir\_\-base\_\-c} $\ast$ \hyperlink{classbp__data__c_a27fc83640fcf6d11495cc0a4ff1d8948}{m\_\-bp}
+\item 
+\hypertarget{classbp__data__c_a825d25e2438aa68b82a2243e153c2ce3}{
+\hyperlink{classbp__targ__c}{bp\_\-targ\_\-c} $\ast$ {\bfseries m\_\-bp\_\-targ\_\-pred}}
+\label{classbp__data__c_a825d25e2438aa68b82a2243e153c2ce3}
+
+\item 
+unordered\_\-map$<$ int, Counter $>$ \hyperlink{classbp__data__c_ac9932b450b446cd38c5d78f121fe0680}{m\_\-bp\_\-recovery\_\-cycle}
+\item 
+unordered\_\-map$<$ int, Counter $>$ \hyperlink{classbp__data__c_a1a44ec299d20a6462f0b7d19e953b2bb}{m\_\-bp\_\-redirect\_\-cycle}
+\item 
+unordered\_\-map$<$ int, Counter $>$ \hyperlink{classbp__data__c_a2376a20b3a8eafd087e3b583e865ef7c}{m\_\-bp\_\-cause\_\-op}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbp__data__c_aedb2a645e6f24788d898e62210300cd3}{bp\_\-data\_\-c} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Branch predictor wrapper Class. Branch predictor wrapper Class. Based on the policy, different branch predictor will be allocated in this Class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbp__data__c_aa27d8149d4736e5cfc1346699066e268}{
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!bp\_\-data\_\-c@{bp\_\-data\_\-c}}
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!bp_data_c@{bp\_\-data\_\-c}}
+\subsubsection[{bp\_\-data\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}bp\_\-data\_\-c::bp\_\-data\_\-c (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classbp__data__c_aa27d8149d4736e5cfc1346699066e268}
+Branch predictor class constructor \hypertarget{classbp__data__c_ae49ed5776a7a2bf0817e706691089f5c}{
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!$\sim$bp\_\-data\_\-c@{$\sim$bp\_\-data\_\-c}}
+\index{$\sim$bp\_\-data\_\-c@{$\sim$bp\_\-data\_\-c}!bp_data_c@{bp\_\-data\_\-c}}
+\subsubsection[{$\sim$bp\_\-data\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}bp\_\-data\_\-c::$\sim$bp\_\-data\_\-c (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classbp__data__c_ae49ed5776a7a2bf0817e706691089f5c}
+Branch predictor class destructor \hypertarget{classbp__data__c_aedb2a645e6f24788d898e62210300cd3}{
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!bp\_\-data\_\-c@{bp\_\-data\_\-c}}
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!bp_data_c@{bp\_\-data\_\-c}}
+\subsubsection[{bp\_\-data\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}bp\_\-data\_\-c::bp\_\-data\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classbp__data__c_aedb2a645e6f24788d898e62210300cd3}
+Branch predictor class private constructor 
+
+\subsection{Member Data Documentation}
+\hypertarget{classbp__data__c_a27fc83640fcf6d11495cc0a4ff1d8948}{
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!m\_\-bp@{m\_\-bp}}
+\index{m\_\-bp@{m\_\-bp}!bp_data_c@{bp\_\-data\_\-c}}
+\subsubsection[{m\_\-bp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bp\_\-dir\_\-base\_\-c}$\ast$ {\bf bp\_\-data\_\-c::m\_\-bp}}}
+\label{classbp__data__c_a27fc83640fcf6d11495cc0a4ff1d8948}
+branch predictor \hypertarget{classbp__data__c_a2376a20b3a8eafd087e3b583e865ef7c}{
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!m\_\-bp\_\-cause\_\-op@{m\_\-bp\_\-cause\_\-op}}
+\index{m\_\-bp\_\-cause\_\-op@{m\_\-bp\_\-cause\_\-op}!bp_data_c@{bp\_\-data\_\-c}}
+\subsubsection[{m\_\-bp\_\-cause\_\-op}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<$int, Counter$>$ {\bf bp\_\-data\_\-c::m\_\-bp\_\-cause\_\-op}}}
+\label{classbp__data__c_a2376a20b3a8eafd087e3b583e865ef7c}
+misprediction caused uop per thread \hypertarget{classbp__data__c_ac9932b450b446cd38c5d78f121fe0680}{
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!m\_\-bp\_\-recovery\_\-cycle@{m\_\-bp\_\-recovery\_\-cycle}}
+\index{m\_\-bp\_\-recovery\_\-cycle@{m\_\-bp\_\-recovery\_\-cycle}!bp_data_c@{bp\_\-data\_\-c}}
+\subsubsection[{m\_\-bp\_\-recovery\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<$int, Counter$>$ {\bf bp\_\-data\_\-c::m\_\-bp\_\-recovery\_\-cycle}}}
+\label{classbp__data__c_ac9932b450b446cd38c5d78f121fe0680}
+bp recovery cycle per thread \hypertarget{classbp__data__c_a1a44ec299d20a6462f0b7d19e953b2bb}{
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!m\_\-bp\_\-redirect\_\-cycle@{m\_\-bp\_\-redirect\_\-cycle}}
+\index{m\_\-bp\_\-redirect\_\-cycle@{m\_\-bp\_\-redirect\_\-cycle}!bp_data_c@{bp\_\-data\_\-c}}
+\subsubsection[{m\_\-bp\_\-redirect\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<$int, Counter$>$ {\bf bp\_\-data\_\-c::m\_\-bp\_\-redirect\_\-cycle}}}
+\label{classbp__data__c_a1a44ec299d20a6462f0b7d19e953b2bb}
+bp recovery cycle per thread \hypertarget{classbp__data__c_aec4f8430aef4c0bcd64ce66d102babd4}{
+\index{bp\_\-data\_\-c@{bp\_\-data\_\-c}!m\_\-core\_\-id@{m\_\-core\_\-id}}
+\index{m\_\-core\_\-id@{m\_\-core\_\-id}!bp_data_c@{bp\_\-data\_\-c}}
+\subsubsection[{m\_\-core\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bp\_\-data\_\-c::m\_\-core\_\-id}}}
+\label{classbp__data__c_aec4f8430aef4c0bcd64ce66d102babd4}
+core id 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+bp.h\item 
+bp.cc\end{DoxyCompactItemize}

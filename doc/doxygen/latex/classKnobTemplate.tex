@@ -1,0 +1,177 @@
+\hypertarget{classKnobTemplate}{
+\section{KnobTemplate$<$ T $>$ Class Template Reference}
+\label{classKnobTemplate}\index{KnobTemplate@{KnobTemplate}}
+}
+
+
+Knob template class with type T.  
+
+
+
+
+{\ttfamily \#include $<$knob.h$>$}
+
+Inheritance diagram for KnobTemplate$<$ T $>$:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classKnobTemplate}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classKnobTemplate_aaddb7933b87960bb107b664c64b9be35}{KnobTemplate} ()
+\item 
+\hyperlink{classKnobTemplate_abbccdaab4475aa203cc72114e6c755c9}{KnobTemplate} (const string \&name, const T \&val, const string \&parentName=\char`\"{}\char`\"{})
+\item 
+\hyperlink{classKnobTemplate}{KnobTemplate}$<$ T $>$ \& \hyperlink{classKnobTemplate_a2ca50f6173b1b904310be277eb0bb4c1}{setValue} (const T \&val)
+\item 
+virtual void \hyperlink{classKnobTemplate_a56f3e765c947ac3e63f759d7b3188e42}{initFromString} (const string \&strVal)
+\item 
+const T \hyperlink{classKnobTemplate_a7191e4a940e968e7a1a41d606802300a}{getValue} () const 
+\item 
+\hyperlink{classKnobTemplate_aa23d5fa0b0f63756f03690d650bf697b}{operator T} () const 
+\item 
+virtual void \hyperlink{classKnobTemplate_af9a940a1d590ad63fdef381388935273}{display} (ostream \&os)
+\item 
+string \hyperlink{classKnobTemplate_aded197b0d716077801868dd111e7d083}{GetValueString} (void)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classKnobTemplate_a9f2d6a9dec66f03aba4af96a23b038a0}{KnobTemplate} (const \hyperlink{classKnobTemplate}{KnobTemplate} \&rhs)
+\item 
+const \hyperlink{classKnobTemplate}{KnobTemplate} \& \hyperlink{classKnobTemplate_a8e6df8ed32887499f1d2bac4d46c079d}{operator=} (const \hyperlink{classKnobTemplate}{KnobTemplate} \&rhs)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{classKnobTemplate_a39c36d8924757ad7ef98e51eecadc033}{m\_\-value}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class KnobTemplate$<$ T $>$}
+
+Knob template class with type T. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classKnobTemplate_aaddb7933b87960bb107b664c64b9be35}{
+\index{KnobTemplate@{KnobTemplate}!KnobTemplate@{KnobTemplate}}
+\index{KnobTemplate@{KnobTemplate}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{KnobTemplate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf KnobTemplate}$<$ T $>$::{\bf KnobTemplate} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classKnobTemplate_aaddb7933b87960bb107b664c64b9be35}
+Constructor. \hypertarget{classKnobTemplate_abbccdaab4475aa203cc72114e6c755c9}{
+\index{KnobTemplate@{KnobTemplate}!KnobTemplate@{KnobTemplate}}
+\index{KnobTemplate@{KnobTemplate}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{KnobTemplate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf KnobTemplate}$<$ T $>$::{\bf KnobTemplate} (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ name, }
+\item[{const T \&}]{ val, }
+\item[{const string \&}]{ parentName = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classKnobTemplate_abbccdaab4475aa203cc72114e6c755c9}
+Constructor. 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]name of the knob \item[{\em val}]value of the knob \item[{\em parentName}]parent knob name \end{DoxyParams}
+\hypertarget{classKnobTemplate_a9f2d6a9dec66f03aba4af96a23b038a0}{
+\index{KnobTemplate@{KnobTemplate}!KnobTemplate@{KnobTemplate}}
+\index{KnobTemplate@{KnobTemplate}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{KnobTemplate}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf KnobTemplate}$<$ T $>$::{\bf KnobTemplate} (
+\begin{DoxyParamCaption}
+\item[{const {\bf KnobTemplate}$<$ T $>$ \&}]{ rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobTemplate_a9f2d6a9dec66f03aba4af96a23b038a0}
+Copy constructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classKnobTemplate_af9a940a1d590ad63fdef381388935273}{
+\index{KnobTemplate@{KnobTemplate}!display@{display}}
+\index{display@{display}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{display}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf KnobTemplate}$<$ T $>$::display (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{ os}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classKnobTemplate_af9a940a1d590ad63fdef381388935273}
+Print knob name and its value. 
+
+Reimplemented from \hyperlink{classabstract__knob__c_aaee4499a56d94f1831e7945274dfac8b}{abstract\_\-knob\_\-c}.
+
+\hypertarget{classKnobTemplate_a7191e4a940e968e7a1a41d606802300a}{
+\index{KnobTemplate@{KnobTemplate}!getValue@{getValue}}
+\index{getValue@{getValue}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{getValue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const T {\bf KnobTemplate}$<$ T $>$::getValue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classKnobTemplate_a7191e4a940e968e7a1a41d606802300a}
+Get the value of the knob. \hypertarget{classKnobTemplate_aded197b0d716077801868dd111e7d083}{
+\index{KnobTemplate@{KnobTemplate}!GetValueString@{GetValueString}}
+\index{GetValueString@{GetValueString}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{GetValueString}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ string {\bf KnobTemplate}$<$ T $>$::GetValueString (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classKnobTemplate_aded197b0d716077801868dd111e7d083}
+Get the value of the knob in string. \hypertarget{classKnobTemplate_a56f3e765c947ac3e63f759d7b3188e42}{
+\index{KnobTemplate@{KnobTemplate}!initFromString@{initFromString}}
+\index{initFromString@{initFromString}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{initFromString}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ virtual void {\bf KnobTemplate}$<$ T $>$::initFromString (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ strVal}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classKnobTemplate_a56f3e765c947ac3e63f759d7b3188e42}
+Initialize a knob from the string. 
+
+Implements \hyperlink{classabstract__knob__c_ad69620dc8974d5c659c6a7828d460e28}{abstract\_\-knob\_\-c}.
+
+\hypertarget{classKnobTemplate_aa23d5fa0b0f63756f03690d650bf697b}{
+\index{KnobTemplate@{KnobTemplate}!operator T@{operator T}}
+\index{operator T@{operator T}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{operator T}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf KnobTemplate}$<$ T $>$::operator T (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classKnobTemplate_aa23d5fa0b0f63756f03690d650bf697b}
+Conversion operator (). Return the value of the knob. \hypertarget{classKnobTemplate_a8e6df8ed32887499f1d2bac4d46c079d}{
+\index{KnobTemplate@{KnobTemplate}!operator=@{operator=}}
+\index{operator=@{operator=}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf KnobTemplate}\& {\bf KnobTemplate}$<$ T $>$::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf KnobTemplate}$<$ T $>$ \&}]{ rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobTemplate_a8e6df8ed32887499f1d2bac4d46c079d}
+Overidden operator =. \hypertarget{classKnobTemplate_a2ca50f6173b1b904310be277eb0bb4c1}{
+\index{KnobTemplate@{KnobTemplate}!setValue@{setValue}}
+\index{setValue@{setValue}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{setValue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf KnobTemplate}$<$T$>$\& {\bf KnobTemplate}$<$ T $>$::setValue (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{ val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classKnobTemplate_a2ca50f6173b1b904310be277eb0bb4c1}
+Set the value of the knob. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classKnobTemplate_a39c36d8924757ad7ef98e51eecadc033}{
+\index{KnobTemplate@{KnobTemplate}!m\_\-value@{m\_\-value}}
+\index{m\_\-value@{m\_\-value}!KnobTemplate@{KnobTemplate}}
+\subsubsection[{m\_\-value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf KnobTemplate}$<$ T $>$::{\bf m\_\-value}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobTemplate_a39c36d8924757ad7ef98e51eecadc033}
+knob value 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+knob.h\end{DoxyCompactItemize}

@@ -1,0 +1,546 @@
+\hypertarget{classdcu__c}{
+\section{dcu\_\-c Class Reference}
+\label{classdcu__c}\index{dcu\_\-c@{dcu\_\-c}}
+}
+
+
+Data cache class.  
+
+
+
+
+{\ttfamily \#include $<$memory.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classdcu__c_a84d2ec5db30f22a7aa008351840c2a06}{dcu\_\-c} (int id, Unit\_\-Type type, int level, \hyperlink{classmemory__c}{memory\_\-c} $\ast$mem, int, \hyperlink{classdcu__c}{dcu\_\-c} $\ast$$\ast$next, \hyperlink{classdcu__c}{dcu\_\-c} $\ast$$\ast$prev, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classdcu__c_abea9e7fc68c881ce476cfac7ea891b38}{$\sim$dcu\_\-c} ()
+\item 
+void \hyperlink{classdcu__c_ae9bcbaf9b038e512463c0879b9e42908}{init} (int next\_\-id, int prev\_\-id, bool done, bool coupled\_\-up, bool coupled\_\-down, bool disable, bool has\_\-router)
+\item 
+Addr \hyperlink{classdcu__c_a72fb58ab8c0ec711dd31e092e51868a1}{base\_\-addr} (Addr addr)
+\item 
+int \hyperlink{classdcu__c_a71826360b5e10085fdc427c1f3343b2b}{line\_\-size} ()
+\item 
+int \hyperlink{classdcu__c_a1fbf4dc5547edff38eb6806294563d91}{bank\_\-id} (Addr addr)
+\item 
+bool \hyperlink{classdcu__c_a4f712cf333d79a702e40d83935151e29}{get\_\-read\_\-port} (int bank\_\-id)
+\item 
+int \hyperlink{classdcu__c_a1bfcfc18396925fd9665f6946e73a065}{access} (\hyperlink{classuop__c}{uop\_\-c} $\ast$uop)
+\item 
+bool \hyperlink{classdcu__c_ad0550e80ffac6ce3078502864f740d5b}{fill} (\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req)
+\item 
+bool \hyperlink{classdcu__c_a5f10df3e409da7fe249aa8c6d87ac6cf}{done} (\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req)
+\item 
+bool \hyperlink{classdcu__c_a215d1e1c6099c6dda22c0cf12b6bd7a4}{insert} (\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req)
+\item 
+void \hyperlink{classdcu__c_a6b4f08e9c538e6d63d0caedecaffdcda}{run\_\-a\_\-cycle} ()
+\item 
+bool \hyperlink{classdcu__c_aac851f1517b7b10b051491f0ffd09583}{full} ()
+\item 
+\hyperlink{structdcache__data__s}{dcache\_\-data\_\-s} $\ast$ \hyperlink{classdcu__c_ab04abe7be5561b8cebe2fc5b2b10f677}{access\_\-cache} (Addr addr, Addr $\ast$line\_\-addr, bool update, int appl\_\-id)
+\item 
+\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$ \hyperlink{classdcu__c_a44516ada2cdb4e168c71f6b9246e1840}{search\_\-pref\_\-in\_\-queue} ()
+\item 
+bool \hyperlink{classdcu__c_a64968883497a2f232b3871f7bc05e47e}{create\_\-network\_\-interface} (int)
+\item 
+bool \hyperlink{classdcu__c_a83778a75013d7c55e929dd86b22e3b25}{send\_\-packet} (\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req, int msg, int dir)
+\item 
+void \hyperlink{classdcu__c_a4ff24d1ebc0e3df58b08d7b8e52af056}{receive\_\-packet} (void)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classdcu__c_ac8bb3b669d6c20b2381f15c7140d4b74}{dcu\_\-c} ()
+\item 
+void \hyperlink{classdcu__c_a3d18097504fe31cac03406978dd31477}{process\_\-in\_\-queue} ()
+\item 
+void \hyperlink{classdcu__c_aa34cd13e6faa65115f77d4d01da83096}{process\_\-out\_\-queue} ()
+\item 
+void \hyperlink{classdcu__c_a8cb64339c417ee62d46298216986e4b5}{process\_\-fill\_\-queue} ()
+\item 
+void \hyperlink{classdcu__c_aa9c9769a4a8f19bf57365ba1455eb11f}{process\_\-wb\_\-queue} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classdcu__c_a61b5178afb8d6af167a3ca3c40aca074}{m\_\-id}
+\item 
+int \hyperlink{classdcu__c_a3ab8a45d54041c88b9556d2edf07b377}{m\_\-noc\_\-id}
+\item 
+int \hyperlink{classdcu__c_a04d10c0ce98426f7b14d37c8c60150c0}{m\_\-level}
+\item 
+bool \hyperlink{classdcu__c_af4dc606e05ca8664ef6a59027d599078}{m\_\-disable}
+\item 
+bool \hyperlink{classdcu__c_a1991249577b208be4483eeeb98f56295}{m\_\-bypass}
+\item 
+\hyperlink{classcache__c}{cache\_\-c} $\ast$ \hyperlink{classdcu__c_a6cb56729ba3f6fd05d8071adda723317}{m\_\-cache}
+\item 
+\hyperlink{classport__c}{port\_\-c} $\ast$$\ast$ \hyperlink{classdcu__c_a6fc4117756ccee0adf08285ad9ef9182}{m\_\-port}
+\item 
+int \hyperlink{classdcu__c_aaf2ea302ee6c02d0202c0073d12d1813}{m\_\-next\_\-id}
+\item 
+\hyperlink{classdcu__c}{dcu\_\-c} $\ast$$\ast$ \hyperlink{classdcu__c_a00edf5a77fc43d86790e0a04e7866833}{m\_\-next}
+\item 
+int \hyperlink{classdcu__c_aab67bf503b09b72441791fc20862c22c}{m\_\-prev\_\-id}
+\item 
+\hyperlink{classdcu__c}{dcu\_\-c} $\ast$$\ast$ \hyperlink{classdcu__c_a199065735dfd67fbbf17f1e7e73a0b27}{m\_\-prev}
+\item 
+bool \hyperlink{classdcu__c_aa455e9e2d2d70d9768b01427a5f2ce04}{m\_\-coupled\_\-up}
+\item 
+bool \hyperlink{classdcu__c_ac252e950738034b9eab0e1774e0e7de5}{m\_\-coupled\_\-down}
+\item 
+bool \hyperlink{classdcu__c_afd4171d11831e26978f2ce21659b17f8}{m\_\-has\_\-router}
+\item 
+bool \hyperlink{classdcu__c_aa0f7229cca750799c47e68e4b7025793}{m\_\-done}
+\item 
+Unit\_\-Type \hyperlink{classdcu__c_ab99a3a4fa14c08b977f91ea53e2d2d8c}{m\_\-type}
+\item 
+int \hyperlink{classdcu__c_a54ee473e45b0d1a45afe5f569c22d3c1}{m\_\-num\_\-set}
+\item 
+int \hyperlink{classdcu__c_a8166e3d9828dff8f41078d92767bd920}{m\_\-assoc}
+\item 
+int \hyperlink{classdcu__c_a54a23275701e0abe535da85c54252ac8}{m\_\-line\_\-size}
+\item 
+int \hyperlink{classdcu__c_aa1a3af160ffda7483651227049f31185}{m\_\-banks}
+\item 
+int \hyperlink{classdcu__c_a50a7913d80d0128e9d8926f9104f8e19}{m\_\-latency}
+\item 
+bool \hyperlink{classdcu__c_a5e56ee48837544fa5f882c9f750fdd43}{m\_\-ptx\_\-sim}
+\item 
+\hyperlink{classqueue__c}{queue\_\-c} $\ast$ \hyperlink{classdcu__c_a505f2cf05c56380770c1ab1a7f4fb80b}{m\_\-in\_\-queue}
+\item 
+\hyperlink{classqueue__c}{queue\_\-c} $\ast$ \hyperlink{classdcu__c_a11e746c9849d96d00f6181626d6da7f4}{m\_\-wb\_\-queue}
+\item 
+\hyperlink{classqueue__c}{queue\_\-c} $\ast$ \hyperlink{classdcu__c_a08eb24546da1c93bfbf88a9c6868930d}{m\_\-fill\_\-queue}
+\item 
+\hyperlink{classqueue__c}{queue\_\-c} $\ast$ \hyperlink{classdcu__c_a9c0c134e9407debd8308df39c9880e06}{m\_\-out\_\-queue}
+\item 
+bool \hyperlink{classdcu__c_a9766416e7c7713fe5729a27e6957d80b}{m\_\-req\_\-llc\_\-bypass}
+\item 
+int \hyperlink{classdcu__c_aa5804689736f9d3db9e5d9a7a88a8b62}{m\_\-num\_\-read\_\-port}
+\item 
+int \hyperlink{classdcu__c_a490bfb196b859b4f3135368158c4e5e6}{m\_\-num\_\-write\_\-port}
+\item 
+\hyperlink{classmemory__c}{memory\_\-c} $\ast$ \hyperlink{classdcu__c_a6025ab87f89f05ce3d092aabd941aec6}{m\_\-memory}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classdcu__c_aa9cf359040c048b4163f1961bbff1ca1}{m\_\-simBase}
+\item 
+ManifoldProcessor $\ast$ \hyperlink{classdcu__c_a3db9363af3f49592efb1edd8014c2736}{m\_\-terminal}
+\item 
+\hypertarget{classdcu__c_ab55f153fc56152adff3a13457a5405fa}{
+\hyperlink{classrouter__c}{router\_\-c} $\ast$ {\bfseries m\_\-router}}
+\label{classdcu__c_ab55f153fc56152adff3a13457a5405fa}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data cache class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classdcu__c_a84d2ec5db30f22a7aa008351840c2a06}{
+\index{dcu\_\-c@{dcu\_\-c}!dcu\_\-c@{dcu\_\-c}}
+\index{dcu\_\-c@{dcu\_\-c}!dcu_c@{dcu\_\-c}}
+\subsubsection[{dcu\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}dcu\_\-c::dcu\_\-c (
+\begin{DoxyParamCaption}
+\item[{int}]{ id, }
+\item[{Unit\_\-Type}]{ type, }
+\item[{int}]{ level, }
+\item[{{\bf memory\_\-c} $\ast$}]{ mem, }
+\item[{int}]{ noc\_\-id, }
+\item[{{\bf dcu\_\-c} $\ast$$\ast$}]{ next, }
+\item[{{\bf dcu\_\-c} $\ast$$\ast$}]{ prev, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a84d2ec5db30f22a7aa008351840c2a06}
+data cache constructor \hypertarget{classdcu__c_abea9e7fc68c881ce476cfac7ea891b38}{
+\index{dcu\_\-c@{dcu\_\-c}!$\sim$dcu\_\-c@{$\sim$dcu\_\-c}}
+\index{$\sim$dcu\_\-c@{$\sim$dcu\_\-c}!dcu_c@{dcu\_\-c}}
+\subsubsection[{$\sim$dcu\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}dcu\_\-c::$\sim$dcu\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_abea9e7fc68c881ce476cfac7ea891b38}
+data cache destructor \hypertarget{classdcu__c_ac8bb3b669d6c20b2381f15c7140d4b74}{
+\index{dcu\_\-c@{dcu\_\-c}!dcu\_\-c@{dcu\_\-c}}
+\index{dcu\_\-c@{dcu\_\-c}!dcu_c@{dcu\_\-c}}
+\subsubsection[{dcu\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}dcu\_\-c::dcu\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_ac8bb3b669d6c20b2381f15c7140d4b74}
+data cache default constructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classdcu__c_a1bfcfc18396925fd9665f6946e73a065}{
+\index{dcu\_\-c@{dcu\_\-c}!access@{access}}
+\index{access@{access}!dcu_c@{dcu\_\-c}}
+\subsubsection[{access}]{\setlength{\rightskip}{0pt plus 5cm}int dcu\_\-c::access (
+\begin{DoxyParamCaption}
+\item[{{\bf uop\_\-c} $\ast$}]{ uop}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a1bfcfc18396925fd9665f6946e73a065}
+Access data cache \hypertarget{classdcu__c_ab04abe7be5561b8cebe2fc5b2b10f677}{
+\index{dcu\_\-c@{dcu\_\-c}!access\_\-cache@{access\_\-cache}}
+\index{access\_\-cache@{access\_\-cache}!dcu_c@{dcu\_\-c}}
+\subsubsection[{access\_\-cache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dcache\_\-data\_\-s} $\ast$ dcu\_\-c::access\_\-cache (
+\begin{DoxyParamCaption}
+\item[{Addr}]{ addr, }
+\item[{Addr $\ast$}]{ line\_\-addr, }
+\item[{bool}]{ update, }
+\item[{int}]{ appl\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_ab04abe7be5561b8cebe2fc5b2b10f677}
+Search a request from queues Access the data cache \hypertarget{classdcu__c_a1fbf4dc5547edff38eb6806294563d91}{
+\index{dcu\_\-c@{dcu\_\-c}!bank\_\-id@{bank\_\-id}}
+\index{bank\_\-id@{bank\_\-id}!dcu_c@{dcu\_\-c}}
+\subsubsection[{bank\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int dcu\_\-c::bank\_\-id (
+\begin{DoxyParamCaption}
+\item[{Addr}]{ addr}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a1fbf4dc5547edff38eb6806294563d91}
+Get the bank id \hypertarget{classdcu__c_a72fb58ab8c0ec711dd31e092e51868a1}{
+\index{dcu\_\-c@{dcu\_\-c}!base\_\-addr@{base\_\-addr}}
+\index{base\_\-addr@{base\_\-addr}!dcu_c@{dcu\_\-c}}
+\subsubsection[{base\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}Addr dcu\_\-c::base\_\-addr (
+\begin{DoxyParamCaption}
+\item[{Addr}]{ addr}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a72fb58ab8c0ec711dd31e092e51868a1}
+Get the cache line address \hypertarget{classdcu__c_a64968883497a2f232b3871f7bc05e47e}{
+\index{dcu\_\-c@{dcu\_\-c}!create\_\-network\_\-interface@{create\_\-network\_\-interface}}
+\index{create\_\-network\_\-interface@{create\_\-network\_\-interface}!dcu_c@{dcu\_\-c}}
+\subsubsection[{create\_\-network\_\-interface}]{\setlength{\rightskip}{0pt plus 5cm}bool dcu\_\-c::create\_\-network\_\-interface (
+\begin{DoxyParamCaption}
+\item[{int}]{ mclass}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a64968883497a2f232b3871f7bc05e47e}
+Create the network interface \hypertarget{classdcu__c_a5f10df3e409da7fe249aa8c6d87ac6cf}{
+\index{dcu\_\-c@{dcu\_\-c}!done@{done}}
+\index{done@{done}!dcu_c@{dcu\_\-c}}
+\subsubsection[{done}]{\setlength{\rightskip}{0pt plus 5cm}bool dcu\_\-c::done (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\_\-req\_\-s} $\ast$}]{ req}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a5f10df3e409da7fe249aa8c6d87ac6cf}
+Fill a cache line \hypertarget{classdcu__c_ad0550e80ffac6ce3078502864f740d5b}{
+\index{dcu\_\-c@{dcu\_\-c}!fill@{fill}}
+\index{fill@{fill}!dcu_c@{dcu\_\-c}}
+\subsubsection[{fill}]{\setlength{\rightskip}{0pt plus 5cm}bool dcu\_\-c::fill (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\_\-req\_\-s} $\ast$}]{ req}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_ad0550e80ffac6ce3078502864f740d5b}
+Insert a request to fill\_\-queue (FILL REQ) \hypertarget{classdcu__c_aac851f1517b7b10b051491f0ffd09583}{
+\index{dcu\_\-c@{dcu\_\-c}!full@{full}}
+\index{full@{full}!dcu_c@{dcu\_\-c}}
+\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}bool dcu\_\-c::full (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_aac851f1517b7b10b051491f0ffd09583}
+Check available buffer space \hypertarget{classdcu__c_a4f712cf333d79a702e40d83935151e29}{
+\index{dcu\_\-c@{dcu\_\-c}!get\_\-read\_\-port@{get\_\-read\_\-port}}
+\index{get\_\-read\_\-port@{get\_\-read\_\-port}!dcu_c@{dcu\_\-c}}
+\subsubsection[{get\_\-read\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}bool dcu\_\-c::get\_\-read\_\-port (
+\begin{DoxyParamCaption}
+\item[{int}]{ bank\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a4f712cf333d79a702e40d83935151e29}
+Acquire data cache read port \hypertarget{classdcu__c_ae9bcbaf9b038e512463c0879b9e42908}{
+\index{dcu\_\-c@{dcu\_\-c}!init@{init}}
+\index{init@{init}!dcu_c@{dcu\_\-c}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void dcu\_\-c::init (
+\begin{DoxyParamCaption}
+\item[{int}]{ next\_\-id, }
+\item[{int}]{ prev\_\-id, }
+\item[{bool}]{ done, }
+\item[{bool}]{ coupled\_\-up, }
+\item[{bool}]{ coupled\_\-down, }
+\item[{bool}]{ disable, }
+\item[{bool}]{ has\_\-router}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_ae9bcbaf9b038e512463c0879b9e42908}
+Initialize a data cache 
+\begin{DoxyParams}{Parameters}
+\item[{\em next\_\-id}]next-\/level cache id \item[{\em prev\_\-id}]prev-\/level cache id \item[{\em done}]decide whether corresponding done\_\-func is callable \item[{\em coupled\_\-up}]connected to upper-\/level cache \item[{\em coupled\_\-down}]connected to lower-\/level cache \item[{\em disable}]disabled cache (in case of 2-\/level cache hierarchy) \item[{\em has\_\-router}]decide the next destination (NoC or next cache) \end{DoxyParams}
+\hypertarget{classdcu__c_a215d1e1c6099c6dda22c0cf12b6bd7a4}{
+\index{dcu\_\-c@{dcu\_\-c}!insert@{insert}}
+\index{insert@{insert}!dcu_c@{dcu\_\-c}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}bool dcu\_\-c::insert (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\_\-req\_\-s} $\ast$}]{ req}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a215d1e1c6099c6dda22c0cf12b6bd7a4}
+Insert a request to in\_\-queue (NEW REQ) \hypertarget{classdcu__c_a71826360b5e10085fdc427c1f3343b2b}{
+\index{dcu\_\-c@{dcu\_\-c}!line\_\-size@{line\_\-size}}
+\index{line\_\-size@{line\_\-size}!dcu_c@{dcu\_\-c}}
+\subsubsection[{line\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int dcu\_\-c::line\_\-size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a71826360b5e10085fdc427c1f3343b2b}
+Get the cache line size \hypertarget{classdcu__c_a8cb64339c417ee62d46298216986e4b5}{
+\index{dcu\_\-c@{dcu\_\-c}!process\_\-fill\_\-queue@{process\_\-fill\_\-queue}}
+\index{process\_\-fill\_\-queue@{process\_\-fill\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{process\_\-fill\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}void dcu\_\-c::process\_\-fill\_\-queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a8cb64339c417ee62d46298216986e4b5}
+Process requests from fill\_\-queue \hypertarget{classdcu__c_a3d18097504fe31cac03406978dd31477}{
+\index{dcu\_\-c@{dcu\_\-c}!process\_\-in\_\-queue@{process\_\-in\_\-queue}}
+\index{process\_\-in\_\-queue@{process\_\-in\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{process\_\-in\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}void dcu\_\-c::process\_\-in\_\-queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a3d18097504fe31cac03406978dd31477}
+Process requests from in\_\-queue \hypertarget{classdcu__c_aa34cd13e6faa65115f77d4d01da83096}{
+\index{dcu\_\-c@{dcu\_\-c}!process\_\-out\_\-queue@{process\_\-out\_\-queue}}
+\index{process\_\-out\_\-queue@{process\_\-out\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{process\_\-out\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}void dcu\_\-c::process\_\-out\_\-queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aa34cd13e6faa65115f77d4d01da83096}
+Process requests from out\_\-queue \hypertarget{classdcu__c_aa9c9769a4a8f19bf57365ba1455eb11f}{
+\index{dcu\_\-c@{dcu\_\-c}!process\_\-wb\_\-queue@{process\_\-wb\_\-queue}}
+\index{process\_\-wb\_\-queue@{process\_\-wb\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{process\_\-wb\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}void dcu\_\-c::process\_\-wb\_\-queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aa9c9769a4a8f19bf57365ba1455eb11f}
+Process requests from wb\_\-queue \hypertarget{classdcu__c_a4ff24d1ebc0e3df58b08d7b8e52af056}{
+\index{dcu\_\-c@{dcu\_\-c}!receive\_\-packet@{receive\_\-packet}}
+\index{receive\_\-packet@{receive\_\-packet}!dcu_c@{dcu\_\-c}}
+\subsubsection[{receive\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}void dcu\_\-c::receive\_\-packet (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a4ff24d1ebc0e3df58b08d7b8e52af056}
+Receive a packet from the NoC \hypertarget{classdcu__c_a6b4f08e9c538e6d63d0caedecaffdcda}{
+\index{dcu\_\-c@{dcu\_\-c}!run\_\-a\_\-cycle@{run\_\-a\_\-cycle}}
+\index{run\_\-a\_\-cycle@{run\_\-a\_\-cycle}!dcu_c@{dcu\_\-c}}
+\subsubsection[{run\_\-a\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}void dcu\_\-c::run\_\-a\_\-cycle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a6b4f08e9c538e6d63d0caedecaffdcda}
+Tick a cycle \hypertarget{classdcu__c_a44516ada2cdb4e168c71f6b9246e1840}{
+\index{dcu\_\-c@{dcu\_\-c}!search\_\-pref\_\-in\_\-queue@{search\_\-pref\_\-in\_\-queue}}
+\index{search\_\-pref\_\-in\_\-queue@{search\_\-pref\_\-in\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{search\_\-pref\_\-in\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mem\_\-req\_\-s} $\ast$ dcu\_\-c::search\_\-pref\_\-in\_\-queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a44516ada2cdb4e168c71f6b9246e1840}
+Search a prefetch request from queues \hypertarget{classdcu__c_a83778a75013d7c55e929dd86b22e3b25}{
+\index{dcu\_\-c@{dcu\_\-c}!send\_\-packet@{send\_\-packet}}
+\index{send\_\-packet@{send\_\-packet}!dcu_c@{dcu\_\-c}}
+\subsubsection[{send\_\-packet}]{\setlength{\rightskip}{0pt plus 5cm}bool dcu\_\-c::send\_\-packet (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\_\-req\_\-s} $\ast$}]{ req, }
+\item[{int}]{ msg, }
+\item[{int}]{ dir}
+\end{DoxyParamCaption}
+)}}
+\label{classdcu__c_a83778a75013d7c55e929dd86b22e3b25}
+Send a packet to the NoC 
+\begin{DoxyParams}{Parameters}
+\item[{\em req}]-\/ memory request to be sent \item[{\em msg}]-\/ message type \item[{\em dir}]-\/ direction \end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classdcu__c_a8166e3d9828dff8f41078d92767bd920}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-assoc@{m\_\-assoc}}
+\index{m\_\-assoc@{m\_\-assoc}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-assoc}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-assoc}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a8166e3d9828dff8f41078d92767bd920}
+cache associativity \hypertarget{classdcu__c_aa1a3af160ffda7483651227049f31185}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-banks@{m\_\-banks}}
+\index{m\_\-banks@{m\_\-banks}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-banks}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-banks}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aa1a3af160ffda7483651227049f31185}
+number of cache banks \hypertarget{classdcu__c_a1991249577b208be4483eeeb98f56295}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-bypass@{m\_\-bypass}}
+\index{m\_\-bypass@{m\_\-bypass}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-bypass}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dcu\_\-c::m\_\-bypass}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a1991249577b208be4483eeeb98f56295}
+bypass cache \hypertarget{classdcu__c_a6cb56729ba3f6fd05d8071adda723317}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-cache@{m\_\-cache}}
+\index{m\_\-cache@{m\_\-cache}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-cache}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cache\_\-c}$\ast$ {\bf dcu\_\-c::m\_\-cache}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a6cb56729ba3f6fd05d8071adda723317}
+cache structure \hypertarget{classdcu__c_ac252e950738034b9eab0e1774e0e7de5}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-coupled\_\-down@{m\_\-coupled\_\-down}}
+\index{m\_\-coupled\_\-down@{m\_\-coupled\_\-down}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-coupled\_\-down}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dcu\_\-c::m\_\-coupled\_\-down}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_ac252e950738034b9eab0e1774e0e7de5}
+directly connected to downward cache w/o NoC \hypertarget{classdcu__c_aa455e9e2d2d70d9768b01427a5f2ce04}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-coupled\_\-up@{m\_\-coupled\_\-up}}
+\index{m\_\-coupled\_\-up@{m\_\-coupled\_\-up}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-coupled\_\-up}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dcu\_\-c::m\_\-coupled\_\-up}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aa455e9e2d2d70d9768b01427a5f2ce04}
+directly connected to upward cache w/o NoC \hypertarget{classdcu__c_af4dc606e05ca8664ef6a59027d599078}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-disable@{m\_\-disable}}
+\index{m\_\-disable@{m\_\-disable}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-disable}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dcu\_\-c::m\_\-disable}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_af4dc606e05ca8664ef6a59027d599078}
+disabled \hypertarget{classdcu__c_aa0f7229cca750799c47e68e4b7025793}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-done@{m\_\-done}}
+\index{m\_\-done@{m\_\-done}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-done}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dcu\_\-c::m\_\-done}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aa0f7229cca750799c47e68e4b7025793}
+done\_\-func can be called \hypertarget{classdcu__c_a08eb24546da1c93bfbf88a9c6868930d}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-fill\_\-queue@{m\_\-fill\_\-queue}}
+\index{m\_\-fill\_\-queue@{m\_\-fill\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-fill\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf queue\_\-c}$\ast$ {\bf dcu\_\-c::m\_\-fill\_\-queue}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a08eb24546da1c93bfbf88a9c6868930d}
+fill queue \hypertarget{classdcu__c_afd4171d11831e26978f2ce21659b17f8}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-has\_\-router@{m\_\-has\_\-router}}
+\index{m\_\-has\_\-router@{m\_\-has\_\-router}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-has\_\-router}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dcu\_\-c::m\_\-has\_\-router}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_afd4171d11831e26978f2ce21659b17f8}
+has network router in this level \hypertarget{classdcu__c_a61b5178afb8d6af167a3ca3c40aca074}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-id@{m\_\-id}}
+\index{m\_\-id@{m\_\-id}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-id}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a61b5178afb8d6af167a3ca3c40aca074}
+cache id \hypertarget{classdcu__c_a505f2cf05c56380770c1ab1a7f4fb80b}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-in\_\-queue@{m\_\-in\_\-queue}}
+\index{m\_\-in\_\-queue@{m\_\-in\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-in\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf queue\_\-c}$\ast$ {\bf dcu\_\-c::m\_\-in\_\-queue}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a505f2cf05c56380770c1ab1a7f4fb80b}
+input queue \hypertarget{classdcu__c_a50a7913d80d0128e9d8926f9104f8e19}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-latency@{m\_\-latency}}
+\index{m\_\-latency@{m\_\-latency}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-latency}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-latency}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a50a7913d80d0128e9d8926f9104f8e19}
+cache access latency \hypertarget{classdcu__c_a04d10c0ce98426f7b14d37c8c60150c0}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-level@{m\_\-level}}
+\index{m\_\-level@{m\_\-level}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-level}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-level}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a04d10c0ce98426f7b14d37c8c60150c0}
+cache level (L1, L2, L3, or memory controller) \hypertarget{classdcu__c_a54a23275701e0abe535da85c54252ac8}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-line\_\-size@{m\_\-line\_\-size}}
+\index{m\_\-line\_\-size@{m\_\-line\_\-size}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-line\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-line\_\-size}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a54a23275701e0abe535da85c54252ac8}
+cache line size \hypertarget{classdcu__c_a6025ab87f89f05ce3d092aabd941aec6}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-memory@{m\_\-memory}}
+\index{m\_\-memory@{m\_\-memory}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-memory}]{\setlength{\rightskip}{0pt plus 5cm}{\bf memory\_\-c}$\ast$ {\bf dcu\_\-c::m\_\-memory}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a6025ab87f89f05ce3d092aabd941aec6}
+pointer to the memory system \hypertarget{classdcu__c_a00edf5a77fc43d86790e0a04e7866833}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-next@{m\_\-next}}
+\index{m\_\-next@{m\_\-next}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-next}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dcu\_\-c}$\ast$$\ast$ {\bf dcu\_\-c::m\_\-next}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a00edf5a77fc43d86790e0a04e7866833}
+next-\/level cache pointer \hypertarget{classdcu__c_aaf2ea302ee6c02d0202c0073d12d1813}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-next\_\-id@{m\_\-next\_\-id}}
+\index{m\_\-next\_\-id@{m\_\-next\_\-id}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-next\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-next\_\-id}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aaf2ea302ee6c02d0202c0073d12d1813}
+next-\/level cache id \hypertarget{classdcu__c_a3ab8a45d54041c88b9556d2edf07b377}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-noc\_\-id@{m\_\-noc\_\-id}}
+\index{m\_\-noc\_\-id@{m\_\-noc\_\-id}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-noc\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-noc\_\-id}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a3ab8a45d54041c88b9556d2edf07b377}
+cache network id \hypertarget{classdcu__c_aa5804689736f9d3db9e5d9a7a88a8b62}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-num\_\-read\_\-port@{m\_\-num\_\-read\_\-port}}
+\index{m\_\-num\_\-read\_\-port@{m\_\-num\_\-read\_\-port}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-num\_\-read\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-num\_\-read\_\-port}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aa5804689736f9d3db9e5d9a7a88a8b62}
+number of read ports \hypertarget{classdcu__c_a54ee473e45b0d1a45afe5f569c22d3c1}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-num\_\-set@{m\_\-num\_\-set}}
+\index{m\_\-num\_\-set@{m\_\-num\_\-set}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-num\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-num\_\-set}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a54ee473e45b0d1a45afe5f569c22d3c1}
+number of cache sets \hypertarget{classdcu__c_a490bfb196b859b4f3135368158c4e5e6}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-num\_\-write\_\-port@{m\_\-num\_\-write\_\-port}}
+\index{m\_\-num\_\-write\_\-port@{m\_\-num\_\-write\_\-port}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-num\_\-write\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-num\_\-write\_\-port}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a490bfb196b859b4f3135368158c4e5e6}
+number of write ports \hypertarget{classdcu__c_a9c0c134e9407debd8308df39c9880e06}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-out\_\-queue@{m\_\-out\_\-queue}}
+\index{m\_\-out\_\-queue@{m\_\-out\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-out\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf queue\_\-c}$\ast$ {\bf dcu\_\-c::m\_\-out\_\-queue}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a9c0c134e9407debd8308df39c9880e06}
+out queue \hypertarget{classdcu__c_a6fc4117756ccee0adf08285ad9ef9182}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-port@{m\_\-port}}
+\index{m\_\-port@{m\_\-port}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-port}]{\setlength{\rightskip}{0pt plus 5cm}{\bf port\_\-c}$\ast$$\ast$ {\bf dcu\_\-c::m\_\-port}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a6fc4117756ccee0adf08285ad9ef9182}
+cache port \hypertarget{classdcu__c_a199065735dfd67fbbf17f1e7e73a0b27}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-prev@{m\_\-prev}}
+\index{m\_\-prev@{m\_\-prev}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-prev}]{\setlength{\rightskip}{0pt plus 5cm}{\bf dcu\_\-c}$\ast$$\ast$ {\bf dcu\_\-c::m\_\-prev}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a199065735dfd67fbbf17f1e7e73a0b27}
+previous-\/level ache pointer \hypertarget{classdcu__c_aab67bf503b09b72441791fc20862c22c}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-prev\_\-id@{m\_\-prev\_\-id}}
+\index{m\_\-prev\_\-id@{m\_\-prev\_\-id}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-prev\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf dcu\_\-c::m\_\-prev\_\-id}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aab67bf503b09b72441791fc20862c22c}
+previous-\/level cache id \hypertarget{classdcu__c_a5e56ee48837544fa5f882c9f750fdd43}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-ptx\_\-sim@{m\_\-ptx\_\-sim}}
+\index{m\_\-ptx\_\-sim@{m\_\-ptx\_\-sim}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-ptx\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dcu\_\-c::m\_\-ptx\_\-sim}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a5e56ee48837544fa5f882c9f750fdd43}
+gpu cache \hypertarget{classdcu__c_a9766416e7c7713fe5729a27e6957d80b}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-req\_\-llc\_\-bypass@{m\_\-req\_\-llc\_\-bypass}}
+\index{m\_\-req\_\-llc\_\-bypass@{m\_\-req\_\-llc\_\-bypass}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-req\_\-llc\_\-bypass}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf dcu\_\-c::m\_\-req\_\-llc\_\-bypass}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a9766416e7c7713fe5729a27e6957d80b}
+bypass llc \hypertarget{classdcu__c_aa9cf359040c048b4163f1961bbff1ca1}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf dcu\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_aa9cf359040c048b4163f1961bbff1ca1}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{classdcu__c_a3db9363af3f49592efb1edd8014c2736}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-terminal@{m\_\-terminal}}
+\index{m\_\-terminal@{m\_\-terminal}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-terminal}]{\setlength{\rightskip}{0pt plus 5cm}ManifoldProcessor$\ast$ {\bf dcu\_\-c::m\_\-terminal}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a3db9363af3f49592efb1edd8014c2736}
+terminal to the NoC router \hypertarget{classdcu__c_ab99a3a4fa14c08b977f91ea53e2d2d8c}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-type@{m\_\-type}}
+\index{m\_\-type@{m\_\-type}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}Unit\_\-Type {\bf dcu\_\-c::m\_\-type}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_ab99a3a4fa14c08b977f91ea53e2d2d8c}
+core type that this cache belongs to \hypertarget{classdcu__c_a11e746c9849d96d00f6181626d6da7f4}{
+\index{dcu\_\-c@{dcu\_\-c}!m\_\-wb\_\-queue@{m\_\-wb\_\-queue}}
+\index{m\_\-wb\_\-queue@{m\_\-wb\_\-queue}!dcu_c@{dcu\_\-c}}
+\subsubsection[{m\_\-wb\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf queue\_\-c}$\ast$ {\bf dcu\_\-c::m\_\-wb\_\-queue}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdcu__c_a11e746c9849d96d00f6181626d6da7f4}
+write-\/back queue 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+memory.h\item 
+memory.cc\end{DoxyCompactItemize}

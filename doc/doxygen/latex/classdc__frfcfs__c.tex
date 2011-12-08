@@ -1,0 +1,103 @@
+\hypertarget{classdc__frfcfs__c}{
+\section{dc\_\-frfcfs\_\-c Class Reference}
+\label{classdc__frfcfs__c}\index{dc\_\-frfcfs\_\-c@{dc\_\-frfcfs\_\-c}}
+}
+
+
+FR-\/FCFS dram scheduling.  
+
+
+
+
+{\ttfamily \#include $<$dram.h$>$}
+
+Inheritance diagram for dc\_\-frfcfs\_\-c:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classdc__frfcfs__c}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classdc__frfcfs__c_1_1sort__func}{sort\_\-func}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classdc__frfcfs__c}{dc\_\-frfcfs\_\-c} sort function \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classdc__frfcfs__c_ae20cabf0dd64d9d9bac5f5867e73e782}{dc\_\-frfcfs\_\-c} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classdc__frfcfs__c_a073941102a81c46c76a92b6ecdedc6bd}{$\sim$dc\_\-frfcfs\_\-c} ()
+\item 
+\hyperlink{structdrb__entry__s}{drb\_\-entry\_\-s} $\ast$ \hyperlink{classdc__frfcfs__c_a4ee4def84ca42d169c13aec01590eeb8}{schedule} (list$<$ \hyperlink{structdrb__entry__s}{drb\_\-entry\_\-s} $\ast$ $>$ $\ast$drb\_\-list)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classdc__frfcfs__c_1_1sort__func}{sort\_\-func} $\ast$ \hyperlink{classdc__frfcfs__c_aea33c4e4bd8214a2331abbbd5a9d59c9}{m\_\-sort}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classdc__frfcfs__c_af9acce4ca7c37997aa3dc0c9732ff5e6}{
+class {\bfseries sort\_\-func}}
+\label{classdc__frfcfs__c_af9acce4ca7c37997aa3dc0c9732ff5e6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+FR-\/FCFS dram scheduling. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classdc__frfcfs__c_ae20cabf0dd64d9d9bac5f5867e73e782}{
+\index{dc\_\-frfcfs\_\-c@{dc\_\-frfcfs\_\-c}!dc\_\-frfcfs\_\-c@{dc\_\-frfcfs\_\-c}}
+\index{dc\_\-frfcfs\_\-c@{dc\_\-frfcfs\_\-c}!dc_frfcfs_c@{dc\_\-frfcfs\_\-c}}
+\subsubsection[{dc\_\-frfcfs\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}dc\_\-frfcfs\_\-c::dc\_\-frfcfs\_\-c (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classdc__frfcfs__c_ae20cabf0dd64d9d9bac5f5867e73e782}
+Constructor \hypertarget{classdc__frfcfs__c_a073941102a81c46c76a92b6ecdedc6bd}{
+\index{dc\_\-frfcfs\_\-c@{dc\_\-frfcfs\_\-c}!$\sim$dc\_\-frfcfs\_\-c@{$\sim$dc\_\-frfcfs\_\-c}}
+\index{$\sim$dc\_\-frfcfs\_\-c@{$\sim$dc\_\-frfcfs\_\-c}!dc_frfcfs_c@{dc\_\-frfcfs\_\-c}}
+\subsubsection[{$\sim$dc\_\-frfcfs\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}dc\_\-frfcfs\_\-c::$\sim$dc\_\-frfcfs\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classdc__frfcfs__c_a073941102a81c46c76a92b6ecdedc6bd}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classdc__frfcfs__c_a4ee4def84ca42d169c13aec01590eeb8}{
+\index{dc\_\-frfcfs\_\-c@{dc\_\-frfcfs\_\-c}!schedule@{schedule}}
+\index{schedule@{schedule}!dc_frfcfs_c@{dc\_\-frfcfs\_\-c}}
+\subsubsection[{schedule}]{\setlength{\rightskip}{0pt plus 5cm}{\bf drb\_\-entry\_\-s} $\ast$ dc\_\-frfcfs\_\-c::schedule (
+\begin{DoxyParamCaption}
+\item[{list$<$ {\bf drb\_\-entry\_\-s} $\ast$ $>$ $\ast$}]{ drb\_\-list}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classdc__frfcfs__c_a4ee4def84ca42d169c13aec01590eeb8}
+Overloaded schedule function 
+\begin{DoxyParams}{Parameters}
+\item[{\em drb\_\-list}]-\/ dram request buffer to be scheduled \end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classdram__controller__c_a0ce04de6742977e7c962ef977c1b9da0}{dram\_\-controller\_\-c}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classdc__frfcfs__c_aea33c4e4bd8214a2331abbbd5a9d59c9}{
+\index{dc\_\-frfcfs\_\-c@{dc\_\-frfcfs\_\-c}!m\_\-sort@{m\_\-sort}}
+\index{m\_\-sort@{m\_\-sort}!dc_frfcfs_c@{dc\_\-frfcfs\_\-c}}
+\subsubsection[{m\_\-sort}]{\setlength{\rightskip}{0pt plus 5cm}class {\bf sort\_\-func}$\ast$ {\bf dc\_\-frfcfs\_\-c::m\_\-sort}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classdc__frfcfs__c_aea33c4e4bd8214a2331abbbd5a9d59c9}
+sort function 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+dram.h\item 
+dram.cc\end{DoxyCompactItemize}

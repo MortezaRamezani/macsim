@@ -1,0 +1,225 @@
+\hypertarget{classsmc__allocate__c}{
+\section{smc\_\-allocate\_\-c Class Reference}
+\label{classsmc__allocate__c}\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}}
+}
+
+
+Allocation stage for GPU simulation.  
+
+
+
+
+{\ttfamily \#include $<$allocate\_\-smc.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classsmc__allocate__c_afd008391634a752b54573173db52be11}{smc\_\-allocate\_\-c} (int core\_\-id, \hyperlink{classpqueue__c}{pqueue\_\-c}$<$ int $\ast$ $>$ $\ast$q\_\-frontend, \hyperlink{classpqueue__c}{pqueue\_\-c}$<$ \hyperlink{structgpu__allocq__entry__s}{gpu\_\-allocq\_\-entry\_\-s} $>$ $\ast$$\ast$gpu\_\-alloc\_\-q, \hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{classuop__c}{uop\_\-c} $>$ $\ast$uop\_\-pool, \hyperlink{classsmc__rob__c}{smc\_\-rob\_\-c} $\ast$gpu\_\-rob, Unit\_\-Type unit\_\-type, int num\_\-queues, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\begin{DoxyCompactList}\small\item\em Create a data structures needed for the allocation stage in the pipeline. \item\end{DoxyCompactList}\item 
+\hyperlink{classsmc__allocate__c_a58bf0515b7fe139787c1808f45a5f45a}{$\sim$smc\_\-allocate\_\-c} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\item 
+void \hyperlink{classsmc__allocate__c_a127be98f456d4c2d30985e73e37cfd67}{run\_\-a\_\-cycle} ()
+\item 
+void \hyperlink{classsmc__allocate__c_a29566786181c9e5963324f2061d9982f}{start} ()
+\begin{DoxyCompactList}\small\item\em Mark allocation as running. \item\end{DoxyCompactList}\item 
+void \hyperlink{classsmc__allocate__c_acf8790fcc3c948f6d2cf887c3db81652}{stop} ()
+\begin{DoxyCompactList}\small\item\em Mark allocation as halted. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classsmc__allocate__c_ab7431c27506fdfa1c58d39c9ae9e5472}{is\_\-running} ()
+\begin{DoxyCompactList}\small\item\em Check if allocation stage is running i.e., not halted. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classsmc__allocate__c_abaeb422a48ef93fb71cabc5390dee7b9}{m\_\-core\_\-id}
+\item 
+\hyperlink{classpqueue__c}{pqueue\_\-c}$<$ int $\ast$ $>$ $\ast$ \hyperlink{classsmc__allocate__c_a3db2b8a63184bcda1bd1d9a2231becf7}{m\_\-frontend\_\-q}
+\item 
+\hyperlink{classpqueue__c}{pqueue\_\-c}$<$ \hyperlink{structgpu__allocq__entry__s}{gpu\_\-allocq\_\-entry\_\-s} $>$ $\ast$$\ast$ \hyperlink{classsmc__allocate__c_ad36b7e814f1f2199295dce4d617ff035}{m\_\-gpu\_\-alloc\_\-q}
+\item 
+\hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{classuop__c}{uop\_\-c} $>$ $\ast$ \hyperlink{classsmc__allocate__c_a1fce12aa293716b7c3ea687c0400dcf3}{m\_\-uop\_\-pool}
+\item 
+\hyperlink{classsmc__rob__c}{smc\_\-rob\_\-c} $\ast$ \hyperlink{classsmc__allocate__c_a8975102c918ebb18ff50b054d70fd1a3}{m\_\-gpu\_\-rob}
+\item 
+Unit\_\-Type \hyperlink{classsmc__allocate__c_aeb14fe67ed777300d891a22ed3db120d}{m\_\-unit\_\-type}
+\item 
+uns16 \hyperlink{classsmc__allocate__c_a5cdf0163de169d08e9b51a760381c66d}{m\_\-knob\_\-width}
+\item 
+bool \hyperlink{classsmc__allocate__c_a8369b4404232451b5fec0eff0d6ef011}{m\_\-allocate\_\-running}
+\item 
+Counter \hyperlink{classsmc__allocate__c_ae5879c983f2dd0520f6fb4e76d90271f}{m\_\-cur\_\-core\_\-cycle}
+\item 
+int \hyperlink{classsmc__allocate__c_afea356100a59d2bf67ee102c1e41e4f2}{m\_\-num\_\-queues}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classsmc__allocate__c_abd96160a09d01811d1920c3330731107}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Allocation stage for GPU simulation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classsmc__allocate__c_afd008391634a752b54573173db52be11}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}}
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{smc\_\-allocate\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}smc\_\-allocate\_\-c::smc\_\-allocate\_\-c (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{{\bf pqueue\_\-c}$<$ int $\ast$ $>$ $\ast$}]{ q\_\-frontend, }
+\item[{{\bf pqueue\_\-c}$<$ {\bf gpu\_\-allocq\_\-entry\_\-s} $>$ $\ast$$\ast$}]{ gpu\_\-alloc\_\-q, }
+\item[{{\bf pool\_\-c}$<$ {\bf uop\_\-c} $>$ $\ast$}]{ uop\_\-pool, }
+\item[{{\bf smc\_\-rob\_\-c} $\ast$}]{ gpu\_\-rob, }
+\item[{Unit\_\-Type}]{ unit\_\-type, }
+\item[{int}]{ num\_\-queues, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__allocate__c_afd008391634a752b54573173db52be11}
+
+
+Create a data structures needed for the allocation stage in the pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]Core identifier number \item[{\em q\_\-frontend}]Pointer to front end queue \item[{\em gpu\_\-alloc\_\-q}]Pointer to be updated with the allocation stage queue \item[{\em uop\_\-pool}]Pointer to uop pool \item[{\em gpu\_\-rob}]Pointer to the Reorder buffer \item[{\em unit\_\-type}]Parameter used to identify knob width \item[{\em num\_\-queues}]number of allocation queues \item[{\em simBase}]-\/ Pointer to base simulation class for perf/stat counters \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classsmc__allocate__c_a58bf0515b7fe139787c1808f45a5f45a}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!$\sim$smc\_\-allocate\_\-c@{$\sim$smc\_\-allocate\_\-c}}
+\index{$\sim$smc\_\-allocate\_\-c@{$\sim$smc\_\-allocate\_\-c}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{$\sim$smc\_\-allocate\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}smc\_\-allocate\_\-c::$\sim$smc\_\-allocate\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__allocate__c_a58bf0515b7fe139787c1808f45a5f45a}
+
+
+Destructor. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classsmc__allocate__c_ab7431c27506fdfa1c58d39c9ae9e5472}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!is\_\-running@{is\_\-running}}
+\index{is\_\-running@{is\_\-running}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{is\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}smc\_\-allocate\_\-c::is\_\-running (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classsmc__allocate__c_ab7431c27506fdfa1c58d39c9ae9e5472}
+
+
+Check if allocation stage is running i.e., not halted. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classsmc__allocate__c_a127be98f456d4c2d30985e73e37cfd67}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!run\_\-a\_\-cycle@{run\_\-a\_\-cycle}}
+\index{run\_\-a\_\-cycle@{run\_\-a\_\-cycle}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{run\_\-a\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}void smc\_\-allocate\_\-c::run\_\-a\_\-cycle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__allocate__c_a127be98f456d4c2d30985e73e37cfd67}
+Function to be called at each cycle by the simulator to perform the duties of the allocation stage. \hypertarget{classsmc__allocate__c_a29566786181c9e5963324f2061d9982f}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!start@{start}}
+\index{start@{start}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}smc\_\-allocate\_\-c::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classsmc__allocate__c_a29566786181c9e5963324f2061d9982f}
+
+
+Mark allocation as running. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classsmc__allocate__c_acf8790fcc3c948f6d2cf887c3db81652}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!stop@{stop}}
+\index{stop@{stop}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}smc\_\-allocate\_\-c::stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classsmc__allocate__c_acf8790fcc3c948f6d2cf887c3db81652}
+
+
+Mark allocation as halted. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classsmc__allocate__c_a8369b4404232451b5fec0eff0d6ef011}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-allocate\_\-running@{m\_\-allocate\_\-running}}
+\index{m\_\-allocate\_\-running@{m\_\-allocate\_\-running}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-allocate\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf smc\_\-allocate\_\-c::m\_\-allocate\_\-running}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_a8369b4404232451b5fec0eff0d6ef011}
+Enable allocation stage \hypertarget{classsmc__allocate__c_abaeb422a48ef93fb71cabc5390dee7b9}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-core\_\-id@{m\_\-core\_\-id}}
+\index{m\_\-core\_\-id@{m\_\-core\_\-id}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-core\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf smc\_\-allocate\_\-c::m\_\-core\_\-id}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_abaeb422a48ef93fb71cabc5390dee7b9}
+core id \hypertarget{classsmc__allocate__c_ae5879c983f2dd0520f6fb4e76d90271f}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-cur\_\-core\_\-cycle@{m\_\-cur\_\-core\_\-cycle}}
+\index{m\_\-cur\_\-core\_\-cycle@{m\_\-cur\_\-core\_\-cycle}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-cur\_\-core\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf smc\_\-allocate\_\-c::m\_\-cur\_\-core\_\-cycle}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_ae5879c983f2dd0520f6fb4e76d90271f}
+current core cycle \hypertarget{classsmc__allocate__c_a3db2b8a63184bcda1bd1d9a2231becf7}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-frontend\_\-q@{m\_\-frontend\_\-q}}
+\index{m\_\-frontend\_\-q@{m\_\-frontend\_\-q}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-frontend\_\-q}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pqueue\_\-c}$<$int$\ast$$>$$\ast$ {\bf smc\_\-allocate\_\-c::m\_\-frontend\_\-q}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_a3db2b8a63184bcda1bd1d9a2231becf7}
+frontend queue \hypertarget{classsmc__allocate__c_ad36b7e814f1f2199295dce4d617ff035}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-gpu\_\-alloc\_\-q@{m\_\-gpu\_\-alloc\_\-q}}
+\index{m\_\-gpu\_\-alloc\_\-q@{m\_\-gpu\_\-alloc\_\-q}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-gpu\_\-alloc\_\-q}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pqueue\_\-c}$<${\bf gpu\_\-allocq\_\-entry\_\-s}$>$$\ast$$\ast$ {\bf smc\_\-allocate\_\-c::m\_\-gpu\_\-alloc\_\-q}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_ad36b7e814f1f2199295dce4d617ff035}
+GPU allocation queue \hypertarget{classsmc__allocate__c_a8975102c918ebb18ff50b054d70fd1a3}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-gpu\_\-rob@{m\_\-gpu\_\-rob}}
+\index{m\_\-gpu\_\-rob@{m\_\-gpu\_\-rob}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-gpu\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}{\bf smc\_\-rob\_\-c}$\ast$ {\bf smc\_\-allocate\_\-c::m\_\-gpu\_\-rob}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_a8975102c918ebb18ff50b054d70fd1a3}
+GPU reorder buffer \hypertarget{classsmc__allocate__c_a5cdf0163de169d08e9b51a760381c66d}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-knob\_\-width@{m\_\-knob\_\-width}}
+\index{m\_\-knob\_\-width@{m\_\-knob\_\-width}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-knob\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}uns16 {\bf smc\_\-allocate\_\-c::m\_\-knob\_\-width}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_a5cdf0163de169d08e9b51a760381c66d}
+width \hypertarget{classsmc__allocate__c_afea356100a59d2bf67ee102c1e41e4f2}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-num\_\-queues@{m\_\-num\_\-queues}}
+\index{m\_\-num\_\-queues@{m\_\-num\_\-queues}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-num\_\-queues}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf smc\_\-allocate\_\-c::m\_\-num\_\-queues}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_afea356100a59d2bf67ee102c1e41e4f2}
+number of allocation queue types \hypertarget{classsmc__allocate__c_abd96160a09d01811d1920c3330731107}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf smc\_\-allocate\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_abd96160a09d01811d1920c3330731107}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{classsmc__allocate__c_aeb14fe67ed777300d891a22ed3db120d}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-unit\_\-type@{m\_\-unit\_\-type}}
+\index{m\_\-unit\_\-type@{m\_\-unit\_\-type}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-unit\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}Unit\_\-Type {\bf smc\_\-allocate\_\-c::m\_\-unit\_\-type}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_aeb14fe67ed777300d891a22ed3db120d}
+core type \hypertarget{classsmc__allocate__c_a1fce12aa293716b7c3ea687c0400dcf3}{
+\index{smc\_\-allocate\_\-c@{smc\_\-allocate\_\-c}!m\_\-uop\_\-pool@{m\_\-uop\_\-pool}}
+\index{m\_\-uop\_\-pool@{m\_\-uop\_\-pool}!smc_allocate_c@{smc\_\-allocate\_\-c}}
+\subsubsection[{m\_\-uop\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pool\_\-c}$<${\bf uop\_\-c}$>$$\ast$ {\bf smc\_\-allocate\_\-c::m\_\-uop\_\-pool}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__allocate__c_a1fce12aa293716b7c3ea687c0400dcf3}
+uop pool 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+allocate\_\-smc.h\item 
+allocate\_\-smc.cc\end{DoxyCompactItemize}

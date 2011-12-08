@@ -1,0 +1,123 @@
+\hypertarget{classDIST__Stat}{
+\section{DIST\_\-Stat Class Reference}
+\label{classDIST__Stat}\index{DIST\_\-Stat@{DIST\_\-Stat}}
+}
+
+
+DIST type stat.  
+
+
+
+
+{\ttfamily \#include $<$statistics.h$>$}
+
+Inheritance diagram for DIST\_\-Stat:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDIST__Stat}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDIST__Stat_a0ecccb2dc9ba814f9468d3f814329b04}{DIST\_\-Stat} (const string \&str, const string \&outputfilename, long ID, \hyperlink{classProcessorStatistics}{ProcessorStatistics} $\ast$procStat)
+\item 
+virtual \hyperlink{classDIST__Stat_a223d849dc2df71d9909a5833bf17beb9}{$\sim$DIST\_\-Stat} ()
+\item 
+virtual \hyperlink{classAbstractStat}{AbstractStat} $\ast$ \hyperlink{classDIST__Stat_a11f5f75a5f6d8551e342a23e72f27809}{clone} (unsigned int coreID)
+\item 
+void \hyperlink{classDIST__Stat_a04d60f3b378b7c9439039abe2e2019d0}{addMember} (long memberID)
+\item 
+virtual void \hyperlink{classDIST__Stat_a521cb2140eba939df71b12dfe805386a}{writeTo} (ofstream \&stream)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ long $>$ \hyperlink{classDIST__Stat_a66b040153f6d5636d372b5bb3f0c6802}{m\_\-distributionMembers}
+\item 
+\hyperlink{classProcessorStatistics}{ProcessorStatistics} $\ast$ \hyperlink{classDIST__Stat_a867cb02e1feb40c13b29ab79746853e6}{m\_\-ProcStat}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+DIST type stat. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classDIST__Stat_a0ecccb2dc9ba814f9468d3f814329b04}{
+\index{DIST\_\-Stat@{DIST\_\-Stat}!DIST\_\-Stat@{DIST\_\-Stat}}
+\index{DIST\_\-Stat@{DIST\_\-Stat}!DIST_Stat@{DIST\_\-Stat}}
+\subsubsection[{DIST\_\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}DIST\_\-Stat::DIST\_\-Stat (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ str, }
+\item[{const string \&}]{ outputfilename, }
+\item[{long}]{ ID, }
+\item[{{\bf ProcessorStatistics} $\ast$}]{ procStat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classDIST__Stat_a0ecccb2dc9ba814f9468d3f814329b04}
+Constructor. \hypertarget{classDIST__Stat_a223d849dc2df71d9909a5833bf17beb9}{
+\index{DIST\_\-Stat@{DIST\_\-Stat}!$\sim$DIST\_\-Stat@{$\sim$DIST\_\-Stat}}
+\index{$\sim$DIST\_\-Stat@{$\sim$DIST\_\-Stat}!DIST_Stat@{DIST\_\-Stat}}
+\subsubsection[{$\sim$DIST\_\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}virtual DIST\_\-Stat::$\sim$DIST\_\-Stat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classDIST__Stat_a223d849dc2df71d9909a5833bf17beb9}
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classDIST__Stat_a04d60f3b378b7c9439039abe2e2019d0}{
+\index{DIST\_\-Stat@{DIST\_\-Stat}!addMember@{addMember}}
+\index{addMember@{addMember}!DIST_Stat@{DIST\_\-Stat}}
+\subsubsection[{addMember}]{\setlength{\rightskip}{0pt plus 5cm}void DIST\_\-Stat::addMember (
+\begin{DoxyParamCaption}
+\item[{long}]{ memberID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classDIST__Stat_a04d60f3b378b7c9439039abe2e2019d0}
+Add a new stat. \hypertarget{classDIST__Stat_a11f5f75a5f6d8551e342a23e72f27809}{
+\index{DIST\_\-Stat@{DIST\_\-Stat}!clone@{clone}}
+\index{clone@{clone}!DIST_Stat@{DIST\_\-Stat}}
+\subsubsection[{clone}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf AbstractStat}$\ast$ DIST\_\-Stat::clone (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{ coreID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classDIST__Stat_a11f5f75a5f6d8551e342a23e72f27809}
+Clone a stat. 
+
+Implements \hyperlink{classAbstractStat_aed9a458491d92fb2cc3c458990d9fab1}{AbstractStat}.
+
+\hypertarget{classDIST__Stat_a521cb2140eba939df71b12dfe805386a}{
+\index{DIST\_\-Stat@{DIST\_\-Stat}!writeTo@{writeTo}}
+\index{writeTo@{writeTo}!DIST_Stat@{DIST\_\-Stat}}
+\subsubsection[{writeTo}]{\setlength{\rightskip}{0pt plus 5cm}void DIST\_\-Stat::writeTo (
+\begin{DoxyParamCaption}
+\item[{ofstream \&}]{ stream}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classDIST__Stat_a521cb2140eba939df71b12dfe805386a}
+Dump out all stats to the file. 
+
+Reimplemented from \hyperlink{classAbstractStat_aa4760247da47c70d7345de5d881f59cb}{AbstractStat}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classDIST__Stat_a66b040153f6d5636d372b5bb3f0c6802}{
+\index{DIST\_\-Stat@{DIST\_\-Stat}!m\_\-distributionMembers@{m\_\-distributionMembers}}
+\index{m\_\-distributionMembers@{m\_\-distributionMembers}!DIST_Stat@{DIST\_\-Stat}}
+\subsubsection[{m\_\-distributionMembers}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$long$>$ {\bf DIST\_\-Stat::m\_\-distributionMembers}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDIST__Stat_a66b040153f6d5636d372b5bb3f0c6802}
+stat table \hypertarget{classDIST__Stat_a867cb02e1feb40c13b29ab79746853e6}{
+\index{DIST\_\-Stat@{DIST\_\-Stat}!m\_\-ProcStat@{m\_\-ProcStat}}
+\index{m\_\-ProcStat@{m\_\-ProcStat}!DIST_Stat@{DIST\_\-Stat}}
+\subsubsection[{m\_\-ProcStat}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ProcessorStatistics}$\ast$ {\bf DIST\_\-Stat::m\_\-ProcStat}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDIST__Stat_a867cb02e1feb40c13b29ab79746853e6}
+reference to simulation-\/scoped processor stats 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+statistics.h\item 
+statistics.cc\end{DoxyCompactItemize}

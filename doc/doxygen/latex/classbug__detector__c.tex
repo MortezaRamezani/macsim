@@ -1,0 +1,148 @@
+\hypertarget{classbug__detector__c}{
+\section{bug\_\-detector\_\-c Class Reference}
+\label{classbug__detector__c}\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}}
+}
+
+
+bug detection mechanism  
+
+
+
+
+{\ttfamily \#include $<$bug\_\-detector.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classbug__detector__c_a3df8691c8540d84e124b21f963b63b85}{bug\_\-detector\_\-c} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classbug__detector__c_a099634a48c3bb831ba71e324c715ee07}{$\sim$bug\_\-detector\_\-c} ()
+\item 
+void \hyperlink{classbug__detector__c_a3437b86d0318c26d6400b6f4720a07a8}{allocate} (\hyperlink{classuop__c}{uop\_\-c} $\ast$uop)
+\item 
+void \hyperlink{classbug__detector__c_a85401b346bcc130a82efe527c86c93e0}{deallocate} (\hyperlink{classuop__c}{uop\_\-c} $\ast$uop)
+\item 
+void \hyperlink{classbug__detector__c_adb23aaa4e33a08f4dd92f0767cb17d39}{print} (int core\_\-id, int thread\_\-id)
+\item 
+\hypertarget{classbug__detector__c_aa51660c5a7b6deb7391480fbe74bbb3a}{
+void {\bfseries allocate\_\-noc} (\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req)}
+\label{classbug__detector__c_aa51660c5a7b6deb7391480fbe74bbb3a}
+
+\item 
+\hypertarget{classbug__detector__c_a6a65357fe5803b0a1a3bfb22ffbe1015}{
+void {\bfseries deallocate\_\-noc} (\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req)}
+\label{classbug__detector__c_a6a65357fe5803b0a1a3bfb22ffbe1015}
+
+\item 
+\hypertarget{classbug__detector__c_a556e83704342d2a8fc5fd600e0dd8df9}{
+void {\bfseries print\_\-noc} ()}
+\label{classbug__detector__c_a556e83704342d2a8fc5fd600e0dd8df9}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classbug__detector__c_a3d90d9bf03b550875f24acc533352640}{m\_\-num\_\-core}
+\item 
+vector$<$ map$<$ \hyperlink{classuop__c}{uop\_\-c} $\ast$, uint64\_\-t $>$ $\ast$ $>$ \hyperlink{classbug__detector__c_a0b23d445e54499579a1126223c119948}{m\_\-uop\_\-table}
+\item 
+uint64\_\-t $\ast$ \hyperlink{classbug__detector__c_ae1a942538a13d23d8bee7355c7e22e0c}{m\_\-latency\_\-sum}
+\item 
+uint64\_\-t $\ast$ \hyperlink{classbug__detector__c_a40b39407ec6f0e2e0888cac9a7486453}{m\_\-latency\_\-count}
+\item 
+unordered\_\-map$<$ \hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$, uint64\_\-t $>$ $\ast$ \hyperlink{classbug__detector__c_a650c89720f96ea9c79230e7341b88885}{m\_\-packet\_\-table}
+\item 
+\hypertarget{classbug__detector__c_a305a1bee1bec006e7dcbc7fb0645f693}{
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ {\bfseries m\_\-simBase}}
+\label{classbug__detector__c_a305a1bee1bec006e7dcbc7fb0645f693}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+bug detection mechanism Track each uop and memory reqeust to check where it is stuck 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classbug__detector__c_a3df8691c8540d84e124b21f963b63b85}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!bug\_\-detector\_\-c@{bug\_\-detector\_\-c}}
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{bug\_\-detector\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}bug\_\-detector\_\-c::bug\_\-detector\_\-c (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classbug__detector__c_a3df8691c8540d84e124b21f963b63b85}
+Bug detector class constructor \hypertarget{classbug__detector__c_a099634a48c3bb831ba71e324c715ee07}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!$\sim$bug\_\-detector\_\-c@{$\sim$bug\_\-detector\_\-c}}
+\index{$\sim$bug\_\-detector\_\-c@{$\sim$bug\_\-detector\_\-c}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{$\sim$bug\_\-detector\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}bug\_\-detector\_\-c::$\sim$bug\_\-detector\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classbug__detector__c_a099634a48c3bb831ba71e324c715ee07}
+Bug detector class destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classbug__detector__c_a3437b86d0318c26d6400b6f4720a07a8}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!allocate@{allocate}}
+\index{allocate@{allocate}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{allocate}]{\setlength{\rightskip}{0pt plus 5cm}void bug\_\-detector\_\-c::allocate (
+\begin{DoxyParamCaption}
+\item[{{\bf uop\_\-c} $\ast$}]{ uop}
+\end{DoxyParamCaption}
+)}}
+\label{classbug__detector__c_a3437b86d0318c26d6400b6f4720a07a8}
+When a new uop starts exectuion, record it to the table. \hypertarget{classbug__detector__c_a85401b346bcc130a82efe527c86c93e0}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!deallocate@{deallocate}}
+\index{deallocate@{deallocate}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{deallocate}]{\setlength{\rightskip}{0pt plus 5cm}void bug\_\-detector\_\-c::deallocate (
+\begin{DoxyParamCaption}
+\item[{{\bf uop\_\-c} $\ast$}]{ uop}
+\end{DoxyParamCaption}
+)}}
+\label{classbug__detector__c_a85401b346bcc130a82efe527c86c93e0}
+When a new uop retires, take this uop out from the table. \hypertarget{classbug__detector__c_adb23aaa4e33a08f4dd92f0767cb17d39}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!print@{print}}
+\index{print@{print}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}void bug\_\-detector\_\-c::print (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classbug__detector__c_adb23aaa4e33a08f4dd92f0767cb17d39}
+Print all un-\/retired (might be bug) uops 
+
+\subsection{Member Data Documentation}
+\hypertarget{classbug__detector__c_a40b39407ec6f0e2e0888cac9a7486453}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!m\_\-latency\_\-count@{m\_\-latency\_\-count}}
+\index{m\_\-latency\_\-count@{m\_\-latency\_\-count}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{m\_\-latency\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t$\ast$ {\bf bug\_\-detector\_\-c::m\_\-latency\_\-count}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classbug__detector__c_a40b39407ec6f0e2e0888cac9a7486453}
+total uop count \hypertarget{classbug__detector__c_ae1a942538a13d23d8bee7355c7e22e0c}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!m\_\-latency\_\-sum@{m\_\-latency\_\-sum}}
+\index{m\_\-latency\_\-sum@{m\_\-latency\_\-sum}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{m\_\-latency\_\-sum}]{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t$\ast$ {\bf bug\_\-detector\_\-c::m\_\-latency\_\-sum}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classbug__detector__c_ae1a942538a13d23d8bee7355c7e22e0c}
+sum of each uop's execution latency \hypertarget{classbug__detector__c_a3d90d9bf03b550875f24acc533352640}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!m\_\-num\_\-core@{m\_\-num\_\-core}}
+\index{m\_\-num\_\-core@{m\_\-num\_\-core}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{m\_\-num\_\-core}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf bug\_\-detector\_\-c::m\_\-num\_\-core}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classbug__detector__c_a3d90d9bf03b550875f24acc533352640}
+number of simulating cores \hypertarget{classbug__detector__c_a650c89720f96ea9c79230e7341b88885}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!m\_\-packet\_\-table@{m\_\-packet\_\-table}}
+\index{m\_\-packet\_\-table@{m\_\-packet\_\-table}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{m\_\-packet\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<${\bf mem\_\-req\_\-s}$\ast$, uint64\_\-t$>$$\ast$ {\bf bug\_\-detector\_\-c::m\_\-packet\_\-table}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classbug__detector__c_a650c89720f96ea9c79230e7341b88885}
+memeory requests in noc \hypertarget{classbug__detector__c_a0b23d445e54499579a1126223c119948}{
+\index{bug\_\-detector\_\-c@{bug\_\-detector\_\-c}!m\_\-uop\_\-table@{m\_\-uop\_\-table}}
+\index{m\_\-uop\_\-table@{m\_\-uop\_\-table}!bug_detector_c@{bug\_\-detector\_\-c}}
+\subsubsection[{m\_\-uop\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$map$<${\bf uop\_\-c}$\ast$, uint64\_\-t$>$ $\ast$$>$ {\bf bug\_\-detector\_\-c::m\_\-uop\_\-table}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classbug__detector__c_a0b23d445e54499579a1126223c119948}
+uop table 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+bug\_\-detector.h\item 
+bug\_\-detector.cc\end{DoxyCompactItemize}

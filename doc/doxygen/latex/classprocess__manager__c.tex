@@ -1,0 +1,277 @@
+\hypertarget{classprocess__manager__c}{
+\section{process\_\-manager\_\-c Class Reference}
+\label{classprocess__manager__c}\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}}
+}
+
+
+Process and Thread manager class.  
+
+
+
+
+{\ttfamily \#include $<$process\_\-manager.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprocess__manager__c_acd81384cecb912bd143ec14ef1b74f95}{process\_\-manager\_\-c} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classprocess__manager__c_a9c459d11d9290dc96e40224eb12e51ca}{$\sim$process\_\-manager\_\-c} ()
+\item 
+int \hyperlink{classprocess__manager__c_aae08e9591cbeac5e916852bcd43b5708}{create\_\-process} (string appl)
+\item 
+int \hyperlink{classprocess__manager__c_af9c5bd91b7afdb6c53371b0228fb29b7}{create\_\-process} (string appl, int repeat, int pid)
+\item 
+bool \hyperlink{classprocess__manager__c_a4706b28e0c7b73c49fdc89596bca8308}{terminate\_\-process} (\hyperlink{structprocess__s}{process\_\-s} $\ast$process)
+\item 
+void \hyperlink{classprocess__manager__c_afe1750e1d8e076cd2efb1b62fcde1276}{setup\_\-process} (\hyperlink{structprocess__s}{process\_\-s} $\ast$process)
+\item 
+void \hyperlink{classprocess__manager__c_a27441c6e84b6d582d375a3670b4823df}{create\_\-thread\_\-node} (\hyperlink{structprocess__s}{process\_\-s} $\ast$process, int tid, bool main)
+\item 
+int \hyperlink{classprocess__manager__c_a71be3931ab2a657faf979f0a0fc719a6}{terminate\_\-thread} (int core\_\-id, \hyperlink{structthread__s}{thread\_\-s} $\ast$trace\_\-info, int thread\_\-id, int block\_\-id)
+\item 
+void \hyperlink{classprocess__manager__c_af6aa8eb4d2257fc6e0f6c054e298fad4}{sim\_\-thread\_\-schedule} (void)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classprocess__manager__c_af5b771accff1a1a586eda0fff5d731c4}{sim\_\-schedule\_\-thread\_\-block} (int core\_\-id)
+\item 
+void \hyperlink{classprocess__manager__c_aac295c0fb13eee3ac88eb194f6490d38}{insert\_\-thread} (\hyperlink{structthread__trace__info__node__s}{thread\_\-trace\_\-info\_\-node\_\-s} $\ast$incoming)
+\item 
+void \hyperlink{classprocess__manager__c_a5fa5c35eb19fd242cd6f6f10ff5e5d59}{insert\_\-block} (\hyperlink{structthread__trace__info__node__s}{thread\_\-trace\_\-info\_\-node\_\-s} $\ast$incoming)
+\item 
+\hyperlink{structthread__trace__info__node__s}{thread\_\-trace\_\-info\_\-node\_\-s} $\ast$ \hyperlink{classprocess__manager__c_ade9cab5331bac2126425b1152d3e7163}{fetch\_\-thread} ()
+\item 
+\hyperlink{structthread__trace__info__node__s}{thread\_\-trace\_\-info\_\-node\_\-s} $\ast$ \hyperlink{classprocess__manager__c_a7c24e875698b8dd7da47597a5b2fb2aa}{fetch\_\-block} (int block\_\-id)
+\item 
+\hyperlink{structthread__s}{thread\_\-s} $\ast$ \hyperlink{classprocess__manager__c_ab37b9bf4f76080b5a6adb5e902a761ef}{create\_\-thread} (\hyperlink{structprocess__s}{process\_\-s} $\ast$process, int tid, bool main)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \hyperlink{structthread__trace__info__node__s}{thread\_\-trace\_\-info\_\-node\_\-s} $\ast$ $>$ $\ast$ \hyperlink{classprocess__manager__c_a0fa9dc97ed1a88aadc63b0a82ef24896}{m\_\-thread\_\-queue}
+\item 
+unordered\_\-map$<$ int, list$<$ \hyperlink{structthread__trace__info__node__s}{thread\_\-trace\_\-info\_\-node\_\-s} $\ast$ $>$ $\ast$ $>$ $\ast$ \hyperlink{classprocess__manager__c_a07f5bef183ba3a7f15ed362c562c1137}{m\_\-block\_\-queue}
+\item 
+\hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{classhash__c}{hash\_\-c}$<$ \hyperlink{classinst__info__s}{inst\_\-info\_\-s} $>$ $>$ $\ast$ \hyperlink{classprocess__manager__c_ae5ef36e1434826d79d370c9afcb174bc}{m\_\-inst\_\-hash\_\-pool}
+\item 
+\hypertarget{classprocess__manager__c_a556db8ba188f7831fdae0c7b608cf731}{
+unordered\_\-map$<$ int, Counter $>$ {\bfseries m\_\-appl\_\-cyccount\_\-info}}
+\label{classprocess__manager__c_a556db8ba188f7831fdae0c7b608cf731}
+
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classprocess__manager__c_a6cca65c36ed2b7747dd13857fcce6ee9}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Process and Thread manager class. Schedule processes and threads for the simulation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classprocess__manager__c_acd81384cecb912bd143ec14ef1b74f95}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!process\_\-manager\_\-c@{process\_\-manager\_\-c}}
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{process\_\-manager\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}process\_\-manager\_\-c::process\_\-manager\_\-c (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_acd81384cecb912bd143ec14ef1b74f95}
+Constructor \hypertarget{classprocess__manager__c_a9c459d11d9290dc96e40224eb12e51ca}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!$\sim$process\_\-manager\_\-c@{$\sim$process\_\-manager\_\-c}}
+\index{$\sim$process\_\-manager\_\-c@{$\sim$process\_\-manager\_\-c}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{$\sim$process\_\-manager\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}process\_\-manager\_\-c::$\sim$process\_\-manager\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_a9c459d11d9290dc96e40224eb12e51ca}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classprocess__manager__c_aae08e9591cbeac5e916852bcd43b5708}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!create\_\-process@{create\_\-process}}
+\index{create\_\-process@{create\_\-process}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{create\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}int process\_\-manager\_\-c::create\_\-process (
+\begin{DoxyParamCaption}
+\item[{string}]{ appl}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_aae08e9591cbeac5e916852bcd43b5708}
+Create a new process. 
+\begin{DoxyParams}{Parameters}
+\item[{\em appl}]application path \end{DoxyParams}
+\hypertarget{classprocess__manager__c_af9c5bd91b7afdb6c53371b0228fb29b7}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!create\_\-process@{create\_\-process}}
+\index{create\_\-process@{create\_\-process}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{create\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}int process\_\-manager\_\-c::create\_\-process (
+\begin{DoxyParamCaption}
+\item[{string}]{ appl, }
+\item[{int}]{ repeat, }
+\item[{int}]{ pid}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_af9c5bd91b7afdb6c53371b0228fb29b7}
+Create a new process. 
+\begin{DoxyParams}{Parameters}
+\item[{\em appl}]application path \item[{\em repeat}]whether this process has been re-\/executed. When we run multiple programs workloads, we may need to repeat terminated applications. \item[{\em pid}]original process id \end{DoxyParams}
+
+
+Create a process and setup id and other fields
+
+Get configurations from the file
+
+\hypertarget{classprocess__manager__c_ab37b9bf4f76080b5a6adb5e902a761ef}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!create\_\-thread@{create\_\-thread}}
+\index{create\_\-thread@{create\_\-thread}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{create\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}{\bf thread\_\-s} $\ast$ process\_\-manager\_\-c::create\_\-thread (
+\begin{DoxyParamCaption}
+\item[{{\bf process\_\-s} $\ast$}]{ process, }
+\item[{int}]{ tid, }
+\item[{bool}]{ main}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_ab37b9bf4f76080b5a6adb5e902a761ef}
+Create a new thread. A thread has been created when create\_\-thread\_\-node has been called. However, when a thread is actually scheduled, memory allocation and initialization will be performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em process}]-\/ process \item[{\em tid}]-\/ thread id \item[{\em main}]-\/ indicate main thread (usually thread id 0) \end{DoxyParams}
+\hypertarget{classprocess__manager__c_a27441c6e84b6d582d375a3670b4823df}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!create\_\-thread\_\-node@{create\_\-thread\_\-node}}
+\index{create\_\-thread\_\-node@{create\_\-thread\_\-node}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{create\_\-thread\_\-node}]{\setlength{\rightskip}{0pt plus 5cm}void process\_\-manager\_\-c::create\_\-thread\_\-node (
+\begin{DoxyParamCaption}
+\item[{{\bf process\_\-s} $\ast$}]{ process, }
+\item[{int}]{ tid, }
+\item[{bool}]{ main}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_a27441c6e84b6d582d375a3670b4823df}
+Create a thread node. In scheduler, a node will be inserted or deleted. When a node is scheduled, all memory allocation and other initializations will be performed. 
+\begin{DoxyParams}{Parameters}
+\item[{\em process}]process \item[{\em tid}]thread id \item[{\em main}]When set, indicate master thread (usually thread 0) \end{DoxyParams}
+\hypertarget{classprocess__manager__c_a7c24e875698b8dd7da47597a5b2fb2aa}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!fetch\_\-block@{fetch\_\-block}}
+\index{fetch\_\-block@{fetch\_\-block}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{fetch\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}{\bf thread\_\-trace\_\-info\_\-node\_\-s} $\ast$ process\_\-manager\_\-c::fetch\_\-block (
+\begin{DoxyParamCaption}
+\item[{int}]{ block\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_a7c24e875698b8dd7da47597a5b2fb2aa}
+Fetch a new thread from the block which is in the front of block scheduling queue \hypertarget{classprocess__manager__c_ade9cab5331bac2126425b1152d3e7163}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!fetch\_\-thread@{fetch\_\-thread}}
+\index{fetch\_\-thread@{fetch\_\-thread}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{fetch\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}{\bf thread\_\-trace\_\-info\_\-node\_\-s} $\ast$ process\_\-manager\_\-c::fetch\_\-thread (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_ade9cab5331bac2126425b1152d3e7163}
+Fetch a new thread which is in the front of scheduling queue \hypertarget{classprocess__manager__c_a5fa5c35eb19fd242cd6f6f10ff5e5d59}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!insert\_\-block@{insert\_\-block}}
+\index{insert\_\-block@{insert\_\-block}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{insert\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}void process\_\-manager\_\-c::insert\_\-block (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-trace\_\-info\_\-node\_\-s} $\ast$}]{ incoming}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_a5fa5c35eb19fd242cd6f6f10ff5e5d59}
+Insert a new thread to the block scheduler 
+\begin{DoxyParams}{Parameters}
+\item[{\em incoming}]-\/ a new thread \end{DoxyParams}
+\hypertarget{classprocess__manager__c_aac295c0fb13eee3ac88eb194f6490d38}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!insert\_\-thread@{insert\_\-thread}}
+\index{insert\_\-thread@{insert\_\-thread}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{insert\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}void process\_\-manager\_\-c::insert\_\-thread (
+\begin{DoxyParamCaption}
+\item[{{\bf thread\_\-trace\_\-info\_\-node\_\-s} $\ast$}]{ incoming}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_aac295c0fb13eee3ac88eb194f6490d38}
+Insert a new thread to the scheduler 
+\begin{DoxyParams}{Parameters}
+\item[{\em incoming}]-\/ a new thread \end{DoxyParams}
+\hypertarget{classprocess__manager__c_afe1750e1d8e076cd2efb1b62fcde1276}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!setup\_\-process@{setup\_\-process}}
+\index{setup\_\-process@{setup\_\-process}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{setup\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}void process\_\-manager\_\-c::setup\_\-process (
+\begin{DoxyParamCaption}
+\item[{{\bf process\_\-s} $\ast$}]{ process}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_afe1750e1d8e076cd2efb1b62fcde1276}
+Setup a process (data structure, initialization ..) \hypertarget{classprocess__manager__c_af5b771accff1a1a586eda0fff5d731c4}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!sim\_\-schedule\_\-thread\_\-block@{sim\_\-schedule\_\-thread\_\-block}}
+\index{sim\_\-schedule\_\-thread\_\-block@{sim\_\-schedule\_\-thread\_\-block}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{sim\_\-schedule\_\-thread\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}int process\_\-manager\_\-c::sim\_\-schedule\_\-thread\_\-block (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_af5b771accff1a1a586eda0fff5d731c4}
+GPU simulation : schedule a thread from a block 
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ core to schedule a new thread \end{DoxyParams}
+\hypertarget{classprocess__manager__c_af6aa8eb4d2257fc6e0f6c054e298fad4}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!sim\_\-thread\_\-schedule@{sim\_\-thread\_\-schedule}}
+\index{sim\_\-thread\_\-schedule@{sim\_\-thread\_\-schedule}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{sim\_\-thread\_\-schedule}]{\setlength{\rightskip}{0pt plus 5cm}void process\_\-manager\_\-c::sim\_\-thread\_\-schedule (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_af6aa8eb4d2257fc6e0f6c054e298fad4}
+Schedule a new thread \hypertarget{classprocess__manager__c_a4706b28e0c7b73c49fdc89596bca8308}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!terminate\_\-process@{terminate\_\-process}}
+\index{terminate\_\-process@{terminate\_\-process}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{terminate\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}bool process\_\-manager\_\-c::terminate\_\-process (
+\begin{DoxyParamCaption}
+\item[{{\bf process\_\-s} $\ast$}]{ process}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_a4706b28e0c7b73c49fdc89596bca8308}
+Terminate a process \hypertarget{classprocess__manager__c_a71be3931ab2a657faf979f0a0fc719a6}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!terminate\_\-thread@{terminate\_\-thread}}
+\index{terminate\_\-thread@{terminate\_\-thread}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{terminate\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}int process\_\-manager\_\-c::terminate\_\-thread (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{{\bf thread\_\-s} $\ast$}]{ trace\_\-info, }
+\item[{int}]{ thread\_\-id, }
+\item[{int}]{ block\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classprocess__manager__c_a71be3931ab2a657faf979f0a0fc719a6}
+Terminate a thread 
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ core id \item[{\em trace\_\-info}]-\/ thread trace information \item[{\em thread\_\-id}]-\/ thread id \item[{\em block\_\-id}]-\/ block id \end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classprocess__manager__c_a07f5bef183ba3a7f15ed362c562c1137}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!m\_\-block\_\-queue@{m\_\-block\_\-queue}}
+\index{m\_\-block\_\-queue@{m\_\-block\_\-queue}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{m\_\-block\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<$int, list$<${\bf thread\_\-trace\_\-info\_\-node\_\-s} $\ast$$>$ $\ast$$>$$\ast$ {\bf process\_\-manager\_\-c::m\_\-block\_\-queue}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_a07f5bef183ba3a7f15ed362c562c1137}
+block queue \hypertarget{classprocess__manager__c_ae5ef36e1434826d79d370c9afcb174bc}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!m\_\-inst\_\-hash\_\-pool@{m\_\-inst\_\-hash\_\-pool}}
+\index{m\_\-inst\_\-hash\_\-pool@{m\_\-inst\_\-hash\_\-pool}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{m\_\-inst\_\-hash\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pool\_\-c}$<${\bf hash\_\-c}$<${\bf inst\_\-info\_\-s}$>$ $>$$\ast$ {\bf process\_\-manager\_\-c::m\_\-inst\_\-hash\_\-pool}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_ae5ef36e1434826d79d370c9afcb174bc}
+instruction hash pool \hypertarget{classprocess__manager__c_a6cca65c36ed2b7747dd13857fcce6ee9}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf process\_\-manager\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_a6cca65c36ed2b7747dd13857fcce6ee9}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{classprocess__manager__c_a0fa9dc97ed1a88aadc63b0a82ef24896}{
+\index{process\_\-manager\_\-c@{process\_\-manager\_\-c}!m\_\-thread\_\-queue@{m\_\-thread\_\-queue}}
+\index{m\_\-thread\_\-queue@{m\_\-thread\_\-queue}!process_manager_c@{process\_\-manager\_\-c}}
+\subsubsection[{m\_\-thread\_\-queue}]{\setlength{\rightskip}{0pt plus 5cm}list$<${\bf thread\_\-trace\_\-info\_\-node\_\-s} $\ast$$>$$\ast$ {\bf process\_\-manager\_\-c::m\_\-thread\_\-queue}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classprocess__manager__c_a0fa9dc97ed1a88aadc63b0a82ef24896}
+thread queue 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+process\_\-manager.h\item 
+process\_\-manager.cc\end{DoxyCompactItemize}

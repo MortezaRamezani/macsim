@@ -1,0 +1,226 @@
+\hypertarget{classallocate__c}{
+\section{allocate\_\-c Class Reference}
+\label{classallocate__c}\index{allocate\_\-c@{allocate\_\-c}}
+}
+
+
+Allocation stage.  
+
+
+
+
+{\ttfamily \#include $<$allocate.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classallocate__c_aad0429c55ad2e9189f140647394896fb}{allocate\_\-c} (int core\_\-id, \hyperlink{classpqueue__c}{pqueue\_\-c}$<$ int $\ast$ $>$ $\ast$q\_\-frontend, \hyperlink{classpqueue__c}{pqueue\_\-c}$<$ int $>$ $\ast$$\ast$alloc\_\-q, \hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{classuop__c}{uop\_\-c} $>$ $\ast$uop\_\-pool, \hyperlink{classrob__c}{rob\_\-c} $\ast$rob, Unit\_\-Type unit\_\-type, int num\_\-queues, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\begin{DoxyCompactList}\small\item\em Create a data structures needed for the allocation stage in the pipeline. \item\end{DoxyCompactList}\item 
+\hyperlink{classallocate__c_a4c9c36de958b00180d586f7be7fdfed7}{$\sim$allocate\_\-c} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\item 
+\hypertarget{classallocate__c_abd04c52f9cd71a29223d0131ad630332}{
+void \hyperlink{classallocate__c_abd04c52f9cd71a29223d0131ad630332}{run\_\-a\_\-cycle} ()}
+\label{classallocate__c_abd04c52f9cd71a29223d0131ad630332}
+
+\begin{DoxyCompactList}\small\item\em Function to be called every cycle by the simulator to perform the duties of the allocation stage. \item\end{DoxyCompactList}\item 
+void \hyperlink{classallocate__c_ae76719e2e9fd554161c2a9f1a6fcfc6e}{start} ()
+\begin{DoxyCompactList}\small\item\em Mark allocation as running. \item\end{DoxyCompactList}\item 
+void \hyperlink{classallocate__c_aed83638c974670600a0f2041af928727}{stop} ()
+\begin{DoxyCompactList}\small\item\em Mark allocation as halted. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classallocate__c_ac8f4146d0f3befe3fb4f53e08fd055cc}{is\_\-running} ()
+\begin{DoxyCompactList}\small\item\em Check if allocation stage is running i.e., not halted. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classallocate__c_a15027f8e994b1f1a92ced957c0e0d3a0}{m\_\-core\_\-id}
+\item 
+\hyperlink{classpqueue__c}{pqueue\_\-c}$<$ int $\ast$ $>$ $\ast$ \hyperlink{classallocate__c_aff86488af7f8c8c0b95362604f0bf2dd}{m\_\-frontend\_\-q}
+\item 
+\hyperlink{classpqueue__c}{pqueue\_\-c}$<$ int $>$ $\ast$$\ast$ \hyperlink{classallocate__c_a39e15f51ece384c7db2d3225d57e2d74}{m\_\-alloc\_\-q}
+\item 
+\hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{classuop__c}{uop\_\-c} $>$ $\ast$ \hyperlink{classallocate__c_ae224c68abb9e44d0e49c9733bc40a3c4}{m\_\-uop\_\-pool}
+\item 
+\hyperlink{classrob__c}{rob\_\-c} $\ast$ \hyperlink{classallocate__c_a0fee2d1b2259dc490cc23073818392e6}{m\_\-rob}
+\item 
+Unit\_\-Type \hyperlink{classallocate__c_a12688d33e58ab73cac49bb5cb01b9dbb}{m\_\-unit\_\-type}
+\item 
+uns16 \hyperlink{classallocate__c_ab40f52d71ffb1e048285b43d8c6c7ac7}{m\_\-knob\_\-width}
+\item 
+bool \hyperlink{classallocate__c_a263d672e86ddc35adf16aa139c762210}{m\_\-allocate\_\-running}
+\item 
+Counter \hyperlink{classallocate__c_af3cea72a28891dbd8f73705382225902}{m\_\-cur\_\-core\_\-cycle}
+\item 
+int \hyperlink{classallocate__c_adae0a88e65e155bda9ab14a7d5e31407}{m\_\-num\_\-queues}
+\item 
+\hyperlink{classbp__data__c}{bp\_\-data\_\-c} $\ast$ \hyperlink{classallocate__c_a2565b35de756da5bec94b3a533593097}{m\_\-bp\_\-data}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classallocate__c_ab503a0bd98d849f9904c62951f1574f2}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Allocation stage. Allocate an instruction (uop) in ROB from frontend queue. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classallocate__c_aad0429c55ad2e9189f140647394896fb}{
+\index{allocate\_\-c@{allocate\_\-c}!allocate\_\-c@{allocate\_\-c}}
+\index{allocate\_\-c@{allocate\_\-c}!allocate_c@{allocate\_\-c}}
+\subsubsection[{allocate\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}allocate\_\-c::allocate\_\-c (
+\begin{DoxyParamCaption}
+\item[{int}]{ core\_\-id, }
+\item[{{\bf pqueue\_\-c}$<$ int $\ast$ $>$ $\ast$}]{ q\_\-frontend, }
+\item[{{\bf pqueue\_\-c}$<$ int $>$ $\ast$$\ast$}]{ alloc\_\-q, }
+\item[{{\bf pool\_\-c}$<$ {\bf uop\_\-c} $>$ $\ast$}]{ uop\_\-pool, }
+\item[{{\bf rob\_\-c} $\ast$}]{ rob, }
+\item[{Unit\_\-Type}]{ unit\_\-type, }
+\item[{int}]{ num\_\-queues, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classallocate__c_aad0429c55ad2e9189f140647394896fb}
+
+
+Create a data structures needed for the allocation stage in the pipeline. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em core\_\-id}]-\/ Core identifier number \item[{\em q\_\-frontend}]-\/ Pointer to front end queue \item[{\em alloc\_\-q}]-\/ Pointer to be updated with the allocation stage queue \item[{\em uop\_\-pool}]-\/ Pointer to uop pool \item[{\em rob}]-\/ Pointer to the Reorder buffer \item[{\em unit\_\-type}]-\/ Parameter used to identify knob width \item[{\em num\_\-queues}]-\/ Number of alloc queues \item[{\em simBase}]-\/ Pointer to base simulation class for perf/stat counters \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classallocate__c_a4c9c36de958b00180d586f7be7fdfed7}{
+\index{allocate\_\-c@{allocate\_\-c}!$\sim$allocate\_\-c@{$\sim$allocate\_\-c}}
+\index{$\sim$allocate\_\-c@{$\sim$allocate\_\-c}!allocate_c@{allocate\_\-c}}
+\subsubsection[{$\sim$allocate\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}allocate\_\-c::$\sim$allocate\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classallocate__c_a4c9c36de958b00180d586f7be7fdfed7}
+
+
+Destructor. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classallocate__c_ac8f4146d0f3befe3fb4f53e08fd055cc}{
+\index{allocate\_\-c@{allocate\_\-c}!is\_\-running@{is\_\-running}}
+\index{is\_\-running@{is\_\-running}!allocate_c@{allocate\_\-c}}
+\subsubsection[{is\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}allocate\_\-c::is\_\-running (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classallocate__c_ac8f4146d0f3befe3fb4f53e08fd055cc}
+
+
+Check if allocation stage is running i.e., not halted. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classallocate__c_ae76719e2e9fd554161c2a9f1a6fcfc6e}{
+\index{allocate\_\-c@{allocate\_\-c}!start@{start}}
+\index{start@{start}!allocate_c@{allocate\_\-c}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}allocate\_\-c::start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classallocate__c_ae76719e2e9fd554161c2a9f1a6fcfc6e}
+
+
+Mark allocation as running. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classallocate__c_aed83638c974670600a0f2041af928727}{
+\index{allocate\_\-c@{allocate\_\-c}!stop@{stop}}
+\index{stop@{stop}!allocate_c@{allocate\_\-c}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}allocate\_\-c::stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classallocate__c_aed83638c974670600a0f2041af928727}
+
+
+Mark allocation as halted. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classallocate__c_a39e15f51ece384c7db2d3225d57e2d74}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-alloc\_\-q@{m\_\-alloc\_\-q}}
+\index{m\_\-alloc\_\-q@{m\_\-alloc\_\-q}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-alloc\_\-q}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pqueue\_\-c}$<$int$>$$\ast$$\ast$ {\bf allocate\_\-c::m\_\-alloc\_\-q}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_a39e15f51ece384c7db2d3225d57e2d74}
+allocation queue \hypertarget{classallocate__c_a263d672e86ddc35adf16aa139c762210}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-allocate\_\-running@{m\_\-allocate\_\-running}}
+\index{m\_\-allocate\_\-running@{m\_\-allocate\_\-running}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-allocate\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf allocate\_\-c::m\_\-allocate\_\-running}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_a263d672e86ddc35adf16aa139c762210}
+Enable allocation stage \hypertarget{classallocate__c_a2565b35de756da5bec94b3a533593097}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-bp\_\-data@{m\_\-bp\_\-data}}
+\index{m\_\-bp\_\-data@{m\_\-bp\_\-data}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-bp\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bp\_\-data\_\-c}$\ast$ {\bf allocate\_\-c::m\_\-bp\_\-data}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_a2565b35de756da5bec94b3a533593097}
+branch predictor data structure \hypertarget{classallocate__c_a15027f8e994b1f1a92ced957c0e0d3a0}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-core\_\-id@{m\_\-core\_\-id}}
+\index{m\_\-core\_\-id@{m\_\-core\_\-id}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-core\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf allocate\_\-c::m\_\-core\_\-id}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_a15027f8e994b1f1a92ced957c0e0d3a0}
+core id \hypertarget{classallocate__c_af3cea72a28891dbd8f73705382225902}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-cur\_\-core\_\-cycle@{m\_\-cur\_\-core\_\-cycle}}
+\index{m\_\-cur\_\-core\_\-cycle@{m\_\-cur\_\-core\_\-cycle}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-cur\_\-core\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf allocate\_\-c::m\_\-cur\_\-core\_\-cycle}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_af3cea72a28891dbd8f73705382225902}
+current core cycle \hypertarget{classallocate__c_aff86488af7f8c8c0b95362604f0bf2dd}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-frontend\_\-q@{m\_\-frontend\_\-q}}
+\index{m\_\-frontend\_\-q@{m\_\-frontend\_\-q}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-frontend\_\-q}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pqueue\_\-c}$<$int$\ast$$>$$\ast$ {\bf allocate\_\-c::m\_\-frontend\_\-q}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_aff86488af7f8c8c0b95362604f0bf2dd}
+frontend queue \hypertarget{classallocate__c_ab40f52d71ffb1e048285b43d8c6c7ac7}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-knob\_\-width@{m\_\-knob\_\-width}}
+\index{m\_\-knob\_\-width@{m\_\-knob\_\-width}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-knob\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}uns16 {\bf allocate\_\-c::m\_\-knob\_\-width}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_ab40f52d71ffb1e048285b43d8c6c7ac7}
+width \hypertarget{classallocate__c_adae0a88e65e155bda9ab14a7d5e31407}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-num\_\-queues@{m\_\-num\_\-queues}}
+\index{m\_\-num\_\-queues@{m\_\-num\_\-queues}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-num\_\-queues}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf allocate\_\-c::m\_\-num\_\-queues}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_adae0a88e65e155bda9ab14a7d5e31407}
+number of allocation queue types \hypertarget{classallocate__c_a0fee2d1b2259dc490cc23073818392e6}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-rob@{m\_\-rob}}
+\index{m\_\-rob@{m\_\-rob}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rob\_\-c}$\ast$ {\bf allocate\_\-c::m\_\-rob}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_a0fee2d1b2259dc490cc23073818392e6}
+reorder buffer \hypertarget{classallocate__c_ab503a0bd98d849f9904c62951f1574f2}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf allocate\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_ab503a0bd98d849f9904c62951f1574f2}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{classallocate__c_a12688d33e58ab73cac49bb5cb01b9dbb}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-unit\_\-type@{m\_\-unit\_\-type}}
+\index{m\_\-unit\_\-type@{m\_\-unit\_\-type}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-unit\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}Unit\_\-Type {\bf allocate\_\-c::m\_\-unit\_\-type}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_a12688d33e58ab73cac49bb5cb01b9dbb}
+core type \hypertarget{classallocate__c_ae224c68abb9e44d0e49c9733bc40a3c4}{
+\index{allocate\_\-c@{allocate\_\-c}!m\_\-uop\_\-pool@{m\_\-uop\_\-pool}}
+\index{m\_\-uop\_\-pool@{m\_\-uop\_\-pool}!allocate_c@{allocate\_\-c}}
+\subsubsection[{m\_\-uop\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pool\_\-c}$<${\bf uop\_\-c}$>$$\ast$ {\bf allocate\_\-c::m\_\-uop\_\-pool}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classallocate__c_ae224c68abb9e44d0e49c9733bc40a3c4}
+uop pool 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+allocate.h\item 
+allocate.cc\end{DoxyCompactItemize}

@@ -1,0 +1,586 @@
+\hypertarget{classrob__c}{
+\section{rob\_\-c Class Reference}
+\label{classrob__c}\index{rob\_\-c@{rob\_\-c}}
+}
+
+
+ROB (Reorder Buffer) class.  
+
+
+
+
+{\ttfamily \#include $<$rob.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrob__c_ac1fb29aba19dda5309209484c680cb21}{
+{\bfseries rob\_\-c} (Unit\_\-Type type, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)}
+\label{classrob__c_ac1fb29aba19dda5309209484c680cb21}
+
+\item 
+\hyperlink{classrob__c_a8234eee835493946b51d12f6203b1f45}{$\sim$rob\_\-c} ()
+\begin{DoxyCompactList}\small\item\em Reorder Buffer data structure destructor. \item\end{DoxyCompactList}\item 
+void \hyperlink{classrob__c_a86f6d806468ba6fd74ed1eb39dbd5d2e}{push} (\hyperlink{classuop__c}{uop\_\-c} $\ast$s)
+\begin{DoxyCompactList}\small\item\em Function to push an arguement into the ROB. \item\end{DoxyCompactList}\item 
+void \hyperlink{classrob__c_abc83fd479320491b7d5eab296c0ef2fa}{pop} ()
+\begin{DoxyCompactList}\small\item\em Function to pop an arguement off the ROB. \item\end{DoxyCompactList}\item 
+void \hyperlink{classrob__c_a0a92a8da241c352e7379815f12d06f88}{reinit} ()
+\begin{DoxyCompactList}\small\item\em Function to re-\/nitialize the ROB. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_ab9743ad1eb89efdf33aec7735da5449c}{entries} ()
+\begin{DoxyCompactList}\small\item\em Function to return current entry count of the ROB. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_aeded9cab23c8972afe7d1105bd0c83c2}{space} ()
+\begin{DoxyCompactList}\small\item\em Function to return the free space count of the ROB. \item\end{DoxyCompactList}\item 
+\hyperlink{classuop__c}{uop\_\-c} $\ast$\& \hyperlink{classrob__c_a297700fa1105dbd9f118c2de4fa01143}{operator\mbox{[}$\,$\mbox{]}} (int index)
+\begin{DoxyCompactList}\small\item\em Function to overload \char`\"{}\mbox{[}$\,$\mbox{]}\char`\"{} for indexing into the ROB. \item\end{DoxyCompactList}\item 
+\hyperlink{classuop__c}{uop\_\-c} $\ast$ \hyperlink{classrob__c_ae5de4ac5001c37b7319f65719a3696f4}{back} ()
+\begin{DoxyCompactList}\small\item\em Function to return the last entry in the ROB. \item\end{DoxyCompactList}\item 
+\hyperlink{classuop__c}{uop\_\-c} $\ast$ \hyperlink{classrob__c_a29054a5cce081ec28010c3297969d136}{front} ()
+\begin{DoxyCompactList}\small\item\em Function to return the first entry in the ROB. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_a82dad6afef399c54579d9eb56598f0de}{front\_\-rob} ()
+\begin{DoxyCompactList}\small\item\em Function to return the index of first ROB entry. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_a300a5778d8dd844dc2bdcc8d259d083a}{last\_\-rob} ()
+\begin{DoxyCompactList}\small\item\em Function to return the index of last ROB entry. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_a1c1c52d3db2c7e5b62ba95d174b58b62}{inc\_\-index} (int index)
+\begin{DoxyCompactList}\small\item\em Function to increment index based on ROB size. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_aac2eed61e8bbc2d092f8b5774df27fee}{dec\_\-index} (int index)
+\begin{DoxyCompactList}\small\item\em Function to decrement index based on ROB size. \item\end{DoxyCompactList}\item 
+void \hyperlink{classrob__c_a5706f098aeab44bdd4d2750510736d18}{alloc\_\-sb} ()
+\begin{DoxyCompactList}\small\item\em Function to allocate store buffers. \item\end{DoxyCompactList}\item 
+void \hyperlink{classrob__c_a9e19d3889e238d066975ae5e132e7095}{dealloc\_\-sb} ()
+\begin{DoxyCompactList}\small\item\em Function to deallocate store buffers. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_a702620e2e0eab026934c93be7cd2866b}{get\_\-num\_\-sb} ()
+\begin{DoxyCompactList}\small\item\em Function to return count of store buffers. \item\end{DoxyCompactList}\item 
+void \hyperlink{classrob__c_a5476feb6ef4144dc29b5587bd81837f6}{alloc\_\-lb} ()
+\begin{DoxyCompactList}\small\item\em Function allocate load buffer. \item\end{DoxyCompactList}\item 
+void \hyperlink{classrob__c_a7ec1350c0aac21be18c01f58e6853b08}{dealloc\_\-lb} ()
+\begin{DoxyCompactList}\small\item\em Function deallocate load buffer. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_a9326e6abb6453e1d59281998521904e7}{get\_\-num\_\-lb} ()
+\begin{DoxyCompactList}\small\item\em Function to return load buffer count. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_aefac652816d0579d6b58d5599bb2d9c4}{get\_\-num\_\-int\_\-regs} ()
+\begin{DoxyCompactList}\small\item\em Function to return count of integer registers. \item\end{DoxyCompactList}\item 
+int \hyperlink{classrob__c_a707968aef75347917fc33c2bec6a9886}{get\_\-num\_\-fp\_\-regs} ()
+\begin{DoxyCompactList}\small\item\em Function to return count of floating point registers. \item\end{DoxyCompactList}\item 
+void \hyperlink{classrob__c_abb0011ac607de4c93e2f775e7a2419db}{alloc\_\-int\_\-reg} ()
+\item 
+void \hyperlink{classrob__c_aaf4a632b7a8ad3d1a0cf084d6dc482f4}{alloc\_\-fp\_\-reg} ()
+\item 
+void \hyperlink{classrob__c_af6e5906b601a1b384c6dd268a2d9be2d}{dealloc\_\-int\_\-reg} ()
+\item 
+void \hyperlink{classrob__c_ac65c7fbbea7a35244f75b54303bd4c5d}{dealloc\_\-fp\_\-reg} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classrob__c_ab233034fffb30c0bbffc402e74cbd3b3}{m\_\-max\_\-cnt}
+\item 
+int \hyperlink{classrob__c_a01a33ab695e5fdcec8c271d7f7a9758b}{m\_\-usable\_\-cnt}
+\item 
+int \hyperlink{classrob__c_a80da438135b0e6e3d0c81e105fe34e8e}{m\_\-free\_\-cnt}
+\item 
+\hyperlink{classuop__c}{uop\_\-c} $\ast$$\ast$ \hyperlink{classrob__c_a91eb948dd7fad415fa924e077e2e507a}{m\_\-rob}
+\item 
+int \hyperlink{classrob__c_a941fb62da6f46460bec3f738fda59aab}{m\_\-first\_\-entry}
+\item 
+int \hyperlink{classrob__c_a7420d155265448b2d0fcbbcae5293c05}{m\_\-last\_\-entry}
+\item 
+int \hyperlink{classrob__c_a7026c11d9809e91c2d9455015e8818b4}{m\_\-max\_\-sb\_\-cnt}
+\item 
+int \hyperlink{classrob__c_acef1013b52096eaf28dff1108533590a}{m\_\-num\_\-sb}
+\item 
+int \hyperlink{classrob__c_aed06018aced1ac1285e9b6e07a7ec25e}{m\_\-max\_\-lb\_\-cnt}
+\item 
+int \hyperlink{classrob__c_af164e55237aee6fd38c06baf8e4079c5}{m\_\-num\_\-lb}
+\item 
+int \hyperlink{classrob__c_ae9c171e9959ffc16154f278555ba72df}{m\_\-max\_\-int\_\-regs}
+\item 
+int \hyperlink{classrob__c_a5ca3ef95e9d8ba4bc517c6ecbb3a628a}{m\_\-num\_\-int\_\-regs}
+\item 
+int \hyperlink{classrob__c_a99349607046f231290135c44f6e466af}{m\_\-max\_\-fp\_\-regs}
+\item 
+int \hyperlink{classrob__c_a0fd2dd4e3783114c2d2d5fad5c40d480}{m\_\-num\_\-fp\_\-regs}
+\item 
+Unit\_\-Type \hyperlink{classrob__c_ac7c7d51958a975d0c6e19abab9c758ed}{m\_\-unit\_\-type}
+\item 
+uns16 \hyperlink{classrob__c_a9fac795612c146812ae2e8f3a5904e25}{m\_\-knob\_\-rob\_\-size}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classrob__c_add617f927c196857b7bdd71e2cf11e75}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+ROB (Reorder Buffer) class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classrob__c_a8234eee835493946b51d12f6203b1f45}{
+\index{rob\_\-c@{rob\_\-c}!$\sim$rob\_\-c@{$\sim$rob\_\-c}}
+\index{$\sim$rob\_\-c@{$\sim$rob\_\-c}!rob_c@{rob\_\-c}}
+\subsubsection[{$\sim$rob\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::$\sim$rob\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classrob__c_a8234eee835493946b51d12f6203b1f45}
+
+
+Reorder Buffer data structure destructor. 
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classrob__c_aaf4a632b7a8ad3d1a0cf084d6dc482f4}{
+\index{rob\_\-c@{rob\_\-c}!alloc\_\-fp\_\-reg@{alloc\_\-fp\_\-reg}}
+\index{alloc\_\-fp\_\-reg@{alloc\_\-fp\_\-reg}!rob_c@{rob\_\-c}}
+\subsubsection[{alloc\_\-fp\_\-reg}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::alloc\_\-fp\_\-reg (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classrob__c_aaf4a632b7a8ad3d1a0cf084d6dc482f4}
+Allocate a fp register \hypertarget{classrob__c_abb0011ac607de4c93e2f775e7a2419db}{
+\index{rob\_\-c@{rob\_\-c}!alloc\_\-int\_\-reg@{alloc\_\-int\_\-reg}}
+\index{alloc\_\-int\_\-reg@{alloc\_\-int\_\-reg}!rob_c@{rob\_\-c}}
+\subsubsection[{alloc\_\-int\_\-reg}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::alloc\_\-int\_\-reg (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classrob__c_abb0011ac607de4c93e2f775e7a2419db}
+Allocate a integer register \hypertarget{classrob__c_a5476feb6ef4144dc29b5587bd81837f6}{
+\index{rob\_\-c@{rob\_\-c}!alloc\_\-lb@{alloc\_\-lb}}
+\index{alloc\_\-lb@{alloc\_\-lb}!rob_c@{rob\_\-c}}
+\subsubsection[{alloc\_\-lb}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::alloc\_\-lb (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a5476feb6ef4144dc29b5587bd81837f6}
+
+
+Function allocate load buffer. 
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a5706f098aeab44bdd4d2750510736d18}{
+\index{rob\_\-c@{rob\_\-c}!alloc\_\-sb@{alloc\_\-sb}}
+\index{alloc\_\-sb@{alloc\_\-sb}!rob_c@{rob\_\-c}}
+\subsubsection[{alloc\_\-sb}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::alloc\_\-sb (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a5706f098aeab44bdd4d2750510736d18}
+
+
+Function to allocate store buffers. 
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_ae5de4ac5001c37b7319f65719a3696f4}{
+\index{rob\_\-c@{rob\_\-c}!back@{back}}
+\index{back@{back}!rob_c@{rob\_\-c}}
+\subsubsection[{back}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uop\_\-c} $\ast$ rob\_\-c::back (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_ae5de4ac5001c37b7319f65719a3696f4}
+
+
+Function to return the last entry in the ROB. 
+
+\begin{DoxyReturn}{Returns}
+uop\_\-c$\ast$ Last Uop in ROB. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_ac65c7fbbea7a35244f75b54303bd4c5d}{
+\index{rob\_\-c@{rob\_\-c}!dealloc\_\-fp\_\-reg@{dealloc\_\-fp\_\-reg}}
+\index{dealloc\_\-fp\_\-reg@{dealloc\_\-fp\_\-reg}!rob_c@{rob\_\-c}}
+\subsubsection[{dealloc\_\-fp\_\-reg}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::dealloc\_\-fp\_\-reg (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classrob__c_ac65c7fbbea7a35244f75b54303bd4c5d}
+Deallocate fp register \hypertarget{classrob__c_af6e5906b601a1b384c6dd268a2d9be2d}{
+\index{rob\_\-c@{rob\_\-c}!dealloc\_\-int\_\-reg@{dealloc\_\-int\_\-reg}}
+\index{dealloc\_\-int\_\-reg@{dealloc\_\-int\_\-reg}!rob_c@{rob\_\-c}}
+\subsubsection[{dealloc\_\-int\_\-reg}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::dealloc\_\-int\_\-reg (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classrob__c_af6e5906b601a1b384c6dd268a2d9be2d}
+Deallocate integer register \hypertarget{classrob__c_a7ec1350c0aac21be18c01f58e6853b08}{
+\index{rob\_\-c@{rob\_\-c}!dealloc\_\-lb@{dealloc\_\-lb}}
+\index{dealloc\_\-lb@{dealloc\_\-lb}!rob_c@{rob\_\-c}}
+\subsubsection[{dealloc\_\-lb}]{\setlength{\rightskip}{0pt plus 5cm}rob\_\-c::dealloc\_\-lb (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a7ec1350c0aac21be18c01f58e6853b08}
+
+
+Function deallocate load buffer. 
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a9e19d3889e238d066975ae5e132e7095}{
+\index{rob\_\-c@{rob\_\-c}!dealloc\_\-sb@{dealloc\_\-sb}}
+\index{dealloc\_\-sb@{dealloc\_\-sb}!rob_c@{rob\_\-c}}
+\subsubsection[{dealloc\_\-sb}]{\setlength{\rightskip}{0pt plus 5cm}rob\_\-c::dealloc\_\-sb (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a9e19d3889e238d066975ae5e132e7095}
+
+
+Function to deallocate store buffers. 
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_aac2eed61e8bbc2d092f8b5774df27fee}{
+\index{rob\_\-c@{rob\_\-c}!dec\_\-index@{dec\_\-index}}
+\index{dec\_\-index@{dec\_\-index}!rob_c@{rob\_\-c}}
+\subsubsection[{dec\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int rob\_\-c::dec\_\-index (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_aac2eed61e8bbc2d092f8b5774df27fee}
+
+
+Function to decrement index based on ROB size. 
+
+\begin{DoxyReturn}{Returns}
+int Decremented index. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_ab9743ad1eb89efdf33aec7735da5449c}{
+\index{rob\_\-c@{rob\_\-c}!entries@{entries}}
+\index{entries@{entries}!rob_c@{rob\_\-c}}
+\subsubsection[{entries}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::entries (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_ab9743ad1eb89efdf33aec7735da5449c}
+
+
+Function to return current entry count of the ROB. 
+
+\begin{DoxyReturn}{Returns}
+int Entry count for the ROB. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a29054a5cce081ec28010c3297969d136}{
+\index{rob\_\-c@{rob\_\-c}!front@{front}}
+\index{front@{front}!rob_c@{rob\_\-c}}
+\subsubsection[{front}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uop\_\-c} $\ast$ rob\_\-c::front (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a29054a5cce081ec28010c3297969d136}
+
+
+Function to return the first entry in the ROB. 
+
+\begin{DoxyReturn}{Returns}
+First Uop in ROB. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a82dad6afef399c54579d9eb56598f0de}{
+\index{rob\_\-c@{rob\_\-c}!front\_\-rob@{front\_\-rob}}
+\index{front\_\-rob@{front\_\-rob}!rob_c@{rob\_\-c}}
+\subsubsection[{front\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}int rob\_\-c::front\_\-rob (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a82dad6afef399c54579d9eb56598f0de}
+
+
+Function to return the index of first ROB entry. 
+
+\begin{DoxyReturn}{Returns}
+int Index of first entry. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a707968aef75347917fc33c2bec6a9886}{
+\index{rob\_\-c@{rob\_\-c}!get\_\-num\_\-fp\_\-regs@{get\_\-num\_\-fp\_\-regs}}
+\index{get\_\-num\_\-fp\_\-regs@{get\_\-num\_\-fp\_\-regs}!rob_c@{rob\_\-c}}
+\subsubsection[{get\_\-num\_\-fp\_\-regs}]{\setlength{\rightskip}{0pt plus 5cm}rob\_\-c::get\_\-num\_\-fp\_\-regs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a707968aef75347917fc33c2bec6a9886}
+
+
+Function to return count of floating point registers. 
+
+\begin{DoxyReturn}{Returns}
+int Floating point register count. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_aefac652816d0579d6b58d5599bb2d9c4}{
+\index{rob\_\-c@{rob\_\-c}!get\_\-num\_\-int\_\-regs@{get\_\-num\_\-int\_\-regs}}
+\index{get\_\-num\_\-int\_\-regs@{get\_\-num\_\-int\_\-regs}!rob_c@{rob\_\-c}}
+\subsubsection[{get\_\-num\_\-int\_\-regs}]{\setlength{\rightskip}{0pt plus 5cm}rob\_\-c::get\_\-num\_\-int\_\-regs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_aefac652816d0579d6b58d5599bb2d9c4}
+
+
+Function to return count of integer registers. 
+
+\begin{DoxyReturn}{Returns}
+int Integer register count. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a9326e6abb6453e1d59281998521904e7}{
+\index{rob\_\-c@{rob\_\-c}!get\_\-num\_\-lb@{get\_\-num\_\-lb}}
+\index{get\_\-num\_\-lb@{get\_\-num\_\-lb}!rob_c@{rob\_\-c}}
+\subsubsection[{get\_\-num\_\-lb}]{\setlength{\rightskip}{0pt plus 5cm}int rob\_\-c::get\_\-num\_\-lb (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a9326e6abb6453e1d59281998521904e7}
+
+
+Function to return load buffer count. 
+
+\begin{DoxyReturn}{Returns}
+int Load buffer count. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a702620e2e0eab026934c93be7cd2866b}{
+\index{rob\_\-c@{rob\_\-c}!get\_\-num\_\-sb@{get\_\-num\_\-sb}}
+\index{get\_\-num\_\-sb@{get\_\-num\_\-sb}!rob_c@{rob\_\-c}}
+\subsubsection[{get\_\-num\_\-sb}]{\setlength{\rightskip}{0pt plus 5cm}int rob\_\-c::get\_\-num\_\-sb (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a702620e2e0eab026934c93be7cd2866b}
+
+
+Function to return count of store buffers. 
+
+\begin{DoxyReturn}{Returns}
+int Storage buffer count. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a1c1c52d3db2c7e5b62ba95d174b58b62}{
+\index{rob\_\-c@{rob\_\-c}!inc\_\-index@{inc\_\-index}}
+\index{inc\_\-index@{inc\_\-index}!rob_c@{rob\_\-c}}
+\subsubsection[{inc\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int rob\_\-c::inc\_\-index (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a1c1c52d3db2c7e5b62ba95d174b58b62}
+
+
+Function to increment index based on ROB size. 
+
+\begin{DoxyReturn}{Returns}
+int Incremented index. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a300a5778d8dd844dc2bdcc8d259d083a}{
+\index{rob\_\-c@{rob\_\-c}!last\_\-rob@{last\_\-rob}}
+\index{last\_\-rob@{last\_\-rob}!rob_c@{rob\_\-c}}
+\subsubsection[{last\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}int rob\_\-c::last\_\-rob (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a300a5778d8dd844dc2bdcc8d259d083a}
+
+
+Function to return the index of last ROB entry. 
+
+\begin{DoxyReturn}{Returns}
+int Index of last entry. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a297700fa1105dbd9f118c2de4fa01143}{
+\index{rob\_\-c@{rob\_\-c}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!rob_c@{rob\_\-c}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uop\_\-c} $\ast$\& rob\_\-c::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_a297700fa1105dbd9f118c2de4fa01143}
+
+
+Function to overload \char`\"{}\mbox{[}$\,$\mbox{]}\char`\"{} for indexing into the ROB. 
+
+\begin{DoxyReturn}{Returns}
+uop\_\-c$\ast$ Entry at the index in ROB. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_abc83fd479320491b7d5eab296c0ef2fa}{
+\index{rob\_\-c@{rob\_\-c}!pop@{pop}}
+\index{pop@{pop}!rob_c@{rob\_\-c}}
+\subsubsection[{pop}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::pop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classrob__c_abc83fd479320491b7d5eab296c0ef2fa}
+
+
+Function to pop an arguement off the ROB. 
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a86f6d806468ba6fd74ed1eb39dbd5d2e}{
+\index{rob\_\-c@{rob\_\-c}!push@{push}}
+\index{push@{push}!rob_c@{rob\_\-c}}
+\subsubsection[{push}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::push (
+\begin{DoxyParamCaption}
+\item[{{\bf uop\_\-c} $\ast$}]{ s}
+\end{DoxyParamCaption}
+)}}
+\label{classrob__c_a86f6d806468ba6fd74ed1eb39dbd5d2e}
+
+
+Function to push an arguement into the ROB. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em s}]-\/ Uop to be pushed \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_a0a92a8da241c352e7379815f12d06f88}{
+\index{rob\_\-c@{rob\_\-c}!reinit@{reinit}}
+\index{reinit@{reinit}!rob_c@{rob\_\-c}}
+\subsubsection[{reinit}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::reinit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classrob__c_a0a92a8da241c352e7379815f12d06f88}
+
+
+Function to re-\/nitialize the ROB. 
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classrob__c_aeded9cab23c8972afe7d1105bd0c83c2}{
+\index{rob\_\-c@{rob\_\-c}!space@{space}}
+\index{space@{space}!rob_c@{rob\_\-c}}
+\subsubsection[{space}]{\setlength{\rightskip}{0pt plus 5cm}void rob\_\-c::space (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classrob__c_aeded9cab23c8972afe7d1105bd0c83c2}
+
+
+Function to return the free space count of the ROB. 
+
+\begin{DoxyReturn}{Returns}
+int free space in the ROB. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrob__c_a941fb62da6f46460bec3f738fda59aab}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-first\_\-entry@{m\_\-first\_\-entry}}
+\index{m\_\-first\_\-entry@{m\_\-first\_\-entry}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-first\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-first\_\-entry}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a941fb62da6f46460bec3f738fda59aab}
+to maintain circular rob \hypertarget{classrob__c_a80da438135b0e6e3d0c81e105fe34e8e}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-free\_\-cnt@{m\_\-free\_\-cnt}}
+\index{m\_\-free\_\-cnt@{m\_\-free\_\-cnt}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-free\_\-cnt}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-free\_\-cnt}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a80da438135b0e6e3d0c81e105fe34e8e}
+free rob entries \hypertarget{classrob__c_a9fac795612c146812ae2e8f3a5904e25}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-knob\_\-rob\_\-size@{m\_\-knob\_\-rob\_\-size}}
+\index{m\_\-knob\_\-rob\_\-size@{m\_\-knob\_\-rob\_\-size}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-knob\_\-rob\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}uns16 {\bf rob\_\-c::m\_\-knob\_\-rob\_\-size}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a9fac795612c146812ae2e8f3a5904e25}
+reorder buffer size \hypertarget{classrob__c_a7420d155265448b2d0fcbbcae5293c05}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-last\_\-entry@{m\_\-last\_\-entry}}
+\index{m\_\-last\_\-entry@{m\_\-last\_\-entry}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-last\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-last\_\-entry}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a7420d155265448b2d0fcbbcae5293c05}
+to maintain circular rob \hypertarget{classrob__c_ab233034fffb30c0bbffc402e74cbd3b3}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-max\_\-cnt@{m\_\-max\_\-cnt}}
+\index{m\_\-max\_\-cnt@{m\_\-max\_\-cnt}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-max\_\-cnt}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-max\_\-cnt}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_ab233034fffb30c0bbffc402e74cbd3b3}
+max rob entries \hypertarget{classrob__c_a99349607046f231290135c44f6e466af}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-max\_\-fp\_\-regs@{m\_\-max\_\-fp\_\-regs}}
+\index{m\_\-max\_\-fp\_\-regs@{m\_\-max\_\-fp\_\-regs}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-max\_\-fp\_\-regs}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-max\_\-fp\_\-regs}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a99349607046f231290135c44f6e466af}
+max fp register \hypertarget{classrob__c_ae9c171e9959ffc16154f278555ba72df}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-max\_\-int\_\-regs@{m\_\-max\_\-int\_\-regs}}
+\index{m\_\-max\_\-int\_\-regs@{m\_\-max\_\-int\_\-regs}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-max\_\-int\_\-regs}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-max\_\-int\_\-regs}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_ae9c171e9959ffc16154f278555ba72df}
+max integer register \hypertarget{classrob__c_aed06018aced1ac1285e9b6e07a7ec25e}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-max\_\-lb\_\-cnt@{m\_\-max\_\-lb\_\-cnt}}
+\index{m\_\-max\_\-lb\_\-cnt@{m\_\-max\_\-lb\_\-cnt}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-max\_\-lb\_\-cnt}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-max\_\-lb\_\-cnt}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_aed06018aced1ac1285e9b6e07a7ec25e}
+max load buffer size \hypertarget{classrob__c_a7026c11d9809e91c2d9455015e8818b4}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-max\_\-sb\_\-cnt@{m\_\-max\_\-sb\_\-cnt}}
+\index{m\_\-max\_\-sb\_\-cnt@{m\_\-max\_\-sb\_\-cnt}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-max\_\-sb\_\-cnt}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-max\_\-sb\_\-cnt}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a7026c11d9809e91c2d9455015e8818b4}
+max store buffer size \hypertarget{classrob__c_a0fd2dd4e3783114c2d2d5fad5c40d480}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-num\_\-fp\_\-regs@{m\_\-num\_\-fp\_\-regs}}
+\index{m\_\-num\_\-fp\_\-regs@{m\_\-num\_\-fp\_\-regs}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-num\_\-fp\_\-regs}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-num\_\-fp\_\-regs}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a0fd2dd4e3783114c2d2d5fad5c40d480}
+number of available fp register \hypertarget{classrob__c_a5ca3ef95e9d8ba4bc517c6ecbb3a628a}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-num\_\-int\_\-regs@{m\_\-num\_\-int\_\-regs}}
+\index{m\_\-num\_\-int\_\-regs@{m\_\-num\_\-int\_\-regs}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-num\_\-int\_\-regs}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-num\_\-int\_\-regs}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a5ca3ef95e9d8ba4bc517c6ecbb3a628a}
+number of available int register \hypertarget{classrob__c_af164e55237aee6fd38c06baf8e4079c5}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-num\_\-lb@{m\_\-num\_\-lb}}
+\index{m\_\-num\_\-lb@{m\_\-num\_\-lb}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-num\_\-lb}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-num\_\-lb}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_af164e55237aee6fd38c06baf8e4079c5}
+number of available load buffer \hypertarget{classrob__c_acef1013b52096eaf28dff1108533590a}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-num\_\-sb@{m\_\-num\_\-sb}}
+\index{m\_\-num\_\-sb@{m\_\-num\_\-sb}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-num\_\-sb}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-num\_\-sb}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_acef1013b52096eaf28dff1108533590a}
+number of available store buffer \hypertarget{classrob__c_a91eb948dd7fad415fa924e077e2e507a}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-rob@{m\_\-rob}}
+\index{m\_\-rob@{m\_\-rob}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uop\_\-c}$\ast$$\ast$ {\bf rob\_\-c::m\_\-rob}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a91eb948dd7fad415fa924e077e2e507a}
+rob \hypertarget{classrob__c_add617f927c196857b7bdd71e2cf11e75}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf rob\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_add617f927c196857b7bdd71e2cf11e75}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{classrob__c_ac7c7d51958a975d0c6e19abab9c758ed}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-unit\_\-type@{m\_\-unit\_\-type}}
+\index{m\_\-unit\_\-type@{m\_\-unit\_\-type}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-unit\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}Unit\_\-Type {\bf rob\_\-c::m\_\-unit\_\-type}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_ac7c7d51958a975d0c6e19abab9c758ed}
+core type \hypertarget{classrob__c_a01a33ab695e5fdcec8c271d7f7a9758b}{
+\index{rob\_\-c@{rob\_\-c}!m\_\-usable\_\-cnt@{m\_\-usable\_\-cnt}}
+\index{m\_\-usable\_\-cnt@{m\_\-usable\_\-cnt}!rob_c@{rob\_\-c}}
+\subsubsection[{m\_\-usable\_\-cnt}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf rob\_\-c::m\_\-usable\_\-cnt}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrob__c_a01a33ab695e5fdcec8c271d7f7a9758b}
+usable rob entries 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+rob.h\item 
+rob.cc\end{DoxyCompactItemize}

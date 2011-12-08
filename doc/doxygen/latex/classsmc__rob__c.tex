@@ -1,0 +1,240 @@
+\hypertarget{classsmc__rob__c}{
+\section{smc\_\-rob\_\-c Class Reference}
+\label{classsmc__rob__c}\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}}
+}
+
+
+Reorder buffer class for GPU simulation.  
+
+
+
+
+{\ttfamily \#include $<$rob\_\-smc.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classsmc__rob__c_a3491baac52db612930e0932193fb061b}{smc\_\-rob\_\-c} (Unit\_\-Type type, int core\_\-id, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\begin{DoxyCompactList}\small\item\em Create a Reorder Buffer data structure. \item\end{DoxyCompactList}\item 
+\hyperlink{classsmc__rob__c_a423a152e2dbf5b69a199832581f492e5}{$\sim$smc\_\-rob\_\-c} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \item\end{DoxyCompactList}\item 
+\hyperlink{classrob__c}{rob\_\-c} $\ast$ \hyperlink{classsmc__rob__c_afe3b3b1d744c1b9571c6fcdb0b844b93}{get\_\-thread\_\-rob} (int thread\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to return the corresponding ROB for the thread id. \item\end{DoxyCompactList}\item 
+int \hyperlink{classsmc__rob__c_a53cf88f8da3879fe5f519d31d360a96e}{get\_\-thread\_\-rob\_\-id} (int thread\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to return the corresponding ROB index for the thread id. \item\end{DoxyCompactList}\item 
+int \hyperlink{classsmc__rob__c_a48f8f093a1af607e9c3860804d4fd3f7}{reserve\_\-rob} (int thread\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to return the index of the ROB reserved. \item\end{DoxyCompactList}\item 
+void \hyperlink{classsmc__rob__c_a16f7c053a3b618b6128ce079ea9636f0}{free\_\-rob} (int thread\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to free the ROB entry for the thread passed as parameter. \item\end{DoxyCompactList}\item 
+vector$<$ \hyperlink{classuop__c}{uop\_\-c} $\ast$ $>$ $\ast$ \hyperlink{classsmc__rob__c_af76140ffac1f9cbb9de32f7e50618d14}{get\_\-n\_\-uops\_\-in\_\-ready\_\-order} (int n, Counter cur\_\-core\_\-cycle)
+\begin{DoxyCompactList}\small\item\em Function to find the n most deserving uops to be retired. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classsmc__rob__c_a3fe15387db97e2865368976780a54db3}{m\_\-knob\_\-num\_\-threads}
+\item 
+\hyperlink{classrob__c}{rob\_\-c} $\ast$$\ast$ \hyperlink{classsmc__rob__c_a158a1f5f7421d05352318865b37e92bc}{m\_\-thread\_\-robs}
+\item 
+list$<$ int $>$ \hyperlink{classsmc__rob__c_a9db8c324e0133f306a0401ad53a52997}{m\_\-free\_\-list}
+\item 
+vector$<$ \hyperlink{classuop__c}{uop\_\-c} $\ast$ $>$ \hyperlink{classsmc__rob__c_a27d28e046bd5d8fbc76fefb6ad406423}{m\_\-uop\_\-list}
+\item 
+int \hyperlink{classsmc__rob__c_aad4bb4dd7c9e789a7f5d4d035f072649}{m\_\-core\_\-id}
+\item 
+Unit\_\-Type \hyperlink{classsmc__rob__c_a5b6e2bf88b64d1f769654120cd9d1f36}{m\_\-unit\_\-type}
+\item 
+unordered\_\-map$<$ int, int $>$ \hyperlink{classsmc__rob__c_a56ba9b44e042ed8f7cb752c1780ddf2e}{m\_\-thread\_\-to\_\-rob\_\-map}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classsmc__rob__c_a8f735f49a88a96ae31045a882dff660d}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Reorder buffer class for GPU simulation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classsmc__rob__c_a3491baac52db612930e0932193fb061b}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!smc\_\-rob\_\-c@{smc\_\-rob\_\-c}}
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{smc\_\-rob\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}smc\_\-rob\_\-c::smc\_\-rob\_\-c (
+\begin{DoxyParamCaption}
+\item[{Unit\_\-Type}]{ type, }
+\item[{int}]{ core\_\-id, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__rob__c_a3491baac52db612930e0932193fb061b}
+
+
+Create a Reorder Buffer data structure. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em type}]-\/ Core type indicator \item[{\em core\_\-id}]-\/ core id \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classsmc__rob__c_a423a152e2dbf5b69a199832581f492e5}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!$\sim$smc\_\-rob\_\-c@{$\sim$smc\_\-rob\_\-c}}
+\index{$\sim$smc\_\-rob\_\-c@{$\sim$smc\_\-rob\_\-c}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{$\sim$smc\_\-rob\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}void smc\_\-rob\_\-c::$\sim$smc\_\-rob\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__rob__c_a423a152e2dbf5b69a199832581f492e5}
+
+
+Destructor. 
+
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classsmc__rob__c_a16f7c053a3b618b6128ce079ea9636f0}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!free\_\-rob@{free\_\-rob}}
+\index{free\_\-rob@{free\_\-rob}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{free\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}void smc\_\-rob\_\-c::free\_\-rob (
+\begin{DoxyParamCaption}
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__rob__c_a16f7c053a3b618b6128ce079ea9636f0}
+
+
+Function to free the ROB entry for the thread passed as parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thread\_\-id}]Thread identifier \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void. 
+\end{DoxyReturn}
+\hypertarget{classsmc__rob__c_af76140ffac1f9cbb9de32f7e50618d14}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!get\_\-n\_\-uops\_\-in\_\-ready\_\-order@{get\_\-n\_\-uops\_\-in\_\-ready\_\-order}}
+\index{get\_\-n\_\-uops\_\-in\_\-ready\_\-order@{get\_\-n\_\-uops\_\-in\_\-ready\_\-order}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{get\_\-n\_\-uops\_\-in\_\-ready\_\-order}]{\setlength{\rightskip}{0pt plus 5cm}list$<$ {\bf uop\_\-c} $\ast$ $>$ $\ast$ smc\_\-rob\_\-c::get\_\-n\_\-uops\_\-in\_\-ready\_\-order (
+\begin{DoxyParamCaption}
+\item[{int}]{ n, }
+\item[{Counter}]{ cur\_\-core\_\-cycle}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__rob__c_af76140ffac1f9cbb9de32f7e50618d14}
+
+
+Function to find the n most deserving uops to be retired. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]Count of Uopsmc\_\-rob.htrace \item[{\em cur\_\-core\_\-cycle}]Current core cycle \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std::list$<$uop\_\-c $\ast$$>$$\ast$ . 
+\end{DoxyReturn}
+\hypertarget{classsmc__rob__c_afe3b3b1d744c1b9571c6fcdb0b844b93}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!get\_\-thread\_\-rob@{get\_\-thread\_\-rob}}
+\index{get\_\-thread\_\-rob@{get\_\-thread\_\-rob}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{get\_\-thread\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}void smc\_\-rob\_\-c::get\_\-thread\_\-rob (
+\begin{DoxyParamCaption}
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__rob__c_afe3b3b1d744c1b9571c6fcdb0b844b93}
+
+
+Function to return the corresponding ROB for the thread id. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thread\_\-id}]Thread identifier \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+rob\_\-c$\ast$ ROB pointer. 
+\end{DoxyReturn}
+\hypertarget{classsmc__rob__c_a53cf88f8da3879fe5f519d31d360a96e}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!get\_\-thread\_\-rob\_\-id@{get\_\-thread\_\-rob\_\-id}}
+\index{get\_\-thread\_\-rob\_\-id@{get\_\-thread\_\-rob\_\-id}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{get\_\-thread\_\-rob\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int smc\_\-rob\_\-c::get\_\-thread\_\-rob\_\-id (
+\begin{DoxyParamCaption}
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__rob__c_a53cf88f8da3879fe5f519d31d360a96e}
+
+
+Function to return the corresponding ROB index for the thread id. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thread\_\-id}]Thread identifier \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int ROB index. 
+\end{DoxyReturn}
+\hypertarget{classsmc__rob__c_a48f8f093a1af607e9c3860804d4fd3f7}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!reserve\_\-rob@{reserve\_\-rob}}
+\index{reserve\_\-rob@{reserve\_\-rob}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{reserve\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}void int smc\_\-rob\_\-c::reserve\_\-rob (
+\begin{DoxyParamCaption}
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classsmc__rob__c_a48f8f093a1af607e9c3860804d4fd3f7}
+
+
+Function to return the index of the ROB reserved. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thread\_\-id}]Thread identifier \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int ROB index. 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classsmc__rob__c_aad4bb4dd7c9e789a7f5d4d035f072649}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!m\_\-core\_\-id@{m\_\-core\_\-id}}
+\index{m\_\-core\_\-id@{m\_\-core\_\-id}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{m\_\-core\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf smc\_\-rob\_\-c::m\_\-core\_\-id}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__rob__c_aad4bb4dd7c9e789a7f5d4d035f072649}
+core id \hypertarget{classsmc__rob__c_a9db8c324e0133f306a0401ad53a52997}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!m\_\-free\_\-list@{m\_\-free\_\-list}}
+\index{m\_\-free\_\-list@{m\_\-free\_\-list}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{m\_\-free\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list$<$int$>$ {\bf smc\_\-rob\_\-c::m\_\-free\_\-list}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__rob__c_a9db8c324e0133f306a0401ad53a52997}
+thread rob pool \hypertarget{classsmc__rob__c_a3fe15387db97e2865368976780a54db3}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!m\_\-knob\_\-num\_\-threads@{m\_\-knob\_\-num\_\-threads}}
+\index{m\_\-knob\_\-num\_\-threads@{m\_\-knob\_\-num\_\-threads}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{m\_\-knob\_\-num\_\-threads}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf smc\_\-rob\_\-c::m\_\-knob\_\-num\_\-threads}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__rob__c_a3fe15387db97e2865368976780a54db3}
+max threads per core \hypertarget{classsmc__rob__c_a8f735f49a88a96ae31045a882dff660d}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf smc\_\-rob\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__rob__c_a8f735f49a88a96ae31045a882dff660d}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{classsmc__rob__c_a158a1f5f7421d05352318865b37e92bc}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!m\_\-thread\_\-robs@{m\_\-thread\_\-robs}}
+\index{m\_\-thread\_\-robs@{m\_\-thread\_\-robs}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{m\_\-thread\_\-robs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf rob\_\-c}$\ast$$\ast$ {\bf smc\_\-rob\_\-c::m\_\-thread\_\-robs}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__rob__c_a158a1f5f7421d05352318865b37e92bc}
+reorder buffer per thread \hypertarget{classsmc__rob__c_a56ba9b44e042ed8f7cb752c1780ddf2e}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!m\_\-thread\_\-to\_\-rob\_\-map@{m\_\-thread\_\-to\_\-rob\_\-map}}
+\index{m\_\-thread\_\-to\_\-rob\_\-map@{m\_\-thread\_\-to\_\-rob\_\-map}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{m\_\-thread\_\-to\_\-rob\_\-map}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<$int, int$>$ {\bf smc\_\-rob\_\-c::m\_\-thread\_\-to\_\-rob\_\-map}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__rob__c_a56ba9b44e042ed8f7cb752c1780ddf2e}
+thread id to rob mapping \hypertarget{classsmc__rob__c_a5b6e2bf88b64d1f769654120cd9d1f36}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!m\_\-unit\_\-type@{m\_\-unit\_\-type}}
+\index{m\_\-unit\_\-type@{m\_\-unit\_\-type}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{m\_\-unit\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}Unit\_\-Type {\bf smc\_\-rob\_\-c::m\_\-unit\_\-type}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__rob__c_a5b6e2bf88b64d1f769654120cd9d1f36}
+core type \hypertarget{classsmc__rob__c_a27d28e046bd5d8fbc76fefb6ad406423}{
+\index{smc\_\-rob\_\-c@{smc\_\-rob\_\-c}!m\_\-uop\_\-list@{m\_\-uop\_\-list}}
+\index{m\_\-uop\_\-list@{m\_\-uop\_\-list}!smc_rob_c@{smc\_\-rob\_\-c}}
+\subsubsection[{m\_\-uop\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf uop\_\-c} $\ast$$>$ {\bf smc\_\-rob\_\-c::m\_\-uop\_\-list}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classsmc__rob__c_a27d28e046bd5d8fbc76fefb6ad406423}
+retireable uop list 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+rob\_\-smc.h\item 
+rob\_\-smc.cc\end{DoxyCompactItemize}

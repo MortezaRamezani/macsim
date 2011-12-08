@@ -1,0 +1,116 @@
+\hypertarget{classnoc__c}{
+\section{noc\_\-c Class Reference}
+\label{classnoc__c}\index{noc\_\-c@{noc\_\-c}}
+}
+
+
+{\ttfamily \#include $<$noc.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classnoc__c_a2556f3c8da43c1465d1c28f6d47a770e}{noc\_\-c} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classnoc__c_ad703b0eb1327952d067be27b68bcd27a}{$\sim$noc\_\-c} ()
+\item 
+bool \hyperlink{classnoc__c_a06803a1031a3a7a7a7067a25a702f52f}{insert} (int src, int dest, int msg, \hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req)
+\item 
+void \hyperlink{classnoc__c_ae8caf32a2cbc114cc4c43ca1ee2113c5}{run\_\-a\_\-cycle} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classnoc__c_a347c2e3dcf9c5dfb97e5b3566f04fb24}{
+\hyperlink{classmemory__c}{memory\_\-c} $\ast$ {\bfseries m\_\-memory}}
+\label{classnoc__c_a347c2e3dcf9c5dfb97e5b3566f04fb24}
+
+\item 
+\hypertarget{classnoc__c_acdb2642b6945ebda3aae039b56f9372c}{
+\hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{structnoc__entry__s}{noc\_\-entry\_\-s} $>$ $\ast$ {\bfseries m\_\-pool}}
+\label{classnoc__c_acdb2642b6945ebda3aae039b56f9372c}
+
+\item 
+\hypertarget{classnoc__c_a103461e69bbfded5d4d4f5bb82182957}{
+list$<$ \hyperlink{structnoc__entry__s}{noc\_\-entry\_\-s} $\ast$ $>$ $\ast$ {\bfseries m\_\-cpu\_\-entry\_\-up}}
+\label{classnoc__c_a103461e69bbfded5d4d4f5bb82182957}
+
+\item 
+\hypertarget{classnoc__c_a790a19529072e2f1717c136816350027}{
+list$<$ \hyperlink{structnoc__entry__s}{noc\_\-entry\_\-s} $\ast$ $>$ $\ast$ {\bfseries m\_\-cpu\_\-entry\_\-down}}
+\label{classnoc__c_a790a19529072e2f1717c136816350027}
+
+\item 
+\hypertarget{classnoc__c_a22800cde10b08f89ad96c8532aabc213}{
+list$<$ \hyperlink{structnoc__entry__s}{noc\_\-entry\_\-s} $\ast$ $>$ $\ast$ {\bfseries m\_\-gpu\_\-entry\_\-up}}
+\label{classnoc__c_a22800cde10b08f89ad96c8532aabc213}
+
+\item 
+\hypertarget{classnoc__c_a1e886512b84469d2d5735ebf7effb43b}{
+list$<$ \hyperlink{structnoc__entry__s}{noc\_\-entry\_\-s} $\ast$ $>$ $\ast$ {\bfseries m\_\-gpu\_\-entry\_\-down}}
+\label{classnoc__c_a1e886512b84469d2d5735ebf7effb43b}
+
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classnoc__c_a2b62f87d3e010b3b935f16bf769db2bf}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+NoC interface class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classnoc__c_a2556f3c8da43c1465d1c28f6d47a770e}{
+\index{noc\_\-c@{noc\_\-c}!noc\_\-c@{noc\_\-c}}
+\index{noc\_\-c@{noc\_\-c}!noc_c@{noc\_\-c}}
+\subsubsection[{noc\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}noc\_\-c::noc\_\-c (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classnoc__c_a2556f3c8da43c1465d1c28f6d47a770e}
+NoC interface class constructor \hypertarget{classnoc__c_ad703b0eb1327952d067be27b68bcd27a}{
+\index{noc\_\-c@{noc\_\-c}!$\sim$noc\_\-c@{$\sim$noc\_\-c}}
+\index{$\sim$noc\_\-c@{$\sim$noc\_\-c}!noc_c@{noc\_\-c}}
+\subsubsection[{$\sim$noc\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}noc\_\-c::$\sim$noc\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classnoc__c_ad703b0eb1327952d067be27b68bcd27a}
+NoC interface class destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classnoc__c_a06803a1031a3a7a7a7067a25a702f52f}{
+\index{noc\_\-c@{noc\_\-c}!insert@{insert}}
+\index{insert@{insert}!noc_c@{noc\_\-c}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}bool noc\_\-c::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ src, }
+\item[{int}]{ dest, }
+\item[{int}]{ msg, }
+\item[{{\bf mem\_\-req\_\-s} $\ast$}]{ req}
+\end{DoxyParamCaption}
+)}}
+\label{classnoc__c_a06803a1031a3a7a7a7067a25a702f52f}
+Insert a new req/msg to the NoC \hypertarget{classnoc__c_ae8caf32a2cbc114cc4c43ca1ee2113c5}{
+\index{noc\_\-c@{noc\_\-c}!run\_\-a\_\-cycle@{run\_\-a\_\-cycle}}
+\index{run\_\-a\_\-cycle@{run\_\-a\_\-cycle}!noc_c@{noc\_\-c}}
+\subsubsection[{run\_\-a\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}void noc\_\-c::run\_\-a\_\-cycle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classnoc__c_ae8caf32a2cbc114cc4c43ca1ee2113c5}
+Tick a cycle 
+
+\subsection{Member Data Documentation}
+\hypertarget{classnoc__c_a2b62f87d3e010b3b935f16bf769db2bf}{
+\index{noc\_\-c@{noc\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!noc_c@{noc\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf noc\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classnoc__c_a2b62f87d3e010b3b935f16bf769db2bf}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+noc.h\item 
+noc.cc\end{DoxyCompactItemize}

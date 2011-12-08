@@ -1,0 +1,115 @@
+\hypertarget{classpref__factory__c}{
+\section{pref\_\-factory\_\-c Class Reference}
+\label{classpref__factory__c}\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}}
+}
+
+
+pref policy factory Hardware prefetcher factory class : allocate prefetchers based on the configuration  
+
+
+
+
+{\ttfamily \#include $<$pref\_\-factory.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpref__factory__c_a63f9a6dc8a6e7a2ebe3d73a47aa4aec2}{pref\_\-factory\_\-c} ()
+\item 
+\hyperlink{classpref__factory__c_a0a361d32320dfca170d738e8f4db0fd5}{$\sim$pref\_\-factory\_\-c} ()
+\item 
+void \hyperlink{classpref__factory__c_a7be154a97910948c1bb5fba5320940ba}{register\_\-class} (function$<$ void(vector$<$ \hyperlink{classpref__base__c}{pref\_\-base\_\-c} $\ast$ $>$ \&, \hyperlink{classhwp__common__c}{hwp\_\-common\_\-c} $\ast$, Unit\_\-Type, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$)$>$)
+\item 
+void \hyperlink{classpref__factory__c_aafb1c0a0160526b23c8e17285f76ce57}{allocate\_\-pref} (vector$<$ \hyperlink{classpref__base__c}{pref\_\-base\_\-c} $\ast$ $>$ \&, \hyperlink{classhwp__common__c}{hwp\_\-common\_\-c} $\ast$, Unit\_\-Type, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classpref__factory__c}{pref\_\-factory\_\-c} $\ast$ \hyperlink{classpref__factory__c_a0aa0e3bd69c625e9b1ce80a7210b1b7a}{get} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classpref__factory__c}{pref\_\-factory\_\-c} $\ast$ \hyperlink{classpref__factory__c_a8d68a36f77d53450d4dabb477f99faf5}{instance} = 0
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ function$<$ void(vector$<$ \hyperlink{classpref__base__c}{pref\_\-base\_\-c} $\ast$ $>$ \&, \hyperlink{classhwp__common__c}{hwp\_\-common\_\-c} $\ast$, Unit\_\-Type, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$)$>$ \hyperlink{classpref__factory__c_a6a70d54b0cf3cd76600a3060d05dfb49}{m\_\-func\_\-table} )
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+pref policy factory Hardware prefetcher factory class : allocate prefetchers based on the configuration 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classpref__factory__c_a63f9a6dc8a6e7a2ebe3d73a47aa4aec2}{
+\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}!pref\_\-factory\_\-c@{pref\_\-factory\_\-c}}
+\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}!pref_factory_c@{pref\_\-factory\_\-c}}
+\subsubsection[{pref\_\-factory\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}pref\_\-factory\_\-c::pref\_\-factory\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classpref__factory__c_a63f9a6dc8a6e7a2ebe3d73a47aa4aec2}
+Constructor \hypertarget{classpref__factory__c_a0a361d32320dfca170d738e8f4db0fd5}{
+\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}!$\sim$pref\_\-factory\_\-c@{$\sim$pref\_\-factory\_\-c}}
+\index{$\sim$pref\_\-factory\_\-c@{$\sim$pref\_\-factory\_\-c}!pref_factory_c@{pref\_\-factory\_\-c}}
+\subsubsection[{$\sim$pref\_\-factory\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}pref\_\-factory\_\-c::$\sim$pref\_\-factory\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classpref__factory__c_a0a361d32320dfca170d738e8f4db0fd5}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classpref__factory__c_aafb1c0a0160526b23c8e17285f76ce57}{
+\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}!allocate\_\-pref@{allocate\_\-pref}}
+\index{allocate\_\-pref@{allocate\_\-pref}!pref_factory_c@{pref\_\-factory\_\-c}}
+\subsubsection[{allocate\_\-pref}]{\setlength{\rightskip}{0pt plus 5cm}void pref\_\-factory\_\-c::allocate\_\-pref (
+\begin{DoxyParamCaption}
+\item[{vector$<$ {\bf pref\_\-base\_\-c} $\ast$ $>$ \&}]{ pref\_\-table, }
+\item[{{\bf hwp\_\-common\_\-c} $\ast$}]{ hcc, }
+\item[{Unit\_\-Type}]{ type, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classpref__factory__c_aafb1c0a0160526b23c8e17285f76ce57}
+Allocate hardware prefetchers which are registerd \hypertarget{classpref__factory__c_a0aa0e3bd69c625e9b1ce80a7210b1b7a}{
+\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}!get@{get}}
+\index{get@{get}!pref_factory_c@{pref\_\-factory\_\-c}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pref\_\-factory\_\-c} $\ast$ pref\_\-factory\_\-c::get (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classpref__factory__c_a0aa0e3bd69c625e9b1ce80a7210b1b7a}
+Get singleton prefetch factory object \hypertarget{classpref__factory__c_a7be154a97910948c1bb5fba5320940ba}{
+\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}!register\_\-class@{register\_\-class}}
+\index{register\_\-class@{register\_\-class}!pref_factory_c@{pref\_\-factory\_\-c}}
+\subsubsection[{register\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}void pref\_\-factory\_\-c::register\_\-class (
+\begin{DoxyParamCaption}
+\item[{function$<$ void(vector$<$ {\bf pref\_\-base\_\-c} $\ast$ $>$ \&, {\bf hwp\_\-common\_\-c} $\ast$, Unit\_\-Type, {\bf macsim\_\-c} $\ast$)$>$}]{ func}
+\end{DoxyParamCaption}
+)}}
+\label{classpref__factory__c_a7be154a97910948c1bb5fba5320940ba}
+Register a new hardware prefetcher class 
+
+\subsection{Member Data Documentation}
+\hypertarget{classpref__factory__c_a8d68a36f77d53450d4dabb477f99faf5}{
+\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}!instance@{instance}}
+\index{instance@{instance}!pref_factory_c@{pref\_\-factory\_\-c}}
+\subsubsection[{instance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pref\_\-factory\_\-c} $\ast$ {\bf pref\_\-factory\_\-c::instance} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{classpref__factory__c_a8d68a36f77d53450d4dabb477f99faf5}
+Singleton factory \hypertarget{classpref__factory__c_a6a70d54b0cf3cd76600a3060d05dfb49}{
+\index{pref\_\-factory\_\-c@{pref\_\-factory\_\-c}!m\_\-func\_\-table@{m\_\-func\_\-table}}
+\index{m\_\-func\_\-table@{m\_\-func\_\-table}!pref_factory_c@{pref\_\-factory\_\-c}}
+\subsubsection[{m\_\-func\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}list$<$function$<$void (vector$<${\bf pref\_\-base\_\-c} $\ast$$>$ \&, {\bf hwp\_\-common\_\-c} $\ast$, Unit\_\-Type, {\bf macsim\_\-c}$\ast$)$>$  {\bf pref\_\-factory\_\-c::m\_\-func\_\-table})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpref__factory__c_a6a70d54b0cf3cd76600a3060d05dfb49}
+wrapper function table 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+pref\_\-factory.h\item 
+pref\_\-factory.cc\end{DoxyCompactItemize}

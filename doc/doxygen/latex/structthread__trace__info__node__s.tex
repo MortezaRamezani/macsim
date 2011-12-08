@@ -1,0 +1,69 @@
+\hypertarget{structthread__trace__info__node__s}{
+\section{thread\_\-trace\_\-info\_\-node\_\-s Struct Reference}
+\label{structthread__trace__info__node__s}\index{thread\_\-trace\_\-info\_\-node\_\-s@{thread\_\-trace\_\-info\_\-node\_\-s}}
+}
+
+
+Thread trace information node.  
+
+
+
+
+{\ttfamily \#include $<$process\_\-manager.h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structthread__s}{thread\_\-s} $\ast$ \hyperlink{structthread__trace__info__node__s_ae603dda796c0cccf7f79d1ce5b9ce874}{m\_\-trace\_\-info\_\-ptr}
+\item 
+\hyperlink{structprocess__s}{process\_\-s} $\ast$ \hyperlink{structthread__trace__info__node__s_a1b4fbce5655a7094c48f8dd7be4f9dd4}{m\_\-process}
+\item 
+int \hyperlink{structthread__trace__info__node__s_a52c5e7d8ed10fc7c54cdabcc15702cac}{m\_\-tid}
+\item 
+bool \hyperlink{structthread__trace__info__node__s_a241862d3ffe48c4ab7c85456244cf7dc}{m\_\-main}
+\item 
+bool \hyperlink{structthread__trace__info__node__s_a0355328ae8596c5029df7ac4a2c0eca7}{m\_\-ptx}
+\item 
+int \hyperlink{structthread__trace__info__node__s_a8502fed3f5ce2865bf0b517bdbd5ef79}{m\_\-block\_\-id}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Thread trace information node. This structure corresponds to a thread. This structure is valid only in thread scheduler. Once a thread is scheduled, structure will be freed. 
+
+\subsection{Member Data Documentation}
+\hypertarget{structthread__trace__info__node__s_a8502fed3f5ce2865bf0b517bdbd5ef79}{
+\index{thread\_\-trace\_\-info\_\-node\_\-s@{thread\_\-trace\_\-info\_\-node\_\-s}!m\_\-block\_\-id@{m\_\-block\_\-id}}
+\index{m\_\-block\_\-id@{m\_\-block\_\-id}!thread_trace_info_node_s@{thread\_\-trace\_\-info\_\-node\_\-s}}
+\subsubsection[{m\_\-block\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-trace\_\-info\_\-node\_\-s::m\_\-block\_\-id}}}
+\label{structthread__trace__info__node__s_a8502fed3f5ce2865bf0b517bdbd5ef79}
+block id \hypertarget{structthread__trace__info__node__s_a241862d3ffe48c4ab7c85456244cf7dc}{
+\index{thread\_\-trace\_\-info\_\-node\_\-s@{thread\_\-trace\_\-info\_\-node\_\-s}!m\_\-main@{m\_\-main}}
+\index{m\_\-main@{m\_\-main}!thread_trace_info_node_s@{thread\_\-trace\_\-info\_\-node\_\-s}}
+\subsubsection[{m\_\-main}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-trace\_\-info\_\-node\_\-s::m\_\-main}}}
+\label{structthread__trace__info__node__s_a241862d3ffe48c4ab7c85456244cf7dc}
+main thread \hypertarget{structthread__trace__info__node__s_a1b4fbce5655a7094c48f8dd7be4f9dd4}{
+\index{thread\_\-trace\_\-info\_\-node\_\-s@{thread\_\-trace\_\-info\_\-node\_\-s}!m\_\-process@{m\_\-process}}
+\index{m\_\-process@{m\_\-process}!thread_trace_info_node_s@{thread\_\-trace\_\-info\_\-node\_\-s}}
+\subsubsection[{m\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf process\_\-s}$\ast$ {\bf thread\_\-trace\_\-info\_\-node\_\-s::m\_\-process}}}
+\label{structthread__trace__info__node__s_a1b4fbce5655a7094c48f8dd7be4f9dd4}
+pointer to the process \hypertarget{structthread__trace__info__node__s_a0355328ae8596c5029df7ac4a2c0eca7}{
+\index{thread\_\-trace\_\-info\_\-node\_\-s@{thread\_\-trace\_\-info\_\-node\_\-s}!m\_\-ptx@{m\_\-ptx}}
+\index{m\_\-ptx@{m\_\-ptx}!thread_trace_info_node_s@{thread\_\-trace\_\-info\_\-node\_\-s}}
+\subsubsection[{m\_\-ptx}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-trace\_\-info\_\-node\_\-s::m\_\-ptx}}}
+\label{structthread__trace__info__node__s_a0355328ae8596c5029df7ac4a2c0eca7}
+GPU simulation \hypertarget{structthread__trace__info__node__s_a52c5e7d8ed10fc7c54cdabcc15702cac}{
+\index{thread\_\-trace\_\-info\_\-node\_\-s@{thread\_\-trace\_\-info\_\-node\_\-s}!m\_\-tid@{m\_\-tid}}
+\index{m\_\-tid@{m\_\-tid}!thread_trace_info_node_s@{thread\_\-trace\_\-info\_\-node\_\-s}}
+\subsubsection[{m\_\-tid}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-trace\_\-info\_\-node\_\-s::m\_\-tid}}}
+\label{structthread__trace__info__node__s_a52c5e7d8ed10fc7c54cdabcc15702cac}
+thread id \hypertarget{structthread__trace__info__node__s_ae603dda796c0cccf7f79d1ce5b9ce874}{
+\index{thread\_\-trace\_\-info\_\-node\_\-s@{thread\_\-trace\_\-info\_\-node\_\-s}!m\_\-trace\_\-info\_\-ptr@{m\_\-trace\_\-info\_\-ptr}}
+\index{m\_\-trace\_\-info\_\-ptr@{m\_\-trace\_\-info\_\-ptr}!thread_trace_info_node_s@{thread\_\-trace\_\-info\_\-node\_\-s}}
+\subsubsection[{m\_\-trace\_\-info\_\-ptr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf thread\_\-s}$\ast$ {\bf thread\_\-trace\_\-info\_\-node\_\-s::m\_\-trace\_\-info\_\-ptr}}}
+\label{structthread__trace__info__node__s_ae603dda796c0cccf7f79d1ce5b9ce874}
+trace information pointer 
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+process\_\-manager.h\end{DoxyCompactItemize}

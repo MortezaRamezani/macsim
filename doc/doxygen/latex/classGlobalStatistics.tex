@@ -1,0 +1,168 @@
+\hypertarget{classGlobalStatistics}{
+\section{GlobalStatistics Class Reference}
+\label{classGlobalStatistics}\index{GlobalStatistics@{GlobalStatistics}}
+}
+
+
+Global statistics.  
+
+
+
+
+{\ttfamily \#include $<$statistics.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGlobalStatistics_a73e7e79eef6bf08d9fd2df8acaf64689}{GlobalStatistics} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classGlobalStatistics_a26ae065660443e08ffdadf487a5689fd}{$\sim$GlobalStatistics} ()
+\item 
+void \hyperlink{classGlobalStatistics_a85920b29a4c79e2cc82fd85e4e52c848}{addStatistic} (\hyperlink{classAbstractStat}{AbstractStat} $\ast$pStat)
+\item 
+void \hyperlink{classGlobalStatistics_a8d9ba4f1f47f24cba8382a6f670b2159}{addDistribution} (\hyperlink{classDIST__Stat}{DIST\_\-Stat} $\ast$pStat)
+\item 
+\hyperlink{classAbstractStat}{AbstractStat} \& \hyperlink{classGlobalStatistics_aa8ddebd957eaa94c26b97025b53ae0dd}{operator\mbox{[}$\,$\mbox{]}} (int index) const 
+\item 
+int \hyperlink{classGlobalStatistics_acfb5976eb3bc88f841c8a406e8f58ae0}{size} () const 
+\item 
+void \hyperlink{classGlobalStatistics_a79d14f876c81aeab5ea680ca1b45c9f6}{displayAll} ()
+\item 
+void \hyperlink{classGlobalStatistics_ab4555f6275660624327db0f7e1f40469}{saveStats} (string)
+\item 
+void \hyperlink{classGlobalStatistics_a94b427c80f2d06030de32dbccd8e8713}{saveStats} ()
+\item 
+void \hyperlink{classGlobalStatistics_a28dca41488c27da294bc36f011f8d4fd}{writeTo} (ofstream \&stream)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \hyperlink{classAbstractStat}{AbstractStat} $\ast$ $>$ \hyperlink{classGlobalStatistics_a1ba2acd0dcab56c9067b78f93bb1ead4}{m\_\-globalStats}
+\item 
+vector$<$ \hyperlink{classDIST__Stat}{DIST\_\-Stat} $\ast$ $>$ \hyperlink{classGlobalStatistics_ae620729ccffbf7196a566133bb2626f3}{m\_\-distributions}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classGlobalStatistics_a9b405491bd623cc1c50558ba277c4fdc}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Global statistics. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classGlobalStatistics_a73e7e79eef6bf08d9fd2df8acaf64689}{
+\index{GlobalStatistics@{GlobalStatistics}!GlobalStatistics@{GlobalStatistics}}
+\index{GlobalStatistics@{GlobalStatistics}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{GlobalStatistics}]{\setlength{\rightskip}{0pt plus 5cm}GlobalStatistics::GlobalStatistics (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classGlobalStatistics_a73e7e79eef6bf08d9fd2df8acaf64689}
+Constructor. \hypertarget{classGlobalStatistics_a26ae065660443e08ffdadf487a5689fd}{
+\index{GlobalStatistics@{GlobalStatistics}!$\sim$GlobalStatistics@{$\sim$GlobalStatistics}}
+\index{$\sim$GlobalStatistics@{$\sim$GlobalStatistics}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{$\sim$GlobalStatistics}]{\setlength{\rightskip}{0pt plus 5cm}GlobalStatistics::$\sim$GlobalStatistics (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classGlobalStatistics_a26ae065660443e08ffdadf487a5689fd}
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classGlobalStatistics_a8d9ba4f1f47f24cba8382a6f670b2159}{
+\index{GlobalStatistics@{GlobalStatistics}!addDistribution@{addDistribution}}
+\index{addDistribution@{addDistribution}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{addDistribution}]{\setlength{\rightskip}{0pt plus 5cm}void GlobalStatistics::addDistribution (
+\begin{DoxyParamCaption}
+\item[{{\bf DIST\_\-Stat} $\ast$}]{ pStat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classGlobalStatistics_a8d9ba4f1f47f24cba8382a6f670b2159}
+Add a distribution stat. \hypertarget{classGlobalStatistics_a85920b29a4c79e2cc82fd85e4e52c848}{
+\index{GlobalStatistics@{GlobalStatistics}!addStatistic@{addStatistic}}
+\index{addStatistic@{addStatistic}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{addStatistic}]{\setlength{\rightskip}{0pt plus 5cm}void GlobalStatistics::addStatistic (
+\begin{DoxyParamCaption}
+\item[{{\bf AbstractStat} $\ast$}]{ pStat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classGlobalStatistics_a85920b29a4c79e2cc82fd85e4e52c848}
+Add a new stat. \hypertarget{classGlobalStatistics_a79d14f876c81aeab5ea680ca1b45c9f6}{
+\index{GlobalStatistics@{GlobalStatistics}!displayAll@{displayAll}}
+\index{displayAll@{displayAll}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{displayAll}]{\setlength{\rightskip}{0pt plus 5cm}void GlobalStatistics::displayAll (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classGlobalStatistics_a79d14f876c81aeab5ea680ca1b45c9f6}
+Dump out all stats in the standrad output. \hypertarget{classGlobalStatistics_aa8ddebd957eaa94c26b97025b53ae0dd}{
+\index{GlobalStatistics@{GlobalStatistics}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf AbstractStat}\& GlobalStatistics::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classGlobalStatistics_aa8ddebd957eaa94c26b97025b53ae0dd}
+operator \mbox{[}\mbox{]}. Return corresponding stat. \hypertarget{classGlobalStatistics_a94b427c80f2d06030de32dbccd8e8713}{
+\index{GlobalStatistics@{GlobalStatistics}!saveStats@{saveStats}}
+\index{saveStats@{saveStats}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{saveStats}]{\setlength{\rightskip}{0pt plus 5cm}void GlobalStatistics::saveStats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classGlobalStatistics_a94b427c80f2d06030de32dbccd8e8713}
+Dump out all stats to the file. \hypertarget{classGlobalStatistics_ab4555f6275660624327db0f7e1f40469}{
+\index{GlobalStatistics@{GlobalStatistics}!saveStats@{saveStats}}
+\index{saveStats@{saveStats}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{saveStats}]{\setlength{\rightskip}{0pt plus 5cm}void GlobalStatistics::saveStats (
+\begin{DoxyParamCaption}
+\item[{string}]{ ext}
+\end{DoxyParamCaption}
+)}}
+\label{classGlobalStatistics_ab4555f6275660624327db0f7e1f40469}
+Dump out all stats to the file. \hypertarget{classGlobalStatistics_acfb5976eb3bc88f841c8a406e8f58ae0}{
+\index{GlobalStatistics@{GlobalStatistics}!size@{size}}
+\index{size@{size}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int GlobalStatistics::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classGlobalStatistics_acfb5976eb3bc88f841c8a406e8f58ae0}
+Return number of total stats. \hypertarget{classGlobalStatistics_a28dca41488c27da294bc36f011f8d4fd}{
+\index{GlobalStatistics@{GlobalStatistics}!writeTo@{writeTo}}
+\index{writeTo@{writeTo}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{writeTo}]{\setlength{\rightskip}{0pt plus 5cm}void GlobalStatistics::writeTo (
+\begin{DoxyParamCaption}
+\item[{ofstream \&}]{ stream}
+\end{DoxyParamCaption}
+)}}
+\label{classGlobalStatistics_a28dca41488c27da294bc36f011f8d4fd}
+Dump out all stats to the file. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classGlobalStatistics_ae620729ccffbf7196a566133bb2626f3}{
+\index{GlobalStatistics@{GlobalStatistics}!m\_\-distributions@{m\_\-distributions}}
+\index{m\_\-distributions@{m\_\-distributions}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{m\_\-distributions}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf DIST\_\-Stat}$\ast$$>$ {\bf GlobalStatistics::m\_\-distributions}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classGlobalStatistics_ae620729ccffbf7196a566133bb2626f3}
+distribution stats \hypertarget{classGlobalStatistics_a1ba2acd0dcab56c9067b78f93bb1ead4}{
+\index{GlobalStatistics@{GlobalStatistics}!m\_\-globalStats@{m\_\-globalStats}}
+\index{m\_\-globalStats@{m\_\-globalStats}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{m\_\-globalStats}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf AbstractStat}$\ast$$>$ {\bf GlobalStatistics::m\_\-globalStats}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classGlobalStatistics_a1ba2acd0dcab56c9067b78f93bb1ead4}
+global stats \hypertarget{classGlobalStatistics_a9b405491bd623cc1c50558ba277c4fdc}{
+\index{GlobalStatistics@{GlobalStatistics}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!GlobalStatistics@{GlobalStatistics}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf GlobalStatistics::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classGlobalStatistics_a9b405491bd623cc1c50558ba277c4fdc}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+statistics.h\item 
+statistics.cc\end{DoxyCompactItemize}

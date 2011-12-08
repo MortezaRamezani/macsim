@@ -1,0 +1,153 @@
+\hypertarget{structpref__info__s}{
+\section{pref\_\-info\_\-s Struct Reference}
+\label{structpref__info__s}\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}}
+}
+
+
+Hardware prefetcher structure (information, stats).  
+
+
+
+
+{\ttfamily \#include $<$pref\_\-common.h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uns8 \hyperlink{structpref__info__s_aa751364dd397a33cd7ffdea42cbda8c0}{id}
+\item 
+bool \hyperlink{structpref__info__s_a76baaa162c64c556fad1f2f07cc11767}{enabled}
+\item 
+int \hyperlink{structpref__info__s_ad62caa3f68f6e5919b28dc207c46dfab}{priority}
+\item 
+Counter \hyperlink{structpref__info__s_a9b968c9aebf995d652f9f967eb7e5971}{useful}
+\item 
+Counter \hyperlink{structpref__info__s_a5c781e0f70693480da17b433e11d0132}{sent}
+\item 
+Counter \hyperlink{structpref__info__s_a2a55ea02b1cd31145a910e43a5ab74c0}{late}
+\item 
+Counter \hyperlink{structpref__info__s_ab196c66d3acfbe4309c4a6cc8fc565d5}{curr\_\-useful}
+\item 
+Counter \hyperlink{structpref__info__s_abc0afd16ea57472bdc0f79079cd3dc40}{curr\_\-sent}
+\item 
+Counter \hyperlink{structpref__info__s_ad21578ee3356e797bd0ebb5b3e61cbf5}{curr\_\-late}
+\item 
+Counter \hyperlink{structpref__info__s_a82eadd56d553c03fafdc8fa1349ee47d}{hybrid\_\-lastuseful}
+\item 
+Counter \hyperlink{structpref__info__s_a2e6f9ffea31a7a3dcb4b23d36b857dae}{hybrid\_\-lastsent}
+\item 
+Addr \hyperlink{structpref__info__s_a98609e4e7376f3fae20054c99feee11a}{trackers} \mbox{[}PREF\_\-TRACKERS\_\-NUM\mbox{]}
+\item 
+bool \hyperlink{structpref__info__s_a3c85c80bea8f5a3acbeb18316d8c912d}{trackers\_\-used} \mbox{[}PREF\_\-TRACKERS\_\-NUM\mbox{]}
+\item 
+int \hyperlink{structpref__info__s_a0c42749d820824d50ada89d498523f29}{track\_\-num}
+\item 
+Counter \hyperlink{structpref__info__s_a1151a69f70f1518d9223e15d91479300}{track\_\-lastsample\_\-cycle}
+\item 
+Counter \hyperlink{structpref__info__s_aa709dbfe970425b137e63b8376792392}{trackhist} \mbox{[}10\mbox{]}\mbox{[}PREF\_\-TRACKERS\_\-NUM\mbox{]}
+\item 
+Counter \hyperlink{structpref__info__s_a84a8db7783a6a9ae781fc5e5ee66b9da}{prefhit\_\-count}
+\item 
+uns \hyperlink{structpref__info__s_a99fd5a2733a16f8e4c89a91a87d219da}{dyn\_\-degree}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Hardware prefetcher structure (information, stats). 
+
+\subsection{Member Data Documentation}
+\hypertarget{structpref__info__s_ad21578ee3356e797bd0ebb5b3e61cbf5}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!curr\_\-late@{curr\_\-late}}
+\index{curr\_\-late@{curr\_\-late}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{curr\_\-late}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::curr\_\-late}}}
+\label{structpref__info__s_ad21578ee3356e797bd0ebb5b3e61cbf5}
+num of current period late prefetches \hypertarget{structpref__info__s_abc0afd16ea57472bdc0f79079cd3dc40}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!curr\_\-sent@{curr\_\-sent}}
+\index{curr\_\-sent@{curr\_\-sent}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{curr\_\-sent}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::curr\_\-sent}}}
+\label{structpref__info__s_abc0afd16ea57472bdc0f79079cd3dc40}
+num of current period sent prefetches \hypertarget{structpref__info__s_ab196c66d3acfbe4309c4a6cc8fc565d5}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!curr\_\-useful@{curr\_\-useful}}
+\index{curr\_\-useful@{curr\_\-useful}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{curr\_\-useful}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::curr\_\-useful}}}
+\label{structpref__info__s_ab196c66d3acfbe4309c4a6cc8fc565d5}
+num of current period Useful prefetches \hypertarget{structpref__info__s_a99fd5a2733a16f8e4c89a91a87d219da}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!dyn\_\-degree@{dyn\_\-degree}}
+\index{dyn\_\-degree@{dyn\_\-degree}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{dyn\_\-degree}]{\setlength{\rightskip}{0pt plus 5cm}uns {\bf pref\_\-info\_\-s::dyn\_\-degree}}}
+\label{structpref__info__s_a99fd5a2733a16f8e4c89a91a87d219da}
+dynamic prefetch degree \hypertarget{structpref__info__s_a76baaa162c64c556fad1f2f07cc11767}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!enabled@{enabled}}
+\index{enabled@{enabled}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{enabled}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf pref\_\-info\_\-s::enabled}}}
+\label{structpref__info__s_a76baaa162c64c556fad1f2f07cc11767}
+Is the prefetcher enabled \hypertarget{structpref__info__s_a2e6f9ffea31a7a3dcb4b23d36b857dae}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!hybrid\_\-lastsent@{hybrid\_\-lastsent}}
+\index{hybrid\_\-lastsent@{hybrid\_\-lastsent}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{hybrid\_\-lastsent}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::hybrid\_\-lastsent}}}
+\label{structpref__info__s_a2e6f9ffea31a7a3dcb4b23d36b857dae}
+This helps maintain a better indication of recent history \hypertarget{structpref__info__s_a82eadd56d553c03fafdc8fa1349ee47d}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!hybrid\_\-lastuseful@{hybrid\_\-lastuseful}}
+\index{hybrid\_\-lastuseful@{hybrid\_\-lastuseful}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{hybrid\_\-lastuseful}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::hybrid\_\-lastuseful}}}
+\label{structpref__info__s_a82eadd56d553c03fafdc8fa1349ee47d}
+used for Hybrid \hypertarget{structpref__info__s_aa751364dd397a33cd7ffdea42cbda8c0}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!id@{id}}
+\index{id@{id}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{id}]{\setlength{\rightskip}{0pt plus 5cm}uns8 {\bf pref\_\-info\_\-s::id}}}
+\label{structpref__info__s_aa751364dd397a33cd7ffdea42cbda8c0}
+This prefetcher's id \hypertarget{structpref__info__s_a2a55ea02b1cd31145a910e43a5ab74c0}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!late@{late}}
+\index{late@{late}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{late}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::late}}}
+\label{structpref__info__s_a2a55ea02b1cd31145a910e43a5ab74c0}
+num of late prefetches \hypertarget{structpref__info__s_a84a8db7783a6a9ae781fc5e5ee66b9da}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!prefhit\_\-count@{prefhit\_\-count}}
+\index{prefhit\_\-count@{prefhit\_\-count}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{prefhit\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::prefhit\_\-count}}}
+\label{structpref__info__s_a84a8db7783a6a9ae781fc5e5ee66b9da}
+prefetch hit count \hypertarget{structpref__info__s_ad62caa3f68f6e5919b28dc207c46dfab}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!priority@{priority}}
+\index{priority@{priority}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{priority}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf pref\_\-info\_\-s::priority}}}
+\label{structpref__info__s_ad62caa3f68f6e5919b28dc207c46dfab}
+priority this prefetcher gets in the pecking order \hypertarget{structpref__info__s_a5c781e0f70693480da17b433e11d0132}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!sent@{sent}}
+\index{sent@{sent}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{sent}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::sent}}}
+\label{structpref__info__s_a5c781e0f70693480da17b433e11d0132}
+num of sent prefetches \hypertarget{structpref__info__s_a1151a69f70f1518d9223e15d91479300}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!track\_\-lastsample\_\-cycle@{track\_\-lastsample\_\-cycle}}
+\index{track\_\-lastsample\_\-cycle@{track\_\-lastsample\_\-cycle}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{track\_\-lastsample\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::track\_\-lastsample\_\-cycle}}}
+\label{structpref__info__s_a1151a69f70f1518d9223e15d91479300}
+track last sample cycle \hypertarget{structpref__info__s_a0c42749d820824d50ada89d498523f29}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!track\_\-num@{track\_\-num}}
+\index{track\_\-num@{track\_\-num}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{track\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf pref\_\-info\_\-s::track\_\-num}}}
+\label{structpref__info__s_a0c42749d820824d50ada89d498523f29}
+number of tracks \hypertarget{structpref__info__s_a98609e4e7376f3fae20054c99feee11a}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!trackers@{trackers}}
+\index{trackers@{trackers}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{trackers}]{\setlength{\rightskip}{0pt plus 5cm}Addr {\bf pref\_\-info\_\-s::trackers}\mbox{[}PREF\_\-TRACKERS\_\-NUM\mbox{]}}}
+\label{structpref__info__s_a98609e4e7376f3fae20054c99feee11a}
+tracking information \hypertarget{structpref__info__s_a3c85c80bea8f5a3acbeb18316d8c912d}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!trackers\_\-used@{trackers\_\-used}}
+\index{trackers\_\-used@{trackers\_\-used}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{trackers\_\-used}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf pref\_\-info\_\-s::trackers\_\-used}\mbox{[}PREF\_\-TRACKERS\_\-NUM\mbox{]}}}
+\label{structpref__info__s_a3c85c80bea8f5a3acbeb18316d8c912d}
+tracker used \hypertarget{structpref__info__s_aa709dbfe970425b137e63b8376792392}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!trackhist@{trackhist}}
+\index{trackhist@{trackhist}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{trackhist}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::trackhist}\mbox{[}10\mbox{]}\mbox{[}PREF\_\-TRACKERS\_\-NUM\mbox{]}}}
+\label{structpref__info__s_aa709dbfe970425b137e63b8376792392}
+tracking history \hypertarget{structpref__info__s_a9b968c9aebf995d652f9f967eb7e5971}{
+\index{pref\_\-info\_\-s@{pref\_\-info\_\-s}!useful@{useful}}
+\index{useful@{useful}!pref_info_s@{pref\_\-info\_\-s}}
+\subsubsection[{useful}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf pref\_\-info\_\-s::useful}}}
+\label{structpref__info__s_a9b968c9aebf995d652f9f967eb7e5971}
+num of useful prefetches 
+
+The documentation for this struct was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+pref\_\-common.h\end{DoxyCompactItemize}

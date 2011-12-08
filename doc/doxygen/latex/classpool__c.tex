@@ -1,0 +1,163 @@
+\hypertarget{classpool__c}{
+\section{pool\_\-c$<$ T $>$ Class Template Reference}
+\label{classpool__c}\index{pool\_\-c@{pool\_\-c}}
+}
+
+
+pool class  
+
+
+
+
+{\ttfamily \#include $<$utils.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpool__c_ae046e396e7ac770f08794f37af913baf}{pool\_\-c} ()
+\item 
+\hyperlink{classpool__c_a27cca5145487122c44e63312edb95e40}{pool\_\-c} (int pool\_\-expand\_\-unit, string name)
+\item 
+\hyperlink{classpool__c_a398d3ecde03402f50fc02a0b04ae18e4}{$\sim$pool\_\-c} ()
+\item 
+T $\ast$ \hyperlink{classpool__c_a71f6e723ae8fef36d79ad5635edd2411}{acquire\_\-entry} (void)
+\item 
+T $\ast$ \hyperlink{classpool__c_abc21d62ac4f9d941fbe211d0decd5f7e}{acquire\_\-entry} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$m\_\-simBase)
+\item 
+void \hyperlink{classpool__c_ac407b5245c7977b5baa5087ecbb395f2}{release\_\-entry} (T $\ast$entry)
+\item 
+void \hyperlink{classpool__c_a5bf9f2ef7e204b5f42feebf5394d00b7}{expand\_\-pool} (void)
+\item 
+void \hyperlink{classpool__c_a30c82c339cab1f22f427dc4189ebea66}{expand\_\-pool} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$m\_\-simBase)
+\item 
+\hypertarget{classpool__c_a0589bbfc3b435c81cf4cd789a5fef668}{
+int {\bfseries size} (void)}
+\label{classpool__c_a0589bbfc3b435c81cf4cd789a5fef668}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ T $\ast$ $>$ $\ast$ \hyperlink{classpool__c_ad882da850ef2313b4f2fb6c34ef3d760}{m\_\-pool}
+\item 
+int \hyperlink{classpool__c_aa20a955bf65ee7898e1028a76384c7bc}{m\_\-poolsize}
+\item 
+int \hyperlink{classpool__c_a439d24816449390c4b7ff8b9cac84faf}{m\_\-poolexpand\_\-unit}
+\item 
+string \hyperlink{classpool__c_a38ccabc9cf0fe92037e915485f02bf98}{m\_\-name}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class pool\_\-c$<$ T $>$}
+
+pool class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classpool__c_ae046e396e7ac770f08794f37af913baf}{
+\index{pool\_\-c@{pool\_\-c}!pool\_\-c@{pool\_\-c}}
+\index{pool\_\-c@{pool\_\-c}!pool_c@{pool\_\-c}}
+\subsubsection[{pool\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf pool\_\-c}$<$ T $>$::{\bf pool\_\-c} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpool__c_ae046e396e7ac770f08794f37af913baf}
+Constructor \hypertarget{classpool__c_a27cca5145487122c44e63312edb95e40}{
+\index{pool\_\-c@{pool\_\-c}!pool\_\-c@{pool\_\-c}}
+\index{pool\_\-c@{pool\_\-c}!pool_c@{pool\_\-c}}
+\subsubsection[{pool\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf pool\_\-c}$<$ T $>$::{\bf pool\_\-c} (
+\begin{DoxyParamCaption}
+\item[{int}]{ pool\_\-expand\_\-unit, }
+\item[{string}]{ name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpool__c_a27cca5145487122c44e63312edb95e40}
+Constructor 
+\begin{DoxyParams}{Parameters}
+\item[{\em pool\_\-expand\_\-unit}]number of entries when pool expands \item[{\em name}]pool name \end{DoxyParams}
+\hypertarget{classpool__c_a398d3ecde03402f50fc02a0b04ae18e4}{
+\index{pool\_\-c@{pool\_\-c}!$\sim$pool\_\-c@{$\sim$pool\_\-c}}
+\index{$\sim$pool\_\-c@{$\sim$pool\_\-c}!pool_c@{pool\_\-c}}
+\subsubsection[{$\sim$pool\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf pool\_\-c}$<$ T $>$::$\sim${\bf pool\_\-c} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpool__c_a398d3ecde03402f50fc02a0b04ae18e4}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classpool__c_a71f6e723ae8fef36d79ad5635edd2411}{
+\index{pool\_\-c@{pool\_\-c}!acquire\_\-entry@{acquire\_\-entry}}
+\index{acquire\_\-entry@{acquire\_\-entry}!pool_c@{pool\_\-c}}
+\subsubsection[{acquire\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T$\ast$ {\bf pool\_\-c}$<$ T $>$::acquire\_\-entry (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpool__c_a71f6e723ae8fef36d79ad5635edd2411}
+Acquire a new entry \hypertarget{classpool__c_abc21d62ac4f9d941fbe211d0decd5f7e}{
+\index{pool\_\-c@{pool\_\-c}!acquire\_\-entry@{acquire\_\-entry}}
+\index{acquire\_\-entry@{acquire\_\-entry}!pool_c@{pool\_\-c}}
+\subsubsection[{acquire\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T$\ast$ {\bf pool\_\-c}$<$ T $>$::acquire\_\-entry (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ m\_\-simBase}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpool__c_abc21d62ac4f9d941fbe211d0decd5f7e}
+Acquire a new entry whose class requires simBase reference \hypertarget{classpool__c_a30c82c339cab1f22f427dc4189ebea66}{
+\index{pool\_\-c@{pool\_\-c}!expand\_\-pool@{expand\_\-pool}}
+\index{expand\_\-pool@{expand\_\-pool}!pool_c@{pool\_\-c}}
+\subsubsection[{expand\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf pool\_\-c}$<$ T $>$::expand\_\-pool (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ m\_\-simBase}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpool__c_a30c82c339cab1f22f427dc4189ebea66}
+Expand the pool whose class requires simBase reference \hypertarget{classpool__c_a5bf9f2ef7e204b5f42feebf5394d00b7}{
+\index{pool\_\-c@{pool\_\-c}!expand\_\-pool@{expand\_\-pool}}
+\index{expand\_\-pool@{expand\_\-pool}!pool_c@{pool\_\-c}}
+\subsubsection[{expand\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf pool\_\-c}$<$ T $>$::expand\_\-pool (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpool__c_a5bf9f2ef7e204b5f42feebf5394d00b7}
+Expand the pool \hypertarget{classpool__c_ac407b5245c7977b5baa5087ecbb395f2}{
+\index{pool\_\-c@{pool\_\-c}!release\_\-entry@{release\_\-entry}}
+\index{release\_\-entry@{release\_\-entry}!pool_c@{pool\_\-c}}
+\subsubsection[{release\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf pool\_\-c}$<$ T $>$::release\_\-entry (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{ entry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpool__c_ac407b5245c7977b5baa5087ecbb395f2}
+Release a new entry 
+
+\subsection{Member Data Documentation}
+\hypertarget{classpool__c_a38ccabc9cf0fe92037e915485f02bf98}{
+\index{pool\_\-c@{pool\_\-c}!m\_\-name@{m\_\-name}}
+\index{m\_\-name@{m\_\-name}!pool_c@{pool\_\-c}}
+\subsubsection[{m\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ string {\bf pool\_\-c}$<$ T $>$::{\bf m\_\-name}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpool__c_a38ccabc9cf0fe92037e915485f02bf98}
+pool name \hypertarget{classpool__c_ad882da850ef2313b4f2fb6c34ef3d760}{
+\index{pool\_\-c@{pool\_\-c}!m\_\-pool@{m\_\-pool}}
+\index{m\_\-pool@{m\_\-pool}!pool_c@{pool\_\-c}}
+\subsubsection[{m\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ list$<$T$\ast$$>$$\ast$ {\bf pool\_\-c}$<$ T $>$::{\bf m\_\-pool}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpool__c_ad882da850ef2313b4f2fb6c34ef3d760}
+pool \hypertarget{classpool__c_a439d24816449390c4b7ff8b9cac84faf}{
+\index{pool\_\-c@{pool\_\-c}!m\_\-poolexpand\_\-unit@{m\_\-poolexpand\_\-unit}}
+\index{m\_\-poolexpand\_\-unit@{m\_\-poolexpand\_\-unit}!pool_c@{pool\_\-c}}
+\subsubsection[{m\_\-poolexpand\_\-unit}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pool\_\-c}$<$ T $>$::{\bf m\_\-poolexpand\_\-unit}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpool__c_a439d24816449390c4b7ff8b9cac84faf}
+pool expand unit \hypertarget{classpool__c_aa20a955bf65ee7898e1028a76384c7bc}{
+\index{pool\_\-c@{pool\_\-c}!m\_\-poolsize@{m\_\-poolsize}}
+\index{m\_\-poolsize@{m\_\-poolsize}!pool_c@{pool\_\-c}}
+\subsubsection[{m\_\-poolsize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pool\_\-c}$<$ T $>$::{\bf m\_\-poolsize}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpool__c_aa20a955bf65ee7898e1028a76384c7bc}
+pool size 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+utils.h\end{DoxyCompactItemize}

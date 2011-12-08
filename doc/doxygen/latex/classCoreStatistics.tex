@@ -1,0 +1,185 @@
+\hypertarget{classCoreStatistics}{
+\section{CoreStatistics Class Reference}
+\label{classCoreStatistics}\index{CoreStatistics@{CoreStatistics}}
+}
+
+
+Per core stats.  
+
+
+
+
+{\ttfamily \#include $<$statistics.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCoreStatistics_ab482f3661ea116d7bb213be23f7fa750}{CoreStatistics} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase, unsigned int coreID=0, bool isTemplate=false)
+\item 
+\hyperlink{classCoreStatistics_a69e1ba5430d27e8169d7bcf4c8753a45}{$\sim$CoreStatistics} ()
+\item 
+void \hyperlink{classCoreStatistics_a7e1c8a6d069e2fba049745248e79777d}{setID} (unsigned int coreID)
+\item 
+void \hyperlink{classCoreStatistics_a1d824e0aa6094d476209b8ebc9eccc11}{addStatistic} (\hyperlink{classAbstractStat}{AbstractStat} $\ast$pStat)
+\item 
+void \hyperlink{classCoreStatistics_a8ff27cdfdf16d543f542386c0eb7c7af}{addDistribution} (\hyperlink{classDIST__Stat}{DIST\_\-Stat} $\ast$pStat)
+\item 
+\hyperlink{classAbstractStat}{AbstractStat} \& \hyperlink{classCoreStatistics_a93f4fbdfeb1a806ecb0fca44136df220}{operator\mbox{[}$\,$\mbox{]}} (int index) const 
+\item 
+\hyperlink{classCoreStatistics}{CoreStatistics} $\ast$ \hyperlink{classCoreStatistics_a3645316a2345ebab6e1f21072d53f1c8}{clone} (unsigned int cloneCoreID, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+void \hyperlink{classCoreStatistics_adaff7217d1b9fedee4ff5f9f074c604e}{displayAll} ()
+\item 
+void \hyperlink{classCoreStatistics_ae519a2a0b2d422df32239883444f78ed}{saveStats} (string)
+\item 
+void \hyperlink{classCoreStatistics_a0d476a2629d8746036acdb081cb5f8e5}{saveStats} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{classCoreStatistics_a1474d715511078b522b00f29bfb08c99}{m\_\-coreID}
+\item 
+vector$<$ \hyperlink{classAbstractStat}{AbstractStat} $\ast$ $>$ \hyperlink{classCoreStatistics_a75d62886dba5d44a6b5dcd87ca9e25fc}{m\_\-CoreStats}
+\item 
+vector$<$ \hyperlink{classDIST__Stat}{DIST\_\-Stat} $\ast$ $>$ \hyperlink{classCoreStatistics_a4f8bb0a5353335409018ad3862d7279b}{m\_\-distributions}
+\item 
+bool \hyperlink{classCoreStatistics_aab80ae23a0aa22e19e3f5a2b4b4710af}{m\_\-isTemplate}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classCoreStatistics_ab5a729b307a516a6987f52975ad7df57}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Per core stats. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCoreStatistics_ab482f3661ea116d7bb213be23f7fa750}{
+\index{CoreStatistics@{CoreStatistics}!CoreStatistics@{CoreStatistics}}
+\index{CoreStatistics@{CoreStatistics}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{CoreStatistics}]{\setlength{\rightskip}{0pt plus 5cm}CoreStatistics::CoreStatistics (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase, }
+\item[{unsigned int}]{ coreID = {\ttfamily 0}, }
+\item[{bool}]{ isTemplate = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCoreStatistics_ab482f3661ea116d7bb213be23f7fa750}
+Constructor. \hypertarget{classCoreStatistics_a69e1ba5430d27e8169d7bcf4c8753a45}{
+\index{CoreStatistics@{CoreStatistics}!$\sim$CoreStatistics@{$\sim$CoreStatistics}}
+\index{$\sim$CoreStatistics@{$\sim$CoreStatistics}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{$\sim$CoreStatistics}]{\setlength{\rightskip}{0pt plus 5cm}CoreStatistics::$\sim$CoreStatistics (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classCoreStatistics_a69e1ba5430d27e8169d7bcf4c8753a45}
+Desturctor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classCoreStatistics_a8ff27cdfdf16d543f542386c0eb7c7af}{
+\index{CoreStatistics@{CoreStatistics}!addDistribution@{addDistribution}}
+\index{addDistribution@{addDistribution}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{addDistribution}]{\setlength{\rightskip}{0pt plus 5cm}void CoreStatistics::addDistribution (
+\begin{DoxyParamCaption}
+\item[{{\bf DIST\_\-Stat} $\ast$}]{ pStat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCoreStatistics_a8ff27cdfdf16d543f542386c0eb7c7af}
+Add a new distribution stat. \hypertarget{classCoreStatistics_a1d824e0aa6094d476209b8ebc9eccc11}{
+\index{CoreStatistics@{CoreStatistics}!addStatistic@{addStatistic}}
+\index{addStatistic@{addStatistic}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{addStatistic}]{\setlength{\rightskip}{0pt plus 5cm}void CoreStatistics::addStatistic (
+\begin{DoxyParamCaption}
+\item[{{\bf AbstractStat} $\ast$}]{ pStat}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCoreStatistics_a1d824e0aa6094d476209b8ebc9eccc11}
+Add a new stat. \hypertarget{classCoreStatistics_a3645316a2345ebab6e1f21072d53f1c8}{
+\index{CoreStatistics@{CoreStatistics}!clone@{clone}}
+\index{clone@{clone}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{clone}]{\setlength{\rightskip}{0pt plus 5cm}{\bf CoreStatistics}$\ast$ CoreStatistics::clone (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{ cloneCoreID, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCoreStatistics_a3645316a2345ebab6e1f21072d53f1c8}
+Make a clone stats for the core. \hypertarget{classCoreStatistics_adaff7217d1b9fedee4ff5f9f074c604e}{
+\index{CoreStatistics@{CoreStatistics}!displayAll@{displayAll}}
+\index{displayAll@{displayAll}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{displayAll}]{\setlength{\rightskip}{0pt plus 5cm}void CoreStatistics::displayAll (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCoreStatistics_adaff7217d1b9fedee4ff5f9f074c604e}
+Display all stats in the standard output. \hypertarget{classCoreStatistics_a93f4fbdfeb1a806ecb0fca44136df220}{
+\index{CoreStatistics@{CoreStatistics}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf AbstractStat}\& CoreStatistics::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{ index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCoreStatistics_a93f4fbdfeb1a806ecb0fca44136df220}
+Operator \mbox{[}\mbox{]}. Return corresponding core stat. \hypertarget{classCoreStatistics_a0d476a2629d8746036acdb081cb5f8e5}{
+\index{CoreStatistics@{CoreStatistics}!saveStats@{saveStats}}
+\index{saveStats@{saveStats}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{saveStats}]{\setlength{\rightskip}{0pt plus 5cm}void CoreStatistics::saveStats (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classCoreStatistics_a0d476a2629d8746036acdb081cb5f8e5}
+Dump accumulated stats to the file. \hypertarget{classCoreStatistics_ae519a2a0b2d422df32239883444f78ed}{
+\index{CoreStatistics@{CoreStatistics}!saveStats@{saveStats}}
+\index{saveStats@{saveStats}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{saveStats}]{\setlength{\rightskip}{0pt plus 5cm}void CoreStatistics::saveStats (
+\begin{DoxyParamCaption}
+\item[{string}]{ ext}
+\end{DoxyParamCaption}
+)}}
+\label{classCoreStatistics_ae519a2a0b2d422df32239883444f78ed}
+Dump accumulated stats to the file. \hypertarget{classCoreStatistics_a7e1c8a6d069e2fba049745248e79777d}{
+\index{CoreStatistics@{CoreStatistics}!setID@{setID}}
+\index{setID@{setID}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{setID}]{\setlength{\rightskip}{0pt plus 5cm}void CoreStatistics::setID (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{ coreID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classCoreStatistics_a7e1c8a6d069e2fba049745248e79777d}
+Set core id. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classCoreStatistics_a1474d715511078b522b00f29bfb08c99}{
+\index{CoreStatistics@{CoreStatistics}!m\_\-coreID@{m\_\-coreID}}
+\index{m\_\-coreID@{m\_\-coreID}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{m\_\-coreID}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf CoreStatistics::m\_\-coreID}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classCoreStatistics_a1474d715511078b522b00f29bfb08c99}
+core id \hypertarget{classCoreStatistics_a75d62886dba5d44a6b5dcd87ca9e25fc}{
+\index{CoreStatistics@{CoreStatistics}!m\_\-CoreStats@{m\_\-CoreStats}}
+\index{m\_\-CoreStats@{m\_\-CoreStats}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{m\_\-CoreStats}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf AbstractStat}$\ast$$>$ {\bf CoreStatistics::m\_\-CoreStats}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classCoreStatistics_a75d62886dba5d44a6b5dcd87ca9e25fc}
+core stats \hypertarget{classCoreStatistics_a4f8bb0a5353335409018ad3862d7279b}{
+\index{CoreStatistics@{CoreStatistics}!m\_\-distributions@{m\_\-distributions}}
+\index{m\_\-distributions@{m\_\-distributions}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{m\_\-distributions}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf DIST\_\-Stat}$\ast$$>$ {\bf CoreStatistics::m\_\-distributions}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classCoreStatistics_a4f8bb0a5353335409018ad3862d7279b}
+distribution stats \hypertarget{classCoreStatistics_aab80ae23a0aa22e19e3f5a2b4b4710af}{
+\index{CoreStatistics@{CoreStatistics}!m\_\-isTemplate@{m\_\-isTemplate}}
+\index{m\_\-isTemplate@{m\_\-isTemplate}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{m\_\-isTemplate}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf CoreStatistics::m\_\-isTemplate}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classCoreStatistics_aab80ae23a0aa22e19e3f5a2b4b4710af}
+is template? \hypertarget{classCoreStatistics_ab5a729b307a516a6987f52975ad7df57}{
+\index{CoreStatistics@{CoreStatistics}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!CoreStatistics@{CoreStatistics}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf CoreStatistics::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classCoreStatistics_ab5a729b307a516a6987f52975ad7df57}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+statistics.h\item 
+statistics.cc\end{DoxyCompactItemize}

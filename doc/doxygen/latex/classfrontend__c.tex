@@ -1,0 +1,616 @@
+\hypertarget{classfrontend__c}{
+\section{frontend\_\-c Class Reference}
+\label{classfrontend__c}\index{frontend\_\-c@{frontend\_\-c}}
+}
+
+
+frontend (fetch and decode) stage  
+
+
+
+
+{\ttfamily \#include $<$frontend.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfrontend__c_a59df749752c55785b6709098430f0148}{
+{\bfseries frontend\_\-c} (FRONTEND\_\-INTERFACE\_\-PARAMS(), \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)}
+\label{classfrontend__c_a59df749752c55785b6709098430f0148}
+
+\item 
+virtual \hyperlink{classfrontend__c_abdcd8c40abb51367726d148b2c36ba49}{$\sim$frontend\_\-c} ()
+\begin{DoxyCompactList}\small\item\em Destructor to class \hyperlink{classfrontend__c}{frontend\_\-c}. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_afd414e828f5a18c6172459f8f4ba87ff}{run\_\-a\_\-cycle} ()
+\begin{DoxyCompactList}\small\item\em Function to run a cycle of the frontend stage. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_aba122a1a3acd7b872f5fc86a6b56f66d}{set\_\-core\_\-id} (int c\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to set core id. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classfrontend__c_a22c817f911289521ccd1efe08314e024}{access\_\-icache} (int sim\_\-thread\_\-id, Addr fetch\_\-addr, \hyperlink{structfrontend__s}{frontend\_\-s} $\ast$fetch\_\-data)
+\begin{DoxyCompactList}\small\item\em Function to provide instruction cache access. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classfrontend__c_abf8dbd5646c42471cd77efa0de6aadae}{icache\_\-fill\_\-line} (\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req)
+\begin{DoxyCompactList}\small\item\em Function to insert in Instruction cache. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classfrontend__c_a8342ffcf0cad38412cccf6a8d4443fc8}{check\_\-fetch\_\-ready} (int sim\_\-thread\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to check if fetch ready. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_a5f42b58999ffa5ac6341c9e0e9d55f94}{start} ()
+\begin{DoxyCompactList}\small\item\em Function to mark frontend stage as running. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_a09e3aab7dbc42cc7276eae6d417634d4}{stop} ()
+\begin{DoxyCompactList}\small\item\em Function to mark frontend stage as halted. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classfrontend__c_a804f8b3644f08dd719bb04a52ba7e058}{is\_\-running} ()
+\begin{DoxyCompactList}\small\item\em Function to check if frontend stage is running. \item\end{DoxyCompactList}\item 
+int \hyperlink{classfrontend__c_a6f6a017f1f666c0f6e9b58b435bb1c4c}{predict\_\-bpu} (\hyperlink{classuop__c}{uop\_\-c} $\ast$uop)
+\begin{DoxyCompactList}\small\item\em Function to call branch predictor. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classfrontend__c_a57a6d06b4c32abdda2d45c0b428d2055}{check\_\-load\_\-ready} (int fetch\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to check if load ready. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classfrontend__c_ab2278ac8cdb4981dfe643832712fde0d}{check\_\-br\_\-ready} (int fetch\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to check if branch ready. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_a1d26468325310f26f517cea820f5f81d}{set\_\-load\_\-wait} (int fetch\_\-id, Counter uop\_\-num)
+\begin{DoxyCompactList}\small\item\em Function to set load waiting. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_a8c9c3728fc846b43c228ca04ad463922}{set\_\-br\_\-wait} (int fetch\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to set branch waiting. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_a2c7919fea8f85914c6f1b0c8c8a25b38}{set\_\-load\_\-ready} (int fetch\_\-id, Counter uop\_\-num)
+\begin{DoxyCompactList}\small\item\em Function to set load ready. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_a76cc9138c2bf7b7cba2d9ddb06592179}{set\_\-br\_\-ready} (int fetch\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to set branch ready. \item\end{DoxyCompactList}\item 
+void \hyperlink{classfrontend__c_a04cd3de5a5e1448591dc3c10e0d6f535}{synch\_\-thread} (int block\_\-id, int thread\_\-id)
+\begin{DoxyCompactList}\small\item\em Function to syncronise threads. \item\end{DoxyCompactList}\item 
+virtual int \hyperlink{classfrontend__c_ac7cc867e2d8fdaae428e88d429e60fad}{fetch} ()
+\item 
+\hypertarget{classfrontend__c_a714d783e783d648801f425ed0ea335ed}{
+bool {\bfseries btb\_\-access} (\hyperlink{classuop__c}{uop\_\-c} $\ast$uop)}
+\label{classfrontend__c_a714d783e783d648801f425ed0ea335ed}
+
+\item 
+\hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{classuop__c}{uop\_\-c} $>$ $\ast$ \hyperlink{classfrontend__c_a464ef95a8aec46a681cb030d674ca446}{get\_\-uop\_\-pool} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classhash__c}{hash\_\-c}$<$ \hyperlink{structsync__thread__s}{sync\_\-thread\_\-s} $>$ $\ast$ \hyperlink{classfrontend__c_a0279b18722ea8be3dea43e4c255c8159}{m\_\-sync\_\-info}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfrontend__c_a393e6922087b7d7237544467eaa6986d}{frontend\_\-c} (const \hyperlink{classfrontend__c}{frontend\_\-c} \&rhs)
+\item 
+\hyperlink{classfrontend__c}{frontend\_\-c} \& \hyperlink{classfrontend__c_a52d74eb2635b3b037dd8ec7c5635544b}{operator=} (const \hyperlink{classfrontend__c}{frontend\_\-c} \&rhs)
+\item 
+\hyperlink{classfrontend__c_a4fb5b788cb0f4cb4ba859ffdb2366e6f}{frontend\_\-c} ()
+\item 
+FRONTEND\_\-MODE \hyperlink{classfrontend__c_a5de715a12e87c609121b884ebc880a27}{process\_\-ifetch} (unsigned int sim\_\-thread\_\-id, \hyperlink{structfrontend__s}{frontend\_\-s} $\ast$fetch\_\-data)
+\item 
+void \hyperlink{classfrontend__c_a63e6c5516b994e8a36f466bc8dedf166}{send\_\-uop\_\-to\_\-qfe} (\hyperlink{classuop__c}{uop\_\-c} $\ast$)
+\begin{DoxyCompactList}\small\item\em Function to enqueue uop to fetch queue. \item\end{DoxyCompactList}\item 
+\hypertarget{classfrontend__c_a76d91633c35b03beb82d616f1ff419bd}{
+{\bfseries FRONTEND\_\-INTERFACE\_\-DECL} ()}
+\label{classfrontend__c_a76d91633c35b03beb82d616f1ff419bd}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classfrontend__c_a3ddc92b5614174fd7d77f4f0e7db5538}{m\_\-fe\_\-stall}
+\item 
+bool \hyperlink{classfrontend__c_ad209b62e2a8616d2fe15edfa54b2b513}{m\_\-fe\_\-running}
+\item 
+Counter \hyperlink{classfrontend__c_a64ef7913b57269b050b4ac4854c11317}{m\_\-cur\_\-core\_\-cycle}
+\item 
+int \hyperlink{classfrontend__c_abc56bb3ebfa3d76413b83c6174079c3c}{m\_\-fetch\_\-modulo}
+\item 
+list$<$ int32\_\-t $>$ \hyperlink{classfrontend__c_ac593d33a9e55678461f84b74a738fd3b}{m\_\-sync\_\-done}
+\item 
+uns \hyperlink{classfrontend__c_af1f0bce8b49a7903883ead8cba0a3963}{m\_\-fetch\_\-arbiter}
+\item 
+uns16 \hyperlink{classfrontend__c_a7ed5014f79e26e431bff9ffa7b52121b}{m\_\-knob\_\-width}
+\item 
+uns16 \hyperlink{classfrontend__c_ac044116ea86e033c922093d211cc2c9d}{m\_\-knob\_\-fetch\_\-width}
+\item 
+uns \hyperlink{classfrontend__c_a65a0c3afbe45a24ff11ef5c4efac6c61}{m\_\-knob\_\-icache\_\-line\_\-size}
+\item 
+bool \hyperlink{classfrontend__c_a30a952873e134a3f296ac90efee193f6}{m\_\-knob\_\-ptx\_\-sim}
+\item 
+\hyperlink{classcore__c}{core\_\-c} $\ast$ \hyperlink{classfrontend__c_a2e21eea52a0c6ee3c2e66daecd31b151}{m\_\-core}
+\item 
+bool \hyperlink{classfrontend__c_abe2dc05043fbc949b51dd87440ec1e5a}{m\_\-ready\_\-thread\_\-available}
+\item 
+int \hyperlink{classfrontend__c_a172f7f7447242af7808f4a68821194d2}{m\_\-mem\_\-access\_\-thread\_\-num}
+\item 
+int \hyperlink{classfrontend__c_aaee73e44aa9e8673b370f5f47d3a87e4}{m\_\-fetch\_\-ratio}
+\item 
+bool \hyperlink{classfrontend__c_a122be13c09b552fb5fd8fdfda289c9f2}{m\_\-dcache\_\-bank\_\-busy} \mbox{[}129\mbox{]}
+\item 
+\hypertarget{classfrontend__c_acfc08439756672debe6b15bb9a04d321}{
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ {\bfseries m\_\-simBase}}
+\label{classfrontend__c_acfc08439756672debe6b15bb9a04d321}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+frontend (fetch and decode) stage 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfrontend__c_abdcd8c40abb51367726d148b2c36ba49}{
+\index{frontend\_\-c@{frontend\_\-c}!$\sim$frontend\_\-c@{$\sim$frontend\_\-c}}
+\index{$\sim$frontend\_\-c@{$\sim$frontend\_\-c}!frontend_c@{frontend\_\-c}}
+\subsubsection[{$\sim$frontend\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}frontend\_\-c::$\sim$frontend\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classfrontend__c_abdcd8c40abb51367726d148b2c36ba49}
+
+
+Destructor to class \hyperlink{classfrontend__c}{frontend\_\-c}. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a393e6922087b7d7237544467eaa6986d}{
+\index{frontend\_\-c@{frontend\_\-c}!frontend\_\-c@{frontend\_\-c}}
+\index{frontend\_\-c@{frontend\_\-c}!frontend_c@{frontend\_\-c}}
+\subsubsection[{frontend\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}frontend\_\-c::frontend\_\-c (
+\begin{DoxyParamCaption}
+\item[{const {\bf frontend\_\-c} \&}]{ rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a393e6922087b7d7237544467eaa6986d}
+Copy constructor \hypertarget{classfrontend__c_a4fb5b788cb0f4cb4ba859ffdb2366e6f}{
+\index{frontend\_\-c@{frontend\_\-c}!frontend\_\-c@{frontend\_\-c}}
+\index{frontend\_\-c@{frontend\_\-c}!frontend_c@{frontend\_\-c}}
+\subsubsection[{frontend\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}frontend\_\-c::frontend\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a4fb5b788cb0f4cb4ba859ffdb2366e6f}
+Default constructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classfrontend__c_a22c817f911289521ccd1efe08314e024}{
+\index{frontend\_\-c@{frontend\_\-c}!access\_\-icache@{access\_\-icache}}
+\index{access\_\-icache@{access\_\-icache}!frontend_c@{frontend\_\-c}}
+\subsubsection[{access\_\-icache}]{\setlength{\rightskip}{0pt plus 5cm}bool frontend\_\-c::access\_\-icache (
+\begin{DoxyParamCaption}
+\item[{int}]{ sim\_\-thread\_\-id, }
+\item[{Addr}]{ fetch\_\-addr, }
+\item[{{\bf frontend\_\-s} $\ast$}]{ fetch\_\-data}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a22c817f911289521ccd1efe08314e024}
+
+
+Function to provide instruction cache access. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sim\_\-thread\_\-id}]-\/ thread id \item[{\em fetch\_\-addr}]-\/ Addr \item[{\em fetch\_\-data}]-\/ fetch data for the thread \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ True if successful 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_ab2278ac8cdb4981dfe643832712fde0d}{
+\index{frontend\_\-c@{frontend\_\-c}!check\_\-br\_\-ready@{check\_\-br\_\-ready}}
+\index{check\_\-br\_\-ready@{check\_\-br\_\-ready}!frontend_c@{frontend\_\-c}}
+\subsubsection[{check\_\-br\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}bool frontend\_\-c::check\_\-br\_\-ready (
+\begin{DoxyParamCaption}
+\item[{int}]{ fetch\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_ab2278ac8cdb4981dfe643832712fde0d}
+
+
+Function to check if branch ready. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fetch\_\-id}]-\/ Fetch id \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ True if ready 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a8342ffcf0cad38412cccf6a8d4443fc8}{
+\index{frontend\_\-c@{frontend\_\-c}!check\_\-fetch\_\-ready@{check\_\-fetch\_\-ready}}
+\index{check\_\-fetch\_\-ready@{check\_\-fetch\_\-ready}!frontend_c@{frontend\_\-c}}
+\subsubsection[{check\_\-fetch\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}bool frontend\_\-c::check\_\-fetch\_\-ready (
+\begin{DoxyParamCaption}
+\item[{int}]{ sim\_\-thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a8342ffcf0cad38412cccf6a8d4443fc8}
+
+
+Function to check if fetch ready. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em sim\_\-thread\_\-id}]-\/ Thread id \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool-\/ True if ready 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a57a6d06b4c32abdda2d45c0b428d2055}{
+\index{frontend\_\-c@{frontend\_\-c}!check\_\-load\_\-ready@{check\_\-load\_\-ready}}
+\index{check\_\-load\_\-ready@{check\_\-load\_\-ready}!frontend_c@{frontend\_\-c}}
+\subsubsection[{check\_\-load\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}bool frontend\_\-c::check\_\-load\_\-ready (
+\begin{DoxyParamCaption}
+\item[{int}]{ fetch\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a57a6d06b4c32abdda2d45c0b428d2055}
+
+
+Function to check if load ready. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fetch\_\-id}]-\/ Fetch id \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ True if ready 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_ac7cc867e2d8fdaae428e88d429e60fad}{
+\index{frontend\_\-c@{frontend\_\-c}!fetch@{fetch}}
+\index{fetch@{fetch}!frontend_c@{frontend\_\-c}}
+\subsubsection[{fetch}]{\setlength{\rightskip}{0pt plus 5cm}int frontend\_\-c::fetch (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classfrontend__c_ac7cc867e2d8fdaae428e88d429e60fad}
+Choose a thread id to fetch (SMT, GPU) \hypertarget{classfrontend__c_a464ef95a8aec46a681cb030d674ca446}{
+\index{frontend\_\-c@{frontend\_\-c}!get\_\-uop\_\-pool@{get\_\-uop\_\-pool}}
+\index{get\_\-uop\_\-pool@{get\_\-uop\_\-pool}!frontend_c@{frontend\_\-c}}
+\subsubsection[{get\_\-uop\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pool\_\-c}$<${\bf uop\_\-c}$>$$\ast$ frontend\_\-c::get\_\-uop\_\-pool (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classfrontend__c_a464ef95a8aec46a681cb030d674ca446}
+Get the uop pool \hypertarget{classfrontend__c_abf8dbd5646c42471cd77efa0de6aadae}{
+\index{frontend\_\-c@{frontend\_\-c}!icache\_\-fill\_\-line@{icache\_\-fill\_\-line}}
+\index{icache\_\-fill\_\-line@{icache\_\-fill\_\-line}!frontend_c@{frontend\_\-c}}
+\subsubsection[{icache\_\-fill\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}bool frontend\_\-c::icache\_\-fill\_\-line (
+\begin{DoxyParamCaption}
+\item[{{\bf mem\_\-req\_\-s} $\ast$}]{ req}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_abf8dbd5646c42471cd77efa0de6aadae}
+
+
+Function to insert in Instruction cache. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em req}]-\/ Pointer to memory request \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ True if successful 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a804f8b3644f08dd719bb04a52ba7e058}{
+\index{frontend\_\-c@{frontend\_\-c}!is\_\-running@{is\_\-running}}
+\index{is\_\-running@{is\_\-running}!frontend_c@{frontend\_\-c}}
+\subsubsection[{is\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}bool frontend\_\-c::is\_\-running (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classfrontend__c_a804f8b3644f08dd719bb04a52ba7e058}
+
+
+Function to check if frontend stage is running. 
+
+\begin{DoxyReturn}{Returns}
+bool -\/ True if running 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a52d74eb2635b3b037dd8ec7c5635544b}{
+\index{frontend\_\-c@{frontend\_\-c}!operator=@{operator=}}
+\index{operator=@{operator=}!frontend_c@{frontend\_\-c}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf frontend\_\-c}\& frontend\_\-c::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf frontend\_\-c} \&}]{ rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a52d74eb2635b3b037dd8ec7c5635544b}
+Overridden operator = \hypertarget{classfrontend__c_a6f6a017f1f666c0f6e9b58b435bb1c4c}{
+\index{frontend\_\-c@{frontend\_\-c}!predict\_\-bpu@{predict\_\-bpu}}
+\index{predict\_\-bpu@{predict\_\-bpu}!frontend_c@{frontend\_\-c}}
+\subsubsection[{predict\_\-bpu}]{\setlength{\rightskip}{0pt plus 5cm}int frontend\_\-c::predict\_\-bpu (
+\begin{DoxyParamCaption}
+\item[{{\bf uop\_\-c} $\ast$}]{ uop}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a6f6a017f1f666c0f6e9b58b435bb1c4c}
+
+
+Function to call branch predictor. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em uop}]-\/ Pointter to an branch uop \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int -\/ True if predicted correctly 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a5de715a12e87c609121b884ebc880a27}{
+\index{frontend\_\-c@{frontend\_\-c}!process\_\-ifetch@{process\_\-ifetch}}
+\index{process\_\-ifetch@{process\_\-ifetch}!frontend_c@{frontend\_\-c}}
+\subsubsection[{process\_\-ifetch}]{\setlength{\rightskip}{0pt plus 5cm}FRONTEND\_\-MODE frontend\_\-c::process\_\-ifetch (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{ sim\_\-thread\_\-id, }
+\item[{{\bf frontend\_\-s} $\ast$}]{ fetch\_\-data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a5de715a12e87c609121b884ebc880a27}
+
+
+initial increase
+
+should be per core 
+
+\hypertarget{classfrontend__c_afd414e828f5a18c6172459f8f4ba87ff}{
+\index{frontend\_\-c@{frontend\_\-c}!run\_\-a\_\-cycle@{run\_\-a\_\-cycle}}
+\index{run\_\-a\_\-cycle@{run\_\-a\_\-cycle}!frontend_c@{frontend\_\-c}}
+\subsubsection[{run\_\-a\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::run\_\-a\_\-cycle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_afd414e828f5a18c6172459f8f4ba87ff}
+
+
+Function to run a cycle of the frontend stage. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a63e6c5516b994e8a36f466bc8dedf166}{
+\index{frontend\_\-c@{frontend\_\-c}!send\_\-uop\_\-to\_\-qfe@{send\_\-uop\_\-to\_\-qfe}}
+\index{send\_\-uop\_\-to\_\-qfe@{send\_\-uop\_\-to\_\-qfe}!frontend_c@{frontend\_\-c}}
+\subsubsection[{send\_\-uop\_\-to\_\-qfe}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::send\_\-uop\_\-to\_\-qfe (
+\begin{DoxyParamCaption}
+\item[{{\bf uop\_\-c} $\ast$}]{ uop}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{classfrontend__c_a63e6c5516b994e8a36f466bc8dedf166}
+
+
+Function to enqueue uop to fetch queue. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em uop}]-\/ Pointer to Uop to be enqueued \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a76cc9138c2bf7b7cba2d9ddb06592179}{
+\index{frontend\_\-c@{frontend\_\-c}!set\_\-br\_\-ready@{set\_\-br\_\-ready}}
+\index{set\_\-br\_\-ready@{set\_\-br\_\-ready}!frontend_c@{frontend\_\-c}}
+\subsubsection[{set\_\-br\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::set\_\-br\_\-ready (
+\begin{DoxyParamCaption}
+\item[{int}]{ fetch\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a76cc9138c2bf7b7cba2d9ddb06592179}
+
+
+Function to set branch ready. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fetch\_\-id}]-\/ Fetch id \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a8c9c3728fc846b43c228ca04ad463922}{
+\index{frontend\_\-c@{frontend\_\-c}!set\_\-br\_\-wait@{set\_\-br\_\-wait}}
+\index{set\_\-br\_\-wait@{set\_\-br\_\-wait}!frontend_c@{frontend\_\-c}}
+\subsubsection[{set\_\-br\_\-wait}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::set\_\-br\_\-wait (
+\begin{DoxyParamCaption}
+\item[{int}]{ fetch\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a8c9c3728fc846b43c228ca04ad463922}
+
+
+Function to set branch waiting. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fetch\_\-id}]-\/ Fetch id \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_aba122a1a3acd7b872f5fc86a6b56f66d}{
+\index{frontend\_\-c@{frontend\_\-c}!set\_\-core\_\-id@{set\_\-core\_\-id}}
+\index{set\_\-core\_\-id@{set\_\-core\_\-id}!frontend_c@{frontend\_\-c}}
+\subsubsection[{set\_\-core\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::set\_\-core\_\-id (
+\begin{DoxyParamCaption}
+\item[{int}]{ c\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classfrontend__c_aba122a1a3acd7b872f5fc86a6b56f66d}
+
+
+Function to set core id. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em c\_\-id}]-\/ core id \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a2c7919fea8f85914c6f1b0c8c8a25b38}{
+\index{frontend\_\-c@{frontend\_\-c}!set\_\-load\_\-ready@{set\_\-load\_\-ready}}
+\index{set\_\-load\_\-ready@{set\_\-load\_\-ready}!frontend_c@{frontend\_\-c}}
+\subsubsection[{set\_\-load\_\-ready}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::set\_\-load\_\-ready (
+\begin{DoxyParamCaption}
+\item[{int}]{ fetch\_\-id, }
+\item[{Counter}]{ uop\_\-num}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a2c7919fea8f85914c6f1b0c8c8a25b38}
+
+
+Function to set load ready. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fetch\_\-id}]-\/ Fetch id \item[{\em uop\_\-num}]-\/ Uop number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a1d26468325310f26f517cea820f5f81d}{
+\index{frontend\_\-c@{frontend\_\-c}!set\_\-load\_\-wait@{set\_\-load\_\-wait}}
+\index{set\_\-load\_\-wait@{set\_\-load\_\-wait}!frontend_c@{frontend\_\-c}}
+\subsubsection[{set\_\-load\_\-wait}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::set\_\-load\_\-wait (
+\begin{DoxyParamCaption}
+\item[{int}]{ fetch\_\-id, }
+\item[{Counter}]{ uop\_\-num}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a1d26468325310f26f517cea820f5f81d}
+
+
+Function to set load waiting. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em fetch\_\-id}]-\/ Fetch id \item[{\em uop\_\-num}]-\/ uop number \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a5f42b58999ffa5ac6341c9e0e9d55f94}{
+\index{frontend\_\-c@{frontend\_\-c}!start@{start}}
+\index{start@{start}!frontend_c@{frontend\_\-c}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::start (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classfrontend__c_a5f42b58999ffa5ac6341c9e0e9d55f94}
+
+
+Function to mark frontend stage as running. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a09e3aab7dbc42cc7276eae6d417634d4}{
+\index{frontend\_\-c@{frontend\_\-c}!stop@{stop}}
+\index{stop@{stop}!frontend_c@{frontend\_\-c}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::stop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classfrontend__c_a09e3aab7dbc42cc7276eae6d417634d4}
+
+
+Function to mark frontend stage as halted. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classfrontend__c_a04cd3de5a5e1448591dc3c10e0d6f535}{
+\index{frontend\_\-c@{frontend\_\-c}!synch\_\-thread@{synch\_\-thread}}
+\index{synch\_\-thread@{synch\_\-thread}!frontend_c@{frontend\_\-c}}
+\subsubsection[{synch\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}void frontend\_\-c::synch\_\-thread (
+\begin{DoxyParamCaption}
+\item[{int}]{ block\_\-id, }
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classfrontend__c_a04cd3de5a5e1448591dc3c10e0d6f535}
+
+
+Function to syncronise threads. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em block\_\-id}]-\/ Block id \item[{\em thread\_\-id}]-\/ Thread id \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classfrontend__c_a2e21eea52a0c6ee3c2e66daecd31b151}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-core@{m\_\-core}}
+\index{m\_\-core@{m\_\-core}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-core}]{\setlength{\rightskip}{0pt plus 5cm}{\bf core\_\-c}$\ast$ {\bf frontend\_\-c::m\_\-core}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a2e21eea52a0c6ee3c2e66daecd31b151}
+core pointer \hypertarget{classfrontend__c_a64ef7913b57269b050b4ac4854c11317}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-cur\_\-core\_\-cycle@{m\_\-cur\_\-core\_\-cycle}}
+\index{m\_\-cur\_\-core\_\-cycle@{m\_\-cur\_\-core\_\-cycle}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-cur\_\-core\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf frontend\_\-c::m\_\-cur\_\-core\_\-cycle}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a64ef7913b57269b050b4ac4854c11317}
+current core cycle \hypertarget{classfrontend__c_a122be13c09b552fb5fd8fdfda289c9f2}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-dcache\_\-bank\_\-busy@{m\_\-dcache\_\-bank\_\-busy}}
+\index{m\_\-dcache\_\-bank\_\-busy@{m\_\-dcache\_\-bank\_\-busy}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-dcache\_\-bank\_\-busy}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf frontend\_\-c::m\_\-dcache\_\-bank\_\-busy}\mbox{[}129\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a122be13c09b552fb5fd8fdfda289c9f2}
+dcache bank busy status \hypertarget{classfrontend__c_ad209b62e2a8616d2fe15edfa54b2b513}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-fe\_\-running@{m\_\-fe\_\-running}}
+\index{m\_\-fe\_\-running@{m\_\-fe\_\-running}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-fe\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf frontend\_\-c::m\_\-fe\_\-running}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_ad209b62e2a8616d2fe15edfa54b2b513}
+enabled frontend \hypertarget{classfrontend__c_a3ddc92b5614174fd7d77f4f0e7db5538}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-fe\_\-stall@{m\_\-fe\_\-stall}}
+\index{m\_\-fe\_\-stall@{m\_\-fe\_\-stall}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-fe\_\-stall}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf frontend\_\-c::m\_\-fe\_\-stall}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a3ddc92b5614174fd7d77f4f0e7db5538}
+frontend stalled \hypertarget{classfrontend__c_af1f0bce8b49a7903883ead8cba0a3963}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-fetch\_\-arbiter@{m\_\-fetch\_\-arbiter}}
+\index{m\_\-fetch\_\-arbiter@{m\_\-fetch\_\-arbiter}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-fetch\_\-arbiter}]{\setlength{\rightskip}{0pt plus 5cm}uns {\bf frontend\_\-c::m\_\-fetch\_\-arbiter}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_af1f0bce8b49a7903883ead8cba0a3963}
+fetch arbiter \hypertarget{classfrontend__c_abc56bb3ebfa3d76413b83c6174079c3c}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-fetch\_\-modulo@{m\_\-fetch\_\-modulo}}
+\index{m\_\-fetch\_\-modulo@{m\_\-fetch\_\-modulo}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-fetch\_\-modulo}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf frontend\_\-c::m\_\-fetch\_\-modulo}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_abc56bb3ebfa3d76413b83c6174079c3c}
+fetch modulo \hypertarget{classfrontend__c_aaee73e44aa9e8673b370f5f47d3a87e4}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-fetch\_\-ratio@{m\_\-fetch\_\-ratio}}
+\index{m\_\-fetch\_\-ratio@{m\_\-fetch\_\-ratio}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-fetch\_\-ratio}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf frontend\_\-c::m\_\-fetch\_\-ratio}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_aaee73e44aa9e8673b370f5f47d3a87e4}
+how often fetch an instruction (GPU only) \hypertarget{classfrontend__c_ac044116ea86e033c922093d211cc2c9d}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-knob\_\-fetch\_\-width@{m\_\-knob\_\-fetch\_\-width}}
+\index{m\_\-knob\_\-fetch\_\-width@{m\_\-knob\_\-fetch\_\-width}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-knob\_\-fetch\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}uns16 {\bf frontend\_\-c::m\_\-knob\_\-fetch\_\-width}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_ac044116ea86e033c922093d211cc2c9d}
+fetch width \hypertarget{classfrontend__c_a65a0c3afbe45a24ff11ef5c4efac6c61}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-knob\_\-icache\_\-line\_\-size@{m\_\-knob\_\-icache\_\-line\_\-size}}
+\index{m\_\-knob\_\-icache\_\-line\_\-size@{m\_\-knob\_\-icache\_\-line\_\-size}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-knob\_\-icache\_\-line\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}uns {\bf frontend\_\-c::m\_\-knob\_\-icache\_\-line\_\-size}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a65a0c3afbe45a24ff11ef5c4efac6c61}
+icache line size \hypertarget{classfrontend__c_a30a952873e134a3f296ac90efee193f6}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-knob\_\-ptx\_\-sim@{m\_\-knob\_\-ptx\_\-sim}}
+\index{m\_\-knob\_\-ptx\_\-sim@{m\_\-knob\_\-ptx\_\-sim}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-knob\_\-ptx\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf frontend\_\-c::m\_\-knob\_\-ptx\_\-sim}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a30a952873e134a3f296ac90efee193f6}
+GPU simulation \hypertarget{classfrontend__c_a7ed5014f79e26e431bff9ffa7b52121b}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-knob\_\-width@{m\_\-knob\_\-width}}
+\index{m\_\-knob\_\-width@{m\_\-knob\_\-width}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-knob\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}uns16 {\bf frontend\_\-c::m\_\-knob\_\-width}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a7ed5014f79e26e431bff9ffa7b52121b}
+width \hypertarget{classfrontend__c_a172f7f7447242af7808f4a68821194d2}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-mem\_\-access\_\-thread\_\-num@{m\_\-mem\_\-access\_\-thread\_\-num}}
+\index{m\_\-mem\_\-access\_\-thread\_\-num@{m\_\-mem\_\-access\_\-thread\_\-num}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-mem\_\-access\_\-thread\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf frontend\_\-c::m\_\-mem\_\-access\_\-thread\_\-num}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_a172f7f7447242af7808f4a68821194d2}
+number of threads that access memory \hypertarget{classfrontend__c_abe2dc05043fbc949b51dd87440ec1e5a}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-ready\_\-thread\_\-available@{m\_\-ready\_\-thread\_\-available}}
+\index{m\_\-ready\_\-thread\_\-available@{m\_\-ready\_\-thread\_\-available}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-ready\_\-thread\_\-available}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf frontend\_\-c::m\_\-ready\_\-thread\_\-available}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_abe2dc05043fbc949b51dd87440ec1e5a}
+ready thread available \hypertarget{classfrontend__c_ac593d33a9e55678461f84b74a738fd3b}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-sync\_\-done@{m\_\-sync\_\-done}}
+\index{m\_\-sync\_\-done@{m\_\-sync\_\-done}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-sync\_\-done}]{\setlength{\rightskip}{0pt plus 5cm}list$<$int32\_\-t$>$ {\bf frontend\_\-c::m\_\-sync\_\-done}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{classfrontend__c_ac593d33a9e55678461f84b74a738fd3b}
+synchronization information \hypertarget{classfrontend__c_a0279b18722ea8be3dea43e4c255c8159}{
+\index{frontend\_\-c@{frontend\_\-c}!m\_\-sync\_\-info@{m\_\-sync\_\-info}}
+\index{m\_\-sync\_\-info@{m\_\-sync\_\-info}!frontend_c@{frontend\_\-c}}
+\subsubsection[{m\_\-sync\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hash\_\-c}$<${\bf sync\_\-thread\_\-s}$>$$\ast$ {\bf frontend\_\-c::m\_\-sync\_\-info}}}
+\label{classfrontend__c_a0279b18722ea8be3dea43e4c255c8159}
+synchronization information 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+frontend.h\item 
+frontend.cc\end{DoxyCompactItemize}

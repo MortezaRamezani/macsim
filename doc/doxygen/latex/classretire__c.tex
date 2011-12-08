@@ -1,0 +1,277 @@
+\hypertarget{classretire__c}{
+\section{retire\_\-c Class Reference}
+\label{classretire__c}\index{retire\_\-c@{retire\_\-c}}
+}
+
+
+retirement stage  
+
+
+
+
+{\ttfamily \#include $<$retire.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classretire__c_a5310845cf7bee50f1bbc9c2b1e731e80}{retire\_\-c} (RETIRE\_\-INTERFACE\_\-PARAMS(), \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classretire__c_a9d262d8ca4b2e9de0729d73c2c293ee7}{$\sim$retire\_\-c} ()
+\item 
+void \hyperlink{classretire__c_a438f9012b09989659d8ef4327f2bb77a}{run\_\-a\_\-cycle} ()
+\item 
+void \hyperlink{classretire__c_a818ade739285989194fda54e649cdaa3}{start} ()
+\item 
+void \hyperlink{classretire__c_a9e773dd9d20ce1b75f0fd169cc6ea281}{stop} ()
+\item 
+bool \hyperlink{classretire__c_a654a996cb34a4e5c0d37067a6790acc9}{is\_\-running} ()
+\item 
+Counter \hyperlink{classretire__c_a0fefc3d4fb52bd905f71e658706775a5}{get\_\-instrs\_\-retired} (int thread\_\-id)
+\item 
+Counter \hyperlink{classretire__c_a2e089e4af473a1d17cb7648d3e9baa10}{get\_\-uops\_\-retired} (int thread\_\-id)
+\item 
+Counter \hyperlink{classretire__c_ac8b2d59e8cd9a0810ba4c993254fce89}{get\_\-total\_\-insts\_\-retired} ()
+\item 
+void \hyperlink{classretire__c_a7625722bdf7f036d8e2fcb374801ddd2}{allocate\_\-retire\_\-data} (int)
+\item 
+void \hyperlink{classretire__c_afd9831ac670b912e9702abd2bb24d3c3}{deallocate\_\-retire\_\-data} (int)
+\item 
+\hypertarget{classretire__c_acffa17bdf1d58a503a9ecda79caa4acc}{
+int {\bfseries get\_\-periodic\_\-inst\_\-count} (void)}
+\label{classretire__c_acffa17bdf1d58a503a9ecda79caa4acc}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classretire__c_a07e9117cffbab18595be92616ec1852b}{retire\_\-c} (const \hyperlink{classretire__c}{retire\_\-c} \&rhs)
+\item 
+\hyperlink{classretire__c}{retire\_\-c} \& \hyperlink{classretire__c_a4d74507c105952708d0b88ae198c456b}{operator=} (const \hyperlink{classretire__c}{retire\_\-c} \&rhs)
+\item 
+void \hyperlink{classretire__c_a20e4b31657c49da538d1360c060f7776}{update\_\-stats} (\hyperlink{structprocess__s}{process\_\-s} $\ast$)
+\item 
+void \hyperlink{classretire__c_aad999812f5d299edc5426613393b552e}{repeat\_\-traces} (\hyperlink{structprocess__s}{process\_\-s} $\ast$)
+\item 
+\hypertarget{classretire__c_af40a5cf3a5b9be53a30b37997db162bf}{
+{\bfseries RETIRE\_\-INTERFACE\_\-DECL} ()}
+\label{classretire__c_af40a5cf3a5b9be53a30b37997db162bf}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classretire__c_a440ae82fa7ace4028c64aae7abc24337}{m\_\-retire\_\-running}
+\item 
+Counter \hyperlink{classretire__c_a59114d1649ab7872ce25636b173353aa}{m\_\-total\_\-insts\_\-retired}
+\item 
+Counter \hyperlink{classretire__c_af58d8582170f634d4f021b76fd958b01}{m\_\-cur\_\-core\_\-cycle}
+\item 
+uns16 \hyperlink{classretire__c_ae0cb9e43818642ff68a1565004cd3080}{m\_\-knob\_\-width}
+\item 
+bool \hyperlink{classretire__c_a08f7427294d9f9d709beb52d33e98f41}{m\_\-knob\_\-ptx\_\-sim}
+\item 
+unordered\_\-map$<$ int, Counter $>$ \hyperlink{classretire__c_a84318556bf044a1c3bdbd08f61fe2d3a}{m\_\-insts\_\-retired}
+\item 
+unordered\_\-map$<$ int, Counter $>$ \hyperlink{classretire__c_a5e284ce1f986ab38f7d337e2dc7d3977}{m\_\-uops\_\-retired}
+\item 
+\hypertarget{classretire__c_a7ce9fe24f3b01a20eed2f7195cdc6f9c}{
+int {\bfseries m\_\-period\_\-inst\_\-count}}
+\label{classretire__c_a7ce9fe24f3b01a20eed2f7195cdc6f9c}
+
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classretire__c_a373e6acbae9c640abe0cfeaf54c0be53}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+retirement stage Retire (Commit) stage in the pipeline 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classretire__c_a5310845cf7bee50f1bbc9c2b1e731e80}{
+\index{retire\_\-c@{retire\_\-c}!retire\_\-c@{retire\_\-c}}
+\index{retire\_\-c@{retire\_\-c}!retire_c@{retire\_\-c}}
+\subsubsection[{retire\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}retire\_\-c::retire\_\-c (
+\begin{DoxyParamCaption}
+\item[{RETIRE\_\-INTERFACE\_\-PARAMS()}]{, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_a5310845cf7bee50f1bbc9c2b1e731e80}
+Constructor \hypertarget{classretire__c_a9d262d8ca4b2e9de0729d73c2c293ee7}{
+\index{retire\_\-c@{retire\_\-c}!$\sim$retire\_\-c@{$\sim$retire\_\-c}}
+\index{$\sim$retire\_\-c@{$\sim$retire\_\-c}!retire_c@{retire\_\-c}}
+\subsubsection[{$\sim$retire\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}retire\_\-c::$\sim$retire\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_a9d262d8ca4b2e9de0729d73c2c293ee7}
+Destructor \hypertarget{classretire__c_a07e9117cffbab18595be92616ec1852b}{
+\index{retire\_\-c@{retire\_\-c}!retire\_\-c@{retire\_\-c}}
+\index{retire\_\-c@{retire\_\-c}!retire_c@{retire\_\-c}}
+\subsubsection[{retire\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}retire\_\-c::retire\_\-c (
+\begin{DoxyParamCaption}
+\item[{const {\bf retire\_\-c} \&}]{ rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a07e9117cffbab18595be92616ec1852b}
+Private constructor. Do not implement 
+
+\subsection{Member Function Documentation}
+\hypertarget{classretire__c_a7625722bdf7f036d8e2fcb374801ddd2}{
+\index{retire\_\-c@{retire\_\-c}!allocate\_\-retire\_\-data@{allocate\_\-retire\_\-data}}
+\index{allocate\_\-retire\_\-data@{allocate\_\-retire\_\-data}!retire_c@{retire\_\-c}}
+\subsubsection[{allocate\_\-retire\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void retire\_\-c::allocate\_\-retire\_\-data (
+\begin{DoxyParamCaption}
+\item[{int}]{ tid}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_a7625722bdf7f036d8e2fcb374801ddd2}
+When a new thread has been scheduled, reset data \hypertarget{classretire__c_afd9831ac670b912e9702abd2bb24d3c3}{
+\index{retire\_\-c@{retire\_\-c}!deallocate\_\-retire\_\-data@{deallocate\_\-retire\_\-data}}
+\index{deallocate\_\-retire\_\-data@{deallocate\_\-retire\_\-data}!retire_c@{retire\_\-c}}
+\subsubsection[{deallocate\_\-retire\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}void retire\_\-c::deallocate\_\-retire\_\-data (
+\begin{DoxyParamCaption}
+\item[{int}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_afd9831ac670b912e9702abd2bb24d3c3}
+Deallocate per thread data \hypertarget{classretire__c_a0fefc3d4fb52bd905f71e658706775a5}{
+\index{retire\_\-c@{retire\_\-c}!get\_\-instrs\_\-retired@{get\_\-instrs\_\-retired}}
+\index{get\_\-instrs\_\-retired@{get\_\-instrs\_\-retired}!retire_c@{retire\_\-c}}
+\subsubsection[{get\_\-instrs\_\-retired}]{\setlength{\rightskip}{0pt plus 5cm}Counter retire\_\-c::get\_\-instrs\_\-retired (
+\begin{DoxyParamCaption}
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classretire__c_a0fefc3d4fb52bd905f71e658706775a5}
+Get number of retired instruction with thread\_\-id \hypertarget{classretire__c_ac8b2d59e8cd9a0810ba4c993254fce89}{
+\index{retire\_\-c@{retire\_\-c}!get\_\-total\_\-insts\_\-retired@{get\_\-total\_\-insts\_\-retired}}
+\index{get\_\-total\_\-insts\_\-retired@{get\_\-total\_\-insts\_\-retired}!retire_c@{retire\_\-c}}
+\subsubsection[{get\_\-total\_\-insts\_\-retired}]{\setlength{\rightskip}{0pt plus 5cm}Counter retire\_\-c::get\_\-total\_\-insts\_\-retired (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_ac8b2d59e8cd9a0810ba4c993254fce89}
+Get number of total retired instructions \hypertarget{classretire__c_a2e089e4af473a1d17cb7648d3e9baa10}{
+\index{retire\_\-c@{retire\_\-c}!get\_\-uops\_\-retired@{get\_\-uops\_\-retired}}
+\index{get\_\-uops\_\-retired@{get\_\-uops\_\-retired}!retire_c@{retire\_\-c}}
+\subsubsection[{get\_\-uops\_\-retired}]{\setlength{\rightskip}{0pt plus 5cm}Counter retire\_\-c::get\_\-uops\_\-retired (
+\begin{DoxyParamCaption}
+\item[{int}]{ thread\_\-id}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_a2e089e4af473a1d17cb7648d3e9baa10}
+Get number of retired uops with thread\_\-id \hypertarget{classretire__c_a654a996cb34a4e5c0d37067a6790acc9}{
+\index{retire\_\-c@{retire\_\-c}!is\_\-running@{is\_\-running}}
+\index{is\_\-running@{is\_\-running}!retire_c@{retire\_\-c}}
+\subsubsection[{is\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}bool retire\_\-c::is\_\-running (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_a654a996cb34a4e5c0d37067a6790acc9}
+Check retirement stage is running \hypertarget{classretire__c_a4d74507c105952708d0b88ae198c456b}{
+\index{retire\_\-c@{retire\_\-c}!operator=@{operator=}}
+\index{operator=@{operator=}!retire_c@{retire\_\-c}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf retire\_\-c}\& retire\_\-c::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf retire\_\-c} \&}]{ rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a4d74507c105952708d0b88ae198c456b}
+Overridden operator = \hypertarget{classretire__c_aad999812f5d299edc5426613393b552e}{
+\index{retire\_\-c@{retire\_\-c}!repeat\_\-traces@{repeat\_\-traces}}
+\index{repeat\_\-traces@{repeat\_\-traces}!retire_c@{retire\_\-c}}
+\subsubsection[{repeat\_\-traces}]{\setlength{\rightskip}{0pt plus 5cm}void retire\_\-c::repeat\_\-traces (
+\begin{DoxyParamCaption}
+\item[{{\bf process\_\-s} $\ast$}]{ process}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_aad999812f5d299edc5426613393b552e}
+Repeat (terminated) application \hypertarget{classretire__c_a438f9012b09989659d8ef4327f2bb77a}{
+\index{retire\_\-c@{retire\_\-c}!run\_\-a\_\-cycle@{run\_\-a\_\-cycle}}
+\index{run\_\-a\_\-cycle@{run\_\-a\_\-cycle}!retire_c@{retire\_\-c}}
+\subsubsection[{run\_\-a\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}void retire\_\-c::run\_\-a\_\-cycle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_a438f9012b09989659d8ef4327f2bb77a}
+Tick a cycle \hypertarget{classretire__c_a818ade739285989194fda54e649cdaa3}{
+\index{retire\_\-c@{retire\_\-c}!start@{start}}
+\index{start@{start}!retire_c@{retire\_\-c}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}void retire\_\-c::start (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_a818ade739285989194fda54e649cdaa3}
+Enable retirement stage \hypertarget{classretire__c_a9e773dd9d20ce1b75f0fd169cc6ea281}{
+\index{retire\_\-c@{retire\_\-c}!stop@{stop}}
+\index{stop@{stop}!retire_c@{retire\_\-c}}
+\subsubsection[{stop}]{\setlength{\rightskip}{0pt plus 5cm}void retire\_\-c::stop (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classretire__c_a9e773dd9d20ce1b75f0fd169cc6ea281}
+Disable retirement stage \hypertarget{classretire__c_a20e4b31657c49da538d1360c060f7776}{
+\index{retire\_\-c@{retire\_\-c}!update\_\-stats@{update\_\-stats}}
+\index{update\_\-stats@{update\_\-stats}!retire_c@{retire\_\-c}}
+\subsubsection[{update\_\-stats}]{\setlength{\rightskip}{0pt plus 5cm}void retire\_\-c::update\_\-stats (
+\begin{DoxyParamCaption}
+\item[{{\bf process\_\-s} $\ast$}]{ process}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a20e4b31657c49da538d1360c060f7776}
+Update stats when an application is done 
+
+\subsection{Member Data Documentation}
+\hypertarget{classretire__c_af58d8582170f634d4f021b76fd958b01}{
+\index{retire\_\-c@{retire\_\-c}!m\_\-cur\_\-core\_\-cycle@{m\_\-cur\_\-core\_\-cycle}}
+\index{m\_\-cur\_\-core\_\-cycle@{m\_\-cur\_\-core\_\-cycle}!retire_c@{retire\_\-c}}
+\subsubsection[{m\_\-cur\_\-core\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf retire\_\-c::m\_\-cur\_\-core\_\-cycle}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_af58d8582170f634d4f021b76fd958b01}
+current core cycle \hypertarget{classretire__c_a84318556bf044a1c3bdbd08f61fe2d3a}{
+\index{retire\_\-c@{retire\_\-c}!m\_\-insts\_\-retired@{m\_\-insts\_\-retired}}
+\index{m\_\-insts\_\-retired@{m\_\-insts\_\-retired}!retire_c@{retire\_\-c}}
+\subsubsection[{m\_\-insts\_\-retired}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<$int, Counter$>$ {\bf retire\_\-c::m\_\-insts\_\-retired}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a84318556bf044a1c3bdbd08f61fe2d3a}
+number of retired inst. per thread \hypertarget{classretire__c_a08f7427294d9f9d709beb52d33e98f41}{
+\index{retire\_\-c@{retire\_\-c}!m\_\-knob\_\-ptx\_\-sim@{m\_\-knob\_\-ptx\_\-sim}}
+\index{m\_\-knob\_\-ptx\_\-sim@{m\_\-knob\_\-ptx\_\-sim}!retire_c@{retire\_\-c}}
+\subsubsection[{m\_\-knob\_\-ptx\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf retire\_\-c::m\_\-knob\_\-ptx\_\-sim}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a08f7427294d9f9d709beb52d33e98f41}
+gpu simulation \hypertarget{classretire__c_ae0cb9e43818642ff68a1565004cd3080}{
+\index{retire\_\-c@{retire\_\-c}!m\_\-knob\_\-width@{m\_\-knob\_\-width}}
+\index{m\_\-knob\_\-width@{m\_\-knob\_\-width}!retire_c@{retire\_\-c}}
+\subsubsection[{m\_\-knob\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}uns16 {\bf retire\_\-c::m\_\-knob\_\-width}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_ae0cb9e43818642ff68a1565004cd3080}
+pipeline width \hypertarget{classretire__c_a440ae82fa7ace4028c64aae7abc24337}{
+\index{retire\_\-c@{retire\_\-c}!m\_\-retire\_\-running@{m\_\-retire\_\-running}}
+\index{m\_\-retire\_\-running@{m\_\-retire\_\-running}!retire_c@{retire\_\-c}}
+\subsubsection[{m\_\-retire\_\-running}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf retire\_\-c::m\_\-retire\_\-running}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a440ae82fa7ace4028c64aae7abc24337}
+retire enabled \hypertarget{classretire__c_a373e6acbae9c640abe0cfeaf54c0be53}{
+\index{retire\_\-c@{retire\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!retire_c@{retire\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf retire\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a373e6acbae9c640abe0cfeaf54c0be53}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{classretire__c_a59114d1649ab7872ce25636b173353aa}{
+\index{retire\_\-c@{retire\_\-c}!m\_\-total\_\-insts\_\-retired@{m\_\-total\_\-insts\_\-retired}}
+\index{m\_\-total\_\-insts\_\-retired@{m\_\-total\_\-insts\_\-retired}!retire_c@{retire\_\-c}}
+\subsubsection[{m\_\-total\_\-insts\_\-retired}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf retire\_\-c::m\_\-total\_\-insts\_\-retired}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a59114d1649ab7872ce25636b173353aa}
+total retired instructions \hypertarget{classretire__c_a5e284ce1f986ab38f7d337e2dc7d3977}{
+\index{retire\_\-c@{retire\_\-c}!m\_\-uops\_\-retired@{m\_\-uops\_\-retired}}
+\index{m\_\-uops\_\-retired@{m\_\-uops\_\-retired}!retire_c@{retire\_\-c}}
+\subsubsection[{m\_\-uops\_\-retired}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<$int, Counter$>$ {\bf retire\_\-c::m\_\-uops\_\-retired}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classretire__c_a5e284ce1f986ab38f7d337e2dc7d3977}
+number of retired uop per thread 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+retire.h\item 
+retire.cc\end{DoxyCompactItemize}

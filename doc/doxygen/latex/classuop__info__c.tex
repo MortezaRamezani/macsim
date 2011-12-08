@@ -1,0 +1,153 @@
+\hypertarget{classuop__info__c}{
+\section{uop\_\-info\_\-c Class Reference}
+\label{classuop__info__c}\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}}
+}
+
+
+uop information clas  
+
+
+
+
+{\ttfamily \#include $<$uop.h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Addr \hyperlink{classuop__info__c_a1883bff1246169e7e708cb8fabeb398b}{m\_\-pred\_\-npc}
+\item 
+Addr \hyperlink{classuop__info__c_ad6ede550d93c48f32cb874e2a0bc68bd}{m\_\-pred\_\-addr}
+\item 
+uns8 \hyperlink{classuop__info__c_acc5127f54e0c7be5ef209831d059c7f4}{m\_\-pred}
+\item 
+bool \hyperlink{classuop__info__c_a8f11ffb370bdf4a86d78f75ed1c5d65c}{m\_\-misfetch}
+\item 
+bool \hyperlink{classuop__info__c_aa8c135a846af6e973cab44b6527ae96a}{m\_\-mispred}
+\item 
+bool \hyperlink{classuop__info__c_a914f7457415859152e3b63e8cc3e6f6c}{m\_\-originally\_\-mispred}
+\item 
+bool \hyperlink{classuop__info__c_a9e508d92a0b1921a98148b3f920dda7f}{m\_\-originally\_\-misfetch}
+\item 
+bool \hyperlink{classuop__info__c_a231581e8274014ca0eee3503645e2c96}{m\_\-btb\_\-miss}
+\item 
+bool \hyperlink{classuop__info__c_abe0421cd826cb800793f16eaf1806eb1}{m\_\-btb\_\-miss\_\-resolved}
+\item 
+bool \hyperlink{classuop__info__c_a7224054a99355aa84ccdb62549837145}{m\_\-no\_\-target}
+\item 
+bool \hyperlink{classuop__info__c_aeaf923369a4504419d5f27cc346fa36e}{m\_\-ibp\_\-miss}
+\item 
+bool \hyperlink{classuop__info__c_ad6c8da616dd80c531b797c1f2880268c}{m\_\-icmiss}
+\item 
+bool \hyperlink{classuop__info__c_ad554638974bb5d439d74557a13d3aa71}{m\_\-dcmiss}
+\item 
+bool \hyperlink{classuop__info__c_ac226c2e89b9c9451b5c634e7ca444434}{m\_\-l2\_\-miss}
+\item 
+uns32 \hyperlink{classuop__info__c_ac822869e0b96565e5dbe0371aa1eac52}{m\_\-pred\_\-global\_\-hist}
+\item 
+uns64 \hyperlink{classuop__info__c_a719b31d7bef88146a4cfe2bb5e9712e5}{m\_\-pred\_\-global\_\-hist\_\-64}
+\item 
+int32 \hyperlink{classuop__info__c_a2f7e5f232a3868929da19c5b7ef629a5}{m\_\-perceptron\_\-output}
+\item 
+uns \hyperlink{classuop__info__c_a2417e1507b9da6996274504e220655c0}{m\_\-btb\_\-set}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+uop information clas 
+
+\subsection{Member Data Documentation}
+\hypertarget{classuop__info__c_a231581e8274014ca0eee3503645e2c96}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-btb\_\-miss@{m\_\-btb\_\-miss}}
+\index{m\_\-btb\_\-miss@{m\_\-btb\_\-miss}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-btb\_\-miss}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-btb\_\-miss}}}
+\label{classuop__info__c_a231581e8274014ca0eee3503645e2c96}
+target is not known at prediction time \hypertarget{classuop__info__c_abe0421cd826cb800793f16eaf1806eb1}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-btb\_\-miss\_\-resolved@{m\_\-btb\_\-miss\_\-resolved}}
+\index{m\_\-btb\_\-miss\_\-resolved@{m\_\-btb\_\-miss\_\-resolved}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-btb\_\-miss\_\-resolved}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-btb\_\-miss\_\-resolved}}}
+\label{classuop__info__c_abe0421cd826cb800793f16eaf1806eb1}
+btb miss is handled \hypertarget{classuop__info__c_a2417e1507b9da6996274504e220655c0}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-btb\_\-set@{m\_\-btb\_\-set}}
+\index{m\_\-btb\_\-set@{m\_\-btb\_\-set}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-btb\_\-set}]{\setlength{\rightskip}{0pt plus 5cm}uns {\bf uop\_\-info\_\-c::m\_\-btb\_\-set}}}
+\label{classuop__info__c_a2417e1507b9da6996274504e220655c0}
+btb set address \hypertarget{classuop__info__c_ad554638974bb5d439d74557a13d3aa71}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-dcmiss@{m\_\-dcmiss}}
+\index{m\_\-dcmiss@{m\_\-dcmiss}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-dcmiss}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-dcmiss}}}
+\label{classuop__info__c_ad554638974bb5d439d74557a13d3aa71}
+data cache miss \hypertarget{classuop__info__c_aeaf923369a4504419d5f27cc346fa36e}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-ibp\_\-miss@{m\_\-ibp\_\-miss}}
+\index{m\_\-ibp\_\-miss@{m\_\-ibp\_\-miss}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-ibp\_\-miss}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-ibp\_\-miss}}}
+\label{classuop__info__c_aeaf923369a4504419d5f27cc346fa36e}
+indirect branch miss \hypertarget{classuop__info__c_ad6c8da616dd80c531b797c1f2880268c}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-icmiss@{m\_\-icmiss}}
+\index{m\_\-icmiss@{m\_\-icmiss}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-icmiss}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-icmiss}}}
+\label{classuop__info__c_ad6c8da616dd80c531b797c1f2880268c}
+instruction cache miss \hypertarget{classuop__info__c_ac226c2e89b9c9451b5c634e7ca444434}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-l2\_\-miss@{m\_\-l2\_\-miss}}
+\index{m\_\-l2\_\-miss@{m\_\-l2\_\-miss}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-l2\_\-miss}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-l2\_\-miss}}}
+\label{classuop__info__c_ac226c2e89b9c9451b5c634e7ca444434}
+l2 miss \hypertarget{classuop__info__c_a8f11ffb370bdf4a86d78f75ed1c5d65c}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-misfetch@{m\_\-misfetch}}
+\index{m\_\-misfetch@{m\_\-misfetch}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-misfetch}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-misfetch}}}
+\label{classuop__info__c_a8f11ffb370bdf4a86d78f75ed1c5d65c}
+target address is the ONLY thing that was wrong \hypertarget{classuop__info__c_aa8c135a846af6e973cab44b6527ae96a}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-mispred@{m\_\-mispred}}
+\index{m\_\-mispred@{m\_\-mispred}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-mispred}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-mispred}}}
+\label{classuop__info__c_aa8c135a846af6e973cab44b6527ae96a}
+direction of the branch was mispredicted \hypertarget{classuop__info__c_a7224054a99355aa84ccdb62549837145}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-no\_\-target@{m\_\-no\_\-target}}
+\index{m\_\-no\_\-target@{m\_\-no\_\-target}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-no\_\-target}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-no\_\-target}}}
+\label{classuop__info__c_a7224054a99355aa84ccdb62549837145}
+no target for this branch at prediction time \hypertarget{classuop__info__c_a9e508d92a0b1921a98148b3f920dda7f}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-originally\_\-misfetch@{m\_\-originally\_\-misfetch}}
+\index{m\_\-originally\_\-misfetch@{m\_\-originally\_\-misfetch}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-originally\_\-misfetch}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-originally\_\-misfetch}}}
+\label{classuop__info__c_a9e508d92a0b1921a98148b3f920dda7f}
+branch was originally misfetched \hypertarget{classuop__info__c_a914f7457415859152e3b63e8cc3e6f6c}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-originally\_\-mispred@{m\_\-originally\_\-mispred}}
+\index{m\_\-originally\_\-mispred@{m\_\-originally\_\-mispred}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-originally\_\-mispred}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf uop\_\-info\_\-c::m\_\-originally\_\-mispred}}}
+\label{classuop__info__c_a914f7457415859152e3b63e8cc3e6f6c}
+branch was originally mispredicted \hypertarget{classuop__info__c_a2f7e5f232a3868929da19c5b7ef629a5}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-perceptron\_\-output@{m\_\-perceptron\_\-output}}
+\index{m\_\-perceptron\_\-output@{m\_\-perceptron\_\-output}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-perceptron\_\-output}]{\setlength{\rightskip}{0pt plus 5cm}int32 {\bf uop\_\-info\_\-c::m\_\-perceptron\_\-output}}}
+\label{classuop__info__c_a2f7e5f232a3868929da19c5b7ef629a5}
+perceptron bp output \hypertarget{classuop__info__c_acc5127f54e0c7be5ef209831d059c7f4}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-pred@{m\_\-pred}}
+\index{m\_\-pred@{m\_\-pred}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-pred}]{\setlength{\rightskip}{0pt plus 5cm}uns8 {\bf uop\_\-info\_\-c::m\_\-pred}}}
+\label{classuop__info__c_acc5127f54e0c7be5ef209831d059c7f4}
+branch direction \hypertarget{classuop__info__c_ad6ede550d93c48f32cb874e2a0bc68bd}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-pred\_\-addr@{m\_\-pred\_\-addr}}
+\index{m\_\-pred\_\-addr@{m\_\-pred\_\-addr}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-pred\_\-addr}]{\setlength{\rightskip}{0pt plus 5cm}Addr {\bf uop\_\-info\_\-c::m\_\-pred\_\-addr}}}
+\label{classuop__info__c_ad6ede550d93c48f32cb874e2a0bc68bd}
+address used to predict branch \hypertarget{classuop__info__c_ac822869e0b96565e5dbe0371aa1eac52}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-pred\_\-global\_\-hist@{m\_\-pred\_\-global\_\-hist}}
+\index{m\_\-pred\_\-global\_\-hist@{m\_\-pred\_\-global\_\-hist}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-pred\_\-global\_\-hist}]{\setlength{\rightskip}{0pt plus 5cm}uns32 {\bf uop\_\-info\_\-c::m\_\-pred\_\-global\_\-hist}}}
+\label{classuop__info__c_ac822869e0b96565e5dbe0371aa1eac52}
+global branch history 32-\/bit \hypertarget{classuop__info__c_a719b31d7bef88146a4cfe2bb5e9712e5}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-pred\_\-global\_\-hist\_\-64@{m\_\-pred\_\-global\_\-hist\_\-64}}
+\index{m\_\-pred\_\-global\_\-hist\_\-64@{m\_\-pred\_\-global\_\-hist\_\-64}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-pred\_\-global\_\-hist\_\-64}]{\setlength{\rightskip}{0pt plus 5cm}uns64 {\bf uop\_\-info\_\-c::m\_\-pred\_\-global\_\-hist\_\-64}}}
+\label{classuop__info__c_a719b31d7bef88146a4cfe2bb5e9712e5}
+global branch history 64-\/bit \hypertarget{classuop__info__c_a1883bff1246169e7e708cb8fabeb398b}{
+\index{uop\_\-info\_\-c@{uop\_\-info\_\-c}!m\_\-pred\_\-npc@{m\_\-pred\_\-npc}}
+\index{m\_\-pred\_\-npc@{m\_\-pred\_\-npc}!uop_info_c@{uop\_\-info\_\-c}}
+\subsubsection[{m\_\-pred\_\-npc}]{\setlength{\rightskip}{0pt plus 5cm}Addr {\bf uop\_\-info\_\-c::m\_\-pred\_\-npc}}}
+\label{classuop__info__c_a1883bff1246169e7e708cb8fabeb398b}
+predicted next pc 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+uop.h\end{DoxyCompactItemize}

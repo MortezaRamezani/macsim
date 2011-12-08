@@ -1,0 +1,48 @@
+\hypertarget{classmem__map__entry__c}{
+\section{mem\_\-map\_\-entry\_\-c Class Reference}
+\label{classmem__map__entry__c}\index{mem\_\-map\_\-entry\_\-c@{mem\_\-map\_\-entry\_\-c}}
+}
+
+
+data structure holding memory dependence information  
+
+
+
+
+{\ttfamily \#include $<$map.h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classuop__c}{uop\_\-c} $\ast$ \hyperlink{classmem__map__entry__c_a3ca3d13eb2521e21ed2776293f4f20c4}{m\_\-uop} \mbox{[}BYTES\_\-IN\_\-QUADWORD\mbox{]}
+\item 
+Quad \hyperlink{classmem__map__entry__c_a3d7080bd5290849a0ee2482d38a66cf1}{m\_\-data}
+\item 
+uns8 \hyperlink{classmem__map__entry__c_aa4d50f7f30287bd33107a8579f898be5}{m\_\-store\_\-mask}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+data structure holding memory dependence information 
+
+\subsection{Member Data Documentation}
+\hypertarget{classmem__map__entry__c_a3d7080bd5290849a0ee2482d38a66cf1}{
+\index{mem\_\-map\_\-entry\_\-c@{mem\_\-map\_\-entry\_\-c}!m\_\-data@{m\_\-data}}
+\index{m\_\-data@{m\_\-data}!mem_map_entry_c@{mem\_\-map\_\-entry\_\-c}}
+\subsubsection[{m\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}Quad {\bf mem\_\-map\_\-entry\_\-c::m\_\-data}}}
+\label{classmem__map__entry__c_a3d7080bd5290849a0ee2482d38a66cf1}
+memory dependence data \hypertarget{classmem__map__entry__c_aa4d50f7f30287bd33107a8579f898be5}{
+\index{mem\_\-map\_\-entry\_\-c@{mem\_\-map\_\-entry\_\-c}!m\_\-store\_\-mask@{m\_\-store\_\-mask}}
+\index{m\_\-store\_\-mask@{m\_\-store\_\-mask}!mem_map_entry_c@{mem\_\-map\_\-entry\_\-c}}
+\subsubsection[{m\_\-store\_\-mask}]{\setlength{\rightskip}{0pt plus 5cm}uns8 {\bf mem\_\-map\_\-entry\_\-c::m\_\-store\_\-mask}}}
+\label{classmem__map__entry__c_aa4d50f7f30287bd33107a8579f898be5}
+shows position of all distinct stores supplying a partial value to this map entry \hypertarget{classmem__map__entry__c_a3ca3d13eb2521e21ed2776293f4f20c4}{
+\index{mem\_\-map\_\-entry\_\-c@{mem\_\-map\_\-entry\_\-c}!m\_\-uop@{m\_\-uop}}
+\index{m\_\-uop@{m\_\-uop}!mem_map_entry_c@{mem\_\-map\_\-entry\_\-c}}
+\subsubsection[{m\_\-uop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uop\_\-c}$\ast$ {\bf mem\_\-map\_\-entry\_\-c::m\_\-uop}\mbox{[}BYTES\_\-IN\_\-QUADWORD\mbox{]}}}
+\label{classmem__map__entry__c_a3ca3d13eb2521e21ed2776293f4f20c4}
+last op to write (invalid when committed) 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+map.h\end{DoxyCompactItemize}

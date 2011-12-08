@@ -1,0 +1,102 @@
+\hypertarget{classmulti__key__map__c}{
+\section{multi\_\-key\_\-map\_\-c Class Reference}
+\label{classmulti__key__map__c}\index{multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}}
+}
+
+
+hash with multiple keys  
+
+
+
+
+{\ttfamily \#include $<$utils.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmulti__key__map__c_a10478aca09995a3572db5ece0f42b14b}{multi\_\-key\_\-map\_\-c} ()
+\item 
+\hyperlink{classmulti__key__map__c_abcce660edd4cc5d21b86b1efc61679cf}{$\sim$multi\_\-key\_\-map\_\-c} ()
+\item 
+int \hyperlink{classmulti__key__map__c_ab99cb6a05bb791560dca635328bee8a4}{find} (int key1, int key2)
+\item 
+int \hyperlink{classmulti__key__map__c_a71e80a3beb06b843f9ca94714e973ac3}{insert} (int key1, int key2)
+\item 
+\hypertarget{classmulti__key__map__c_a0e30025c7c55e3249f8e623054360d39}{
+void {\bfseries delete\_\-table} (int key1)}
+\label{classmulti__key__map__c_a0e30025c7c55e3249f8e623054360d39}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unordered\_\-map$<$ int, unordered\_\-map$<$ int, int $>$ $\ast$ $>$ \hyperlink{classmulti__key__map__c_aba1b2934d007b3e4bd2c841c674b83e0}{m\_\-table}
+\item 
+int \hyperlink{classmulti__key__map__c_ad69aed9994fc585d4b4ef41f283995eb}{m\_\-size}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+hash with multiple keys This class is used for remapping (application id, block id) to new unique block id. We need this feature to repeat same traces. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmulti__key__map__c_a10478aca09995a3572db5ece0f42b14b}{
+\index{multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}!multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}}
+\index{multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}!multi_key_map_c@{multi\_\-key\_\-map\_\-c}}
+\subsubsection[{multi\_\-key\_\-map\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}multi\_\-key\_\-map\_\-c::multi\_\-key\_\-map\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classmulti__key__map__c_a10478aca09995a3572db5ece0f42b14b}
+Constructor \hypertarget{classmulti__key__map__c_abcce660edd4cc5d21b86b1efc61679cf}{
+\index{multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}!$\sim$multi\_\-key\_\-map\_\-c@{$\sim$multi\_\-key\_\-map\_\-c}}
+\index{$\sim$multi\_\-key\_\-map\_\-c@{$\sim$multi\_\-key\_\-map\_\-c}!multi_key_map_c@{multi\_\-key\_\-map\_\-c}}
+\subsubsection[{$\sim$multi\_\-key\_\-map\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}multi\_\-key\_\-map\_\-c::$\sim$multi\_\-key\_\-map\_\-c (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classmulti__key__map__c_abcce660edd4cc5d21b86b1efc61679cf}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classmulti__key__map__c_ab99cb6a05bb791560dca635328bee8a4}{
+\index{multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}!find@{find}}
+\index{find@{find}!multi_key_map_c@{multi\_\-key\_\-map\_\-c}}
+\subsubsection[{find}]{\setlength{\rightskip}{0pt plus 5cm}int multi\_\-key\_\-map\_\-c::find (
+\begin{DoxyParamCaption}
+\item[{int}]{ key1, }
+\item[{int}]{ key2}
+\end{DoxyParamCaption}
+)}}
+\label{classmulti__key__map__c_ab99cb6a05bb791560dca635328bee8a4}
+Find an existing entry with two keys \hypertarget{classmulti__key__map__c_a71e80a3beb06b843f9ca94714e973ac3}{
+\index{multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}!insert@{insert}}
+\index{insert@{insert}!multi_key_map_c@{multi\_\-key\_\-map\_\-c}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}int multi\_\-key\_\-map\_\-c::insert (
+\begin{DoxyParamCaption}
+\item[{int}]{ key1, }
+\item[{int}]{ key2}
+\end{DoxyParamCaption}
+)}}
+\label{classmulti__key__map__c_a71e80a3beb06b843f9ca94714e973ac3}
+Insert a new entry with key1 and key2 
+
+\subsection{Member Data Documentation}
+\hypertarget{classmulti__key__map__c_ad69aed9994fc585d4b4ef41f283995eb}{
+\index{multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}!m\_\-size@{m\_\-size}}
+\index{m\_\-size@{m\_\-size}!multi_key_map_c@{multi\_\-key\_\-map\_\-c}}
+\subsubsection[{m\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf multi\_\-key\_\-map\_\-c::m\_\-size}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classmulti__key__map__c_ad69aed9994fc585d4b4ef41f283995eb}
+hash table size. to get unique id \hypertarget{classmulti__key__map__c_aba1b2934d007b3e4bd2c841c674b83e0}{
+\index{multi\_\-key\_\-map\_\-c@{multi\_\-key\_\-map\_\-c}!m\_\-table@{m\_\-table}}
+\index{m\_\-table@{m\_\-table}!multi_key_map_c@{multi\_\-key\_\-map\_\-c}}
+\subsubsection[{m\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}unordered\_\-map$<$int, unordered\_\-map$<$int, int$>$ $\ast$$>$ {\bf multi\_\-key\_\-map\_\-c::m\_\-table}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classmulti__key__map__c_aba1b2934d007b3e4bd2c841c674b83e0}
+hash table 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+utils.h\item 
+utils.cc\end{DoxyCompactItemize}

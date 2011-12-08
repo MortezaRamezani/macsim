@@ -1,0 +1,257 @@
+\hypertarget{classschedule__smc__c}{
+\section{schedule\_\-smc\_\-c Class Reference}
+\label{classschedule__smc__c}\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}}
+}
+
+
+Scheduler class for GPU simulation.  
+
+
+
+
+{\ttfamily \#include $<$schedule\_\-smc.h$>$}
+
+Inheritance diagram for schedule\_\-smc\_\-c:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classschedule__smc__c}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classschedule__smc__c_ac95fdbfe0f924722b86e10deb736d7d9}{schedule\_\-smc\_\-c} (int \hyperlink{classschedule__c_a6c4f8484b3f2dae8255c0ce064f9d46e}{m\_\-core\_\-id}, \hyperlink{classpqueue__c}{pqueue\_\-c}$<$ \hyperlink{structgpu__allocq__entry__s}{gpu\_\-allocq\_\-entry\_\-s} $>$ $\ast$$\ast$gpu\_\-allocq, \hyperlink{classsmc__rob__c}{smc\_\-rob\_\-c} $\ast$gpu\_\-m\_\-rob, \hyperlink{classexec__c}{exec\_\-c} $\ast$\hyperlink{classschedule__c_a75e32c0fe0d1ad336ada30787fceafd8}{m\_\-exec}, Unit\_\-Type \hyperlink{classschedule__c_a5fd7913b69e838b56da18de2802d8a71}{m\_\-unit\_\-type}, \hyperlink{classfrontend__c}{frontend\_\-c} $\ast$\hyperlink{classschedule__c_a88ee09e9569c248374f0c943a4b73987}{m\_\-frontend}, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\begin{DoxyCompactList}\small\item\em Constructor for the gpu scheluder class. \item\end{DoxyCompactList}\item 
+\hyperlink{classschedule__smc__c_aea8405348022655c30f22dfbe9447eda}{$\sim$schedule\_\-smc\_\-c} (void)
+\begin{DoxyCompactList}\small\item\em Destructor for the gpu scheduler. \item\end{DoxyCompactList}\item 
+void \hyperlink{classschedule__smc__c_aeb80c4988ef300b7dbd8f54fadc1a2ae}{run\_\-a\_\-cycle} ()
+\begin{DoxyCompactList}\small\item\em Function to perform the activities of a cycle for the scheduler. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classschedule__smc__c_a7f3ddbde213ee0afe9ba6af280bd6410}{advance} (int ALLOCQ\_\-index)
+\begin{DoxyCompactList}\small\item\em Function to move the allocation queue ahead. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classschedule__smc__c_acb5620b01fbcee7106da60275f6c4ec1}{check\_\-srcs} (int thread\_\-id, int entry)
+\begin{DoxyCompactList}\small\item\em Function to check if the sources of an uop are ready. \item\end{DoxyCompactList}\item 
+bool \hyperlink{classschedule__smc__c_a663a2b4622b94a2b2b64110b5787015c}{uop\_\-schedule} (int thread\_\-id, int entry, SCHED\_\-FAIL\_\-TYPE $\ast$sched\_\-fail\_\-reason)
+\begin{DoxyCompactList}\small\item\em Function to schedule uops. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classsmc__rob__c}{smc\_\-rob\_\-c} $\ast$ \hyperlink{classschedule__smc__c_a9010fc8b51522f02c9742f7c9498805b}{m\_\-gpu\_\-rob}
+\item 
+\hyperlink{classpqueue__c}{pqueue\_\-c}$<$ \hyperlink{structgpu__allocq__entry__s}{gpu\_\-allocq\_\-entry\_\-s} $>$ $\ast$$\ast$ \hyperlink{classschedule__smc__c_a8862c810b1e0da537ef0a5b7b7e8e2b6}{m\_\-gpu\_\-allocq}
+\item 
+int \hyperlink{classschedule__smc__c_a615d15485be9b13e8f62ed984acc588e}{knob\_\-num\_\-threads}
+\item 
+int \hyperlink{classschedule__smc__c_aeb0d028cbba234e9e93abede46bba2ca}{m\_\-schedule\_\-modulo}
+\item 
+\hypertarget{classschedule__smc__c_a7a1cd319f4e01bc323443722b77fbc24}{
+int $\ast$ {\bfseries m\_\-schlist\_\-entry}}
+\label{classschedule__smc__c_a7a1cd319f4e01bc323443722b77fbc24}
+
+\item 
+\hypertarget{classschedule__smc__c_a33117e5fec2a6e9b62f028c04186bbf5}{
+int $\ast$ {\bfseries m\_\-schlist\_\-tid}}
+\label{classschedule__smc__c_a33117e5fec2a6e9b62f028c04186bbf5}
+
+\item 
+\hypertarget{classschedule__smc__c_aacd48030e596766416ed7ac22fcfb9fb}{
+int {\bfseries m\_\-first\_\-schlist}}
+\label{classschedule__smc__c_aacd48030e596766416ed7ac22fcfb9fb}
+
+\item 
+\hypertarget{classschedule__smc__c_a00ae6f68a0eec8a62ed44381329ee6b8}{
+int {\bfseries m\_\-last\_\-schlist}}
+\label{classschedule__smc__c_a00ae6f68a0eec8a62ed44381329ee6b8}
+
+\item 
+\hypertarget{classschedule__smc__c_a60aa9c8f3eea2e35f0298320fd4d0783}{
+int {\bfseries m\_\-schlist\_\-size}}
+\label{classschedule__smc__c_a60aa9c8f3eea2e35f0298320fd4d0783}
+
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classschedule__smc__c_a40d5c66331f8f72123691ebbb4590f3b}{m\_\-simBase}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{classschedule__smc__c_a70bea811c0a494c3741fa64b319b0001}{MAX\_\-GPU\_\-SCHED\_\-SIZE} = 128
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Scheduler class for GPU simulation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classschedule__smc__c_ac95fdbfe0f924722b86e10deb736d7d9}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}}
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{schedule\_\-smc\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}schedule\_\-smc\_\-c::schedule\_\-smc\_\-c (
+\begin{DoxyParamCaption}
+\item[{int}]{ m\_\-core\_\-id, }
+\item[{{\bf pqueue\_\-c}$<$ {\bf gpu\_\-allocq\_\-entry\_\-s} $>$ $\ast$$\ast$}]{ gpu\_\-allocq, }
+\item[{{\bf smc\_\-rob\_\-c} $\ast$}]{ gpu\_\-m\_\-rob, }
+\item[{{\bf exec\_\-c} $\ast$}]{ m\_\-exec, }
+\item[{Unit\_\-Type}]{ m\_\-unit\_\-type, }
+\item[{{\bf frontend\_\-c} $\ast$}]{ m\_\-frontend, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classschedule__smc__c_ac95fdbfe0f924722b86e10deb736d7d9}
+
+
+Constructor for the gpu scheluder class. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em m\_\-core\_\-id}]-\/ Core identifier number \item[{\em gpu\_\-allocq}]-\/ Pointer to be updated with the alloc stage queues \item[{\em gpu\_\-m\_\-rob}]-\/ Pointer to the Reorder buffer \item[{\em m\_\-exec}]-\/ Pointer to m\_\-execution unit \item[{\em m\_\-unit\_\-type}]-\/ Parameter used to identify knob width \item[{\em m\_\-frontend}]-\/ Pointer to front end queue \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classschedule__smc__c_aea8405348022655c30f22dfbe9447eda}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!$\sim$schedule\_\-smc\_\-c@{$\sim$schedule\_\-smc\_\-c}}
+\index{$\sim$schedule\_\-smc\_\-c@{$\sim$schedule\_\-smc\_\-c}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{$\sim$schedule\_\-smc\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}void schedule\_\-smc\_\-c::$\sim$schedule\_\-smc\_\-c (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classschedule__smc__c_aea8405348022655c30f22dfbe9447eda}
+
+
+Destructor for the gpu scheduler. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classschedule__smc__c_a7f3ddbde213ee0afe9ba6af280bd6410}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!advance@{advance}}
+\index{advance@{advance}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{advance}]{\setlength{\rightskip}{0pt plus 5cm}void schedule\_\-smc\_\-c::advance (
+\begin{DoxyParamCaption}
+\item[{int}]{ ALLOCQ\_\-index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private, virtual\mbox{]}}}}
+\label{classschedule__smc__c_a7f3ddbde213ee0afe9ba6af280bd6410}
+
+
+Function to move the allocation queue ahead. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em ALLOCQ\_\-index}]-\/ Aloocation queue number to be moved ahead \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Reimplemented from \hyperlink{classschedule__c_a35f2f1ea49453967c863c5de1acae87e}{schedule\_\-c}.
+
+\hypertarget{classschedule__smc__c_acb5620b01fbcee7106da60275f6c4ec1}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!check\_\-srcs@{check\_\-srcs}}
+\index{check\_\-srcs@{check\_\-srcs}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{check\_\-srcs}]{\setlength{\rightskip}{0pt plus 5cm}bool schedule\_\-smc\_\-c::check\_\-srcs (
+\begin{DoxyParamCaption}
+\item[{int}]{ thread\_\-id, }
+\item[{int}]{ entry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__smc__c_acb5620b01fbcee7106da60275f6c4ec1}
+
+
+Function to check if the sources of an uop are ready. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thread\_\-id}]-\/ Thread id \item[{\em entry}]-\/ ROB entry of the uop \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ True if no dependency found 
+\end{DoxyReturn}
+\hypertarget{classschedule__smc__c_aeb80c4988ef300b7dbd8f54fadc1a2ae}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!run\_\-a\_\-cycle@{run\_\-a\_\-cycle}}
+\index{run\_\-a\_\-cycle@{run\_\-a\_\-cycle}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{run\_\-a\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}void schedule\_\-smc\_\-c::run\_\-a\_\-cycle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classschedule__smc__c_aeb80c4988ef300b7dbd8f54fadc1a2ae}
+
+
+Function to perform the activities of a cycle for the scheduler. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classschedule__c_abaede0d6b5e70e5cfc6bf98801e387e1}{schedule\_\-c}.
+
+\hypertarget{classschedule__smc__c_a663a2b4622b94a2b2b64110b5787015c}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!uop\_\-schedule@{uop\_\-schedule}}
+\index{uop\_\-schedule@{uop\_\-schedule}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{uop\_\-schedule}]{\setlength{\rightskip}{0pt plus 5cm}bool schedule\_\-smc\_\-c::uop\_\-schedule (
+\begin{DoxyParamCaption}
+\item[{int}]{ thread\_\-id, }
+\item[{int}]{ entry, }
+\item[{SCHED\_\-FAIL\_\-TYPE $\ast$}]{ sched\_\-fail\_\-reason}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__smc__c_a663a2b4622b94a2b2b64110b5787015c}
+
+
+Function to schedule uops. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em thread\_\-id}]-\/ Thread id \item[{\em entry}]-\/ ROB entry of the uop \item[{\em sched\_\-fail\_\-reason}]-\/ Reason of uop schedule failure \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ True on success in scheduling 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classschedule__smc__c_a615d15485be9b13e8f62ed984acc588e}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!knob\_\-num\_\-threads@{knob\_\-num\_\-threads}}
+\index{knob\_\-num\_\-threads@{knob\_\-num\_\-threads}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{knob\_\-num\_\-threads}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf schedule\_\-smc\_\-c::knob\_\-num\_\-threads}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__smc__c_a615d15485be9b13e8f62ed984acc588e}
+number of maximum thread per core \hypertarget{classschedule__smc__c_a8862c810b1e0da537ef0a5b7b7e8e2b6}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!m\_\-gpu\_\-allocq@{m\_\-gpu\_\-allocq}}
+\index{m\_\-gpu\_\-allocq@{m\_\-gpu\_\-allocq}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{m\_\-gpu\_\-allocq}]{\setlength{\rightskip}{0pt plus 5cm}{\bf pqueue\_\-c}$<${\bf gpu\_\-allocq\_\-entry\_\-s}$>$$\ast$$\ast$ {\bf schedule\_\-smc\_\-c::m\_\-gpu\_\-allocq}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__smc__c_a8862c810b1e0da537ef0a5b7b7e8e2b6}
+gpu allocation queue \hypertarget{classschedule__smc__c_a9010fc8b51522f02c9742f7c9498805b}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!m\_\-gpu\_\-rob@{m\_\-gpu\_\-rob}}
+\index{m\_\-gpu\_\-rob@{m\_\-gpu\_\-rob}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{m\_\-gpu\_\-rob}]{\setlength{\rightskip}{0pt plus 5cm}{\bf smc\_\-rob\_\-c}$\ast$ {\bf schedule\_\-smc\_\-c::m\_\-gpu\_\-rob}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__smc__c_a9010fc8b51522f02c9742f7c9498805b}
+gpu rob \hypertarget{classschedule__smc__c_aeb0d028cbba234e9e93abede46bba2ca}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!m\_\-schedule\_\-modulo@{m\_\-schedule\_\-modulo}}
+\index{m\_\-schedule\_\-modulo@{m\_\-schedule\_\-modulo}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{m\_\-schedule\_\-modulo}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf schedule\_\-smc\_\-c::m\_\-schedule\_\-modulo}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__smc__c_aeb0d028cbba234e9e93abede46bba2ca}
+modulo to schedule next thread \hypertarget{classschedule__smc__c_a40d5c66331f8f72123691ebbb4590f3b}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf schedule\_\-smc\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__smc__c_a40d5c66331f8f72123691ebbb4590f3b}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals 
+
+Reimplemented from \hyperlink{classschedule__c_a0db71234050b2c33f454b5d65d458564}{schedule\_\-c}.
+
+\hypertarget{classschedule__smc__c_a70bea811c0a494c3741fa64b319b0001}{
+\index{schedule\_\-smc\_\-c@{schedule\_\-smc\_\-c}!MAX\_\-GPU\_\-SCHED\_\-SIZE@{MAX\_\-GPU\_\-SCHED\_\-SIZE}}
+\index{MAX\_\-GPU\_\-SCHED\_\-SIZE@{MAX\_\-GPU\_\-SCHED\_\-SIZE}!schedule_smc_c@{schedule\_\-smc\_\-c}}
+\subsubsection[{MAX\_\-GPU\_\-SCHED\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}const int {\bf schedule\_\-smc\_\-c::MAX\_\-GPU\_\-SCHED\_\-SIZE} = 128\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}}
+\label{classschedule__smc__c_a70bea811c0a494c3741fa64b319b0001}
+max sched table size 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+schedule\_\-smc.h\item 
+schedule\_\-smc.cc\end{DoxyCompactItemize}

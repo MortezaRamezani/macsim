@@ -1,0 +1,296 @@
+\hypertarget{structthread__s}{
+\section{thread\_\-s Struct Reference}
+\label{structthread__s}\index{thread\_\-s@{thread\_\-s}}
+}
+
+
+Thread data structure.  
+
+
+
+
+{\ttfamily \#include $<$process\_\-manager.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structthread__s_a7e7a0ede1b4c78944c41901c5a031950}{thread\_\-s} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{structthread__s_af18191118de9e24ba2242266614d713c}{$\sim$thread\_\-s} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structthread__s_a3fabe97150e2faf6bcdc10e50d6aceee}{m\_\-unique\_\-thread\_\-id}
+\item 
+int \hyperlink{structthread__s_a04bae5c54623a9040e2c8bb136d27470}{m\_\-thread\_\-id}
+\item 
+int \hyperlink{structthread__s_af58128f3c139ab946d96c1b453c0708a}{m\_\-orig\_\-block\_\-id}
+\item 
+int \hyperlink{structthread__s_a7557fcd4c6c92363d3345c65dc3a4603}{m\_\-orig\_\-thread\_\-id}
+\item 
+int \hyperlink{structthread__s_ab3c9083e089fff4f6b97d39ed0ba4b51}{m\_\-block\_\-id}
+\item 
+gzFile \hyperlink{structthread__s_a96bd9cfd9a5e605f4eee72f92ca9f513}{m\_\-trace\_\-file}
+\item 
+bool \hyperlink{structthread__s_a0cf104a3dce7ddb37a48cf8b713b4ac2}{m\_\-file\_\-opened}
+\item 
+bool \hyperlink{structthread__s_a01a8c95c8e26b8ac986370337d4e15b3}{m\_\-main\_\-thread}
+\item 
+uint64\_\-t \hyperlink{structthread__s_ac29afed70ffd879732e441851c08380f}{m\_\-inst\_\-count}
+\item 
+uint64\_\-t \hyperlink{structthread__s_ab3eae22c15000ab6e61395cb0c56fa20}{m\_\-uop\_\-count}
+\item 
+bool \hyperlink{structthread__s_a02fca6a746d6446fce1b5f2c8adf9366}{m\_\-trace\_\-ended}
+\item 
+\hyperlink{structprocess__s}{process\_\-s} $\ast$ \hyperlink{structthread__s_ab3d94c455b77f0cc2f14151f8574c153}{m\_\-process}
+\item 
+bool \hyperlink{structthread__s_a12ca032501e4c819e864f4118781aa66}{m\_\-ptx}
+\item 
+char $\ast$ \hyperlink{structthread__s_a454df2fcda350ce8d6fde3ad01dddfcf}{m\_\-buffer}
+\item 
+int \hyperlink{structthread__s_a9aebcb5639f20227246a12fbfd1dbcc9}{m\_\-buffer\_\-index}
+\item 
+int \hyperlink{structthread__s_a556880e1e2a0ae1fdb174a41bd94bc10}{m\_\-buffer\_\-index\_\-max}
+\item 
+bool \hyperlink{structthread__s_ac6b1743df3ea0beb279fcccf9a2833df}{m\_\-buffer\_\-exhausted}
+\item 
+\hyperlink{structfrontend__s}{frontend\_\-s} $\ast$ \hyperlink{structthread__s_abf181f7d6a5596629a4237ab78b68497}{m\_\-fetch\_\-data}
+\item 
+\hyperlink{structtrace__info__s}{trace\_\-info\_\-s} $\ast$ \hyperlink{structthread__s_a978fea511dd7c2d9076e06d81a675b9f}{m\_\-prev\_\-trace\_\-info}
+\item 
+\hyperlink{structtrace__info__s}{trace\_\-info\_\-s} $\ast$ \hyperlink{structthread__s_a484d73110277c89a874cb1c681c916fc}{m\_\-next\_\-trace\_\-info}
+\item 
+bool \hyperlink{structthread__s_afc7f4beee3959a7a0e9a783f01094902}{m\_\-thread\_\-init}
+\item 
+uint64\_\-t \hyperlink{structthread__s_ac7cf96053872c92c7f1b0b2488969ab7}{m\_\-temp\_\-inst\_\-count}
+\item 
+uint64\_\-t \hyperlink{structthread__s_aec816b397664eb8afeedab515c5afe8d}{m\_\-temp\_\-uop\_\-count}
+\item 
+int \hyperlink{structthread__s_a7d27d154f05ae450db08ae51e576d2fd}{m\_\-num\_\-sending\_\-uop}
+\item 
+bool \hyperlink{structthread__s_afae2ee7a8bd0adf9a6c544eed103c440}{m\_\-bom}
+\item 
+bool \hyperlink{structthread__s_a771e92a9ef2ecc972ccc647f3d2d4f3d}{m\_\-eom}
+\item 
+\hyperlink{structtrace__uop__s}{trace\_\-uop\_\-s} $\ast$ \hyperlink{structthread__s_a3a1828ec963fd0cba7c0ea8fd96699eb}{m\_\-trace\_\-uop\_\-array} \mbox{[}MAX\_\-PUP\mbox{]}
+\item 
+\hyperlink{structtrace__uop__s}{trace\_\-uop\_\-s} $\ast$ \hyperlink{structthread__s_acb1122a59e5a61681b95987404c52789}{m\_\-next\_\-trace\_\-uop\_\-array} \mbox{[}MAX\_\-PUP\mbox{]}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{structthread__s_a95470a3e9e20649f4228016776325938}{m\_\-simBase}
+\item 
+list$<$ \hyperlink{structsection__info__s}{section\_\-info\_\-s} $\ast$ $>$ \hyperlink{structthread__s_acbb56db74b9ba52acb14437d6f9e0231}{m\_\-sections}
+\item 
+list$<$ \hyperlink{structsection__info__s}{section\_\-info\_\-s} $\ast$ $>$ \hyperlink{structthread__s_a854a6eb1c6bb1aacfdf3c24cf9b1a037}{m\_\-bar\_\-sections}
+\item 
+list$<$ \hyperlink{structsection__info__s}{section\_\-info\_\-s} $\ast$ $>$ \hyperlink{structthread__s_a34206b2835435191b813c943cf4d6c1b}{m\_\-mem\_\-sections}
+\item 
+list$<$ \hyperlink{structsection__info__s}{section\_\-info\_\-s} $\ast$ $>$ \hyperlink{structthread__s_ac0e1546f48c08ecb93fcebbb2ea53d35}{m\_\-mem\_\-bar\_\-sections}
+\item 
+list$<$ \hyperlink{structsection__info__s}{section\_\-info\_\-s} $\ast$ $>$ \hyperlink{structthread__s_a9bf8a0cc4da3251e3fb81372f28b7426}{m\_\-mem\_\-for\_\-bar\_\-sections}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Thread data structure. Mapping between the trace of physical thread and simulation thread. For X86 simulation, a simulation thread is mapped to a physical thread. However, for GPU simulation, a thread is mapped to a SIMD thread group (warp).
+
+task struct like structure maintained for each thread contains pointer to trace file for the thread + state maintained for the thread 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structthread__s_a7e7a0ede1b4c78944c41901c5a031950}{
+\index{thread\_\-s@{thread\_\-s}!thread\_\-s@{thread\_\-s}}
+\index{thread\_\-s@{thread\_\-s}!thread_s@{thread\_\-s}}
+\subsubsection[{thread\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}thread\_\-s::thread\_\-s (
+\begin{DoxyParamCaption}
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{structthread__s_a7e7a0ede1b4c78944c41901c5a031950}
+Constructor \hypertarget{structthread__s_af18191118de9e24ba2242266614d713c}{
+\index{thread\_\-s@{thread\_\-s}!$\sim$thread\_\-s@{$\sim$thread\_\-s}}
+\index{$\sim$thread\_\-s@{$\sim$thread\_\-s}!thread_s@{thread\_\-s}}
+\subsubsection[{$\sim$thread\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}thread\_\-s::$\sim$thread\_\-s (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{structthread__s_af18191118de9e24ba2242266614d713c}
+Destructor 
+
+\subsection{Member Data Documentation}
+\hypertarget{structthread__s_a854a6eb1c6bb1aacfdf3c24cf9b1a037}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-bar\_\-sections@{m\_\-bar\_\-sections}}
+\index{m\_\-bar\_\-sections@{m\_\-bar\_\-sections}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-bar\_\-sections}]{\setlength{\rightskip}{0pt plus 5cm}list$<${\bf section\_\-info\_\-s}$\ast$$>$ {\bf thread\_\-s::m\_\-bar\_\-sections}}}
+\label{structthread__s_a854a6eb1c6bb1aacfdf3c24cf9b1a037}
+barrier sections \hypertarget{structthread__s_ab3c9083e089fff4f6b97d39ed0ba4b51}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-block\_\-id@{m\_\-block\_\-id}}
+\index{m\_\-block\_\-id@{m\_\-block\_\-id}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-block\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-s::m\_\-block\_\-id}}}
+\label{structthread__s_ab3c9083e089fff4f6b97d39ed0ba4b51}
+block id \hypertarget{structthread__s_afae2ee7a8bd0adf9a6c544eed103c440}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-bom@{m\_\-bom}}
+\index{m\_\-bom@{m\_\-bom}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-bom}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-s::m\_\-bom}}}
+\label{structthread__s_afae2ee7a8bd0adf9a6c544eed103c440}
+beginning of instruction \hypertarget{structthread__s_a454df2fcda350ce8d6fde3ad01dddfcf}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-buffer@{m\_\-buffer}}
+\index{m\_\-buffer@{m\_\-buffer}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf thread\_\-s::m\_\-buffer}}}
+\label{structthread__s_a454df2fcda350ce8d6fde3ad01dddfcf}
+trace buffer \hypertarget{structthread__s_ac6b1743df3ea0beb279fcccf9a2833df}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-buffer\_\-exhausted@{m\_\-buffer\_\-exhausted}}
+\index{m\_\-buffer\_\-exhausted@{m\_\-buffer\_\-exhausted}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-buffer\_\-exhausted}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-s::m\_\-buffer\_\-exhausted}}}
+\label{structthread__s_ac6b1743df3ea0beb279fcccf9a2833df}
+read all traces from the buffer \hypertarget{structthread__s_a9aebcb5639f20227246a12fbfd1dbcc9}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-buffer\_\-index@{m\_\-buffer\_\-index}}
+\index{m\_\-buffer\_\-index@{m\_\-buffer\_\-index}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-buffer\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-s::m\_\-buffer\_\-index}}}
+\label{structthread__s_a9aebcb5639f20227246a12fbfd1dbcc9}
+current trace buffer index \hypertarget{structthread__s_a556880e1e2a0ae1fdb174a41bd94bc10}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-buffer\_\-index\_\-max@{m\_\-buffer\_\-index\_\-max}}
+\index{m\_\-buffer\_\-index\_\-max@{m\_\-buffer\_\-index\_\-max}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-buffer\_\-index\_\-max}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-s::m\_\-buffer\_\-index\_\-max}}}
+\label{structthread__s_a556880e1e2a0ae1fdb174a41bd94bc10}
+maximum buffer index \hypertarget{structthread__s_a771e92a9ef2ecc972ccc647f3d2d4f3d}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-eom@{m\_\-eom}}
+\index{m\_\-eom@{m\_\-eom}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-eom}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-s::m\_\-eom}}}
+\label{structthread__s_a771e92a9ef2ecc972ccc647f3d2d4f3d}
+end of instruction \hypertarget{structthread__s_abf181f7d6a5596629a4237ab78b68497}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-fetch\_\-data@{m\_\-fetch\_\-data}}
+\index{m\_\-fetch\_\-data@{m\_\-fetch\_\-data}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-fetch\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf frontend\_\-s}$\ast$ {\bf thread\_\-s::m\_\-fetch\_\-data}}}
+\label{structthread__s_abf181f7d6a5596629a4237ab78b68497}
+frontend fetch data \hypertarget{structthread__s_a0cf104a3dce7ddb37a48cf8b713b4ac2}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-file\_\-opened@{m\_\-file\_\-opened}}
+\index{m\_\-file\_\-opened@{m\_\-file\_\-opened}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-file\_\-opened}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-s::m\_\-file\_\-opened}}}
+\label{structthread__s_a0cf104a3dce7ddb37a48cf8b713b4ac2}
+trace file opened? \hypertarget{structthread__s_ac29afed70ffd879732e441851c08380f}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-inst\_\-count@{m\_\-inst\_\-count}}
+\index{m\_\-inst\_\-count@{m\_\-inst\_\-count}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-inst\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t {\bf thread\_\-s::m\_\-inst\_\-count}}}
+\label{structthread__s_ac29afed70ffd879732e441851c08380f}
+total instruction counts \hypertarget{structthread__s_a01a8c95c8e26b8ac986370337d4e15b3}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-main\_\-thread@{m\_\-main\_\-thread}}
+\index{m\_\-main\_\-thread@{m\_\-main\_\-thread}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-main\_\-thread}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-s::m\_\-main\_\-thread}}}
+\label{structthread__s_a01a8c95c8e26b8ac986370337d4e15b3}
+main thread (usually thread id 0) \hypertarget{structthread__s_ac0e1546f48c08ecb93fcebbb2ea53d35}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-mem\_\-bar\_\-sections@{m\_\-mem\_\-bar\_\-sections}}
+\index{m\_\-mem\_\-bar\_\-sections@{m\_\-mem\_\-bar\_\-sections}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-mem\_\-bar\_\-sections}]{\setlength{\rightskip}{0pt plus 5cm}list$<${\bf section\_\-info\_\-s}$\ast$$>$ {\bf thread\_\-s::m\_\-mem\_\-bar\_\-sections}}}
+\label{structthread__s_ac0e1546f48c08ecb93fcebbb2ea53d35}
+memory barrier sections \hypertarget{structthread__s_a9bf8a0cc4da3251e3fb81372f28b7426}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-mem\_\-for\_\-bar\_\-sections@{m\_\-mem\_\-for\_\-bar\_\-sections}}
+\index{m\_\-mem\_\-for\_\-bar\_\-sections@{m\_\-mem\_\-for\_\-bar\_\-sections}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-mem\_\-for\_\-bar\_\-sections}]{\setlength{\rightskip}{0pt plus 5cm}list$<${\bf section\_\-info\_\-s}$\ast$$>$ {\bf thread\_\-s::m\_\-mem\_\-for\_\-bar\_\-sections}}}
+\label{structthread__s_a9bf8a0cc4da3251e3fb81372f28b7426}
+memory for barrier sections \hypertarget{structthread__s_a34206b2835435191b813c943cf4d6c1b}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-mem\_\-sections@{m\_\-mem\_\-sections}}
+\index{m\_\-mem\_\-sections@{m\_\-mem\_\-sections}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-mem\_\-sections}]{\setlength{\rightskip}{0pt plus 5cm}list$<${\bf section\_\-info\_\-s}$\ast$$>$ {\bf thread\_\-s::m\_\-mem\_\-sections}}}
+\label{structthread__s_a34206b2835435191b813c943cf4d6c1b}
+memory sections \hypertarget{structthread__s_a484d73110277c89a874cb1c681c916fc}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-next\_\-trace\_\-info@{m\_\-next\_\-trace\_\-info}}
+\index{m\_\-next\_\-trace\_\-info@{m\_\-next\_\-trace\_\-info}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-next\_\-trace\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-info\_\-s}$\ast$ {\bf thread\_\-s::m\_\-next\_\-trace\_\-info}}}
+\label{structthread__s_a484d73110277c89a874cb1c681c916fc}
+next instruction trace info \hypertarget{structthread__s_acb1122a59e5a61681b95987404c52789}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-next\_\-trace\_\-uop\_\-array@{m\_\-next\_\-trace\_\-uop\_\-array}}
+\index{m\_\-next\_\-trace\_\-uop\_\-array@{m\_\-next\_\-trace\_\-uop\_\-array}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-next\_\-trace\_\-uop\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-uop\_\-s}$\ast$ {\bf thread\_\-s::m\_\-next\_\-trace\_\-uop\_\-array}\mbox{[}MAX\_\-PUP\mbox{]}}}
+\label{structthread__s_acb1122a59e5a61681b95987404c52789}
+next trace uop array \hypertarget{structthread__s_a7d27d154f05ae450db08ae51e576d2fd}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-num\_\-sending\_\-uop@{m\_\-num\_\-sending\_\-uop}}
+\index{m\_\-num\_\-sending\_\-uop@{m\_\-num\_\-sending\_\-uop}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-num\_\-sending\_\-uop}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-s::m\_\-num\_\-sending\_\-uop}}}
+\label{structthread__s_a7d27d154f05ae450db08ae51e576d2fd}
+number of sending uops \hypertarget{structthread__s_af58128f3c139ab946d96c1b453c0708a}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-orig\_\-block\_\-id@{m\_\-orig\_\-block\_\-id}}
+\index{m\_\-orig\_\-block\_\-id@{m\_\-orig\_\-block\_\-id}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-orig\_\-block\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-s::m\_\-orig\_\-block\_\-id}}}
+\label{structthread__s_af58128f3c139ab946d96c1b453c0708a}
+original block id from a trace \hypertarget{structthread__s_a7557fcd4c6c92363d3345c65dc3a4603}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-orig\_\-thread\_\-id@{m\_\-orig\_\-thread\_\-id}}
+\index{m\_\-orig\_\-thread\_\-id@{m\_\-orig\_\-thread\_\-id}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-orig\_\-thread\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-s::m\_\-orig\_\-thread\_\-id}}}
+\label{structthread__s_a7557fcd4c6c92363d3345c65dc3a4603}
+adjusted block id \hypertarget{structthread__s_a978fea511dd7c2d9076e06d81a675b9f}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-prev\_\-trace\_\-info@{m\_\-prev\_\-trace\_\-info}}
+\index{m\_\-prev\_\-trace\_\-info@{m\_\-prev\_\-trace\_\-info}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-prev\_\-trace\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-info\_\-s}$\ast$ {\bf thread\_\-s::m\_\-prev\_\-trace\_\-info}}}
+\label{structthread__s_a978fea511dd7c2d9076e06d81a675b9f}
+prev instruction trace info \hypertarget{structthread__s_ab3d94c455b77f0cc2f14151f8574c153}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-process@{m\_\-process}}
+\index{m\_\-process@{m\_\-process}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf process\_\-s}$\ast$ {\bf thread\_\-s::m\_\-process}}}
+\label{structthread__s_ab3d94c455b77f0cc2f14151f8574c153}
+point to the application belongs to \hypertarget{structthread__s_a12ca032501e4c819e864f4118781aa66}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-ptx@{m\_\-ptx}}
+\index{m\_\-ptx@{m\_\-ptx}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-ptx}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-s::m\_\-ptx}}}
+\label{structthread__s_a12ca032501e4c819e864f4118781aa66}
+GPU thread \hypertarget{structthread__s_acbb56db74b9ba52acb14437d6f9e0231}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-sections@{m\_\-sections}}
+\index{m\_\-sections@{m\_\-sections}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-sections}]{\setlength{\rightskip}{0pt plus 5cm}list$<${\bf section\_\-info\_\-s}$\ast$$>$ {\bf thread\_\-s::m\_\-sections}}}
+\label{structthread__s_acbb56db74b9ba52acb14437d6f9e0231}
+code sections \hypertarget{structthread__s_a95470a3e9e20649f4228016776325938}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf thread\_\-s::m\_\-simBase}}}
+\label{structthread__s_a95470a3e9e20649f4228016776325938}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{structthread__s_ac7cf96053872c92c7f1b0b2488969ab7}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-temp\_\-inst\_\-count@{m\_\-temp\_\-inst\_\-count}}
+\index{m\_\-temp\_\-inst\_\-count@{m\_\-temp\_\-inst\_\-count}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-temp\_\-inst\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t {\bf thread\_\-s::m\_\-temp\_\-inst\_\-count}}}
+\label{structthread__s_ac7cf96053872c92c7f1b0b2488969ab7}
+temp instruction count \hypertarget{structthread__s_aec816b397664eb8afeedab515c5afe8d}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-temp\_\-uop\_\-count@{m\_\-temp\_\-uop\_\-count}}
+\index{m\_\-temp\_\-uop\_\-count@{m\_\-temp\_\-uop\_\-count}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-temp\_\-uop\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t {\bf thread\_\-s::m\_\-temp\_\-uop\_\-count}}}
+\label{structthread__s_aec816b397664eb8afeedab515c5afe8d}
+temp uop count \hypertarget{structthread__s_a04bae5c54623a9040e2c8bb136d27470}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-thread\_\-id@{m\_\-thread\_\-id}}
+\index{m\_\-thread\_\-id@{m\_\-thread\_\-id}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-thread\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-s::m\_\-thread\_\-id}}}
+\label{structthread__s_a04bae5c54623a9040e2c8bb136d27470}
+current thread id \hypertarget{structthread__s_afc7f4beee3959a7a0e9a783f01094902}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-thread\_\-init@{m\_\-thread\_\-init}}
+\index{m\_\-thread\_\-init@{m\_\-thread\_\-init}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-thread\_\-init}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-s::m\_\-thread\_\-init}}}
+\label{structthread__s_afc7f4beee3959a7a0e9a783f01094902}
+thread initialized \hypertarget{structthread__s_a02fca6a746d6446fce1b5f2c8adf9366}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-trace\_\-ended@{m\_\-trace\_\-ended}}
+\index{m\_\-trace\_\-ended@{m\_\-trace\_\-ended}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-trace\_\-ended}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf thread\_\-s::m\_\-trace\_\-ended}}}
+\label{structthread__s_a02fca6a746d6446fce1b5f2c8adf9366}
+trace ended \hypertarget{structthread__s_a96bd9cfd9a5e605f4eee72f92ca9f513}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-trace\_\-file@{m\_\-trace\_\-file}}
+\index{m\_\-trace\_\-file@{m\_\-trace\_\-file}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-trace\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}gzFile {\bf thread\_\-s::m\_\-trace\_\-file}}}
+\label{structthread__s_a96bd9cfd9a5e605f4eee72f92ca9f513}
+gzip trace file \hypertarget{structthread__s_a3a1828ec963fd0cba7c0ea8fd96699eb}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-trace\_\-uop\_\-array@{m\_\-trace\_\-uop\_\-array}}
+\index{m\_\-trace\_\-uop\_\-array@{m\_\-trace\_\-uop\_\-array}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-trace\_\-uop\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf trace\_\-uop\_\-s}$\ast$ {\bf thread\_\-s::m\_\-trace\_\-uop\_\-array}\mbox{[}MAX\_\-PUP\mbox{]}}}
+\label{structthread__s_a3a1828ec963fd0cba7c0ea8fd96699eb}
+trace uop array \hypertarget{structthread__s_a3fabe97150e2faf6bcdc10e50d6aceee}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-unique\_\-thread\_\-id@{m\_\-unique\_\-thread\_\-id}}
+\index{m\_\-unique\_\-thread\_\-id@{m\_\-unique\_\-thread\_\-id}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-unique\_\-thread\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf thread\_\-s::m\_\-unique\_\-thread\_\-id}}}
+\label{structthread__s_a3fabe97150e2faf6bcdc10e50d6aceee}
+unique thread id \hypertarget{structthread__s_ab3eae22c15000ab6e61395cb0c56fa20}{
+\index{thread\_\-s@{thread\_\-s}!m\_\-uop\_\-count@{m\_\-uop\_\-count}}
+\index{m\_\-uop\_\-count@{m\_\-uop\_\-count}!thread_s@{thread\_\-s}}
+\subsubsection[{m\_\-uop\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}uint64\_\-t {\bf thread\_\-s::m\_\-uop\_\-count}}}
+\label{structthread__s_ab3eae22c15000ab6e61395cb0c56fa20}
+total uop counts 
+
+The documentation for this struct was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+process\_\-manager.h\item 
+process\_\-manager.cc\end{DoxyCompactItemize}

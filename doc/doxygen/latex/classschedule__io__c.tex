@@ -1,0 +1,128 @@
+\hypertarget{classschedule__io__c}{
+\section{schedule\_\-io\_\-c Class Reference}
+\label{classschedule__io__c}\index{schedule\_\-io\_\-c@{schedule\_\-io\_\-c}}
+}
+
+
+In-\/order scheduler class.  
+
+
+
+
+{\ttfamily \#include $<$schedule\_\-io.h$>$}
+
+Inheritance diagram for schedule\_\-io\_\-c:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classschedule__io__c}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classschedule__io__c_a57961ab7add32f6e032e7ed03cd37442}{schedule\_\-io\_\-c} (int \hyperlink{classschedule__c_a6c4f8484b3f2dae8255c0ce064f9d46e}{m\_\-core\_\-id}, \hyperlink{classpqueue__c}{pqueue\_\-c}$<$ int $>$ $\ast$$\ast$\hyperlink{classschedule__c_a54abfd4e67cf5e137e5f47ce52e8d903}{m\_\-alloc\_\-q}, \hyperlink{classrob__c}{rob\_\-c} $\ast$\hyperlink{classschedule__c_a440a3a31b8fd41afae103a4b0ed3f49c}{m\_\-rob}, \hyperlink{classexec__c}{exec\_\-c} $\ast$\hyperlink{classschedule__c_a75e32c0fe0d1ad336ada30787fceafd8}{m\_\-exec}, Unit\_\-Type \hyperlink{classschedule__c_a5fd7913b69e838b56da18de2802d8a71}{m\_\-unit\_\-type}, \hyperlink{classfrontend__c}{frontend\_\-c} $\ast$\hyperlink{classschedule__c_a88ee09e9569c248374f0c943a4b73987}{m\_\-frontend}, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\begin{DoxyCompactList}\small\item\em Constructor for the Inorder scheluder class. \item\end{DoxyCompactList}\item 
+\hyperlink{classschedule__io__c_a1dd49046b8bc3795f66cd60c2eefff7f}{$\sim$schedule\_\-io\_\-c} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the Inorder scheduler. \item\end{DoxyCompactList}\item 
+void \hyperlink{classschedule__io__c_add1ff393e65774fabedc6b4069793c9f}{run\_\-a\_\-cycle} ()
+\begin{DoxyCompactList}\small\item\em Function to perform the activities of a cycle for the scheduler. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classschedule__io__c_a5bf81c5205db201ff80eb9d99da075a3}{m\_\-next\_\-inorder\_\-to\_\-schedule}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classschedule__io__c_a4fd792581e727219c93a1d4ac6707cbd}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+In-\/order scheduler class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classschedule__io__c_a57961ab7add32f6e032e7ed03cd37442}{
+\index{schedule\_\-io\_\-c@{schedule\_\-io\_\-c}!schedule\_\-io\_\-c@{schedule\_\-io\_\-c}}
+\index{schedule\_\-io\_\-c@{schedule\_\-io\_\-c}!schedule_io_c@{schedule\_\-io\_\-c}}
+\subsubsection[{schedule\_\-io\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}schedule\_\-io\_\-c::schedule\_\-io\_\-c (
+\begin{DoxyParamCaption}
+\item[{int}]{ m\_\-core\_\-id, }
+\item[{{\bf pqueue\_\-c}$<$ int $>$ $\ast$$\ast$}]{ m\_\-alloc\_\-q, }
+\item[{{\bf rob\_\-c} $\ast$}]{ m\_\-rob, }
+\item[{{\bf exec\_\-c} $\ast$}]{ m\_\-exec, }
+\item[{Unit\_\-Type}]{ m\_\-unit\_\-type, }
+\item[{{\bf frontend\_\-c} $\ast$}]{ m\_\-frontend, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)}}
+\label{classschedule__io__c_a57961ab7add32f6e032e7ed03cd37442}
+
+
+Constructor for the Inorder scheluder class. 
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em m\_\-core\_\-id}]-\/ Core identifier number \item[{\em m\_\-alloc\_\-q}]-\/ Pointer to be updated with the allocation stage queue \item[{\em m\_\-rob}]-\/ Pointer to the Reorder buffer \item[{\em m\_\-exec}]-\/ Pointer to m\_\-execution unit \item[{\em m\_\-unit\_\-type}]-\/ Parameter used to identify knob width \item[{\em m\_\-frontend}]-\/ Pointer to front end queue \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\hypertarget{classschedule__io__c_a1dd49046b8bc3795f66cd60c2eefff7f}{
+\index{schedule\_\-io\_\-c@{schedule\_\-io\_\-c}!$\sim$schedule\_\-io\_\-c@{$\sim$schedule\_\-io\_\-c}}
+\index{$\sim$schedule\_\-io\_\-c@{$\sim$schedule\_\-io\_\-c}!schedule_io_c@{schedule\_\-io\_\-c}}
+\subsubsection[{$\sim$schedule\_\-io\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}schedule\_\-io\_\-c::$\sim$schedule\_\-io\_\-c (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{classschedule__io__c_a1dd49046b8bc3795f66cd60c2eefff7f}
+
+
+Destructor for the Inorder scheduler. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classschedule__io__c_add1ff393e65774fabedc6b4069793c9f}{
+\index{schedule\_\-io\_\-c@{schedule\_\-io\_\-c}!run\_\-a\_\-cycle@{run\_\-a\_\-cycle}}
+\index{run\_\-a\_\-cycle@{run\_\-a\_\-cycle}!schedule_io_c@{schedule\_\-io\_\-c}}
+\subsubsection[{run\_\-a\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}void schedule\_\-io\_\-c::run\_\-a\_\-cycle (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classschedule__io__c_add1ff393e65774fabedc6b4069793c9f}
+
+
+Function to perform the activities of a cycle for the scheduler. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classschedule__c_abaede0d6b5e70e5cfc6bf98801e387e1}{schedule\_\-c}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classschedule__io__c_a5bf81c5205db201ff80eb9d99da075a3}{
+\index{schedule\_\-io\_\-c@{schedule\_\-io\_\-c}!m\_\-next\_\-inorder\_\-to\_\-schedule@{m\_\-next\_\-inorder\_\-to\_\-schedule}}
+\index{m\_\-next\_\-inorder\_\-to\_\-schedule@{m\_\-next\_\-inorder\_\-to\_\-schedule}!schedule_io_c@{schedule\_\-io\_\-c}}
+\subsubsection[{m\_\-next\_\-inorder\_\-to\_\-schedule}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf schedule\_\-io\_\-c::m\_\-next\_\-inorder\_\-to\_\-schedule}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__io__c_a5bf81c5205db201ff80eb9d99da075a3}
+index to rob for next uop to schedule \hypertarget{classschedule__io__c_a4fd792581e727219c93a1d4ac6707cbd}{
+\index{schedule\_\-io\_\-c@{schedule\_\-io\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!schedule_io_c@{schedule\_\-io\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf macsim\_\-c}$\ast$ {\bf schedule\_\-io\_\-c::m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classschedule__io__c_a4fd792581e727219c93a1d4ac6707cbd}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals 
+
+Reimplemented from \hyperlink{classschedule__c_a0db71234050b2c33f454b5d65d458564}{schedule\_\-c}.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+schedule\_\-io.h\item 
+schedule\_\-io.cc\end{DoxyCompactItemize}

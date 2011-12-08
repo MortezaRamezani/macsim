@@ -1,0 +1,224 @@
+\hypertarget{classrouter__c}{
+\section{router\_\-c Class Reference}
+\label{classrouter__c}\index{router\_\-c@{router\_\-c}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrouter__c_ab01a77943a7fb64d2d300034da7be4fa}{
+{\bfseries router\_\-c} (\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase, int id)}
+\label{classrouter__c_ab01a77943a7fb64d2d300034da7be4fa}
+
+\item 
+\hypertarget{classrouter__c_ac8af2d91c99b3d0e1bc6c62a7e0c27ca}{
+void {\bfseries run\_\-a\_\-cycle} ()}
+\label{classrouter__c_ac8af2d91c99b3d0e1bc6c62a7e0c27ca}
+
+\item 
+\hypertarget{classrouter__c_a7299b1bcac34bb26a3902dd6d1494f0e}{
+bool {\bfseries send\_\-packet} (\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$req)}
+\label{classrouter__c_a7299b1bcac34bb26a3902dd6d1494f0e}
+
+\item 
+\hypertarget{classrouter__c_af92b75d0e24e0e459d54aac07ba89eb1}{
+void {\bfseries insert\_\-packet} (\hyperlink{classflit__c}{flit\_\-c} $\ast$flit, int ip, int ivc)}
+\label{classrouter__c_af92b75d0e24e0e459d54aac07ba89eb1}
+
+\item 
+\hypertarget{classrouter__c_a1da67ae7a06a4f9e509d29de1e488860}{
+int {\bfseries get\_\-id} (void)}
+\label{classrouter__c_a1da67ae7a06a4f9e509d29de1e488860}
+
+\item 
+\hypertarget{classrouter__c_a0bccef3de4c1ac2f2600ab28c69a01d4}{
+\hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$ {\bfseries receive\_\-req} (void)}
+\label{classrouter__c_a0bccef3de4c1ac2f2600ab28c69a01d4}
+
+\item 
+\hypertarget{classrouter__c_afcbde0afcc5a0390217225bb4a5f23dd}{
+void {\bfseries pop\_\-req} (void)}
+\label{classrouter__c_afcbde0afcc5a0390217225bb4a5f23dd}
+
+\item 
+\hypertarget{classrouter__c_a31fc049b817749e64088847997e60a46}{
+void {\bfseries init} (int total\_\-router, int $\ast$total\_\-packet)}
+\label{classrouter__c_a31fc049b817749e64088847997e60a46}
+
+\item 
+\hypertarget{classrouter__c_a9b9cb79a2bba25571f23cd26b33e6d22}{
+void {\bfseries set\_\-link} (int dir, \hyperlink{classrouter__c}{router\_\-c} $\ast$link)}
+\label{classrouter__c_a9b9cb79a2bba25571f23cd26b33e6d22}
+
+\item 
+\hypertarget{classrouter__c_aa9213f4bac01fe02e1905186a58628ec}{
+void {\bfseries print} (ofstream \&out)}
+\label{classrouter__c_aa9213f4bac01fe02e1905186a58628ec}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrouter__c_a994a53278ee457db9f06300642fea625}{
+void {\bfseries link\_\-traversal} (void)}
+\label{classrouter__c_a994a53278ee457db9f06300642fea625}
+
+\item 
+\hypertarget{classrouter__c_a0963bcf7b8401dd8f243cbb7aa735038}{
+void {\bfseries sw\_\-traversal} (void)}
+\label{classrouter__c_a0963bcf7b8401dd8f243cbb7aa735038}
+
+\item 
+\hypertarget{classrouter__c_a91d1b20996e6660795d49464362267fc}{
+void {\bfseries sw\_\-allocation} (void)}
+\label{classrouter__c_a91d1b20996e6660795d49464362267fc}
+
+\item 
+\hypertarget{classrouter__c_aaf3de2a5121fc1f21fe77632802f29b4}{
+void {\bfseries vc\_\-allocation} (void)}
+\label{classrouter__c_aaf3de2a5121fc1f21fe77632802f29b4}
+
+\item 
+\hypertarget{classrouter__c_ae1bbda11d393a9d5fa373b60f4cb0d5d}{
+void {\bfseries route\_\-calculation} (void)}
+\label{classrouter__c_ae1bbda11d393a9d5fa373b60f4cb0d5d}
+
+\item 
+\hypertarget{classrouter__c_a1febcbcd5b95c1a237d3a5764b146b74}{
+void {\bfseries pick\_\-vc\_\-winner} (int op, int ovc, int \&ip, int \&ivc)}
+\label{classrouter__c_a1febcbcd5b95c1a237d3a5764b146b74}
+
+\item 
+\hypertarget{classrouter__c_a29f588605f4a1cc8bf03cfc445a4f77b}{
+void {\bfseries pick\_\-swa\_\-winner} (int op, int \&ip, int \&ivc)}
+\label{classrouter__c_a29f588605f4a1cc8bf03cfc445a4f77b}
+
+\item 
+\hypertarget{classrouter__c_aeaa5d4405d2ce331148e0578dc38d827}{
+void {\bfseries check\_\-starvation} (void)}
+\label{classrouter__c_aeaa5d4405d2ce331148e0578dc38d827}
+
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrouter__c_acaaad5e0c0c603141a6f321fcdb89f33}{
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ {\bfseries m\_\-simBase}}
+\label{classrouter__c_acaaad5e0c0c603141a6f321fcdb89f33}
+
+\item 
+\hypertarget{classrouter__c_ae5470884793d2ab174da1c200008eb67}{
+int {\bfseries m\_\-id}}
+\label{classrouter__c_ae5470884793d2ab174da1c200008eb67}
+
+\item 
+\hypertarget{classrouter__c_a33492fc8ff4a650ded86bd8b57c30313}{
+int {\bfseries m\_\-total\_\-router}}
+\label{classrouter__c_a33492fc8ff4a650ded86bd8b57c30313}
+
+\item 
+\hypertarget{classrouter__c_a84a4873364e7ab0f115110b2510cd9aa}{
+int {\bfseries m\_\-num\_\-vc}}
+\label{classrouter__c_a84a4873364e7ab0f115110b2510cd9aa}
+
+\item 
+\hypertarget{classrouter__c_a849c6cb2b3f1a2fd8c56acc80d885e42}{
+int {\bfseries m\_\-num\_\-port}}
+\label{classrouter__c_a849c6cb2b3f1a2fd8c56acc80d885e42}
+
+\item 
+\hypertarget{classrouter__c_a217ba2f0d88260b12b6feb01912c2d7d}{
+int {\bfseries m\_\-link\_\-latency}}
+\label{classrouter__c_a217ba2f0d88260b12b6feb01912c2d7d}
+
+\item 
+\hypertarget{classrouter__c_af2f4fd7e4c456bb2d57b1d75ecad7b41}{
+int {\bfseries m\_\-link\_\-width}}
+\label{classrouter__c_af2f4fd7e4c456bb2d57b1d75ecad7b41}
+
+\item 
+\hypertarget{classrouter__c_a00bcc44359d37ce339f9b2294b41b488}{
+int $\ast$ {\bfseries m\_\-total\_\-packet}}
+\label{classrouter__c_a00bcc44359d37ce339f9b2294b41b488}
+
+\item 
+\hypertarget{classrouter__c_a165f1074452c77f5030de60c45708a58}{
+\hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{classflit__c}{flit\_\-c} $>$ $\ast$ {\bfseries m\_\-flit\_\-pool}}
+\label{classrouter__c_a165f1074452c77f5030de60c45708a58}
+
+\item 
+\hypertarget{classrouter__c_a7a8336a11b7e3b34a1d7fd3fa3227eb0}{
+bool $\ast$$\ast$ {\bfseries m\_\-ivc\_\-avail}}
+\label{classrouter__c_a7a8336a11b7e3b34a1d7fd3fa3227eb0}
+
+\item 
+int $\ast$$\ast$ \hyperlink{classrouter__c_ac954004722bae143a3c864483fc215b1}{m\_\-ivc\_\-rc}
+\item 
+int $\ast$$\ast$ \hyperlink{classrouter__c_a0616862e6a4f2c02b494f34ccace2347}{m\_\-ivc\_\-vc}
+\item 
+\hypertarget{classrouter__c_aa9d526b5e4f5b5686b30b5e07a4be163}{
+list$<$ \hyperlink{classflit__c}{flit\_\-c} $\ast$ $>$ $\ast$$\ast$ {\bfseries m\_\-ivc\_\-buffer}}
+\label{classrouter__c_aa9d526b5e4f5b5686b30b5e07a4be163}
+
+\item 
+\hypertarget{classrouter__c_a6f8a1e9bebf10d35e6da1996f4c57f8d}{
+bool $\ast$ {\bfseries m\_\-sw\_\-avail}}
+\label{classrouter__c_a6f8a1e9bebf10d35e6da1996f4c57f8d}
+
+\item 
+\hypertarget{classrouter__c_a5d6b0d1215dba03998993dff7e7b3e75}{
+int $\ast$ {\bfseries m\_\-sw\_\-ip}}
+\label{classrouter__c_a5d6b0d1215dba03998993dff7e7b3e75}
+
+\item 
+\hypertarget{classrouter__c_a38995a07df7652752b63d5b61e98748d}{
+int $\ast$ {\bfseries m\_\-sw\_\-vc}}
+\label{classrouter__c_a38995a07df7652752b63d5b61e98748d}
+
+\item 
+\hypertarget{classrouter__c_a4dfe73d6383f8a5cc5ef886368277cdb}{
+bool $\ast$$\ast$ {\bfseries m\_\-ovc\_\-avail}}
+\label{classrouter__c_a4dfe73d6383f8a5cc5ef886368277cdb}
+
+\item 
+\hypertarget{classrouter__c_a6a0be6f9f9b35dbbb5a14eafeaaa8b69}{
+unordered\_\-map$<$ int, int $>$ {\bfseries m\_\-opposite\_\-dir}}
+\label{classrouter__c_a6a0be6f9f9b35dbbb5a14eafeaaa8b69}
+
+\item 
+\hypertarget{classrouter__c_a8d329c154ea19037812ee35da61149c2}{
+queue$<$ \hyperlink{structmem__req__s}{mem\_\-req\_\-s} $\ast$ $>$ $\ast$ {\bfseries m\_\-req\_\-buffer}}
+\label{classrouter__c_a8d329c154ea19037812ee35da61149c2}
+
+\item 
+\hypertarget{classrouter__c_a0c717f58b87f4295ea88d65816286e66}{
+\hyperlink{classrouter__c}{router\_\-c} $\ast$ {\bfseries m\_\-link} \mbox{[}5\mbox{]}}
+\label{classrouter__c_a0c717f58b87f4295ea88d65816286e66}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classrouter__c_a153a99aed0b9e21171af127262727996}{
+class \hyperlink{classrouter__c_a153a99aed0b9e21171af127262727996}{router\_\-wrapper\_\-c}}
+\label{classrouter__c_a153a99aed0b9e21171af127262727996}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classrouter__c_ac954004722bae143a3c864483fc215b1}{
+\index{router\_\-c@{router\_\-c}!m\_\-ivc\_\-rc@{m\_\-ivc\_\-rc}}
+\index{m\_\-ivc\_\-rc@{m\_\-ivc\_\-rc}!router_c@{router\_\-c}}
+\subsubsection[{m\_\-ivc\_\-rc}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$$\ast$ {\bf router\_\-c::m\_\-ivc\_\-rc}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrouter__c_ac954004722bae143a3c864483fc215b1}
+output port \hypertarget{classrouter__c_a0616862e6a4f2c02b494f34ccace2347}{
+\index{router\_\-c@{router\_\-c}!m\_\-ivc\_\-vc@{m\_\-ivc\_\-vc}}
+\index{m\_\-ivc\_\-vc@{m\_\-ivc\_\-vc}!router_c@{router\_\-c}}
+\subsubsection[{m\_\-ivc\_\-vc}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$$\ast$ {\bf router\_\-c::m\_\-ivc\_\-vc}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classrouter__c_a0616862e6a4f2c02b494f34ccace2347}
+output vc 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+router.h\item 
+router.cc\end{DoxyCompactItemize}

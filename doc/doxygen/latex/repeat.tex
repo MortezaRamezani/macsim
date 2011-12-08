@@ -1,0 +1,5 @@
+\hypertarget{repeat_repeat_1}{}\section{What is repeating traces?}\label{repeat_repeat_1}
+When an application has been terminated, run this application again\hypertarget{repeat_repeat_2}{}\section{Why do we need to repeat traces?}\label{repeat_repeat_2}
+In typical multi-\/programmed workloads (not multi-\/threaded), whan an application is terminated earlier than other applications, typically we keep running early-\/terminated application until the last application is terminated.\hypertarget{repeat_repeat_3}{}\section{How to enable repeating trace?}\label{repeat_repeat_3}
+There are two ways to enable repeating traces. \begin{DoxyItemize}
+\item Multi-\/programmed workloads -\/ set {\bfseries $\ast$m\_\-simBase-\/$>$m\_\-knobs-\/$>$KNOB\_\-REPEAT\_\-TRACE 1} \item Single-\/application -\/ set {\bfseries $\ast$m\_\-simBase-\/$>$m\_\-knobs-\/$>$KNOB\_\-REPEAT\_\-TRACE 1} and {\bfseries set $\ast$m\_\-simBase-\/$>$m\_\-knobs-\/$>$KNOB\_\-REPEAT\_\-TRACE\_\-N positive number} \end{DoxyItemize}

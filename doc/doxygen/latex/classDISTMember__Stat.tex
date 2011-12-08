@@ -1,0 +1,125 @@
+\hypertarget{classDISTMember__Stat}{
+\section{DISTMember\_\-Stat Class Reference}
+\label{classDISTMember__Stat}\index{DISTMember\_\-Stat@{DISTMember\_\-Stat}}
+}
+
+
+Distribution member class.  
+
+
+
+
+{\ttfamily \#include $<$statistics.h$>$}
+
+Inheritance diagram for DISTMember\_\-Stat:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDISTMember__Stat}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classDISTMember__Stat_a42b92bba8d7d564ead7e520a071fbb92}{DISTMember\_\-Stat} (const string \&str, const string \&outputfilename, long ID, long distID, bool coreWide=false, bool isTemplate=false)
+\item 
+virtual \hyperlink{classDISTMember__Stat_a499ff709db253422a0ba3d249fd9f828}{$\sim$DISTMember\_\-Stat} ()
+\item 
+virtual bool \hyperlink{classDISTMember__Stat_a0b0238ffd723c62d9f1d52c7499296c0}{memberOfDistribution} ()
+\item 
+void \hyperlink{classDISTMember__Stat_ad23f94e3c35b4009cd87490eded85bfc}{setParentDistroID} (long ID)
+\item 
+virtual \hyperlink{classAbstractStat}{AbstractStat} $\ast$ \hyperlink{classDISTMember__Stat_a3a20618868cfc2ac768e0e640049ffad}{clone} (unsigned int coreID)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+long \hyperlink{classDISTMember__Stat_a161cdc74a36982281bcbfb0240509f44}{m\_\-parentDistroID}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classDISTMember__Stat_a27a5e86239948375f8e485e6247a0d85}{
+class \hyperlink{classDISTMember__Stat_a27a5e86239948375f8e485e6247a0d85}{DIST\_\-Stat}}
+\label{classDISTMember__Stat_a27a5e86239948375f8e485e6247a0d85}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Distribution member class. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classDISTMember__Stat_a42b92bba8d7d564ead7e520a071fbb92}{
+\index{DISTMember\_\-Stat@{DISTMember\_\-Stat}!DISTMember\_\-Stat@{DISTMember\_\-Stat}}
+\index{DISTMember\_\-Stat@{DISTMember\_\-Stat}!DISTMember_Stat@{DISTMember\_\-Stat}}
+\subsubsection[{DISTMember\_\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}DISTMember\_\-Stat::DISTMember\_\-Stat (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ str, }
+\item[{const string \&}]{ outputfilename, }
+\item[{long}]{ ID, }
+\item[{long}]{ distID, }
+\item[{bool}]{ coreWide = {\ttfamily false}, }
+\item[{bool}]{ isTemplate = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classDISTMember__Stat_a42b92bba8d7d564ead7e520a071fbb92}
+Constructor. \hypertarget{classDISTMember__Stat_a499ff709db253422a0ba3d249fd9f828}{
+\index{DISTMember\_\-Stat@{DISTMember\_\-Stat}!$\sim$DISTMember\_\-Stat@{$\sim$DISTMember\_\-Stat}}
+\index{$\sim$DISTMember\_\-Stat@{$\sim$DISTMember\_\-Stat}!DISTMember_Stat@{DISTMember\_\-Stat}}
+\subsubsection[{$\sim$DISTMember\_\-Stat}]{\setlength{\rightskip}{0pt plus 5cm}virtual DISTMember\_\-Stat::$\sim$DISTMember\_\-Stat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classDISTMember__Stat_a499ff709db253422a0ba3d249fd9f828}
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classDISTMember__Stat_a3a20618868cfc2ac768e0e640049ffad}{
+\index{DISTMember\_\-Stat@{DISTMember\_\-Stat}!clone@{clone}}
+\index{clone@{clone}!DISTMember_Stat@{DISTMember\_\-Stat}}
+\subsubsection[{clone}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf AbstractStat}$\ast$ DISTMember\_\-Stat::clone (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{ coreID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classDISTMember__Stat_a3a20618868cfc2ac768e0e640049ffad}
+Clone a stat. 
+
+Implements \hyperlink{classAbstractStat_aed9a458491d92fb2cc3c458990d9fab1}{AbstractStat}.
+
+\hypertarget{classDISTMember__Stat_a0b0238ffd723c62d9f1d52c7499296c0}{
+\index{DISTMember\_\-Stat@{DISTMember\_\-Stat}!memberOfDistribution@{memberOfDistribution}}
+\index{memberOfDistribution@{memberOfDistribution}!DISTMember_Stat@{DISTMember\_\-Stat}}
+\subsubsection[{memberOfDistribution}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool DISTMember\_\-Stat::memberOfDistribution (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
+\label{classDISTMember__Stat_a0b0238ffd723c62d9f1d52c7499296c0}
+Test this is the member of dist stat 
+
+Reimplemented from \hyperlink{classAbstractStat_a8b819d1de7dd14edb854545329484506}{AbstractStat}.
+
+\hypertarget{classDISTMember__Stat_ad23f94e3c35b4009cd87490eded85bfc}{
+\index{DISTMember\_\-Stat@{DISTMember\_\-Stat}!setParentDistroID@{setParentDistroID}}
+\index{setParentDistroID@{setParentDistroID}!DISTMember_Stat@{DISTMember\_\-Stat}}
+\subsubsection[{setParentDistroID}]{\setlength{\rightskip}{0pt plus 5cm}void DISTMember\_\-Stat::setParentDistroID (
+\begin{DoxyParamCaption}
+\item[{long}]{ ID}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classDISTMember__Stat_ad23f94e3c35b4009cd87490eded85bfc}
+set parent dist id 
+
+\subsection{Member Data Documentation}
+\hypertarget{classDISTMember__Stat_a161cdc74a36982281bcbfb0240509f44}{
+\index{DISTMember\_\-Stat@{DISTMember\_\-Stat}!m\_\-parentDistroID@{m\_\-parentDistroID}}
+\index{m\_\-parentDistroID@{m\_\-parentDistroID}!DISTMember_Stat@{DISTMember\_\-Stat}}
+\subsubsection[{m\_\-parentDistroID}]{\setlength{\rightskip}{0pt plus 5cm}long {\bf DISTMember\_\-Stat::m\_\-parentDistroID}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDISTMember__Stat_a161cdc74a36982281bcbfb0240509f44}
+parent distribution stat id 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+statistics.h\end{DoxyCompactItemize}

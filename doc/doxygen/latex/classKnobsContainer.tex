@@ -1,0 +1,238 @@
+\hypertarget{classKnobsContainer}{
+\section{KnobsContainer Class Reference}
+\label{classKnobsContainer}\index{KnobsContainer@{KnobsContainer}}
+}
+
+
+Knob container class.  
+
+
+
+
+{\ttfamily \#include $<$knob.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classKnobsContainer_a637e76f93ef35fb3010f70716370122c}{KnobsContainer} ()
+\item 
+\hyperlink{classKnobsContainer_a740c2bd5585b3e8ff79d53abe552e599}{$\sim$KnobsContainer} ()
+\item 
+void \hyperlink{classKnobsContainer_a7cc9643a085c659b4cc87772eb5cede5}{clear} ()
+\item 
+void \hyperlink{classKnobsContainer_a6f6d4e149552f3e5b88f63c0c0a646ea}{applyParamFile} (const string \&filename)
+\item 
+bool \hyperlink{classKnobsContainer_afa7b97256d716e80c095083c8e7f29ec}{applyComandLineArguments} (int argc, char $\ast$$\ast$argv, char $\ast$$\ast$invalidParam)
+\item 
+void \hyperlink{classKnobsContainer_a706481af8bf1aa7a6dff4008fb3b32dd}{updateKnob} (string key, string value)
+\item 
+void \hyperlink{classKnobsContainer_a7702987d669e6c8b664f072925c9fdff}{adjustKnobValues} ()
+\item 
+void \hyperlink{classKnobsContainer_ab042a2ec72a140dfe2c1e54b0199b52f}{insertKnob} (\hyperlink{classabstract__knob__c}{abstract\_\-knob\_\-c} $\ast$pKnob)
+\item 
+\hyperlink{classall__knobs__c}{all\_\-knobs\_\-c} $\ast$ \hyperlink{classKnobsContainer_ac0efc90a0f385d18b51dee85d208c0d3}{getAllKnobs} ()
+\item 
+void \hyperlink{classKnobsContainer_aa954305dc34f4e976a951287411543b5}{saveToFile} (const string \&filename)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classKnobsContainer_a1abd33be5ccd66c0fc7b1abdd4f8493d}{createEntryFromtext} (const string \&text)
+\item 
+void \hyperlink{classKnobsContainer_ac8c849dc40caa4ead07a74b416700e0f}{applyValuesToKnobs} (map$<$ string, string, \hyperlink{structltstr__s}{ltstr\_\-s} $>$ \&ValuesMap)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classall__knobs__c}{all\_\-knobs\_\-c} $\ast$ \hyperlink{classKnobsContainer_a91c5f9c036624bf76d18407e8deaf6df}{m\_\-allKnobs}
+\item 
+map$<$ string, \hyperlink{classabstract__knob__c}{abstract\_\-knob\_\-c} $\ast$, \hyperlink{structltstr__s}{ltstr\_\-s} $>$ \hyperlink{classKnobsContainer_aab767049ce233f64dc20d038a032555e}{m\_\-theKnobs}
+\item 
+map$<$ string, string, \hyperlink{structltstr__s}{ltstr\_\-s} $>$ \hyperlink{classKnobsContainer_aba4b723d1bc4ccbdde44c979a373fcf4}{m\_\-valuesFromFile}
+\item 
+map$<$ string, string, \hyperlink{structltstr__s}{ltstr\_\-s} $>$ \hyperlink{classKnobsContainer_acf9676b119cffbfdff8e7dfdd4d05f06}{m\_\-valuesFromCommandLineSwitches}
+\item 
+\hyperlink{classKnobEntryTokenizer}{KnobEntryTokenizer} \hyperlink{classKnobsContainer_add2e416036701c2de00e519c9552886d}{m\_\-theTokenizer}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const char \hyperlink{classKnobsContainer_a2bbc43ebe779aad064691c495016b11c}{MAGIC\_\-COMMENTS} = '\#'
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classKnobsContainer_a7de0afdcad9e293a3ee2457167e484d3}{operator$<$$<$} (ostream \&os, \hyperlink{classKnobsContainer}{KnobsContainer} \&container)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Knob container class. Singleton object 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classKnobsContainer_a637e76f93ef35fb3010f70716370122c}{
+\index{KnobsContainer@{KnobsContainer}!KnobsContainer@{KnobsContainer}}
+\index{KnobsContainer@{KnobsContainer}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{KnobsContainer}]{\setlength{\rightskip}{0pt plus 5cm}KnobsContainer::KnobsContainer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_a637e76f93ef35fb3010f70716370122c}
+Constructor. \hypertarget{classKnobsContainer_a740c2bd5585b3e8ff79d53abe552e599}{
+\index{KnobsContainer@{KnobsContainer}!$\sim$KnobsContainer@{$\sim$KnobsContainer}}
+\index{$\sim$KnobsContainer@{$\sim$KnobsContainer}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{$\sim$KnobsContainer}]{\setlength{\rightskip}{0pt plus 5cm}KnobsContainer::$\sim$KnobsContainer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_a740c2bd5585b3e8ff79d53abe552e599}
+Destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classKnobsContainer_a7702987d669e6c8b664f072925c9fdff}{
+\index{KnobsContainer@{KnobsContainer}!adjustKnobValues@{adjustKnobValues}}
+\index{adjustKnobValues@{adjustKnobValues}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{adjustKnobValues}]{\setlength{\rightskip}{0pt plus 5cm}void KnobsContainer::adjustKnobValues (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_a7702987d669e6c8b664f072925c9fdff}
+Adjust the value of a knob. \hypertarget{classKnobsContainer_afa7b97256d716e80c095083c8e7f29ec}{
+\index{KnobsContainer@{KnobsContainer}!applyComandLineArguments@{applyComandLineArguments}}
+\index{applyComandLineArguments@{applyComandLineArguments}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{applyComandLineArguments}]{\setlength{\rightskip}{0pt plus 5cm}bool KnobsContainer::applyComandLineArguments (
+\begin{DoxyParamCaption}
+\item[{int}]{ argc, }
+\item[{char $\ast$$\ast$}]{ argv, }
+\item[{char $\ast$$\ast$}]{ invalidParam}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_afa7b97256d716e80c095083c8e7f29ec}
+Apply new values from the command line. \hypertarget{classKnobsContainer_a6f6d4e149552f3e5b88f63c0c0a646ea}{
+\index{KnobsContainer@{KnobsContainer}!applyParamFile@{applyParamFile}}
+\index{applyParamFile@{applyParamFile}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{applyParamFile}]{\setlength{\rightskip}{0pt plus 5cm}void KnobsContainer::applyParamFile (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ filename}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_a6f6d4e149552f3e5b88f63c0c0a646ea}
+Apply new values from the parameter file. \hypertarget{classKnobsContainer_ac8c849dc40caa4ead07a74b416700e0f}{
+\index{KnobsContainer@{KnobsContainer}!applyValuesToKnobs@{applyValuesToKnobs}}
+\index{applyValuesToKnobs@{applyValuesToKnobs}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{applyValuesToKnobs}]{\setlength{\rightskip}{0pt plus 5cm}void KnobsContainer::applyValuesToKnobs (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, string, {\bf ltstr\_\-s} $>$ \&}]{ ValuesMap}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobsContainer_ac8c849dc40caa4ead07a74b416700e0f}
+Apply values to the all knobs. \hypertarget{classKnobsContainer_a7cc9643a085c659b4cc87772eb5cede5}{
+\index{KnobsContainer@{KnobsContainer}!clear@{clear}}
+\index{clear@{clear}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void KnobsContainer::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_a7cc9643a085c659b4cc87772eb5cede5}
+Clear all knobs. \hypertarget{classKnobsContainer_a1abd33be5ccd66c0fc7b1abdd4f8493d}{
+\index{KnobsContainer@{KnobsContainer}!createEntryFromtext@{createEntryFromtext}}
+\index{createEntryFromtext@{createEntryFromtext}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{createEntryFromtext}]{\setlength{\rightskip}{0pt plus 5cm}void KnobsContainer::createEntryFromtext (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ text}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobsContainer_a1abd33be5ccd66c0fc7b1abdd4f8493d}
+Create knob-\/value pair from the string. \hypertarget{classKnobsContainer_ac0efc90a0f385d18b51dee85d208c0d3}{
+\index{KnobsContainer@{KnobsContainer}!getAllKnobs@{getAllKnobs}}
+\index{getAllKnobs@{getAllKnobs}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{getAllKnobs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf all\_\-knobs\_\-c} $\ast$ KnobsContainer::getAllKnobs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_ac0efc90a0f385d18b51dee85d208c0d3}
+Get the pointer to all the knobs \hypertarget{classKnobsContainer_ab042a2ec72a140dfe2c1e54b0199b52f}{
+\index{KnobsContainer@{KnobsContainer}!insertKnob@{insertKnob}}
+\index{insertKnob@{insertKnob}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{insertKnob}]{\setlength{\rightskip}{0pt plus 5cm}void KnobsContainer::insertKnob (
+\begin{DoxyParamCaption}
+\item[{{\bf abstract\_\-knob\_\-c} $\ast$}]{ pKnob}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_ab042a2ec72a140dfe2c1e54b0199b52f}
+Insert a new knob. \hypertarget{classKnobsContainer_aa954305dc34f4e976a951287411543b5}{
+\index{KnobsContainer@{KnobsContainer}!saveToFile@{saveToFile}}
+\index{saveToFile@{saveToFile}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{saveToFile}]{\setlength{\rightskip}{0pt plus 5cm}void KnobsContainer::saveToFile (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{ filename}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_aa954305dc34f4e976a951287411543b5}
+Save all knob contents to the file. \hypertarget{classKnobsContainer_a706481af8bf1aa7a6dff4008fb3b32dd}{
+\index{KnobsContainer@{KnobsContainer}!updateKnob@{updateKnob}}
+\index{updateKnob@{updateKnob}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{updateKnob}]{\setlength{\rightskip}{0pt plus 5cm}void KnobsContainer::updateKnob (
+\begin{DoxyParamCaption}
+\item[{string}]{ key, }
+\item[{string}]{ value}
+\end{DoxyParamCaption}
+)}}
+\label{classKnobsContainer_a706481af8bf1aa7a6dff4008fb3b32dd}
+Change the value of a single knob. 
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classKnobsContainer_a7de0afdcad9e293a3ee2457167e484d3}{
+\index{KnobsContainer@{KnobsContainer}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{ os, }
+\item[{{\bf KnobsContainer} \&}]{ container}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}friend\mbox{]}}}}
+\label{classKnobsContainer_a7de0afdcad9e293a3ee2457167e484d3}
+Overridden operator $<$$<$ : Provide output stream. 
+
+\subsection{Member Data Documentation}
+\hypertarget{classKnobsContainer_a91c5f9c036624bf76d18407e8deaf6df}{
+\index{KnobsContainer@{KnobsContainer}!m\_\-allKnobs@{m\_\-allKnobs}}
+\index{m\_\-allKnobs@{m\_\-allKnobs}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{m\_\-allKnobs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf all\_\-knobs\_\-c}$\ast$ {\bf KnobsContainer::m\_\-allKnobs}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobsContainer_a91c5f9c036624bf76d18407e8deaf6df}
+the knobs for this component instance \hypertarget{classKnobsContainer_aab767049ce233f64dc20d038a032555e}{
+\index{KnobsContainer@{KnobsContainer}!m\_\-theKnobs@{m\_\-theKnobs}}
+\index{m\_\-theKnobs@{m\_\-theKnobs}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{m\_\-theKnobs}]{\setlength{\rightskip}{0pt plus 5cm}map$<$string, {\bf abstract\_\-knob\_\-c}$\ast$, {\bf ltstr\_\-s}$>$ {\bf KnobsContainer::m\_\-theKnobs}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobsContainer_aab767049ce233f64dc20d038a032555e}
+knob table \hypertarget{classKnobsContainer_add2e416036701c2de00e519c9552886d}{
+\index{KnobsContainer@{KnobsContainer}!m\_\-theTokenizer@{m\_\-theTokenizer}}
+\index{m\_\-theTokenizer@{m\_\-theTokenizer}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{m\_\-theTokenizer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf KnobEntryTokenizer} {\bf KnobsContainer::m\_\-theTokenizer}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobsContainer_add2e416036701c2de00e519c9552886d}
+tokenizer \hypertarget{classKnobsContainer_acf9676b119cffbfdff8e7dfdd4d05f06}{
+\index{KnobsContainer@{KnobsContainer}!m\_\-valuesFromCommandLineSwitches@{m\_\-valuesFromCommandLineSwitches}}
+\index{m\_\-valuesFromCommandLineSwitches@{m\_\-valuesFromCommandLineSwitches}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{m\_\-valuesFromCommandLineSwitches}]{\setlength{\rightskip}{0pt plus 5cm}map$<$string, string, {\bf ltstr\_\-s}$>$ {\bf KnobsContainer::m\_\-valuesFromCommandLineSwitches}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobsContainer_acf9676b119cffbfdff8e7dfdd4d05f06}
+values from command \hypertarget{classKnobsContainer_aba4b723d1bc4ccbdde44c979a373fcf4}{
+\index{KnobsContainer@{KnobsContainer}!m\_\-valuesFromFile@{m\_\-valuesFromFile}}
+\index{m\_\-valuesFromFile@{m\_\-valuesFromFile}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{m\_\-valuesFromFile}]{\setlength{\rightskip}{0pt plus 5cm}map$<$string, string, {\bf ltstr\_\-s}$>$ {\bf KnobsContainer::m\_\-valuesFromFile}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classKnobsContainer_aba4b723d1bc4ccbdde44c979a373fcf4}
+knob values from the file \hypertarget{classKnobsContainer_a2bbc43ebe779aad064691c495016b11c}{
+\index{KnobsContainer@{KnobsContainer}!MAGIC\_\-COMMENTS@{MAGIC\_\-COMMENTS}}
+\index{MAGIC\_\-COMMENTS@{MAGIC\_\-COMMENTS}!KnobsContainer@{KnobsContainer}}
+\subsubsection[{MAGIC\_\-COMMENTS}]{\setlength{\rightskip}{0pt plus 5cm}const char {\bf KnobsContainer::MAGIC\_\-COMMENTS} = '\#'\hspace{0.3cm}{\ttfamily  \mbox{[}static, private\mbox{]}}}}
+\label{classKnobsContainer_a2bbc43ebe779aad064691c495016b11c}
+enable comment in parameter file 
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+knob.h\item 
+knob.cc\end{DoxyCompactItemize}

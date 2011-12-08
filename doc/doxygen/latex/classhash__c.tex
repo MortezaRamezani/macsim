@@ -1,0 +1,171 @@
+\hypertarget{classhash__c}{
+\section{hash\_\-c$<$ T $>$ Class Template Reference}
+\label{classhash__c}\index{hash\_\-c@{hash\_\-c}}
+}
+
+
+hash table class  
+
+
+
+
+{\ttfamily \#include $<$utils.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classhash__c_a0f4f335edcb32e2fdb006672e7326f49}{hash\_\-c} ()
+\item 
+\hyperlink{classhash__c_a9a52bfdeecbc6f7db1aec20febf5cbbf}{hash\_\-c} (string name)
+\item 
+\hyperlink{classhash__c_a9079a2d95bdb17c6f09b81676b6061c5}{hash\_\-c} (\hyperlink{classpool__c}{pool\_\-c}$<$ T $>$ $\ast$pool)
+\item 
+\hyperlink{classhash__c_a4784bb9b3bba26f1ce111b6321632c38}{$\sim$hash\_\-c} ()
+\item 
+T $\ast$ \hyperlink{classhash__c_a60af36fa5543c99fada8b0f2306ec1a7}{hash\_\-table\_\-access\_\-create} (int64 key, bool $\ast$new\_\-entry, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+T $\ast$ \hyperlink{classhash__c_a866bf39c8a78a84e5fcbd0d45b8258ac}{hash\_\-table\_\-access\_\-create} (int64 key, bool $\ast$new\_\-entry)
+\item 
+T $\ast$ \hyperlink{classhash__c_aedd44bd0a0770db07e08b611c660380c}{hash\_\-table\_\-access} (int64 key)
+\item 
+bool \hyperlink{classhash__c_ae1d56ef0c2b5f3347bee72d46f9ff849}{hash\_\-table\_\-access\_\-delete} (int64 key)
+\item 
+int \hyperlink{classhash__c_a5d72471e005f8b2428c1a13ec707ea49}{size} (void)
+\item 
+void \hyperlink{classhash__c_ae9ae20e4edfb9e27a085a6dee7febc6c}{clear} (void)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unordered\_\-map$<$ int64, T $\ast$ $>$ \hyperlink{classhash__c_a236ffec711b4d2fdee1976aed4a515d0}{m\_\-table}
+\item 
+\hyperlink{classpool__c}{pool\_\-c}$<$ T $>$ $\ast$ \hyperlink{classhash__c_a2eae988c3f90632b9addbfd17bfa11c7}{m\_\-pool}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$ class hash\_\-c$<$ T $>$}
+
+hash table class 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classhash__c_a0f4f335edcb32e2fdb006672e7326f49}{
+\index{hash\_\-c@{hash\_\-c}!hash\_\-c@{hash\_\-c}}
+\index{hash\_\-c@{hash\_\-c}!hash_c@{hash\_\-c}}
+\subsubsection[{hash\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf hash\_\-c}$<$ T $>$::{\bf hash\_\-c} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_a0f4f335edcb32e2fdb006672e7326f49}
+Constructor \hypertarget{classhash__c_a9a52bfdeecbc6f7db1aec20febf5cbbf}{
+\index{hash\_\-c@{hash\_\-c}!hash\_\-c@{hash\_\-c}}
+\index{hash\_\-c@{hash\_\-c}!hash_c@{hash\_\-c}}
+\subsubsection[{hash\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf hash\_\-c}$<$ T $>$::{\bf hash\_\-c} (
+\begin{DoxyParamCaption}
+\item[{string}]{ name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_a9a52bfdeecbc6f7db1aec20febf5cbbf}
+Constructor 
+\begin{DoxyParams}{Parameters}
+\item[{\em name}]hash table name \end{DoxyParams}
+\hypertarget{classhash__c_a9079a2d95bdb17c6f09b81676b6061c5}{
+\index{hash\_\-c@{hash\_\-c}!hash\_\-c@{hash\_\-c}}
+\index{hash\_\-c@{hash\_\-c}!hash_c@{hash\_\-c}}
+\subsubsection[{hash\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf hash\_\-c}$<$ T $>$::{\bf hash\_\-c} (
+\begin{DoxyParamCaption}
+\item[{{\bf pool\_\-c}$<$ T $>$ $\ast$}]{ pool}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_a9079a2d95bdb17c6f09b81676b6061c5}
+Constructor 
+\begin{DoxyParams}{Parameters}
+\item[{\em pool}]use specified pool for entries \end{DoxyParams}
+\hypertarget{classhash__c_a4784bb9b3bba26f1ce111b6321632c38}{
+\index{hash\_\-c@{hash\_\-c}!$\sim$hash\_\-c@{$\sim$hash\_\-c}}
+\index{$\sim$hash\_\-c@{$\sim$hash\_\-c}!hash_c@{hash\_\-c}}
+\subsubsection[{$\sim$hash\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf hash\_\-c}$<$ T $>$::$\sim${\bf hash\_\-c} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_a4784bb9b3bba26f1ce111b6321632c38}
+Destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classhash__c_ae9ae20e4edfb9e27a085a6dee7febc6c}{
+\index{hash\_\-c@{hash\_\-c}!clear@{clear}}
+\index{clear@{clear}!hash_c@{hash\_\-c}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf hash\_\-c}$<$ T $>$::clear (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_ae9ae20e4edfb9e27a085a6dee7febc6c}
+Clear hash table \hypertarget{classhash__c_aedd44bd0a0770db07e08b611c660380c}{
+\index{hash\_\-c@{hash\_\-c}!hash\_\-table\_\-access@{hash\_\-table\_\-access}}
+\index{hash\_\-table\_\-access@{hash\_\-table\_\-access}!hash_c@{hash\_\-c}}
+\subsubsection[{hash\_\-table\_\-access}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T$\ast$ {\bf hash\_\-c}$<$ T $>$::hash\_\-table\_\-access (
+\begin{DoxyParamCaption}
+\item[{int64}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_aedd44bd0a0770db07e08b611c660380c}
+Access the hash table with the key \hypertarget{classhash__c_a866bf39c8a78a84e5fcbd0d45b8258ac}{
+\index{hash\_\-c@{hash\_\-c}!hash\_\-table\_\-access\_\-create@{hash\_\-table\_\-access\_\-create}}
+\index{hash\_\-table\_\-access\_\-create@{hash\_\-table\_\-access\_\-create}!hash_c@{hash\_\-c}}
+\subsubsection[{hash\_\-table\_\-access\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T$\ast$ {\bf hash\_\-c}$<$ T $>$::hash\_\-table\_\-access\_\-create (
+\begin{DoxyParamCaption}
+\item[{int64}]{ key, }
+\item[{bool $\ast$}]{ new\_\-entry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_a866bf39c8a78a84e5fcbd0d45b8258ac}
+Access the hash table. If not found, create a new entry \hypertarget{classhash__c_a60af36fa5543c99fada8b0f2306ec1a7}{
+\index{hash\_\-c@{hash\_\-c}!hash\_\-table\_\-access\_\-create@{hash\_\-table\_\-access\_\-create}}
+\index{hash\_\-table\_\-access\_\-create@{hash\_\-table\_\-access\_\-create}!hash_c@{hash\_\-c}}
+\subsubsection[{hash\_\-table\_\-access\_\-create}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T$\ast$ {\bf hash\_\-c}$<$ T $>$::hash\_\-table\_\-access\_\-create (
+\begin{DoxyParamCaption}
+\item[{int64}]{ key, }
+\item[{bool $\ast$}]{ new\_\-entry, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_a60af36fa5543c99fada8b0f2306ec1a7}
+Access the hash table. If not found, create a new entry whose class requires simBase reference \hypertarget{classhash__c_ae1d56ef0c2b5f3347bee72d46f9ff849}{
+\index{hash\_\-c@{hash\_\-c}!hash\_\-table\_\-access\_\-delete@{hash\_\-table\_\-access\_\-delete}}
+\index{hash\_\-table\_\-access\_\-delete@{hash\_\-table\_\-access\_\-delete}!hash_c@{hash\_\-c}}
+\subsubsection[{hash\_\-table\_\-access\_\-delete}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf hash\_\-c}$<$ T $>$::hash\_\-table\_\-access\_\-delete (
+\begin{DoxyParamCaption}
+\item[{int64}]{ key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_ae1d56ef0c2b5f3347bee72d46f9ff849}
+Delete a hash entry with the key \hypertarget{classhash__c_a5d72471e005f8b2428c1a13ec707ea49}{
+\index{hash\_\-c@{hash\_\-c}!size@{size}}
+\index{size@{size}!hash_c@{hash\_\-c}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ int {\bf hash\_\-c}$<$ T $>$::size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classhash__c_a5d72471e005f8b2428c1a13ec707ea49}
+Return hash table size 
+
+\subsection{Member Data Documentation}
+\hypertarget{classhash__c_a2eae988c3f90632b9addbfd17bfa11c7}{
+\index{hash\_\-c@{hash\_\-c}!m\_\-pool@{m\_\-pool}}
+\index{m\_\-pool@{m\_\-pool}!hash_c@{hash\_\-c}}
+\subsubsection[{m\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf pool\_\-c}$<$T$>$$\ast$ {\bf hash\_\-c}$<$ T $>$::{\bf m\_\-pool}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classhash__c_a2eae988c3f90632b9addbfd17bfa11c7}
+hash table entry pool \hypertarget{classhash__c_a236ffec711b4d2fdee1976aed4a515d0}{
+\index{hash\_\-c@{hash\_\-c}!m\_\-table@{m\_\-table}}
+\index{m\_\-table@{m\_\-table}!hash_c@{hash\_\-c}}
+\subsubsection[{m\_\-table}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ unordered\_\-map$<$int64, T$\ast$$>$ {\bf hash\_\-c}$<$ T $>$::{\bf m\_\-table}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classhash__c_a236ffec711b4d2fdee1976aed4a515d0}
+hash table 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+utils.h\end{DoxyCompactItemize}

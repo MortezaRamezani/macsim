@@ -1,0 +1,233 @@
+\hypertarget{classpqueue__c}{
+\section{pqueue\_\-c$<$ T $>$ Class Template Reference}
+\label{classpqueue__c}\index{pqueue\_\-c@{pqueue\_\-c}}
+}
+
+
+Priority queue class.  
+
+
+
+
+{\ttfamily \#include $<$pqueue.h$>$}
+
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structpqueue__c_1_1pqueue__entry__s}{pqueue\_\-entry\_\-s}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpqueue__c_aac893076784a5886e90f6b6693f977b9}{pqueue\_\-c} (const int \&size, const int \&latency, const string name, \hyperlink{classmacsim__c}{macsim\_\-c} $\ast$simBase)
+\item 
+\hyperlink{classpqueue__c_a131edc3557f5396fe862cb1b0bb4e1d0}{$\sim$pqueue\_\-c} ()
+\item 
+bool \hyperlink{classpqueue__c_a485b649c632873de95fc505f4b40158c}{ready} ()
+\item 
+bool \hyperlink{classpqueue__c_a49738ca2f17e817cd0bf3ef070a1bb2d}{enqueue} (int64\_\-t priority, const T \&data)
+\item 
+T \hyperlink{classpqueue__c_a5f0ad2c9f65821b8593c496fbd4a2e60}{dequeue} (int64\_\-t $\ast$priority=0)
+\item 
+bool \hyperlink{classpqueue__c_a9176ba07a11e5144f89cd6abe5f57d30}{advance} ()
+\item 
+T \hyperlink{classpqueue__c_a227233e46ec401c9e9f9e936caff4762}{peek} (int entry)
+\item 
+int \hyperlink{classpqueue__c_ac486e9e496a24d37bb01002c89069b63}{space} ()
+\item 
+void \hyperlink{classpqueue__c_adb6b0231c794f7aec762b07a1b21c9f7}{flush} ()
+\item 
+int \hyperlink{classpqueue__c_af05bf04f2e22a4ccfc67913bca5939a6}{pool\_\-size} (void)
+\end{DoxyCompactItemize}
+\subsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structpqueue__c_1_1pqueue__entry__s}{pqueue\_\-c::pqueue\_\-entry\_\-s} \hyperlink{classpqueue__c_add2d603ebd138e1548106009e724cdc8}{pqueue\_\-entry\_\-s}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ \hyperlink{structpqueue__c_1_1pqueue__entry__s}{pqueue\_\-entry\_\-s} $\ast$ $>$ $\ast$ \hyperlink{classpqueue__c_aea1aa5cd5b12ba0c04d8c61444533080}{m\_\-entry}
+\item 
+\hyperlink{classpool__c}{pool\_\-c}$<$ \hyperlink{structpqueue__c_1_1pqueue__entry__s}{pqueue\_\-entry\_\-s} $>$ $\ast$ \hyperlink{classpqueue__c_a7799f021f9468af506ed33cdde50d54b}{m\_\-entry\_\-pool}
+\item 
+string \hyperlink{classpqueue__c_ae8a7ef64df724a846fdd99e7662eb7b1}{m\_\-name}
+\item 
+int \hyperlink{classpqueue__c_afa2a0bf3e21a27c89996394e9d1277d7}{m\_\-size}
+\item 
+int \hyperlink{classpqueue__c_ab5a781ab6901f00d57787d488c0b6443}{m\_\-capacity}
+\item 
+int \hyperlink{classpqueue__c_a933bd55083a228754eb47655616f0a6d}{m\_\-num\_\-entry}
+\item 
+int \hyperlink{classpqueue__c_ac66baa49b33c1c773bd1e2575d814d95}{m\_\-last\_\-index}
+\item 
+int \hyperlink{classpqueue__c_a9491f48b08d06e57691d8e0d4d06f2ce}{m\_\-current\_\-index}
+\item 
+\hyperlink{classmacsim__c}{macsim\_\-c} $\ast$ \hyperlink{classpqueue__c_aa5404c8b094541c557fff49dd6421c79}{m\_\-simBase}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class pqueue\_\-c$<$ T $>$}
+
+Priority queue class. 
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classpqueue__c_add2d603ebd138e1548106009e724cdc8}{
+\index{pqueue\_\-c@{pqueue\_\-c}!pqueue\_\-entry\_\-s@{pqueue\_\-entry\_\-s}}
+\index{pqueue\_\-entry\_\-s@{pqueue\_\-entry\_\-s}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{pqueue\_\-entry\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ typedef struct {\bf pqueue\_\-c::pqueue\_\-entry\_\-s}  {\bf pqueue\_\-c}$<$ T $>$::{\bf pqueue\_\-entry\_\-s}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_add2d603ebd138e1548106009e724cdc8}
+pqueue entry 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classpqueue__c_aac893076784a5886e90f6b6693f977b9}{
+\index{pqueue\_\-c@{pqueue\_\-c}!pqueue\_\-c@{pqueue\_\-c}}
+\index{pqueue\_\-c@{pqueue\_\-c}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{pqueue\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf pqueue\_\-c}$<$ T $>$::{\bf pqueue\_\-c} (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{ size, }
+\item[{const int \&}]{ latency, }
+\item[{const string}]{ name, }
+\item[{{\bf macsim\_\-c} $\ast$}]{ simBase}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_aac893076784a5886e90f6b6693f977b9}
+pqueue constructor \hypertarget{classpqueue__c_a131edc3557f5396fe862cb1b0bb4e1d0}{
+\index{pqueue\_\-c@{pqueue\_\-c}!$\sim$pqueue\_\-c@{$\sim$pqueue\_\-c}}
+\index{$\sim$pqueue\_\-c@{$\sim$pqueue\_\-c}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{$\sim$pqueue\_\-c}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf pqueue\_\-c}$<$ T $>$::$\sim${\bf pqueue\_\-c} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_a131edc3557f5396fe862cb1b0bb4e1d0}
+pqueue destructor 
+
+\subsection{Member Function Documentation}
+\hypertarget{classpqueue__c_a9176ba07a11e5144f89cd6abe5f57d30}{
+\index{pqueue\_\-c@{pqueue\_\-c}!advance@{advance}}
+\index{advance@{advance}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{advance}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf pqueue\_\-c}$<$ T $>$::advance (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_a9176ba07a11e5144f89cd6abe5f57d30}
+Advance queues (aging) \hypertarget{classpqueue__c_a5f0ad2c9f65821b8593c496fbd4a2e60}{
+\index{pqueue\_\-c@{pqueue\_\-c}!dequeue@{dequeue}}
+\index{dequeue@{dequeue}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{dequeue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf pqueue\_\-c}$<$ T $>$::dequeue (
+\begin{DoxyParamCaption}
+\item[{int64\_\-t $\ast$}]{ priority = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_a5f0ad2c9f65821b8593c496fbd4a2e60}
+Dequeue an entry \hypertarget{classpqueue__c_a49738ca2f17e817cd0bf3ef070a1bb2d}{
+\index{pqueue\_\-c@{pqueue\_\-c}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{enqueue}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf pqueue\_\-c}$<$ T $>$::enqueue (
+\begin{DoxyParamCaption}
+\item[{int64\_\-t}]{ priority, }
+\item[{const T \&}]{ data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_a49738ca2f17e817cd0bf3ef070a1bb2d}
+Insert a new entry \hypertarget{classpqueue__c_adb6b0231c794f7aec762b07a1b21c9f7}{
+\index{pqueue\_\-c@{pqueue\_\-c}!flush@{flush}}
+\index{flush@{flush}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf pqueue\_\-c}$<$ T $>$::flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_adb6b0231c794f7aec762b07a1b21c9f7}
+Flush all queue entries \hypertarget{classpqueue__c_a227233e46ec401c9e9f9e936caff4762}{
+\index{pqueue\_\-c@{pqueue\_\-c}!peek@{peek}}
+\index{peek@{peek}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{peek}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf pqueue\_\-c}$<$ T $>$::peek (
+\begin{DoxyParamCaption}
+\item[{int}]{ entry}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_a227233e46ec401c9e9f9e936caff4762}
+Search N-\/th priority entry \hypertarget{classpqueue__c_af05bf04f2e22a4ccfc67913bca5939a6}{
+\index{pqueue\_\-c@{pqueue\_\-c}!pool\_\-size@{pool\_\-size}}
+\index{pool\_\-size@{pool\_\-size}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{pool\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pqueue\_\-c}$<$ T $>$::pool\_\-size (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_af05bf04f2e22a4ccfc67913bca5939a6}
+Return pool size \hypertarget{classpqueue__c_a485b649c632873de95fc505f4b40158c}{
+\index{pqueue\_\-c@{pqueue\_\-c}!ready@{ready}}
+\index{ready@{ready}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{ready}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf pqueue\_\-c}$<$ T $>$::ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_a485b649c632873de95fc505f4b40158c}
+Check ready entry \hypertarget{classpqueue__c_ac486e9e496a24d37bb01002c89069b63}{
+\index{pqueue\_\-c@{pqueue\_\-c}!space@{space}}
+\index{space@{space}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{space}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pqueue\_\-c}$<$ T $>$::space (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classpqueue__c_ac486e9e496a24d37bb01002c89069b63}
+Return available spaces 
+
+\subsection{Member Data Documentation}
+\hypertarget{classpqueue__c_ab5a781ab6901f00d57787d488c0b6443}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-capacity@{m\_\-capacity}}
+\index{m\_\-capacity@{m\_\-capacity}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-capacity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-capacity}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_ab5a781ab6901f00d57787d488c0b6443}
+queue capacity \hypertarget{classpqueue__c_a9491f48b08d06e57691d8e0d4d06f2ce}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-current\_\-index@{m\_\-current\_\-index}}
+\index{m\_\-current\_\-index@{m\_\-current\_\-index}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-current\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-current\_\-index}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_a9491f48b08d06e57691d8e0d4d06f2ce}
+current bucket index \hypertarget{classpqueue__c_aea1aa5cd5b12ba0c04d8c61444533080}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-entry@{m\_\-entry}}
+\index{m\_\-entry@{m\_\-entry}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ list$<${\bf pqueue\_\-entry\_\-s} $\ast$$>$$\ast$ {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-entry}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_aea1aa5cd5b12ba0c04d8c61444533080}
+queue buckets \hypertarget{classpqueue__c_a7799f021f9468af506ed33cdde50d54b}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-entry\_\-pool@{m\_\-entry\_\-pool}}
+\index{m\_\-entry\_\-pool@{m\_\-entry\_\-pool}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-entry\_\-pool}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf pool\_\-c}$<${\bf pqueue\_\-entry\_\-s}$>$$\ast$ {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-entry\_\-pool}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_a7799f021f9468af506ed33cdde50d54b}
+queue entry full \hypertarget{classpqueue__c_ac66baa49b33c1c773bd1e2575d814d95}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-last\_\-index@{m\_\-last\_\-index}}
+\index{m\_\-last\_\-index@{m\_\-last\_\-index}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-last\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-last\_\-index}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_ac66baa49b33c1c773bd1e2575d814d95}
+last bucket index \hypertarget{classpqueue__c_ae8a7ef64df724a846fdd99e7662eb7b1}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-name@{m\_\-name}}
+\index{m\_\-name@{m\_\-name}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ string {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-name}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_ae8a7ef64df724a846fdd99e7662eb7b1}
+queue name \hypertarget{classpqueue__c_a933bd55083a228754eb47655616f0a6d}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-num\_\-entry@{m\_\-num\_\-entry}}
+\index{m\_\-num\_\-entry@{m\_\-num\_\-entry}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-num\_\-entry}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-num\_\-entry}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_a933bd55083a228754eb47655616f0a6d}
+current queue entries \hypertarget{classpqueue__c_aa5404c8b094541c557fff49dd6421c79}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-simBase@{m\_\-simBase}}
+\index{m\_\-simBase@{m\_\-simBase}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-simBase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf macsim\_\-c}$\ast$ {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-simBase}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_aa5404c8b094541c557fff49dd6421c79}
+\hyperlink{classmacsim__c}{macsim\_\-c} base class for simulation globals \hypertarget{classpqueue__c_afa2a0bf3e21a27c89996394e9d1277d7}{
+\index{pqueue\_\-c@{pqueue\_\-c}!m\_\-size@{m\_\-size}}
+\index{m\_\-size@{m\_\-size}!pqueue_c@{pqueue\_\-c}}
+\subsubsection[{m\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf pqueue\_\-c}$<$ T $>$::{\bf m\_\-size}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classpqueue__c_afa2a0bf3e21a27c89996394e9d1277d7}
+queue bucket size 
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+pqueue.h\end{DoxyCompactItemize}

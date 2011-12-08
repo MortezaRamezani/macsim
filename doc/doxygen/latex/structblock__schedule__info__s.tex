@@ -1,0 +1,126 @@
+\hypertarget{structblock__schedule__info__s}{
+\section{block\_\-schedule\_\-info\_\-s Struct Reference}
+\label{structblock__schedule__info__s}\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}}
+}
+
+
+Thread block schedule information.  
+
+
+
+
+{\ttfamily \#include $<$process\_\-manager.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structblock__schedule__info__s_ab78755e6bd30e94bff285a74b71586df}{block\_\-schedule\_\-info\_\-s} ()
+\item 
+\hyperlink{structblock__schedule__info__s_abda47e67bfa8f7a031dd8c6fda52d887}{$\sim$block\_\-schedule\_\-info\_\-s} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{structblock__schedule__info__s_a2a94ce096712373fc57cde8da942cb28}{m\_\-start\_\-to\_\-fetch}
+\item 
+int \hyperlink{structblock__schedule__info__s_af9ed930b90d0ca42f0311528a8186f39}{m\_\-dispatched\_\-core\_\-id}
+\item 
+bool \hyperlink{structblock__schedule__info__s_a639fb673552f73fd90dccb4ae6c5ea1c}{m\_\-retired}
+\item 
+int \hyperlink{structblock__schedule__info__s_af3b66bd84d411c90fe2683bf77394683}{m\_\-dispatched\_\-thread\_\-num}
+\item 
+int \hyperlink{structblock__schedule__info__s_a7194b000c4d81d80610eeec597e90e1f}{m\_\-retired\_\-thread\_\-num}
+\item 
+int \hyperlink{structblock__schedule__info__s_abbc67ac8b7a9a0bdc964d6b9a5a4c8d0}{m\_\-total\_\-thread\_\-num}
+\item 
+int \hyperlink{structblock__schedule__info__s_a78744ab215866834ea3fd99a78e6758f}{m\_\-dispatch\_\-done}
+\item 
+bool \hyperlink{structblock__schedule__info__s_a82e2fd882d6e6269a567e2d421bf0f27}{m\_\-trace\_\-exist}
+\item 
+Counter \hyperlink{structblock__schedule__info__s_ad967529ea12c192c606882f5e129ed0a}{m\_\-sched\_\-cycle}
+\item 
+Counter \hyperlink{structblock__schedule__info__s_ac2d0055e1b2764b0c54c92ee51094e8e}{m\_\-retire\_\-cycle}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Thread block schedule information. Only valid for GPU simulation. Bookkeeping structure for a thread block 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structblock__schedule__info__s_ab78755e6bd30e94bff285a74b71586df}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}}
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{block\_\-schedule\_\-info\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}block\_\-schedule\_\-info\_\-s::block\_\-schedule\_\-info\_\-s (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{structblock__schedule__info__s_ab78755e6bd30e94bff285a74b71586df}
+Constructor \hypertarget{structblock__schedule__info__s_abda47e67bfa8f7a031dd8c6fda52d887}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!$\sim$block\_\-schedule\_\-info\_\-s@{$\sim$block\_\-schedule\_\-info\_\-s}}
+\index{$\sim$block\_\-schedule\_\-info\_\-s@{$\sim$block\_\-schedule\_\-info\_\-s}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{$\sim$block\_\-schedule\_\-info\_\-s}]{\setlength{\rightskip}{0pt plus 5cm}block\_\-schedule\_\-info\_\-s::$\sim$block\_\-schedule\_\-info\_\-s (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{structblock__schedule__info__s_abda47e67bfa8f7a031dd8c6fda52d887}
+Destructor 
+
+\subsection{Member Data Documentation}
+\hypertarget{structblock__schedule__info__s_a78744ab215866834ea3fd99a78e6758f}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-dispatch\_\-done@{m\_\-dispatch\_\-done}}
+\index{m\_\-dispatch\_\-done@{m\_\-dispatch\_\-done}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-dispatch\_\-done}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf block\_\-schedule\_\-info\_\-s::m\_\-dispatch\_\-done}}}
+\label{structblock__schedule__info__s_a78744ab215866834ea3fd99a78e6758f}
+dispatch done \hypertarget{structblock__schedule__info__s_af9ed930b90d0ca42f0311528a8186f39}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-dispatched\_\-core\_\-id@{m\_\-dispatched\_\-core\_\-id}}
+\index{m\_\-dispatched\_\-core\_\-id@{m\_\-dispatched\_\-core\_\-id}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-dispatched\_\-core\_\-id}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf block\_\-schedule\_\-info\_\-s::m\_\-dispatched\_\-core\_\-id}}}
+\label{structblock__schedule__info__s_af9ed930b90d0ca42f0311528a8186f39}
+core id in which this block is launched \hypertarget{structblock__schedule__info__s_af3b66bd84d411c90fe2683bf77394683}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-dispatched\_\-thread\_\-num@{m\_\-dispatched\_\-thread\_\-num}}
+\index{m\_\-dispatched\_\-thread\_\-num@{m\_\-dispatched\_\-thread\_\-num}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-dispatched\_\-thread\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf block\_\-schedule\_\-info\_\-s::m\_\-dispatched\_\-thread\_\-num}}}
+\label{structblock__schedule__info__s_af3b66bd84d411c90fe2683bf77394683}
+number of dispatched threads \hypertarget{structblock__schedule__info__s_ac2d0055e1b2764b0c54c92ee51094e8e}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-retire\_\-cycle@{m\_\-retire\_\-cycle}}
+\index{m\_\-retire\_\-cycle@{m\_\-retire\_\-cycle}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-retire\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf block\_\-schedule\_\-info\_\-s::m\_\-retire\_\-cycle}}}
+\label{structblock__schedule__info__s_ac2d0055e1b2764b0c54c92ee51094e8e}
+retired cycle \hypertarget{structblock__schedule__info__s_a639fb673552f73fd90dccb4ae6c5ea1c}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-retired@{m\_\-retired}}
+\index{m\_\-retired@{m\_\-retired}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-retired}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf block\_\-schedule\_\-info\_\-s::m\_\-retired}}}
+\label{structblock__schedule__info__s_a639fb673552f73fd90dccb4ae6c5ea1c}
+retired \hypertarget{structblock__schedule__info__s_a7194b000c4d81d80610eeec597e90e1f}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-retired\_\-thread\_\-num@{m\_\-retired\_\-thread\_\-num}}
+\index{m\_\-retired\_\-thread\_\-num@{m\_\-retired\_\-thread\_\-num}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-retired\_\-thread\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf block\_\-schedule\_\-info\_\-s::m\_\-retired\_\-thread\_\-num}}}
+\label{structblock__schedule__info__s_a7194b000c4d81d80610eeec597e90e1f}
+number of retired threads \hypertarget{structblock__schedule__info__s_ad967529ea12c192c606882f5e129ed0a}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-sched\_\-cycle@{m\_\-sched\_\-cycle}}
+\index{m\_\-sched\_\-cycle@{m\_\-sched\_\-cycle}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-sched\_\-cycle}]{\setlength{\rightskip}{0pt plus 5cm}Counter {\bf block\_\-schedule\_\-info\_\-s::m\_\-sched\_\-cycle}}}
+\label{structblock__schedule__info__s_ad967529ea12c192c606882f5e129ed0a}
+scheduled cycle \hypertarget{structblock__schedule__info__s_a2a94ce096712373fc57cde8da942cb28}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-start\_\-to\_\-fetch@{m\_\-start\_\-to\_\-fetch}}
+\index{m\_\-start\_\-to\_\-fetch@{m\_\-start\_\-to\_\-fetch}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-start\_\-to\_\-fetch}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf block\_\-schedule\_\-info\_\-s::m\_\-start\_\-to\_\-fetch}}}
+\label{structblock__schedule__info__s_a2a94ce096712373fc57cde8da942cb28}
+start fetching \hypertarget{structblock__schedule__info__s_abbc67ac8b7a9a0bdc964d6b9a5a4c8d0}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-total\_\-thread\_\-num@{m\_\-total\_\-thread\_\-num}}
+\index{m\_\-total\_\-thread\_\-num@{m\_\-total\_\-thread\_\-num}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-total\_\-thread\_\-num}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf block\_\-schedule\_\-info\_\-s::m\_\-total\_\-thread\_\-num}}}
+\label{structblock__schedule__info__s_abbc67ac8b7a9a0bdc964d6b9a5a4c8d0}
+number of total threads \hypertarget{structblock__schedule__info__s_a82e2fd882d6e6269a567e2d421bf0f27}{
+\index{block\_\-schedule\_\-info\_\-s@{block\_\-schedule\_\-info\_\-s}!m\_\-trace\_\-exist@{m\_\-trace\_\-exist}}
+\index{m\_\-trace\_\-exist@{m\_\-trace\_\-exist}!block_schedule_info_s@{block\_\-schedule\_\-info\_\-s}}
+\subsubsection[{m\_\-trace\_\-exist}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf block\_\-schedule\_\-info\_\-s::m\_\-trace\_\-exist}}}
+\label{structblock__schedule__info__s_a82e2fd882d6e6269a567e2d421bf0f27}
+trace exist 
+
+The documentation for this struct was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+process\_\-manager.h\item 
+process\_\-manager.cc\end{DoxyCompactItemize}
