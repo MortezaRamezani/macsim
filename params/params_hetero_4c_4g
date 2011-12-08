@@ -1,12 +1,12 @@
 
 # Simulation Configuration
-num_sim_cores 7
-num_sim_small_cores 6
+num_sim_cores 8
+num_sim_small_cores 4
 num_sim_medium_cores 0
-num_sim_large_cores 1
+num_sim_large_cores 4
 core_type ptx
 large_core_type x86
-cpu_frequency 4 
+cpu_frequency 3 
 gpu_frequency 1.5
 sim_cycle_count 0 
 max_insts 200000000
@@ -99,14 +99,15 @@ enable_pref_small_core 0
 
 
 # DRAM
+dram_num_mc 2
 dram_frequency 1.603
-dram_bus_width 4
+dram_bus_width 8
 dram_ddr_factor 2
 dram_column 11
 dram_activate 25
 dram_precharge 10
-dram_num_banks 16
-dram_num_channel 8
+dram_num_banks 8
+dram_num_channel 2
 dram_rowbuffer_size 2048
 dram_scheduling_policy FRFCFS
 
