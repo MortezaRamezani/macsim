@@ -1,0 +1,104 @@
+%&latex
+%\documentclass[12pt,letterpaper]{article}
+%\documentclass[times, 9pt,twocolumn]{article}
+\documentclass{sig-alternate}
+%\documentclass[9pt, conference]{IEEEtran}
+\usepackage{setspace}
+%\doublespacing
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cite}
+%hparch packages
+%\usepackage{latex8}
+\usepackage{anysize}
+\usepackage{palatino}
+\usepackage{algorithm}
+\usepackage{url}
+\usepackage{wrapfig}
+\usepackage{alltt}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{algorithmic}
+\usepackage{color}
+\newcommand{\TODO}[1]{{\color{red}#1}}
+\newcommand{\todo}[1]{{\color{red}#1}}
+\newcommand{\ignore}[1]{}
+\usepackage{fancyhdr}
+\usepackage{rotating}
+\usepackage{caption}
+%\usepackage[bf,small]{caption}
+%\usepackage[section]{placeins}
+
+
+\ignore
+{
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+%\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
+
+
+% \iccvfinalcopy % *** Uncomment this line for the final submission
+
+%\def\iccvPaperID{****} % *** Enter the MICRO Paper ID here
+%\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+%\ificcvfinal\pagestyle{empty}\fi
+\begin{document}
+
+%%%%%%%%% TITLE
+\title{Validating a GPGPU Simulator}
+
+\ignore{
+\author{First Author\\
+Institution1\\
+Institution1 address\\
+{\tt\small firstauthor@i1.org}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+\and
+Second Author\\
+Institution2\\
+First line of institution2 address\\
+{\small\url{http://www.author.org/~second}}
+}
+}
+
+\maketitle
+% \thispagestyle{empty}
+
+
+\newcommand{\name}{$\alpha$-SJF}
+\newcommand{\Name}{$\alpha$-SJF}
+
+%%%%%%%%% ABSTRACT
+\input{abstract}
+%%%%%%%%% BODY TEXT
+
+
+\singlespace 
+\bibliographystyle{abbrv}
+\bibliography{ref}
+
+
+
+\end{document}
