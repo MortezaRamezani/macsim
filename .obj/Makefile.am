@@ -94,6 +94,8 @@ ei_srcs = ../src/$(EI_DIR)/parameters.cc \
           ../src/$(EI_DIR)/ENERGYLIB_McPAT.cc \
           ../src/$(EI_DIR)/ENERGYLIB_IntSim.cc \
           ../src/$(EI_DIR)/THERMALLIB_HotSpot.cc
+		  ../src/$(EI_DIR)/RELIABILITYLIB_RAMP.cc \
+		  ../src/$(EI_DIR)/SENSORLIB_RNG.cc
 
 all_sources += $(iris_kernel_srcs) $(iris_srcs) $(ei_srcs)
 
