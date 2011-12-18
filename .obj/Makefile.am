@@ -90,10 +90,11 @@ iris_srcs = ../src/manifold/models/iris/iris_srcs/data_types/networkPacket.cc \
 
 ei_srcs = ../src/$(EI_DIR)/parameters.cc \
           ../src/$(EI_DIR)/parser.cc \
+          ../src/$(EI_DIR)/string_ops.cc \
           ../src/$(EI_DIR)/energy_introspector.cc \
           ../src/$(EI_DIR)/ENERGYLIB_McPAT.cc \
           ../src/$(EI_DIR)/ENERGYLIB_IntSim.cc \
-          ../src/$(EI_DIR)/THERMALLIB_HotSpot.cc
+          ../src/$(EI_DIR)/THERMALLIB_HotSpot.cc \
 		  ../src/$(EI_DIR)/RELIABILITYLIB_RAMP.cc \
 		  ../src/$(EI_DIR)/SENSORLIB_RNG.cc
 
@@ -109,6 +110,7 @@ check_PROGRAMS = macsim_dbg macsim_gpf
 #libmacsimInternal_la_CXXFLAGS =
 
 
+#macsim_opt_CPPFLAGS = -O3 -std=c++0x -funroll-loops $(DEBUG_FLAGS) $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
 macsim_opt_CPPFLAGS = -O3 -std=c++0x -funroll-loops -Werror $(DEBUG_FLAGS) $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
 macsim_opt_SOURCES = $(all_sources)
 macsim_opt_LDFLAGS = -static
