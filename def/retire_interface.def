@@ -1,9 +1,0 @@
-#interface RETIRE
-#param( int                m_core_id       )
-#param( pqueue_c<int*>*      m_q_frontend    )
-#param( pqueue_c<int>**      m_q_iaq         )
-#param( pqueue_c<gpu_allocq_entry_s>**  m_gpu_q_iaq)
-#param( pool_c<uop_c>*        m_uop_pool      )
-#param( rob_c*             m_rob           )
-#param( smc_rob_c*         m_gpu_rob       )
-#param( Unit_Type   	   m_unit_type     )
