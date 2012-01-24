@@ -61,6 +61,7 @@ all_sources = \
 	../src/trace_read.cc \
 	../src/utils.cc \
 	../src/uop.cc \
+	../src/router.cc \
 	../src/ei_power.cc 
 
 iris_kernel_srcs = ../src/manifold/kernel/src/clock.cc \
