@@ -28,11 +28,11 @@ POSSIBILITY OF SUCH DAMAGE.
 
 
 /*********************************************************************************
-* File 			: ei_power.h
-* Author 		: Jieun Lim
-* Date			: 9/6/2011
-* SVN			:
-* Description 	: main file to use energy introspector 
+* File 			  : ei_power.h
+* Author 		  : Jieun Lim
+* Date			  : 9/6/2011
+* SVN			    :
+* Description : main file to use energy introspector 
 *********************************************************************************/
 
 #ifndef EI_POWER_H_INCLUDED
