@@ -50,10 +50,21 @@ POSSIBILITY OF SUCH DAMAGE.
 
 #define MCPAT_GEN_CONFIG_DECL(type, fp, core_id) void mcpat_config_gen_tech_##type(FILE *fp, int core_id)
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+/// \brief Energy Introspector (EI) interface
+///////////////////////////////////////////////////////////////////////////////////////////////
 class ei_power_c
 {
 	public:
+    /**
+     * Constructor
+     */
 		ei_power_c(macsim_c* simBase);
+
+    /**
+     * Destructor
+     */
 		~ei_power_c();
 
 		void ei_config_gen_large_tech(FILE* fp, int core_id);
@@ -74,7 +85,7 @@ class ei_power_c
 		int test_var;
 
 	private:
-		macsim_c* m_simBase;
+		macsim_c* m_simBase; /**< pointer to the simulation base class */
 
 };
 
