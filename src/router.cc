@@ -279,30 +279,6 @@ void router_c::set_link(int dir, router_c* link)
 // insert a packet from the network interface (NI)
 bool router_c::send_packet(mem_req_s* req)
 {
-#if 0 // GLOBAL INJECTION CONTROL - not practical
-  // to prevent deadlock, total packet < total router * num_vc * (num_port-1)
-  int max_packet;
-  int total_packet;
-
-  if (m_vc_partition) {
-    if (req->m_ptx) {
-      max_packet   = m_total_router * m_gpu_partition * (m_num_port - 1) - 1;
-      total_packet = g_total_gpu_packet;
-    }
-    else {
-      max_packet   = m_total_router * m_cpu_partition * (m_num_port - 1) - 1;
-      total_packet = g_total_cpu_packet;
-    }
-  }
-  else {
-    max_packet   = m_total_router * m_num_vc * (m_num_port - 1) - 1;
-    total_packet = g_total_packet;
-  }
-  if (total_packet >= max_packet)
-    return false;
-#endif
-
-
   // check input buffer availability 
   int begin = 0;
   int end   = m_num_vc;
@@ -335,9 +311,7 @@ bool router_c::send_packet(mem_req_s* req)
   STAT_EVENT(TOTAL_PACKET_CPU + req->m_ptx);
 
   
-//  (*m_total_packet)++;
   ++g_total_packet;
-//  cout << "total_packet:" << g_total_packet << " " << m_total_router * (m_num_port-1) * m_num_vc << "\n";
   if (req->m_ptx) {
     ++g_total_gpu_packet;
     STAT_EVENT(NOC_AVG_ACTIVE_PACKET_BASE_GPU);
@@ -458,38 +432,12 @@ void router_c::route_calculation(void)
               delta = left - right;
             }
 
-
-#if 0
-            if (*KNOB(KNOB_ENABLE_ADAPTIVE_RING_ROUTING) &&
-                (*KNOB(KNOB_ARR_DELTA) == false || (delta < m_total_router/2))) %{
-              int occupancy[5];
-              occupancy[LEFT]  = get_ovc_occupancy(LEFT);
-              occupancy[RIGHT] = get_ovc_occupancy(RIGHT);
-
-
-              // ORIG >= threshold && OPP < threshold : change direction
-              if (*KNOB(KNOB_ARR_ADV) &&
-                  occupancy[m_ivc_rc[ii][jj]] >= *KNOB(KNOB_ARR_THRESHOLD) &&
-                  occupancy[m_opposite_dir[m_ivc_rc[ii][jj]]] < *KNOB(KNOB_ARR_THRESHOLD) &&
-                  delta < m_total_router/2) {
-                m_ivc_rc[ii][jj] = m_opposite_dir[m_ivc_rc[ii][jj]];
-              }
-              // ORIG == 100% && OPP != 100%
-              else if (*KNOB(KNOB_ARR_100) &&
-                  occupancy[m_ivc_rc[ii][jj]] == 100 &&
-                  occupancy[m_opposite_dir[m_ivc_rc[ii][jj]]] < 100) {
-                m_ivc_rc[ii][jj] = m_opposite_dir[m_ivc_rc[ii][jj]];
-              }
-            }
-#endif
-
-
             (*I)->m_dir = m_ivc_rc[ii][jj];
           }
           (*I)->m_state = RC;
           DEBUG("node:%d RC req_id:%d flit_id:%d src:%d dst:%d ip:%d vc:%d rc:%d\n",
-              m_id, (*I)->m_req->m_id, (*I)->m_id, (*I)->m_req->m_msg_src, (*I)->m_req->m_msg_dst,
-              ii, jj, m_ivc_rc[ii][jj]);
+              m_id, (*I)->m_req->m_id, (*I)->m_id, (*I)->m_req->m_msg_src, 
+              (*I)->m_req->m_msg_dst, ii, jj, m_ivc_rc[ii][jj]);
         }
       }
     }
@@ -555,8 +503,8 @@ void router_c::vc_allocation(void)
           m_ovc_avail[op][ovc] = false;
 
           DEBUG("node:%d VCA req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d\n",
-              m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst,
-              ip, ivc, m_ivc_rc[ip][ivc], ovc);
+              m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+              flit->m_req->m_msg_dst, ip, ivc, m_ivc_rc[ip][ivc], ovc);
         }
       }
     }
@@ -605,7 +553,8 @@ void router_c::pick_vc_winner(int op, int ovc, int& ip, int& ivc)
         flit_c* flit = m_ivc_buffer[ii][jj].front();
 
         // header && RC stage && oldest
-        if (flit->m_head == true && flit->m_state == RC && flit->m_timestamp < oldest_timestamp) {
+        if (flit->m_head == true && flit->m_state == RC && 
+            flit->m_timestamp < oldest_timestamp) {
           if (enable_vc[flit->m_req->m_ptx]) {
             // ------------------------------
             // bubble routing
@@ -928,8 +877,8 @@ void router_c::sw_traversal(void)
             if (flit->m_state == SA || flit->m_state == IB) {
               flit->m_state = ST;
               DEBUG("node:%d ST req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d\n",
-                  m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst,
-                  ip, ivc, m_ivc_rc[ip][ivc], m_ivc_vc[ip][ivc]);
+                  m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+                  flit->m_req->m_msg_dst, ip, ivc, m_ivc_rc[ip][ivc], m_ivc_vc[ip][ivc]);
               break;
             }
           }
@@ -979,7 +928,6 @@ void router_c::link_traversal(void)
           m_ivc_avail[ip][ivc] = true;
 
           if (op == LOCAL) {
-//            (*m_total_packet)--;
             --g_total_packet;
             if (flit->m_req->m_ptx) {
               --g_total_gpu_packet;
@@ -989,8 +937,8 @@ void router_c::link_traversal(void)
             }
             m_req_buffer->push(flit->m_req);
             DEBUG("node:%d LOCAL req_id:%d flit_id:%d src:%d dst:%d ip:%d vc:%d\n",
-                m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst, 
-                ip, ivc);
+                m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+                flit->m_req->m_msg_dst, ip, ivc);
 
             STAT_EVENT(NOC_AVG_LATENCY_BASE);
             STAT_EVENT_N(NOC_AVG_LATENCY, CYCLE - flit->m_req->m_noc_cycle);
@@ -1046,36 +994,6 @@ void router_c::init(int total_router, int* total_packet, pool_c<flit_c>* flit_po
 
 void router_c::print(ofstream& out)
 {
-#if 0
-  out << "router:" << m_id << "\n";
-  for (int ip = 0; ip < m_num_port; ++ip) {
-    out << "----- input port " << ip << " -----\n";
-    for (int ivc = 0; ivc < m_num_vc; ++ivc) {
-      out << "vc:" << ivc << "\n";
-      out << "buffer size:" << m_ivc_buffer[ip][ivc].size() << "\n";
-      out << "ivc_avail:" << m_ivc_avail[ip][ivc] << "\n";
-      out << "ivc_rc:" << m_ivc_rc[ip][ivc] << "\n";
-      out << "ivc_vc:" << m_ivc_vc[ip][ivc] << "\n";
-      if (m_ivc_buffer[ip][ivc].size() > 0)
-        out << "req_id:" << m_ivc_buffer[ip][ivc].front()->m_req->m_id 
-          << " src:" << m_ivc_buffer[ip][ivc].front()->m_src
-          << " dst:" << m_ivc_buffer[ip][ivc].front()->m_dst << "\n";
-    }
-  }
-  out << "\n";
-
-  for (int op = 0; op < m_num_port; ++op) {
-    out << "----- output port " << op << " -----\n";
-    for (int ii = 0; ii < m_num_switch; ++ii)
-      out << "m_sw_avail " << m_sw_avail[op][ii] << "\n";
-    out << "m_sw_ip    " << m_sw_ip[op] << "\n";
-    out << "m_sw_vc    " << m_sw_vc[op] << "\n";
-    for (int ovc = 0; ovc < m_num_vc; ++ovc) {
-      out << "ovc_avail[" << ovc << "] " << m_ovc_avail[op][ovc] << "\n";
-    }
-  }
-  out << "\n";
-#endif
 }
 
 void router_c::print_link_info(void)
@@ -1110,23 +1028,9 @@ void router_c::check_starvation(void)
           m_ivc_rc[ip][ivc] = m_opposite_dir[m_ivc_rc[ip][ivc]];
           flit->m_dir = m_ivc_rc[ip][ivc];
           flit->m_rc_changed = CYCLE;
-          DEBUG("node:%d req_id:%d rc changed %d count:%d\n", m_id, flit->m_req->m_id, m_ivc_rc[ip][ivc], count);
-
-#if 0
-          if (CYCLE = 38029 && flit->m_req->m_id == 9181) {
-            print();
-            assert(0);
-          }
-#endif
+          DEBUG("node:%d req_id:%d rc changed %d count:%d\n", 
+              m_id, flit->m_req->m_id, m_ivc_rc[ip][ivc], count);
         }
-        
-
-#if 0
-        for (int ii = 0; ii < m_num_vc; ++ii) {
-          DEBUG("node:%d req_id:%d ovc[LEFT][%d]:%d\n", m_id, flit->m_req->m_id, ii, m_ovc_avail[LEFT][ii]);
-          DEBUG("node:%d req_id:%d ovc[RIGHT][%d]:%d\n", m_id, flit->m_req->m_id, ii, m_ovc_avail[RIGHT][ii]);
-        }
-#endif
       }
     }
   }
