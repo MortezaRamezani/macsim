@@ -45,44 +45,113 @@ POSSIBILITY OF SUCH DAMAGE.
 #include "global_defs.h"
 #include "global_types.h"
 
-#include "energy_introspector/energy_introspector.h"
+//#include "energy_introspector/energy_introspector.h"
 
 
-#define MCPAT_GEN_CONFIG_DECL(type, fp, core_id) void mcpat_config_gen_tech_##type(FILE *fp, int core_id)
+typedef enum Core_Type_enum{
+	LARGE_CORE,
+	MEDIUM_CORE,
+	SMALL_CORE
+} Core_Type;
+
+typedef enum ISA_Type_enum{
+	X86,
+	PTX
+} ISA_Type;
+
+typedef enum Schedule_Type_enum{
+	OUT_OF_ORDER,
+	IN_ORDER
+} Schedule_Type;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
-/// \brief Energy Introspector (EI) interface
+/// \brief Energy Introspector (EI) interface class
 ///////////////////////////////////////////////////////////////////////////////////////////////
 class ei_power_c
 {
 	public:
-    /**
-     * Constructor
-     */
+		/**
+		 * Constructor
+		 */
 		ei_power_c(macsim_c* simBase);
 
-    /**
-     * Destructor
-     */
+		/**
+		 * Destructor
+		 */
 		~ei_power_c();
 
+
+		/**
+		 * Generate technology parameters for a large core 
+		 * @param fp - file pointer to the configuration file 
+		 * @param core_id - core id
+		 */
 		void ei_config_gen_large_tech(FILE* fp, int core_id);
+
+		/**
+		 * Generate module parameters for a large core 
+		 */
 		void ei_config_gen_large_mod(FILE* fp, int core_id);
+
+		/**
+		 * Generate technology parameters for a medium core 
+		 */
 		void ei_config_gen_medium_tech(FILE* fp, int core_id);
+
+		/**
+		 * Generate module parameters for a medium core 
+		 */
 		void ei_config_gen_medium_mod(FILE* fp, int core_id);
+
+		/**
+		 * Generate technology parameters for a small core 
+		 */
 		void ei_config_gen_small_tech(FILE* fp, int core_id);
+
+		/**
+		 * Generate module parameters for a small core 
+		 */
 		void ei_config_gen_small_mod(FILE* fp, int core_id);
+
+		/**
+		 * Generate technology parameters for a last level cache 
+		 */
 		void ei_config_gen_llc_tech(FILE* fp);
+
+		/**
+		 * Generate technology parameters for a memory controller 
+		 */
+		void ei_config_gen_mc_tech(FILE* fp);
+		
+		/**
+		 * Generate module parameters for a last level cache 
+		 * @param l3_i llc id 
+		 */
+		void ei_config_gen_llc_mod(FILE* fp, int l3_i);
+
+		/**
+		 * Generate module parameters for a memory controller 
+		 * @param mc_i memory controller id
+		 */
+		void ei_config_gen_mc_mod(FILE* fp, int mc_i);
+
+		/**
+		 * Top function to generate an input parameter file to Energy Introspector 
+		 */
 		void ei_config_gen_top();
 
+		/**
+		 * Concatenate strings to make a module name
+		 * @param module_name - module name
+		 */
 		string get_name(string module_name, int core_id);
 
+		/**
+		 * Main function to compute power
+		 */
 		void ei_main();
 
-		
-	public:
-		int test_var;
 
 	private:
 		macsim_c* m_simBase; /**< pointer to the simulation base class */
