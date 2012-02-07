@@ -32,7 +32,7 @@ POSSIBILITY OF SUCH DAMAGE.
 * Author       : Jieun Lim 
 * Date         : 9/6/2011
 * SVN          :   
-* Description  :   
+* Description  : main file to use Energy Introspector to compute power 
 *********************************************************************************************/
 
 #include <stdio.h>
@@ -356,6 +356,31 @@ void ei_power_c::ei_config_gen_large_mod(FILE* fp, int core_id )
 	fprintf(fp, "-module.energy_submodel				cache\n");
 	fprintf(fp, "-module.line_width				1 # 2-bit saturation counter\n");
 	fprintf(fp, "-module.sets					%d\n", (int)pow(2, GET_KNOB(BP_HIST_LENGTH)));
+	fprintf(fp, "-module.rw_ports				%d\n", 1);
+	fprintf(fp, "-module.access_mode				fast\n");
+	fprintf(fp, "-module.end\n");
+	fprintf(fp, "\n");
+	fprintf(fp, "#branch target buffer\n");
+	fprintf(fp, "-module.ID					core%d:BTB\n", core_id);
+	fprintf(fp, "-module.technology				LARGE_CORE\n");
+	fprintf(fp, "-module.energy_library				McPAT\n");
+	fprintf(fp, "-module.energy_model				array\n");
+	fprintf(fp, "-module.energy_submodel				cache\n");
+	fprintf(fp, "-module.line_width				%d\n", GET_KNOB(32_64_ISA)/8);
+	fprintf(fp, "-module.assoc					%d\n", 4);
+	fprintf(fp, "-module.sets					%d\n", 128);
+	fprintf(fp, "-module.tag_width				%d\n", GET_KNOB(32_64_ISA)+OVERHEAD);
+	fprintf(fp, "-module.rw_ports				%d\n", 1);
+	fprintf(fp, "-module.end\n");
+	fprintf(fp, "\n");
+	fprintf(fp, "#return address stack\n");
+	fprintf(fp, "-module.ID					core%d:RAS\n", core_id);
+	fprintf(fp, "-module.technology				LARGE_CORE\n");
+	fprintf(fp, "-module.energy_library				McPAT\n");
+	fprintf(fp, "-module.energy_model				array\n");
+	fprintf(fp, "-module.energy_submodel				cache\n");
+	fprintf(fp, "-module.line_width				%d\n", GET_KNOB(32_64_ISA)/8);
+	fprintf(fp, "-module.sets					%d\n", 64);
 	fprintf(fp, "-module.rw_ports				%d\n", 1);
 	fprintf(fp, "-module.access_mode				fast\n");
 	fprintf(fp, "-module.end\n");
@@ -693,16 +718,16 @@ void ei_power_c::ei_config_gen_large_mod(FILE* fp, int core_id )
 	fprintf(fp, "-module.scaling                    %d \n", GET_KNOB(EI_EXEC_WIDTH) );
 	fprintf(fp, "-module.end\n");
 	fprintf(fp, "\n");
-	fprintf(fp, "#execution port0 FU\n");
-	fprintf(fp, "-module.ID					core%d:port0:FU\n", core_id);
+	fprintf(fp, "#execution unit - FPU\n");
+	fprintf(fp, "-module.ID					core%d:FPU\n", core_id);
 	fprintf(fp, "-module.technology				LARGE_CORE\n");
 	fprintf(fp, "-module.energy_library				McPAT\n");
 	fprintf(fp, "-module.energy_model				functional_unit\n");
 	fprintf(fp, "-module.energy_submodel				fpu\n");
 	fprintf(fp, "-module.end\n");
 	fprintf(fp, "\n");
-	fprintf(fp, "#execution port1 FU\n");
-	fprintf(fp, "-module.ID					core%d:port1:FU\n", core_id);
+	fprintf(fp, "#execution unit - ALU\n");
+	fprintf(fp, "-module.ID					core%d:ALU\n", core_id);
 	fprintf(fp, "-module.technology				LARGE_CORE\n");
 	fprintf(fp, "-module.energy_library				McPAT\n");
 	fprintf(fp, "-module.energy_model				functional_unit\n");
@@ -710,8 +735,8 @@ void ei_power_c::ei_config_gen_large_mod(FILE* fp, int core_id )
 	fprintf(fp, "-module.area_scaling                    3\n");
 	fprintf(fp, "-module.end\n");
 	fprintf(fp, "\n");
-	fprintf(fp, "#execution port2 FU\n");
-	fprintf(fp, "-module.ID					core%d:port2:FU\n", core_id);
+	fprintf(fp, "#execution unit - MUL \n");
+	fprintf(fp, "-module.ID					core%d:MUL\n", core_id);
 	fprintf(fp, "-module.technology				LARGE_CORE\n");
 	fprintf(fp, "-module.energy_library				McPAT\n");
 	fprintf(fp, "-module.energy_model				functional_unit\n");
@@ -1555,13 +1580,12 @@ void ei_power_c::ei_config_gen_small_mod(FILE* fp, int core_id)
 	fprintf(fp, "-module.energy_model				array\n");
 	fprintf(fp, "-module.energy_submodel			ram\n");
 	fprintf(fp, "-module.line_width					%d\n", 128/8);
-	fprintf(fp, "-module.sets						%d\n", 256*32);
-	//fprintf(fp, "-module.size 						%d\n", 128*1024);
+	//fprintf(fp, "-module.sets						%d\n", 256*32);
+	fprintf(fp, "-module.size 						%d\n", GET_KNOB(INT_REGFILE_SIZE)*8);
 	fprintf(fp, "-module.banks						%d\n", 32);
 	fprintf(fp, "-module.rd_ports					%d\n", 2);
 	fprintf(fp, "-module.wr_ports					%d\n", 1);	
 	fprintf(fp, "-module.access_mode					sequential\n");
-	//fprintf(fp, "-module.scaling				0.7 \n");
 	fprintf(fp, "-module.end\n");
 
 	/*
@@ -1723,7 +1747,7 @@ void ei_power_c::ei_config_gen_small_mod(FILE* fp, int core_id)
 		fprintf(fp, "-module.search_ports				%d\n", GET_KNOB(EI_ISSUE_WIDTH));
 		fprintf(fp, "-module.access_time				2\n");	 // jieun
 		fprintf(fp, "-module.cycle_time				2\n");
-		fprintf(fp, "-module.scaling				2\n");
+		fprintf(fp, "-module.scaling				2\n");	// dual scheduler
 		fprintf(fp, "-module.end\n");
 		fprintf(fp, "\n");
 		fprintf(fp, "#instruction issue selection logic\n");
@@ -1733,7 +1757,7 @@ void ei_power_c::ei_config_gen_small_mod(FILE* fp, int core_id)
 		fprintf(fp, "-module.energy_model				selection_logic\n");
 		fprintf(fp, "-module.selection_input			%d\n", GET_KNOB(ISCHED_SIZE)+ GET_KNOB(MSCHED_SIZE)+ GET_KNOB(FSCHED_SIZE));
 		fprintf(fp, "-module.selection_output			%d\n", GET_KNOB(ISCHED_RATE) + GET_KNOB(MSCHED_RATE)+ GET_KNOB(FSCHED_RATE));
-		fprintf(fp, "-module.scaling				2\n");
+		fprintf(fp, "-module.scaling				2\n");	// dual scheduler
 		fprintf(fp, "-module.end\n");
 		fprintf(fp, "\n");
 	}
@@ -1747,35 +1771,40 @@ void ei_power_c::ei_config_gen_small_mod(FILE* fp, int core_id)
 	fprintf(fp, "-module.scaling                    %d \n", GET_KNOB(EI_EXEC_WIDTH) );
 	fprintf(fp, "-module.end\n");
 	fprintf(fp, "\n");
-	fprintf(fp, "#execution port0 FU\n");
-	fprintf(fp, "-module.ID					core%d:port0:FU\n", core_id);
+	fprintf(fp, "#execution unit - SP - alu\n");
+	fprintf(fp, "-module.ID					core%d:SP_alu\n", core_id);
+	fprintf(fp, "-module.technology				SMALL_CORE\n");
+	fprintf(fp, "-module.energy_library				McPAT\n");
+	fprintf(fp, "-module.energy_model				functional_unit\n");
+	fprintf(fp, "-module.energy_submodel			alu\n");
+	fprintf(fp, "-module.scaling                    32\n");
+	fprintf(fp, "-module.end\n");
+	fprintf(fp, "\n");
+	fprintf(fp, "#execution unit - SP - fpu\n");
+	fprintf(fp, "-module.ID					core%d:SP_fpu\n", core_id);
+	fprintf(fp, "-module.technology				SMALL_CORE\n");
+	fprintf(fp, "-module.energy_library				McPAT\n");
+	fprintf(fp, "-module.energy_model				functional_unit\n");
+	fprintf(fp, "-module.energy_submodel			fpu\n");
+	fprintf(fp, "-module.scaling                    32\n");
+	fprintf(fp, "-module.end\n");
+	fprintf(fp, "\n");
+	fprintf(fp, "#execution unit - SFU\n");
+	fprintf(fp, "-module.ID					core%d:SFU\n", core_id);
 	fprintf(fp, "-module.technology				SMALL_CORE\n");
 	fprintf(fp, "-module.energy_library				McPAT\n");
 	fprintf(fp, "-module.energy_model				functional_unit\n");
 	fprintf(fp, "-module.energy_submodel				fpu\n");
-	fprintf(fp, "-module.scaling                    32\n");
+	fprintf(fp, "-module.scaling                    4\n");
 	fprintf(fp, "-module.end\n");
 	fprintf(fp, "\n");
-	/*
-	fprintf(fp, "#execution port1 FU\n");
-	fprintf(fp, "-module.ID					core%d:port1:FU\n", core_id);
+	fprintf(fp, "#execution unit - Ld/St unit\n");
+	fprintf(fp, "-module.ID					core%d:ldst\n", core_id);
 	fprintf(fp, "-module.technology				SMALL_CORE\n");
 	fprintf(fp, "-module.energy_library				McPAT\n");
 	fprintf(fp, "-module.energy_model				functional_unit\n");
 	fprintf(fp, "-module.energy_submodel				alu\n");
-	fprintf(fp, "-module.area_scaling                    3\n");
-	fprintf(fp, "-module.scaling                    1.5\n");
-	fprintf(fp, "-module.end\n");
-	fprintf(fp, "\n");
-	*/
-	fprintf(fp, "#execution port2 FU\n");
-	fprintf(fp, "-module.ID					core%d:port2:FU\n", core_id);
-	fprintf(fp, "-module.technology				SMALL_CORE\n");
-	fprintf(fp, "-module.energy_library				McPAT\n");
-	fprintf(fp, "-module.energy_model				functional_unit\n");
-	fprintf(fp, "-module.energy_submodel				mul\n");
-	fprintf(fp, "-module.area_scaling                    3\n");
-	fprintf(fp, "-module.scaling                    1.5\n");
+	fprintf(fp, "-module.scaling                    16\n");
 	fprintf(fp, "-module.end\n");
 	fprintf(fp, "\n");
 	fprintf(fp, "#latch: functional unit to ROB\n");
@@ -2489,9 +2518,14 @@ void ei_power_c::ei_main()
 		COMPUTE_POWER_CACHE("ICache", GET_CORE_STAT(core_id, POWER_ICACHE_R), GET_CORE_STAT(core_id, POWER_ICACHE_W), GET_CORE_STAT(core_id, POWER_ICACHE_R_TAG), GET_CORE_STAT(core_id, POWER_ICACHE_W), 0, level);
 		COMPUTE_POWER_CACHE("ICache:missbuffer", GET_CORE_STAT(core_id, POWER_ICACHE_MISS_BUF_R), GET_CORE_STAT(core_id, POWER_ICACHE_MISS_BUF_W), GET_CORE_STAT(core_id, POWER_ICACHE_MISS_BUF_R_TAG), GET_CORE_STAT(core_id, POWER_ICACHE_MISS_BUF_W), GET_CORE_STAT(core_id, POWER_ICACHE_MISS_BUF_R_TAG), level);
 		COMPUTE_POWER_BLOCK("Instruction Cache");
-		
-		COMPUTE_POWER("bpred1", GET_CORE_STAT(core_id, POWER_BR_PRED_R), GET_CORE_STAT(core_id, POWER_BR_PRED_W), level);
-		COMPUTE_POWER_BLOCK("Branch Predictior");
+
+		if(isa_type == X86)
+		{
+			COMPUTE_POWER("bpred1", GET_CORE_STAT(core_id, POWER_BR_PRED_R), GET_CORE_STAT(core_id, POWER_BR_PRED_W), level);
+			COMPUTE_POWER_BLOCK("Branch Predictior");
+			COMPUTE_POWER("BTB", GET_CORE_STAT(core_id, POWER_BR_PRED_R), GET_CORE_STAT(core_id, POWER_BR_PRED_W), level);
+			COMPUTE_POWER("RAS", GET_CORE_STAT(core_id, POWER_RAS_R), GET_CORE_STAT(core_id, POWER_RAS_W), level);
+		}
 
 		COMPUTE_POWER("instQ", GET_CORE_STAT(core_id, POWER_INST_QUEUE_R), GET_CORE_STAT(core_id, POWER_INST_QUEUE_W), level);
 		COMPUTE_POWER("IQ2ID", GET_CORE_STAT(core_id, POWER_INST_QUEUE_R), 0, level);
@@ -2499,7 +2533,6 @@ void ei_power_c::ei_main()
 		
 		COMPUTE_POWER("fetch", 0, 0, level);
 		COMPUTE_POWER_STAGE("Instruction Fetch Unit", 1, area_stage_fet, pow_stage_fet);
-		//COMPUTE_POWER_STAGE("Instruction Fetch Unit", 3.36);
 
 		COMPUTE_POWER("instruction_decoder", GET_CORE_STAT(core_id, POWER_INST_DECODER_R), GET_CORE_STAT(core_id, POWER_INST_DECODER_W), level);
 		COMPUTE_POWER("ID2uQ", GET_CORE_STAT(core_id, POWER_INST_DECODER_R), 0, level);
@@ -2513,7 +2546,6 @@ void ei_power_c::ei_main()
 		COMPUTE_POWER_BLOCK("Instruction Decoder");
 		COMPUTE_POWER("decode", 0, 0, level);
 		COMPUTE_POWER_STAGE("Instruction Decoder Unit", 1, area_stage_dec, pow_stage_dec);
-		//COMPUTE_POWER_STAGE("Instruction Decoder Unit", 5.34);
 
 		if(1)
 		//if(isa_type == X86)
@@ -2525,7 +2557,6 @@ void ei_power_c::ei_main()
 			COMPUTE_POWER_BLOCK("Renaming Unit");
 			COMPUTE_POWER("renaming", 0, 0, level);
 			COMPUTE_POWER_STAGE("Renaming Stage", 1, area_stage_ren, pow_stage_ren);
-			//COMPUTE_POWER_STAGE("Renaming Stage", 1.41);
 		}
 	
 
@@ -2546,7 +2577,6 @@ void ei_power_c::ei_main()
 		COMPUTE_POWER_BLOCK("Instruction Scheduler");
 		COMPUTE_POWER("schedule", 0, 0, level);
 		COMPUTE_POWER_STAGE("Instruction Scheduler", 1, area_stage_sch, pow_stage_sch);
-		//COMPUTE_POWER_STAGE("Instruction Scheduler", 1.51);
 
 		if(isa_type == X86)
 		{
@@ -2562,15 +2592,22 @@ void ei_power_c::ei_main()
 		
 
 		COMPUTE_POWER("payload", GET_CORE_STAT(core_id, POWER_PAYLOAD_RAM_R), 0, level);
-		if(isa_type != PTX)
+		if(isa_type == X86)
 		{
-			COMPUTE_POWER("port1:FU", GET_CORE_STAT(core_id, POWER_EX_ALU_R), 0, level);	// ALU
+			COMPUTE_POWER("ALU", GET_CORE_STAT(core_id, POWER_EX_ALU_R), 0, level);	// ALU
 			COMPUTE_POWER_BLOCK("ALU");
+			COMPUTE_POWER("FPU", GET_CORE_STAT(core_id, POWER_EX_FPU_R), 0, level);	// FPU
+			COMPUTE_POWER_BLOCK("FPU");
+			COMPUTE_POWER("MUL", GET_CORE_STAT(core_id, POWER_EX_MUL_R), 0, level);	// MUL
+			COMPUTE_POWER_BLOCK("MUL");
 		}
-		COMPUTE_POWER("port0:FU", GET_CORE_STAT(core_id, POWER_EX_FPU_R), 0, level);	// FPU
-		COMPUTE_POWER_BLOCK("FPU");
-		COMPUTE_POWER("port2:FU", GET_CORE_STAT(core_id, POWER_EX_MUL_R), 0, level);	// MUL
-		COMPUTE_POWER_BLOCK("MUL");
+		else
+		{
+			COMPUTE_POWER("SP_alu", GET_CORE_STAT(core_id, POWER_EX_ALU_R)+GET_CORE_STAT(core_id, POWER_EX_MUL_R), 0, level);	// ALU
+			COMPUTE_POWER("SP_fpu", GET_CORE_STAT(core_id, POWER_EX_FPU_R), 0, level);	// ALU
+			COMPUTE_POWER("SFU", 0, 0, level);	// FPU
+			COMPUTE_POWER("ldst", GET_CORE_STAT(core_id, POWER_SEGMENT_REGISTER_R), 0, level);	// MUL
+		}
 		COMPUTE_POWER("FU2ROB", GET_CORE_STAT(core_id, POWER_EX_ALU_R) + GET_CORE_STAT(core_id, POWER_EX_FPU_R) + GET_CORE_STAT(core_id, POWER_EX_MUL_R), 0, level);
 
 		COMPUTE_POWER("exec_bypass", GET_CORE_STAT(core_id, POWER_EXEC_BYPASS), 0, level);
@@ -2578,7 +2615,6 @@ void ei_power_c::ei_main()
 		COMPUTE_POWER_BLOCK("Result Broadcast Bus");
 		COMPUTE_POWER("execute", 0, 0, level);
 		COMPUTE_POWER_STAGE("Execution Unit", 1, area_stage_ex, pow_stage_ex);
-		//COMPUTE_POWER_STAGE("Execution Unit", 7.84);
 
 
 		COMPUTE_POWER_CACHE("loadQ", GET_CORE_STAT(core_id, POWER_LOAD_QUEUE_R), GET_CORE_STAT(core_id, POWER_LOAD_QUEUE_W), GET_CORE_STAT(core_id, POWER_LOAD_QUEUE_R_TAG), GET_CORE_STAT(core_id, POWER_LOAD_QUEUE_W), GET_CORE_STAT(core_id, POWER_LOAD_QUEUE_R_TAG), level);
@@ -2595,7 +2631,6 @@ void ei_power_c::ei_main()
 		COMPUTE_POWER_BLOCK("Memory Management Unit");
 		COMPUTE_POWER("memory", 0, 0, level);
 		COMPUTE_POWER_STAGE("Memory Management Unit", 1, area_stage_mmu, pow_stage_mmu);
-		//COMPUTE_POWER_STAGE("Memory Management Unit", 227);
 
 		if(!l1_bypass)
 		{
@@ -2608,11 +2643,6 @@ void ei_power_c::ei_main()
 		}
 		COMPUTE_POWER_STAGE("L1 Cache", 1, area_stage_l1, pow_stage_l1);
 
-
-		/*
-		COMPUTE_POWER("Pipeline", GET_CORE_STAT(core_id, POWER_PIPELINE), 0, level);
-		COMPUTE_POWER_STAGE("Pipeline", 1);
-		*/
 		
 		if(!l2_bypass)
 		{
@@ -2682,7 +2712,6 @@ void ei_power_c::ei_main()
 		COMPUTE_POWER_BLOCK("L3");
 	}
 	COMPUTE_POWER_STAGE("L3", 1, area_stage_l3, pow_stage_l3);
-	cout << endl;
 	
 	for(mc_i=0; mc_i < GET_KNOB(DRAM_NUM_MC); mc_i++)
 	{
