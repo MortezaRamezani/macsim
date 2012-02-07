@@ -91,47 +91,61 @@ class ei_power_c
 
 		/**
 		 * Generate module parameters for a large core 
+		 * @param fp - file pointer to the configuration file 
+		 * @param core_id - core id
 		 */
 		void ei_config_gen_large_mod(FILE* fp, int core_id);
 
 		/**
 		 * Generate technology parameters for a medium core 
+		 * @param fp - file pointer to the configuration file 
+		 * @param core_id - core id
 		 */
 		void ei_config_gen_medium_tech(FILE* fp, int core_id);
 
 		/**
 		 * Generate module parameters for a medium core 
+		 * @param fp - file pointer to the configuration file 
+		 * @param core_id - core id
 		 */
 		void ei_config_gen_medium_mod(FILE* fp, int core_id);
 
 		/**
 		 * Generate technology parameters for a small core 
+		 * @param fp - file pointer to the configuration file 
+		 * @param core_id - core id
 		 */
 		void ei_config_gen_small_tech(FILE* fp, int core_id);
 
 		/**
 		 * Generate module parameters for a small core 
+		 * @param fp - file pointer to the configuration file 
+		 * @param core_id - core id
 		 */
 		void ei_config_gen_small_mod(FILE* fp, int core_id);
 
 		/**
 		 * Generate technology parameters for a last level cache 
+		 * @param fp - file pointer to the configuration file 
 		 */
 		void ei_config_gen_llc_tech(FILE* fp);
 
 		/**
 		 * Generate technology parameters for a memory controller 
+		 * @param fp - file pointer to the configuration file 
 		 */
 		void ei_config_gen_mc_tech(FILE* fp);
 		
 		/**
 		 * Generate module parameters for a last level cache 
+		 * @param fp - file pointer to the configuration file 
 		 * @param l3_i llc id 
 		 */
 		void ei_config_gen_llc_mod(FILE* fp, int l3_i);
 
 		/**
 		 * Generate module parameters for a memory controller 
+		 * @param fp - file pointer to the configuration file 
 		 * @param mc_i memory controller id
 		 */
 		void ei_config_gen_mc_mod(FILE* fp, int mc_i);
@@ -144,6 +158,7 @@ class ei_power_c
 		/**
 		 * Concatenate strings to make a module name
 		 * @param module_name - module name
+		 * @param core_id - core id
 		 */
 		string get_name(string module_name, int core_id);
 
