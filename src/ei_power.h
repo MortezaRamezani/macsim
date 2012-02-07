@@ -48,18 +48,18 @@ POSSIBILITY OF SUCH DAMAGE.
 //#include "energy_introspector/energy_introspector.h"
 
 
-typedef enum Core_Type_enum{
+typedef enum Core_Type_enum {
 	LARGE_CORE,
 	MEDIUM_CORE,
 	SMALL_CORE
 } Core_Type;
 
-typedef enum ISA_Type_enum{
+typedef enum ISA_Type_enum {
 	X86,
 	PTX
 } ISA_Type;
 
-typedef enum Schedule_Type_enum{
+typedef enum Schedule_Type_enum {
 	OUT_OF_ORDER,
 	IN_ORDER
 } Schedule_Type;
