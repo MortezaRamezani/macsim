@@ -45,8 +45,6 @@ POSSIBILITY OF SUCH DAMAGE.
 #include "global_defs.h"
 #include "global_types.h"
 
-//#include "energy_introspector/energy_introspector.h"
-
 
 typedef enum Core_Type_enum {
 	LARGE_CORE,
@@ -167,9 +165,11 @@ class ei_power_c
 		 */
 		void ei_main();
 
+	
 
-	private:
-		macsim_c* m_simBase; /**< pointer to the simulation base class */
+  private:
+ 
+		  macsim_c* m_simBase; /**< pointer to the simulation base class */
 
 };
 
