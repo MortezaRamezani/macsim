@@ -124,6 +124,7 @@ Index: Makefile.am
 +src/uop.cc                   src/uop.h                                 \
 +src/utils.cc                 src/utils.h                               \
 +src/ei_power.cc              src/ei_power.h                            \
++src/router.cc                src/router.h                              \
 +                                                                       \
 +src/allocate_interface.h                                               \
 +src/exec_interface.h                                                   \
