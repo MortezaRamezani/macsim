@@ -100,7 +100,6 @@ void flit_c::init(void)
 {
   m_src       = -1;
   m_dst       = -1;
-  m_dir       = -1;
   m_head      = false;
   m_tail      = false;
   m_req       = NULL;
@@ -111,6 +110,19 @@ void flit_c::init(void)
   m_id        = 0;
 }
 
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+credit_c::credit_c()
+{
+}
+
+credit_c::~credit_c()
+{
+}
+
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -118,107 +130,19 @@ void flit_c::init(void)
 router_c::router_c(macsim_c* simBase, int type, int id)
   : m_simBase(simBase), m_type(type), m_id(id)
 {
-  m_num_vc             = *KNOB(KNOB_NUM_VC); 
-  m_num_port           = *KNOB(KNOB_NUM_PORT);
-  m_link_latency       = *KNOB(KNOB_LINK_LATENCY) + 1;
-  m_arbitration_policy = *KNOB(KNOB_ARBITRATION_POLICY);
-  m_link_width         = *KNOB(KNOB_LINK_WIDTH);
-  m_num_switch         = *KNOB(KNOB_NUM_SWITCH);
-  if (*KNOB(KNOB_ENABLE_HETEROGENEOUS_LINK)) {
-    if (type == CPU_ROUTER)
-      m_num_switch = *KNOB(KNOB_NUM_SWITCH_CPU);
-    else if (type == GPU_ROUTER)
-      m_num_switch = *KNOB(KNOB_NUM_SWITCH_GPU);
-    else 
-      m_num_switch = *KNOB(KNOB_NUM_SWITCH_MEM);
-  }
+  // configurations
+  m_num_vc              = *KNOB(KNOB_NUM_VC); 
+  m_num_port            = *KNOB(KNOB_NUM_PORT);
+  m_link_latency        = *KNOB(KNOB_LINK_LATENCY) + 1;
+  m_arbitration_policy  = *KNOB(KNOB_ARBITRATION_POLICY);
+  m_link_width          = *KNOB(KNOB_LINK_WIDTH);
+  m_enable_vc_partition = *KNOB(KNOB_ENABLE_NOC_VC_PARTITION);
+  m_num_vc_cpu          = *KNOB(KNOB_CPU_VC_PARTITION);
+  assert(m_num_vc_cpu < m_num_vc);
+  assert(m_num_vc_cpu >= 2);
+  assert(m_num_vc - m_num_vc_cpu >= 2);
 
-
-  if (*KNOB(KNOB_ENABLE_HETEROGENEOUS_LINK_WIDTH)) {
-    if (type == CPU_ROUTER)
-      m_sw_iter = *KNOB(KNOB_NUM_SWITCH_ITER_CPU);
-    else if (type == GPU_ROUTER)
-      m_sw_iter = *KNOB(KNOB_NUM_SWITCH_ITER_GPU);
-    else 
-      m_sw_iter = *KNOB(KNOB_NUM_SWITCH_ITER_MEM);
-  }
-  else
-    m_sw_iter = *KNOB(KNOB_NUM_SWITCH_ITER);
-
-  // vc partitioning
-  m_vc_partition = *KNOB(KNOB_ENABLE_NOC_VC_PARTITION);
-  m_cpu_partition = *KNOB(KNOB_CPU_VC_PARTITION);
-  m_gpu_partition = *KNOB(KNOB_GPU_VC_PARTITION);
-
-  // channel partitioning
-  m_channel_partition = *KNOB(KNOB_ENABLE_CHANNEL_PARTITION);
-  m_cpu_ch_partition = *KNOB(KNOB_NUM_CHANNEL_CPU);
-  m_gpu_ch_partition = *KNOB(KNOB_NUM_CHANNEL_GPU);
-
-  if (m_channel_partition) {
-    assert(m_num_switch == (m_cpu_ch_partition + m_gpu_ch_partition));
-    assert(*KNOB(KNOB_ENABLE_HETEROGENEOUS_LINK) == false);
-  }
-
-  if (m_vc_partition)
-    assert(m_cpu_partition + m_gpu_partition == m_num_vc);
-  assert(m_num_vc > 1);
-  assert(m_cpu_partition > 1);
-  assert(m_gpu_partition > 1);
-
-  m_ivc_avail  = new bool*[m_num_port];
-  m_ovc_avail  = new bool*[m_num_port];
-  m_ivc_rc     = new int*[m_num_port];
-  m_ivc_vc     = new int*[m_num_port];
-  m_ivc_sw     = new int*[m_num_port];
-  m_ivc_buffer = new list<flit_c*>*[m_num_port];
-  m_sw_avail  = new bool*[m_num_port];
-  m_sw_ip  = new int*[m_num_port];
-  m_sw_vc  = new int*[m_num_port];
-
-  for (int ii = 0; ii < m_num_port; ++ii) {
-    m_sw_avail[ii] = new bool[m_num_switch];
-    fill_n(m_sw_avail[ii], m_num_switch, true);
-    
-    m_sw_ip[ii] = new int[m_num_switch];
-    fill_n(m_sw_ip[ii], m_num_switch, -1);
-    
-    m_sw_vc[ii] = new int[m_num_switch];
-    fill_n(m_sw_vc[ii], m_num_switch, -1);
-  }
-
-//  fill_n(m_sw_ip, m_num_port, -1);
-//  fill_n(m_sw_vc, m_num_port, -1);
-  
-  m_last_vc_winner = new int[m_num_port];
-  m_last_sw_winner = new int[m_num_port];
-  fill_n(m_last_vc_winner, m_num_port, 0);
-  fill_n(m_last_sw_winner, m_num_port, 0);
-
-
-  for (int ii = 0; ii < m_num_port; ++ii) {
-    m_ivc_avail[ii] = new bool[m_num_vc];
-//    m_ovc_avail[ii] = new bool[m_num_vc];
-    fill_n(m_ivc_avail[ii], m_num_vc, true);
-//    fill_n(m_ovc_avail[ii], m_num_vc, true);
-
-    m_ivc_rc[ii] = new int[m_num_vc];
-    fill_n(m_ivc_rc[ii], m_num_vc, -1);
-    
-    m_ivc_vc[ii] = new int[m_num_vc];
-    fill_n(m_ivc_vc[ii], m_num_vc, -1);
-
-    m_ivc_sw[ii] = new int[m_num_vc];
-    fill_n(m_ivc_sw[ii], m_num_vc, -1);
-
-    m_ivc_buffer[ii] = new list<flit_c*>[m_num_vc];
-  }
-
-  m_ovc_avail[0] = new bool[m_num_vc];
-  fill_n(m_ovc_avail[0], m_num_vc, true);
-
-  m_req_buffer = new queue<mem_req_s*>;
-
+  // link setting
   m_opposite_dir[LOCAL] = LOCAL;
   m_opposite_dir[LEFT]  = RIGHT;
   m_opposite_dir[RIGHT] = LEFT;
@@ -230,23 +154,72 @@ router_c::router_c(macsim_c* simBase, int type, int id)
   m_link[RIGHT] = NULL;
   m_link[UP] = NULL;
   m_link[DOWN] = NULL;
+
+  // memory allocations
+  m_req_buffer = new queue<mem_req_s*>;
+
+  m_injection_buffer = new list<mem_req_s*>;
+  m_injection_buffer_max_size = 32;
+  m_injection_buffer_size     = 0;
+
+  m_input_buffer = new list<flit_c*>*[m_num_port];
+  m_output_buffer = new list<flit_c*>*[m_num_port];
+  m_route = new int*[m_num_port];
+  m_vc_avail = new bool*[m_num_port];
+  m_vc_id = new int*[m_num_port];
+  m_credit = new int*[m_num_port];
+
+  for (int ii = 0; ii < m_num_port; ++ii) {
+    m_input_buffer[ii] = new list<flit_c*>[m_num_vc];
+    m_output_buffer[ii] = new list<flit_c*>[m_num_vc];
+    m_route[ii] = new int[m_num_vc];
+    fill_n(m_route[ii], m_num_vc, -1); 
+
+    m_vc_avail[ii] = new bool[m_num_vc];
+    fill_n(m_vc_avail[ii], m_num_vc, true);
+
+    m_vc_id[ii] = new int[m_num_vc];
+    fill_n(m_vc_id[ii], m_num_vc, -1);
+
+    m_credit[ii] = new int[m_num_vc];
+    fill_n(m_credit[ii], m_num_vc, 10);
+  }
+
+  m_buffer_max_size = 10;
+  
+  m_sw_avail  = new bool[m_num_port];
+  fill_n(m_sw_avail, m_num_port, true);
+  m_sw_port_id = new int[m_num_port];
+  m_sw_vc_id = new int[m_num_port];
+  fill_n(m_sw_port_id, m_num_port, -1);
+  fill_n(m_sw_vc_id, m_num_port, -1);
+
+//  m_credit_pool = new pool_c<credit_c>(100, "credit");
+  m_pending_credit = new list<credit_c*>;
 }
 
 
 // destructor
 router_c::~router_c()
 {
-  for (int ii = 0; ii < m_num_port; ++ii) {
-    delete[] m_ivc_avail[ii];
-    delete[] m_ivc_rc[ii];
-    delete[] m_ivc_buffer[ii];
-  }
-
-  delete[] m_ivc_avail;
-  delete[] m_ivc_rc;
-  delete[] m_ivc_buffer;
-
   delete m_req_buffer;
+  delete m_injection_buffer;
+  for (int ii = 0; ii < m_num_port; ++ii) {
+    delete[] m_input_buffer[ii];
+    delete[] m_output_buffer[ii];
+    delete[] m_route[ii];
+    delete[] m_vc_avail[ii];
+    delete[] m_vc_id[ii];
+    delete[] m_credit[ii];
+  }
+  delete[] m_input_buffer;
+  delete[] m_output_buffer;
+  delete[] m_route;
+  delete[] m_vc_avail;
+  delete[] m_vc_id;
+  delete[] m_credit;
+//  delete m_credit_pool;
+  delete m_pending_credit;
 }
 
 
@@ -256,10 +229,12 @@ int router_c::get_id(void)
   return m_id;
 }
 
+
 void router_c::set_id(int id)
 {
   m_id = id;
 }
+
 
 // set links to other routers
 void router_c::set_link(int dir, router_c* link)
@@ -267,244 +242,191 @@ void router_c::set_link(int dir, router_c* link)
   m_link[dir] = link;
 
   int opposite_dir;
-  if (dir == LEFT) opposite_dir = RIGHT;
+  if (dir == LEFT)       opposite_dir = RIGHT;
   else if (dir == RIGHT) opposite_dir = LEFT;
-  else if (dir == UP) opposite_dir = DOWN;
-  else if (dir == DOWN) opposite_dir = UP;
-
-  m_ovc_avail[dir] = link->m_ivc_avail[opposite_dir]; 
-}
-
-
-// insert a packet from the network interface (NI)
-bool router_c::send_packet(mem_req_s* req)
-{
-  // check input buffer availability 
-  int begin = 0;
-  int end   = m_num_vc;
-  if (m_vc_partition && (m_type == L3_ROUTER || m_type == MC_ROUTER)) {
-    if (req->m_ptx) {
-      begin = m_cpu_partition;
-    }
-    else {
-      end = m_cpu_partition;
-    }
-  }
-
-
-
-  // available local vc check
-  int index = -1;
-  for (int ii = begin; ii < end; ++ii) {
-    if (m_ivc_avail[LOCAL][ii] == true) {
-      index = ii;
-      m_ivc_avail[LOCAL][ii] = false;
-      break;
-    } 
-  }
-
-  if (index == -1)
-    return false;
-
-
-  req->m_noc_cycle = CYCLE;
-  STAT_EVENT(TOTAL_PACKET_CPU + req->m_ptx);
-
-  
-  ++g_total_packet;
-  if (req->m_ptx) {
-    ++g_total_gpu_packet;
-    STAT_EVENT(NOC_AVG_ACTIVE_PACKET_BASE_GPU);
-    STAT_EVENT_N(NOC_AVG_ACTIVE_PACKET_GPU, g_total_gpu_packet);
-  }
-  else {
-    ++g_total_cpu_packet;
-    STAT_EVENT(NOC_AVG_ACTIVE_PACKET_BASE_CPU);
-    STAT_EVENT_N(NOC_AVG_ACTIVE_PACKET_CPU, g_total_cpu_packet);
-  }
-    
-  STAT_EVENT(NOC_AVG_ACTIVE_PACKET_BASE);
-  STAT_EVENT_N(NOC_AVG_ACTIVE_PACKET, g_total_packet);
-  
-
-  // flit generation
-  int num_flit = 1;
-  if (req->m_msg_type == NOC_FILL) {
-    num_flit += req->m_size / m_link_width; 
-  } 
-
-  for (int ii = 0; ii < num_flit; ++ii) {
-    flit_c* new_flit = m_flit_pool->acquire_entry();
-    new_flit->m_req = req;
-    new_flit->m_src = req->m_msg_src;
-    new_flit->m_dst = req->m_msg_dst;
-
-    if (ii == 0) new_flit->m_head = true;
-    else new_flit->m_head = false;
-    
-    if (ii == num_flit-1) new_flit->m_tail = true;
-    else new_flit->m_tail = false;
-
-    new_flit->m_state     = IB;
-    new_flit->m_timestamp = CYCLE;
-    new_flit->m_rdy_cycle = CYCLE;
-    new_flit->m_rc_changed = CYCLE;
-    new_flit->m_id = ii;
-
-    // insert all flits to m_buffer[LOCAL][vc]
-    m_ivc_buffer[LOCAL][index].push_back(new_flit);
-  }
-
-  DEBUG("node:%d IB req_id:%d src:%d dst:%d ip:%d vc:%d\n",
-      m_id, req->m_id, req->m_msg_src, req->m_msg_dst, LOCAL, index);
-
-  return true;
+  else if (dir == UP)    opposite_dir = DOWN;
+  else if (dir == DOWN)  opposite_dir = UP;
 }
 
 
 // Tick fuction
 void router_c::run_a_cycle(void)
 {
-  check_starvation();
-  link_traversal();
-  sw_traversal();
-  sw_allocation();
-  vc_allocation();
-  route_calculation();
-  check_channel();
+//  check_starvation();
+  process_pending_credit();
+  stage_lt();
+  stage_st();
+  stage_sa();  
+  stage_vca();
+  stage_rc();
+  local_packet_injection();
+
+  // stats
+//  check_channel();
 }
 
-void router_c::check_channel(void)
+
+// insert a packet from the network interface (NI)
+bool router_c::inject_packet(mem_req_s* req)
 {
-  for (int op = 0; op < m_num_port; ++op) {
-    for (int sw = 0; sw < m_num_switch; ++sw) {
-      if (op != LOCAL && m_sw_avail[op][sw]) {
-        STAT_EVENT(NOC_IDLE_CHANNEL);
-        STAT_EVENT(NOC_IDLE_CHANNEL_CPU + m_type); 
+  if (m_injection_buffer_size < m_injection_buffer_max_size) {
+    m_injection_buffer->push_back(req);
+    ++m_injection_buffer_size;
+
+    DEBUG("cycle:%-10lld node:%d [IN] req_id:%d src:%d dst:%d\n",
+        CYCLE, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+    return true;
+  }
+
+  return false;
+}
+
+
+// insert a packet from the injection buffer
+void router_c::local_packet_injection(void)
+{
+  while (1) {
+    if (m_injection_buffer->empty())
+      break;
+
+    mem_req_s* req = m_injection_buffer->front();
+    int num_flit = 1;
+    if (req->m_msg_type == NOC_FILL) 
+      num_flit += req->m_size / m_link_width; 
+    
+    bool req_inserted = false;
+    for (int ii = 0; ii < m_num_vc; ++ii) {
+      // check buffer availability to insert a new request
+      if (m_input_buffer[0][ii].size() + num_flit <= m_buffer_max_size) {
+        // flit generation and insert into the buffer
+        STAT_EVENT(TOTAL_PACKET_CPU + req->m_ptx);
+        req->m_noc_cycle = CYCLE;
+
+        ++g_total_packet;
+        if (req->m_ptx) {
+          ++g_total_gpu_packet;
+          STAT_EVENT(NOC_AVG_ACTIVE_PACKET_BASE_GPU);
+          STAT_EVENT_N(NOC_AVG_ACTIVE_PACKET_GPU, g_total_gpu_packet);
+        }
+        else {
+          ++g_total_cpu_packet;
+          STAT_EVENT(NOC_AVG_ACTIVE_PACKET_BASE_CPU);
+          STAT_EVENT_N(NOC_AVG_ACTIVE_PACKET_CPU, g_total_cpu_packet);
+        }
+
+        STAT_EVENT(NOC_AVG_ACTIVE_PACKET_BASE);
+        STAT_EVENT_N(NOC_AVG_ACTIVE_PACKET, g_total_packet);
+
+        for (int jj = 0; jj < num_flit; ++jj) {
+          flit_c* new_flit = m_flit_pool->acquire_entry();
+          new_flit->m_req = req;
+          new_flit->m_src = req->m_msg_src;
+          new_flit->m_dst = req->m_msg_dst;
+
+          if (jj == 0) new_flit->m_head = true;
+          else new_flit->m_head = false;
+
+          if (jj == num_flit-1) new_flit->m_tail = true;
+          else new_flit->m_tail = false;
+
+          new_flit->m_state      = IB;
+          new_flit->m_timestamp  = CYCLE;
+          new_flit->m_rdy_cycle  = CYCLE;
+          new_flit->m_id         = jj;
+
+          // insert all flits to input_buffer[LOCAL][vc]
+          m_input_buffer[0][ii].push_back(new_flit);
+        }
+
+        m_injection_buffer->pop_front();
+        --m_injection_buffer_size;
+        req_inserted = true;
+
+        DEBUG("cycle:%-10lld node:%d [IB] req_id:%d src:%d dst:%d\n",
+            CYCLE, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+
+        break;
       }
     }
-  } 
+
+    // Nothing was scheduled. Stop inserting!
+    if (!req_inserted)
+      break;
+  }
 }
 
 
 // RC stage
-void router_c::route_calculation(void)
+void router_c::stage_rc(void)
 {
   // RC (Route Calculation) stage
-  for (int ii = 0; ii < m_num_port; ++ii) {
-    for (int jj = 0; jj < m_num_vc; ++jj) {
-      for (auto I = m_ivc_buffer[ii][jj].begin(), E = m_ivc_buffer[ii][jj].end(); I != E; ++I) { 
-        if ((*I)->m_head == true && (*I)->m_state == IB && (*I)->m_rdy_cycle <= CYCLE) {
-          if (m_id == (*I)->m_dst) {
-            m_ivc_rc[ii][jj] = LOCAL;
-          }
-          // ------------------------------
-          // to prevent ping-pong routing
-          // ------------------------------
-          else if ((*I)->m_dir != -1) {
-            m_ivc_rc[ii][jj] = (*I)->m_dir;
-          }
-          // ------------------------------
-          // shortest distance routing
-          // ------------------------------
-          else {
-            // ------------------------------
-            // Ring
-            // ------------------------------
-            int left;
-            int right;
-            if (m_id > (*I)->m_dst) {
-              left = m_id - (*I)->m_dst;
-              right = (*I)->m_dst - m_id + m_total_router;
-            }
-            else {
-              left = m_id - (*I)->m_dst + m_total_router;
-              right = (*I)->m_dst - m_id;
-            }
+  for (int port = 0; port < m_num_port; ++port) {
+    for (int vc = 0; vc < m_num_vc; ++vc) {
+      if (m_route[port][vc] != -1 || m_input_buffer[port][vc].empty())
+        continue;
 
-            int delta;
-            if (left < right) { 
-              m_ivc_rc[ii][jj] = LEFT;
-              delta = right - left;
-            }
-            else { 
-              m_ivc_rc[ii][jj] = RIGHT;
-              delta = left - right;
-            }
+      flit_c* flit = m_input_buffer[port][vc].front();
+      if (flit->m_head == true && flit->m_state == IB && flit->m_rdy_cycle <= CYCLE) {
+        // ------------------------------
+        // shortest distance routing
+        // ------------------------------
+        if (flit->m_dst == m_id) {
+          m_route[port][vc] = LOCAL;
 
-            (*I)->m_dir = m_ivc_rc[ii][jj];
-          }
-          (*I)->m_state = RC;
-          DEBUG("node:%d RC req_id:%d flit_id:%d src:%d dst:%d ip:%d vc:%d rc:%d\n",
-              m_id, (*I)->m_req->m_id, (*I)->m_id, (*I)->m_req->m_msg_src, 
-              (*I)->m_req->m_msg_dst, ii, jj, m_ivc_rc[ii][jj]);
         }
+        else {
+          // ------------------------------
+          // Ring
+          // ------------------------------
+          int left;
+          int right;
+          if (m_id > flit->m_dst) {
+            left = m_id - flit->m_dst;
+            right = flit->m_dst - m_id + m_total_router;
+          }
+          else {
+            left = m_id - flit->m_dst + m_total_router;
+            right = flit->m_dst - m_id;
+          }
+
+          if (left < right) m_route[port][vc] = LEFT;
+          else m_route[port][vc] = RIGHT;
+        }
+
+        flit->m_state = RC;
+        DEBUG("cycle:%-10lld node:%d [RC] req_id:%d flit_id:%d src:%d dst:%d ip:%d vc:%d rc:%d\n",
+            CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+            flit->m_req->m_msg_dst, port, vc, m_route[port][vc]);
       }
     }
   }
 }
 
 
-// Get OVC occupancy
-int router_c::get_ovc_occupancy(int port)
-{
-  int count = 0;
-  for (int ii = 0; ii < m_num_vc; ++ii) {
-    if (m_ovc_avail[port][ii]) 
-      count++;
-  }
-
-  return count;
-}
-
-
-int router_c::get_ovc_occupancy(int port, bool type)
-{
-  if (m_vc_partition == false)
-    return get_ovc_occupancy(port);
-
-  int start;
-  int end;
-
-  if (type == false) { // CPU
-    start = 0;
-    end   = m_cpu_partition;
-  }
-  else{
-    start = m_cpu_partition;
-    end   = m_num_vc;
-  }
-
-  int count = 0;
-  for (int ii = start; ii < end; ++ii) {
-    if (m_ovc_avail[port][ii]) 
-      count++;
-  }
-
-  return count;
-}
-
-
-void router_c::vc_allocation(void)
+// For virtual channel partitioning
+// VC 0~N1-1 : CPU VCs
+// VC N1~N2-1: GPU VCs
+void router_c::stage_vca(void)
 {
   // VCA (Virtual Channel Allocation) stage
   // for each output port
-  for (int op = 0; op < m_num_port; ++op) {
+  for (int oport = 0; oport < m_num_port; ++oport) {
     for (int ovc = 0; ovc < m_num_vc; ++ovc) {
       // if there is available vc in the output port
-      if (m_ovc_avail[op][ovc]) {
-        int ip, ivc;
-        pick_vc_winner(op, ovc, ip, ivc);
-        if (ip != -1) {
-          flit_c* flit = m_ivc_buffer[ip][ivc].front();
+      if (m_vc_avail[oport][ovc]) { 
+        int iport, ivc;
+        stage_vca_pick_winner(oport, ovc, iport, ivc);
+        if (iport != -1) {
+          flit_c* flit = m_input_buffer[iport][ivc].front();
           flit->m_state = VCA;
           
-          m_ivc_vc[ip][ivc] = ovc;
-          m_ovc_avail[op][ovc] = false;
+          m_vc_id[iport][ivc] = ovc;
+          m_vc_avail[oport][ovc] = false;
 
-          DEBUG("node:%d VCA req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d\n",
-              m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
-              flit->m_req->m_msg_dst, ip, ivc, m_ivc_rc[ip][ivc], ovc);
+          DEBUG("cycle:%-10lld node:%d [VA] req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d "
+              "op:%d oc:%d ptx:%d\n",
+              CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+              flit->m_req->m_msg_dst, iport, ivc, m_route[iport][ivc], ovc, flit->m_req->m_ptx);
         }
       }
     }
@@ -512,240 +434,121 @@ void router_c::vc_allocation(void)
 }
 
 
-// 0 ~ m_cpu_partition-1 : CPU VC
-// m_cpu_partition ~ m_num_Vc-1 : GPU VC
-void router_c::pick_vc_winner(int op, int ovc, int& ip, int& ivc)
+void router_c::stage_vca_pick_winner(int oport, int ovc, int& iport, int& ivc)
 {
-  // ------------------------------
-  // vc partitioning
-  // ------------------------------
-  bool enable_vc[2];
-  enable_vc[0] = false;
-  enable_vc[1] = false;
+  bool type_allowed[2];
+  type_allowed[0] = true;
+  type_allowed[1] = true;
 
-  if (!m_vc_partition) {
-    enable_vc[0] = true;
-    enable_vc[1] = true;
-  }
-  else {
-    if (ovc < m_cpu_partition) {
-      enable_vc[0] = true;
+  if (m_enable_vc_partition) {
+    // CPU partition
+    if (ovc < m_num_vc_cpu) {
+      type_allowed[1] = false;
     }
     else {
-      enable_vc[1] = true;
+      type_allowed[0] = false;
     }
   }
-
 
   // Oldest-first arbitration
   if (m_arbitration_policy == OLDEST_FIRST) {
     // search all input ports for the winner
     Counter oldest_timestamp = ULLONG_MAX;
-    ip = -1;
+    iport = -1;
     for (int ii = 0; ii < m_num_port; ++ii) {
-      //    if (ii == op)
-      //      continue;
+      if (ii == oport)
+        continue;
 
       for (int jj = 0; jj < m_num_vc; ++jj) {
-        if (m_ivc_buffer[ii][jj].empty() || m_ivc_rc[ii][jj] != op)
+        if (m_input_buffer[ii][jj].empty() || m_route[ii][jj] != oport)
           continue;
 
-        flit_c* flit = m_ivc_buffer[ii][jj].front();
+        flit_c* flit = m_input_buffer[ii][jj].front();
 
         // header && RC stage && oldest
-        if (flit->m_head == true && flit->m_state == RC && 
+        if (flit->m_head == true && flit->m_state == RC && type_allowed[flit->m_req->m_ptx] && 
             flit->m_timestamp < oldest_timestamp) {
-          if (enable_vc[flit->m_req->m_ptx]) {
-            // ------------------------------
-            // bubble routing
-            // ------------------------------
-            if (ii == LOCAL && get_ovc_occupancy(op, flit->m_req->m_type) < 2) { 
-              continue;
-            }
-
-            oldest_timestamp = flit->m_timestamp;
-            ip  = ii;
-            ivc = jj;
-          }
-        }
-      }
-    }
-  }
-  // Round-robin arbitration
-  else if (m_arbitration_policy == ROUND_ROBIN) {
-    ip = -1;
-    for (int ii = m_last_vc_winner[op]; ii < m_last_vc_winner[op] + m_num_port * m_num_vc; ++ii) {
-      int input_port = (ii / m_num_vc) % m_num_port;
-      int input_vc = ii % m_num_vc;
-      if (m_ivc_buffer[input_port][input_vc].empty() || m_ivc_rc[input_port][input_vc] != op)
-        continue;
-
-      flit_c* flit = m_ivc_buffer[input_port][input_vc].front();
-
-      // header && RC stage && oldest
-      if (flit->m_head == true && flit->m_state == RC) {
-        if (enable_vc[flit->m_req->m_ptx]) {
           // ------------------------------
           // bubble routing
           // ------------------------------
-          if (input_port == LOCAL && get_ovc_occupancy(op, flit->m_req->m_type) < 2) { 
+          if (ii == LOCAL && get_ovc_occupancy(oport, flit->m_req->m_type) < 2) { 
             continue;
           }
-          ip  = input_port;
-          ivc = input_vc;
-          m_last_vc_winner[op] = (ii + 1) % (m_num_port * m_num_vc);
-          return ;
+          oldest_timestamp = flit->m_timestamp;
+          iport = ii;
+          ivc   = jj;
         }
       }
     }
   }
-  else if (m_arbitration_policy == CPU_FIRST || m_arbitration_policy == GPU_FIRST) {
-    ip = -1;
-    
-    int type_ip[2]; fill_n(type_ip, 2, -1);
-    int type_ivc[2]; fill_n(type_ivc, 2, -1);
-    Counter type_cycle[2]; fill_n(type_cycle, 2, ULLONG_MAX);;
+  else
+    assert(0);
+}
 
-    int oldest_ip[2]; fill_n(oldest_ip, 2, -1);
-    int oldest_ivc[2]; fill_n(oldest_ivc, 2, -1);
-    Counter oldest_cycle[2]; fill_n(oldest_cycle, 2, ULLONG_MAX);
 
-    // count # batch
-    int num_batch = 0;
-    for (int ii = m_last_vc_winner[op]; ii < m_last_vc_winner[op] + m_num_port * m_num_vc; ++ii) {
-      int input_port = (ii / m_num_vc) % m_num_port;
-      int input_vc   = ii % m_num_vc;
-      if (m_ivc_buffer[input_port][input_vc].empty() || m_ivc_rc[input_port][input_vc] != op)
-        continue;
+int router_c::get_ovc_occupancy(int port, bool type)
+{
+  int search_begin = 0;
+  int search_end = m_num_vc;
 
-      flit_c* flit = m_ivc_buffer[input_port][input_vc].front();
-
-      // header && RC stage && oldest
-      if (flit->m_head == true && flit->m_state == RC) {
-        if (enable_vc[flit->m_req->m_ptx]) {
-          // ------------------------------
-          // bubble routing
-          // ------------------------------
-          if (input_port == LOCAL && get_ovc_occupancy(op, flit->m_req->m_type) < 2) { 
-            continue;
-          }
-          // get the first entry of each type
-          if (type_ip[flit->m_req->m_ptx] == -1) {
-            type_cycle[flit->m_req->m_ptx] = flit->m_timestamp;
-            type_ip[flit->m_req->m_ptx]    = input_port;
-            type_ivc[flit->m_req->m_ptx]   = input_vc;    
-          }
-
-          // get the oldest entry of each type
-          if (flit->m_timestamp < oldest_cycle[flit->m_req->m_ptx]) {
-            oldest_cycle[flit->m_req->m_ptx] = flit->m_timestamp;
-            oldest_ip[flit->m_req->m_ptx]    = input_port; 
-            oldest_ivc[flit->m_req->m_ptx]   = input_vc;
-          }
-        }
-      }
+  if (m_enable_vc_partition) {
+    if (type == false) {
+      search_end = m_num_vc_cpu;
     }
-
-    
-    int type = 0;
-    if (m_arbitration_policy == GPU_FIRST) 
-      type = 1;
-
-
-    // prioritize the specified type
-    if (type_ip[type] != -1) {
-      // compare timestamp with oldest one
-      // if > N, prevent starvation
-      int time_delta;
-      if (oldest_cycle[!type] == ULLONG_MAX)
-        time_delta = 0;
-      else
-        time_delta = type_cycle[type] - oldest_cycle[!type];
-
-      // prior type
-      if (time_delta < 1000) {
-        ip  = type_ip[type];
-        ivc = type_ivc[type];
-        m_last_vc_winner[op] = ((ip * m_num_vc + ivc) + 1) % (m_num_port * m_num_vc);
-        return ;
-      }
-      // starvation
-      else {
-        ip  = oldest_ip[!type];
-        ivc = oldest_ivc[!type];
-        m_last_vc_winner[op] = ((ip * m_num_vc + ivc) + 1) % (m_num_port * m_num_vc);
-        return ;
-      }
-    }
-
-    // no request
-    type = !type;
-    if (type_ip[type] != -1) {
-      ip  = type_ip[type];
-      ivc = type_ivc[type];
-      m_last_vc_winner[op] = ((ip * m_num_vc + ivc) + 1) % (m_num_port * m_num_vc);
-      return ;
+    else {
+      search_begin = m_num_vc_cpu;
     }
   }
+
+  int count = 0;
+
+  for (int vc = search_begin; vc < search_end; ++vc) 
+    if (m_vc_avail[port][vc])
+      ++count;
+
+  return count;
 }
 
 
 // SA (Switch Allocation) stage
-void router_c::sw_allocation(void)
+void router_c::stage_sa(void)
 {
-  // search all output port switch availability
   for (int op = 0; op < m_num_port; ++op) {
-    for (int sw = 0; sw < m_num_switch; ++sw) {
-      if (!m_sw_avail[op][sw]) 
-        continue;
-
+    if (m_sw_avail[op]) {
       int ip, ivc;
-      pick_swa_winner(op, ip, ivc, sw); 
+      stage_sa_pick_winner(op, ip, ivc, 0); 
 
       if (ip != -1) {
-        m_ivc_sw[ip][ivc] = sw;
-        m_sw_avail[op][sw] = false;
-        m_sw_ip[op][sw] = ip;
-        m_sw_vc[op][sw] = ivc;
+        m_sw_avail[op] = false;
+        m_sw_port_id[op] = ip;
+        m_sw_vc_id[op] = ivc;
 
-        flit_c* flit = m_ivc_buffer[ip][ivc].front();
+        flit_c* flit = m_input_buffer[ip][ivc].front();
         flit->m_state = SA;
 
-        DEBUG("node:%d SA req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d\n",
-            m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst,
-            ip, ivc, m_ivc_rc[ip][ivc], m_ivc_vc[ip][ivc]);
+        DEBUG("cycle:%-10lld node:%d [SA] req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d\n",
+            CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst,
+            ip, ivc, m_route[ip][ivc], m_vc_id[ip][ivc]);
       }
     }
   }
 }
 
 
-// SW Arbitration
-void router_c::pick_swa_winner(int op, int& ip, int& ivc, int sw_id)
+void router_c::stage_sa_pick_winner(int op, int& ip, int& ivc, int sw_id)
 {
-  bool type[2];
-  type[0] = true;
-  type[1] = true;
-  if (m_channel_partition) {
-    if (sw_id < m_cpu_ch_partition)
-      type[1] = false;
-    else
-      type[0] = false;
-  }
   if (m_arbitration_policy == OLDEST_FIRST) {
     Counter oldest_timestamp = ULLONG_MAX;
     ip = -1;
     for (int ii = 0; ii < m_num_port; ++ii) {
-      //    if (ii == op)
-      //      continue;
+      if (ii == op)
+        continue;
 
       for (int jj = 0; jj < m_num_vc; ++jj) {
-        if (m_ivc_rc[ii][jj] == op && m_ivc_vc[ii][jj] != -1 && m_ivc_sw[ii][jj] == -1) {
-          assert(!m_ivc_buffer[ii][jj].empty());
+        if (m_route[ii][jj] == op && m_vc_id[ii][jj] != -1) {
+          assert(!m_input_buffer[ii][jj].empty());
 
-          flit_c* flit = m_ivc_buffer[ii][jj].front();
-          if (type[flit->m_req->m_ptx] == false)
-            continue ;
+          flit_c* flit = m_input_buffer[ii][jj].front();
 
           // header && RC stage && oldest
           if (flit->m_head == true && flit->m_state == VCA && flit->m_timestamp < oldest_timestamp) {
@@ -757,131 +560,43 @@ void router_c::pick_swa_winner(int op, int& ip, int& ivc, int sw_id)
       }
     }
   }
-  else if (m_arbitration_policy == ROUND_ROBIN) {
-    ip = -1;
-    for (int ii = m_last_sw_winner[op]; ii < m_last_sw_winner[op] + m_num_port * m_num_vc; ++ii) {
-      int input_port = (ii / m_num_vc) % m_num_port;
-      int input_vc = ii % m_num_vc;
-      if (m_ivc_buffer[input_port][input_vc].empty() || m_ivc_rc[input_port][input_vc] != op)
-        continue;
-
-      flit_c* flit = m_ivc_buffer[input_port][input_vc].front();
-
-      // header && VCA stage
-      if (flit->m_head == true && flit->m_state == VCA) {
-        ip  = input_port;
-        ivc = input_vc;
-        m_last_sw_winner[op] = (ii + 1) % (m_num_port * m_num_vc);
-        return ;
-      }
-    }
-  }
-  else if (m_arbitration_policy == CPU_FIRST || m_arbitration_policy == GPU_FIRST) {
-    ip = -1;
-    
-    int type_ip[2]; fill_n(type_ip, 2, -1);
-    int type_ivc[2]; fill_n(type_ivc, 2, -1);
-    Counter type_cycle[2]; fill_n(type_cycle, 2, ULLONG_MAX);;
-
-    int oldest_ip[2]; fill_n(oldest_ip, 2, -1);
-    int oldest_ivc[2]; fill_n(oldest_ivc, 2, -1);
-    Counter oldest_cycle[2]; fill_n(oldest_cycle, 2, ULLONG_MAX);
-
-    // count # batch
-    int num_batch = 0;
-    for (int ii = m_last_vc_winner[op]; ii < m_last_vc_winner[op] + m_num_port * m_num_vc; ++ii) {
-      int input_port = (ii / m_num_vc) % m_num_port;
-      int input_vc   = ii % m_num_vc;
-      if (m_ivc_buffer[input_port][input_vc].empty() || m_ivc_rc[input_port][input_vc] != op)
-        continue;
-
-      flit_c* flit = m_ivc_buffer[input_port][input_vc].front();
-
-      // header && RC stage && oldest
-      if (flit->m_head == true && flit->m_state == VCA) {
-        // get the first entry of each type
-        if (type_ip[flit->m_req->m_ptx] == -1) {
-          type_cycle[flit->m_req->m_ptx] = flit->m_timestamp;
-          type_ip[flit->m_req->m_ptx]    = input_port;
-          type_ivc[flit->m_req->m_ptx]   = input_vc;    
-        }
-
-        // get the oldest entry of each type
-        if (flit->m_timestamp < oldest_cycle[flit->m_req->m_ptx]) {
-          oldest_cycle[flit->m_req->m_ptx] = flit->m_timestamp;
-          oldest_ip[flit->m_req->m_ptx]    = input_port; 
-          oldest_ivc[flit->m_req->m_ptx]   = input_vc;
-        }
-      }
-    }
-
-
-    int type = 0;
-    if (m_arbitration_policy == GPU_FIRST) 
-      type = 1;
-
-
-    // prioritize the specified type
-    if (type_ip[type] != -1) {
-      // compare timestamp with oldest one
-      // if > N, prevent starvation
-      int time_delta;
-      if (oldest_cycle[!type] == ULLONG_MAX)
-        time_delta = 0;
-      else
-        time_delta = type_cycle[type] - oldest_cycle[!type];
-
-      // prior type
-      if (time_delta < 1000) {
-        ip  = type_ip[type];
-        ivc = type_ivc[type];
-        m_last_vc_winner[op] = ((ip * m_num_vc + ivc) + 1) % (m_num_port * m_num_vc);
-        return ;
-      }
-      // starvation
-      else {
-        ip  = oldest_ip[!type];
-        ivc = oldest_ivc[!type];
-        m_last_vc_winner[op] = ((ip * m_num_vc + ivc) + 1) % (m_num_port * m_num_vc);
-        return ;
-      }
-    }
-
-    // no request
-    type = !type;
-    if (type_ip[type] != -1) {
-      ip  = type_ip[type];
-      ivc = type_ivc[type];
-      m_last_vc_winner[op] = ((ip * m_num_vc + ivc) + 1) % (m_num_port * m_num_vc);
-      return ;
-    }
-  }
 }
 
 
 // ST-stage
-void router_c::sw_traversal(void)
+void router_c::stage_st(void)
 {
   // ST (Switch Traversal) stage
-  for(int sw_iter = 0; sw_iter < m_sw_iter; ++sw_iter) {
-  for (int op = 0; op < m_num_port; ++op) {
-    for (int sw = 0; sw < m_num_switch; ++sw) {
-        if (m_sw_avail[op][sw] == false) {
-          int ip = m_sw_ip[op][sw];
-          int ivc = m_sw_vc[op][sw];
-          for (auto I = m_ivc_buffer[ip][ivc].begin(), E = m_ivc_buffer[ip][ivc].end(); I != E; ++I) {
-            flit_c* flit = (*I);
-            if (m_ivc_sw[ip][ivc] != sw)
-              continue;
+  for (int port = 0; port < m_num_port; ++port) {
+    if (!m_sw_avail[port]) {
+      int ip = m_sw_port_id[port];
+      int ivc = m_sw_vc_id[port];
 
-            if (flit->m_state == SA || flit->m_state == IB) {
-              flit->m_state = ST;
-              DEBUG("node:%d ST req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d\n",
-                  m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
-                  flit->m_req->m_msg_dst, ip, ivc, m_ivc_rc[ip][ivc], m_ivc_vc[ip][ivc]);
-              break;
-            }
-          }
+      flit_c* flit = m_input_buffer[ip][ivc].front();
+      if (flit->m_state == SA || flit->m_state == IB) {
+        flit->m_state = ST;
+
+        int ovc = m_vc_id[ip][ivc];
+        m_output_buffer[port][ovc].push_back(flit);
+        m_input_buffer[ip][ivc].pop_front();
+        DEBUG("cycle:%-10lld node:%d [ST] req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d\n",
+            CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+            flit->m_req->m_msg_dst, ip, ivc, m_route[ip][ivc], ovc);
+
+        if (flit->m_tail) {
+          m_sw_avail[port] = true;
+          m_route[ip][ivc] = -1;
+          m_vc_id[ip][ivc] = -1;
+
+        }
+
+        // send a credit back
+        if (ip != LOCAL) {
+          credit_c* credit = m_credit_pool->acquire_entry();
+          credit->m_port = m_opposite_dir[ip];
+          credit->m_vc = ivc;
+          credit->m_rdy_cycle = CYCLE + 1;
+          m_link[ip]->insert_credit(credit);
         }
       }
     }
@@ -889,87 +604,127 @@ void router_c::sw_traversal(void)
 }
 
 
-// LT stage
-void router_c::link_traversal(void)
+void router_c::stage_lt(void)
 {
-  // LT (Link Traversal) stage
-  // model link latency here
-  for (int ip = 0; ip < m_num_port; ++ip) {
-    for (int ivc = 0; ivc < m_num_vc; ++ivc) {
-      if (m_ivc_buffer[ip][ivc].empty())
+  for (int port = 0; port < m_num_port; ++port) {
+    for (int vc = 0; vc < m_num_vc; ++vc) {
+      int vc_rr = (CYCLE + vc) % m_num_vc;
+      if (m_output_buffer[port][vc_rr].empty() || m_credit[port][vc_rr] == 0)
         continue;
 
-      flit_c* flit = m_ivc_buffer[ip][ivc].front();
+
+      flit_c* flit = m_output_buffer[port][vc_rr].front();
       Counter timestamp = flit->m_timestamp;
-      if (flit->m_state == ST) {
-        // insert to next router
-        int op = m_ivc_rc[ip][ivc];
-        int ovc = m_ivc_vc[ip][ivc];
-        if (op != LOCAL) {
-          m_link[op]->insert_packet(flit, m_opposite_dir[op], ovc);
-          flit->m_rdy_cycle = CYCLE + m_link_latency;
-        }
+      assert(flit->m_state == ST);
 
-        // delete flit in the buffer
-        m_ivc_buffer[ip][ivc].pop_front();
+      // insert to next router
+      if (port != LOCAL) {
+        DEBUG("cycle:%-10lld node:%d [LT] req_id:%d flit_id:%d src:%d dst:%d vc:%d\n",
+            CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+            flit->m_req->m_msg_dst, vc_rr);
 
-        // free 1) switch, 2) ivc_avail[ip][ivc], 3) rc, 4) vc
-        if (flit->m_tail) {
-          STAT_EVENT(NOC_AVG_WAIT_IN_ROUTER_BASE);
-          STAT_EVENT_N(NOC_AVG_WAIT_IN_ROUTER, CYCLE - timestamp);
-          
-          STAT_EVENT(NOC_AVG_WAIT_IN_ROUTER_BASE_CPU + m_type);
-          STAT_EVENT_N(NOC_AVG_WAIT_IN_ROUTER_CPU + m_type, CYCLE - timestamp);
+        m_link[port]->insert_packet(flit, m_opposite_dir[port], vc_rr);
+        flit->m_rdy_cycle = CYCLE + m_link_latency;
+      }
 
-          m_sw_avail[op][m_ivc_sw[ip][ivc]] = true;
-          m_ivc_rc[ip][ivc] = -1;
-          m_ivc_vc[ip][ivc] = -1;
-          m_ivc_sw[ip][ivc] = -1;
-          m_ivc_avail[ip][ivc] = true;
+      // delete flit in the buffer
+      m_output_buffer[port][vc_rr].pop_front();
 
-          if (op == LOCAL) {
-            --g_total_packet;
-            if (flit->m_req->m_ptx) {
-              --g_total_gpu_packet;
-            }
-            else {
-              --g_total_cpu_packet;
-            }
-            m_req_buffer->push(flit->m_req);
-            DEBUG("node:%d LOCAL req_id:%d flit_id:%d src:%d dst:%d ip:%d vc:%d\n",
-                m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
-                flit->m_req->m_msg_dst, ip, ivc);
+      if (port != LOCAL)
+        --m_credit[port][vc_rr];
 
-            STAT_EVENT(NOC_AVG_LATENCY_BASE);
-            STAT_EVENT_N(NOC_AVG_LATENCY, CYCLE - flit->m_req->m_noc_cycle);
-            
-            STAT_EVENT(NOC_AVG_LATENCY_BASE_CPU + flit->m_req->m_ptx);
-            STAT_EVENT_N(NOC_AVG_LATENCY_CPU + flit->m_req->m_ptx, CYCLE - flit->m_req->m_noc_cycle);
+      // free 1) switch, 2) ivc_avail[ip][ivc], 3) rc, 4) vc
+      if (flit->m_tail) {
+        STAT_EVENT(NOC_AVG_WAIT_IN_ROUTER_BASE);
+        STAT_EVENT_N(NOC_AVG_WAIT_IN_ROUTER, CYCLE - timestamp);
+
+        STAT_EVENT(NOC_AVG_WAIT_IN_ROUTER_BASE_CPU + m_type);
+        STAT_EVENT_N(NOC_AVG_WAIT_IN_ROUTER_CPU + m_type, CYCLE - timestamp);
+
+        m_vc_avail[port][vc_rr] = true;
+
+
+        if (port == LOCAL) {
+          --g_total_packet;
+          if (flit->m_req->m_ptx) {
+            --g_total_gpu_packet;
           }
-        }
+          else {
+            --g_total_cpu_packet;
+          }
+          m_req_buffer->push(flit->m_req);
+          DEBUG("cycle:%-10lld node:%d [TT] req_id:%d flit_id:%d src:%d dst:%d vc:%d\n",
+              CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+              flit->m_req->m_msg_dst, vc_rr);
 
-        if (op == LOCAL) {
-          flit->init();
-          m_flit_pool->release_entry(flit);
-          m_ovc_avail[LOCAL][ovc] = true;
+          STAT_EVENT(NOC_AVG_LATENCY_BASE);
+          STAT_EVENT_N(NOC_AVG_LATENCY, CYCLE - flit->m_req->m_noc_cycle);
+
+          STAT_EVENT(NOC_AVG_LATENCY_BASE_CPU + flit->m_req->m_ptx);
+          STAT_EVENT_N(NOC_AVG_LATENCY_CPU + flit->m_req->m_ptx, CYCLE - flit->m_req->m_noc_cycle);
         }
+      }
+
+      if (port == LOCAL) {
+        flit->init();
+        m_flit_pool->release_entry(flit);
       }
     }
   }
 }
 
 
-void router_c::insert_packet(flit_c* flit, int ip, int ivc)
+void router_c::check_channel(void)
+{
+#if 0
+  for (int op = 0; op < m_num_port; ++op) {
+    for (int sw = 0; sw < m_num_switch; ++sw) {
+      if (op != LOCAL && m_sw_avail[op][sw]) {
+        STAT_EVENT(NOC_IDLE_CHANNEL);
+        STAT_EVENT(NOC_IDLE_CHANNEL_CPU + m_type); 
+      }
+    }
+  } 
+#endif
+}
+
+
+void router_c::insert_packet(flit_c* flit, int port, int vc)
 {
   // IB (Input Buffering) stage
   if (flit->m_head)
-    DEBUG("node:%d IB req_id:%d src:%d dst:%d ip:%d vc:%d\n",
-        m_id, flit->m_req->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst, ip, ivc);
+    DEBUG("cycle:%-10lld node:%d [IB] req_id:%d src:%d dst:%d ip:%d vc:%d\n",
+        CYCLE, m_id, flit->m_req->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst, port, vc);
 
-  m_ivc_buffer[ip][ivc].push_back(flit);
+  m_input_buffer[port][vc].push_back(flit);
   flit->m_state = IB;
   flit->m_timestamp = CYCLE;
 }
+
+
+void router_c::insert_credit(credit_c* credit)
+{
+  m_pending_credit->push_back(credit);
+}
+
+
+void router_c::process_pending_credit(void)
+{
+  if (m_pending_credit->empty())
+    return ;
+
+  auto I = m_pending_credit->begin();
+  auto E = m_pending_credit->end();
+  do {
+    credit_c* credit = (*I++);
+    if (credit->m_rdy_cycle <= CYCLE) {
+      ++m_credit[credit->m_port][credit->m_vc];
+      m_pending_credit->remove(credit);
+      m_credit_pool->release_entry(credit);
+    }
+  } while (I != E);
+}
+
 
 mem_req_s* router_c::receive_req(void)
 {
@@ -979,16 +734,19 @@ mem_req_s* router_c::receive_req(void)
     return m_req_buffer->front();
 }
 
+
 void router_c::pop_req(void)
 {
   m_req_buffer->pop();
 }
 
-void router_c::init(int total_router, int* total_packet, pool_c<flit_c>* flit_pool)
+
+void router_c::init(int total_router, int* total_packet, pool_c<flit_c>* flit_pool, pool_c<credit_c>* credit_pool)
 {
   m_total_router = total_router;
   m_total_packet = total_packet;
   m_flit_pool = flit_pool;
+  m_credit_pool = credit_pool;
 }
 
 
@@ -1011,6 +769,7 @@ void router_c::print_link_info(void)
 
 void router_c::check_starvation(void)
 {
+#if 0
   for (int ip = 0; ip < m_num_port; ++ip) {
     for (int ivc = 0; ivc < m_num_vc; ++ivc) {
       if (m_ivc_buffer[ip][ivc].empty())
@@ -1034,6 +793,7 @@ void router_c::check_starvation(void)
       }
     }
   }
+#endif
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -1045,11 +805,13 @@ router_wrapper_c::router_wrapper_c(macsim_c* simBase)
   m_total_packet = 0;
 
   m_flit_pool  = new pool_c<flit_c>(100, "flit");
+  m_credit_pool = new pool_c<credit_c>(100, "credit");
 }
 
 router_wrapper_c::~router_wrapper_c()
 {
   delete m_flit_pool;
+  delete m_credit_pool;
 }
 
 
@@ -1078,7 +840,7 @@ void router_wrapper_c::init(void)
 {
   // topology - setting router links
   for (int ii = 0; ii < m_num_router; ++ii) {
-    m_router[ii]->init(m_num_router, &g_total_packet, m_flit_pool);
+    m_router[ii]->init(m_num_router, &g_total_packet, m_flit_pool, m_credit_pool);
   }
 
 

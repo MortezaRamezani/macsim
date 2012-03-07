@@ -8,8 +8,9 @@ COMMON_FLAGS = -DNO_MPI
 EI_DIR = energy_introspector
 ORION_DIR = orion
 
-DEP_LIBS = -L../src/$(ORION_DIR) -lorion
-LIBS = -lz -lpthread $(DEP_LIBS)
+#DEP_LIBS = -L../src/$(ORION_DIR) -lorion
+LIBS = -lz -lpthread
+#LIBS = -lz -lpthread $(DEP_LIBS)
 
 AM_CXXFLAGS = -I ../src/$(EI_DIR)/ \
 							-I../src/$(ORION_DIR) \
@@ -17,7 +18,10 @@ AM_CXXFLAGS = -I ../src/$(EI_DIR)/ \
 							-I ../src/manifold/kernel/include/ \
 							-I ../src/manifold/models/iris/interfaces \
 							-I ../src -I /usr/include
+
 AM_LDFLAGS = -lz -lpthread -lgsl -lgslc++
+AM_CFLAGS = 
+AM_CPPFLAGS = 
 
 all_sources = \
 	../src/all_knobs.cc \
@@ -102,11 +106,27 @@ ei_srcs = ../src/$(EI_DIR)/parameters.cc \
 all_sources += $(iris_kernel_srcs) $(iris_srcs) $(ei_srcs)
 
 
+noinst_LIBRARIES = liborion.a
+liborion_a_SOURCES = \
+	../src/orion/SIM_router.c					 ../src/orion/SIM_arbiter.c \
+	../src/orion/SIM_crossbar.c        ../src/orion/SIM_router_power.c \
+	../src/orion/SIM_link.c            ../src/orion/SIM_clock.c \
+	../src/orion/SIM_router_area.c     ../src/orion/SIM_array_l.c \
+	../src/orion/SIM_array_m.c         ../src/orion/SIM_cam.c \
+	../src/orion/SIM_ALU.c             ../src/orion/SIM_misc.c \
+	../src/orion/SIM_permu.c           ../src/orion/SIM_static.c \
+	../src/orion/SIM_util.c            ../src/orion/SIM_time.c
+liborion_a_CPPFLAGS = 
+liborion_a_CFLAGS = 
+
+
 # this lists the binaries to produce, the (non-PHONY, binary) targets in
 # the previous manual Makefile
 bin_PROGRAMS = macsim_opt
 check_PROGRAMS = macsim_dbg macsim_gpf
 #lib_LTLIBRARIES = libmacsimInternal.la
+#lib_LTLIBRARIES = liborion
+
 
 #libmacsimInternal_la_CXXFLAGS =
 
@@ -115,10 +135,12 @@ check_PROGRAMS = macsim_dbg macsim_gpf
 macsim_opt_CPPFLAGS = -O3 -std=c++0x -funroll-loops -Werror $(DEBUG_FLAGS) $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
 macsim_opt_SOURCES = $(all_sources)
 macsim_opt_LDFLAGS = -static
+macsim_opt_LDADD = liborion.a
 
-macsim_dbg_CPPFLAGS = -g3 -std=c++0x $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
+macsim_dbg_CPPFLAGS = -g -std=c++0x $(WARN_FLAGS) $(XFLAGS) $(COMMON_FLAGS) -I .
 macsim_dbg_SOURCES = $(all_sources)
-macsim_dbg_LDFLAGS = -g3 -static
+macsim_dbg_LDFLAGS = -g -static
+macsim_dbg_LDADD = liborion.a
 
 macsim_gpf_CPPFLAGS = $(macsim_opt_CPPFLAGS) $(COMMON_FLAGS) -pg -I .
 macsim_gpf_SOURCES = $(all_sources)

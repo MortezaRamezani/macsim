@@ -89,7 +89,19 @@ class flit_c
     int        m_id; /**< flit id */
 };
 
-class router_wrapper_c;
+
+class credit_c
+{
+  public:
+    credit_c();
+    ~credit_c();
+
+  public:
+    Counter m_rdy_cycle;
+    int m_port;
+    int m_vc;
+};
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -118,10 +130,11 @@ class router_c
     /**
      * Inject a packet into the network
      */
-    bool send_packet(mem_req_s* req);
+    bool inject_packet(mem_req_s* req);
 
     /**
      * Insert a packet into the next router
+     * @param credit - whether packet is a credit
      */
     void insert_packet(flit_c* flit, int ip, int ivc);
 
@@ -148,7 +161,7 @@ class router_c
     /**
      * Initialize a router
      */
-    void init(int total_router, int* total_packet, pool_c<flit_c>* flit_pool);
+    void init(int total_router, int* total_packet, pool_c<flit_c>* flit_pool, pool_c<credit_c>* credit_pool);
 
     /**
      * Set links for a router
@@ -167,44 +180,39 @@ class router_c
 
   private:
     /**
-     * LT (Link Traversal) stage
+     * RC (Route Calculation) stage
      */
-    void link_traversal(void);
-
-    /**
-     * SWT (Switch Traversal) stage
-     */
-    void sw_traversal(void);
-
-    /**
-     * SWA (Switch Allocation) stage
-     */
-    void sw_allocation(void);
-
+    void stage_rc(void);
+    
     /**
      * VCA (Virtual Channel Allocation) stage
      */
-    void vc_allocation(void);
-
-    /**
-     * RC (Route Calculation) stage
-     */
-    void route_calculation(void);
+    void stage_vca(void);
 
     /**
      * VC arbitration
      */
-    void pick_vc_winner(int op, int ovc, int& ip, int& ivc);
+    void stage_vca_pick_winner(int, int, int&, int&);
+
+    /**
+     * SWA (Switch Allocation) stage
+     */
+    void stage_sa(void);
 
     /**
      * SW arbitration
      */
-    void pick_swa_winner(int op, int& ip, int& ivc, int sw_id);
+    void stage_sa_pick_winner(int, int&, int&, int);
 
     /**
-     * Get output virtual channel occupancy
+     * SWT (Switch Traversal) stage
      */
-    int get_ovc_occupancy(int port);
+    void stage_st(void);
+
+    /**
+     * LT (Link Traversal) stage
+     */
+    void stage_lt(void);
 
     /**
      * Get output virtual channel occupancy per type
@@ -221,53 +229,64 @@ class router_c
      */
     void check_channel(void);
 
+    void process_pending_credit(void);
+
+    void local_packet_injection(void);
+
+    void insert_credit(credit_c*);
+
   private:
     macsim_c* m_simBase; /**< pointer to simulation base class */
     int m_type; /**< router type */
     int m_id; /**< router id */
     int m_total_router; /**< number of total routers */
 
+    // configurations
     int m_num_vc; /**< number of virtual channels */
     int m_num_port; /**< number of ports */
     int m_link_latency; /**< link latency */
     int m_link_width; /**< link width */
     int* m_total_packet; /**< number of total packets (global) */
-    bool m_vc_partition; /**< vc partitioning enable */
-    int m_cpu_partition; /**< number of vcs for CPU */
-    int m_gpu_partition; /**< number of vcs for GPU */
+    bool m_enable_vc_partition;
+    int m_num_vc_cpu;
  
-    bool m_channel_partition; /**< pc partitioning enable */
-    int m_cpu_ch_partition; /**< number of pcs for CPU */
-    int m_gpu_ch_partition; /**< number of pcs for GPU */
-
+    // pools for data structure
     pool_c<flit_c>* m_flit_pool; /**< flit data structure pool */
+    pool_c<credit_c>* m_credit_pool;
     
-    // virtual channel
-    bool** m_ivc_avail; /**< input vc availability */
-    int** m_ivc_rc; /**< output port id */
-    int** m_ivc_vc; /**< output vc */
-    int** m_ivc_sw; /**< output switch id */
-    list<flit_c*>** m_ivc_buffer; /**< ivc buffer */
-
-    // switch
-    bool** m_sw_avail; /**< switch availability */
-    int** m_sw_ip; /**< per switch input port availability */ 
-    int** m_sw_vc; /**< per switch vc availability */
-    int m_num_switch; /**< number of switch */
-
-    bool** m_ovc_avail; /**< number of output vc availablity */
-
-    unordered_map<int, int> m_opposite_dir; /**< opposite direction map */
-
     // arbitration
-    int* m_last_vc_winner; /**< last vca winner */
-    int* m_last_sw_winner; /**< last swa winner */
     int m_arbitration_policy; /**< arbitration policy */
 
-    int m_sw_iter; /**< number of switch allocation stage iteration */
-
-    queue<mem_req_s*>* m_req_buffer; /**< request buffer */
+    // link
     router_c* m_link[5]; /**< links */
+    unordered_map<int, int> m_opposite_dir; /**< opposite direction map */
+
+    // buffers
+    list<mem_req_s*>* m_injection_buffer;
+    int m_injection_buffer_max_size;
+    int m_injection_buffer_size;
+    queue<mem_req_s*>* m_req_buffer; /**< request buffer */
+
+    int m_buffer_max_size;
+
+    // per input port
+    list<flit_c*>** m_input_buffer;
+    int** m_route; // per input port
+    int** m_vc_id; // per input port
+    
+    // per output port
+    list<flit_c*>** m_output_buffer;
+    bool** m_vc_avail; // per output port
+    int** m_credit;
+
+    // per switch
+    bool* m_sw_avail; /**< switch availability */
+    int* m_sw_port_id; /**< per switch input port availability */ 
+    int* m_sw_vc_id; /**< per switch vc availability */
+
+    // credit-based flow control
+    list<credit_c*>* m_pending_credit;
+
 };
 
 
@@ -316,6 +335,7 @@ class router_wrapper_c
     int m_num_router; /**< number of routers */
     int m_total_packet; /**< number of total packets */
     pool_c<flit_c>* m_flit_pool; /**< flit data structure pool */
+    pool_c<credit_c>* m_credit_pool;
 };
 
 #endif
