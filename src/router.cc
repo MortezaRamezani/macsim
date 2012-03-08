@@ -803,6 +803,7 @@ router_wrapper_c::router_wrapper_c(macsim_c* simBase)
   : m_simBase(simBase)
 {
   m_total_packet = 0;
+  m_num_router = 0;
 
   m_flit_pool  = new pool_c<flit_c>(100, "flit");
   m_credit_pool = new pool_c<credit_c>(100, "credit");
@@ -828,7 +829,7 @@ void router_wrapper_c::run_a_cycle(void)
 // create a router
 router_c* router_wrapper_c::create_router(int type)
 {
-  report("router:" << m_num_router << " type:" << type << " creatd");
+  report("router:" << m_num_router << " type:" << type << " created");
 
   router_c* new_router = new router_c(m_simBase, type, m_num_router++);
   m_router.push_back(new_router);
