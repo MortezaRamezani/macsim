@@ -161,7 +161,7 @@ class router_c
     /**
      * Initialize a router
      */
-    void init(int total_router, int* total_packet, pool_c<flit_c>* flit_pool, pool_c<credit_c>* credit_pool);
+    void init(int total_router, int* total_packet, pool_c<flit_c>* flit_pool, pool_c<credit_c>* credit_pool, bool* stop_injection);
 
     /**
      * Set links for a router
@@ -252,7 +252,7 @@ class router_c
  
     // pools for data structure
     pool_c<flit_c>* m_flit_pool; /**< flit data structure pool */
-    pool_c<credit_c>* m_credit_pool;
+    pool_c<credit_c>* m_credit_pool; /**< credit pool */
     
     // arbitration
     int m_arbitration_policy; /**< arbitration policy */
@@ -262,30 +262,32 @@ class router_c
     unordered_map<int, int> m_opposite_dir; /**< opposite direction map */
 
     // buffers
-    list<mem_req_s*>* m_injection_buffer;
+    list<mem_req_s*>* m_injection_buffer; /**< injection queue */
     int m_injection_buffer_max_size;
     int m_injection_buffer_size;
-    queue<mem_req_s*>* m_req_buffer; /**< request buffer */
+    queue<mem_req_s*>* m_req_buffer; /**< ejection queue */
 
-    int m_buffer_max_size;
+    int m_buffer_max_size; /**< input/output buffer max size */
 
     // per input port
-    list<flit_c*>** m_input_buffer;
-    int** m_route; // per input port
-    int** m_vc_id; // per input port
+    list<flit_c*>** m_input_buffer; /**< input buffer */
+    int** m_route; /**< route information */
+    int** m_output_port_id; /**< output port id */
+    int** m_output_vc_id; /**< output vc id */
     
     // per output port
-    list<flit_c*>** m_output_buffer;
-    bool** m_vc_avail; // per output port
-    int** m_credit;
+    list<flit_c*>** m_output_buffer; /**< output buffer */
+    bool** m_output_vc_avail; /**< output vc availability */
+    int** m_credit; /**< credit counter for the flow control */
+    Counter* m_link_avail; /**< link availability */
 
     // per switch
-    bool* m_sw_avail; /**< switch availability */
-    int* m_sw_port_id; /**< per switch input port availability */ 
-    int* m_sw_vc_id; /**< per switch vc availability */
+    Counter* m_sw_avail; /**< switch availability */
 
     // credit-based flow control
-    list<credit_c*>* m_pending_credit;
+    list<credit_c*>* m_pending_credit; /**< pending credit to model latency */
+
+    bool* m_stop_injection;
 
 };
 
@@ -336,6 +338,7 @@ class router_wrapper_c
     int m_total_packet; /**< number of total packets */
     pool_c<flit_c>* m_flit_pool; /**< flit data structure pool */
     pool_c<credit_c>* m_credit_pool;
+    bool m_stop_injection;
 };
 
 #endif
