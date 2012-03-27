@@ -135,6 +135,7 @@ macsim_dbg_LDADD = liborion.a
 macsim_gpf_CPPFLAGS = $(macsim_opt_CPPFLAGS) $(COMMON_FLAGS) -pg -I .
 macsim_gpf_SOURCES = $(all_sources)
 macsim_gpf_LDFLAGS = -pg -static
+macsim_gpf_LDADD = liborion.a
 
 opt: macsim_opt
 
