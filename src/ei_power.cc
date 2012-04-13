@@ -83,7 +83,7 @@ void ei_power_c::ei_config_gen_large_tech(FILE* fp, int core_id)
   fprintf(fp, "# large core\n");
   fprintf(fp, "# technology\n");
   fprintf(fp, "-technology.ID                           LARGE_CORE\n");	
-  fprintf(fp, "-technology.clock_frequency              %.3fe9 \n", GET_KNOB(CPU_FREQUENCY));
+  fprintf(fp, "-technology.clock_frequency              %.3fe9 \n", GET_KNOB(CLOCK_CPU));
   fprintf(fp, "-technology.feature_size                 %de-9\n", GET_KNOB(FEATURE_SIZE));
   fprintf(fp, "-technology.component_type               core\n");
   fprintf(fp, "-technology.core_type                    %s\n", 
@@ -925,7 +925,7 @@ void ei_power_c::ei_config_gen_medium_tech(FILE* fp, int core_id)
 {
   fprintf(fp, "# medium core technology\n");
   fprintf(fp, "-technology.ID                           MEDIUM_CORE\n");	
-  fprintf(fp, "-technology.clock_frequency              %.3fe9 \n", GET_KNOB(CPU_FREQUENCY));
+  fprintf(fp, "-technology.clock_frequency              %.3fe9 \n", GET_KNOB(CLOCK_CPU));
   fprintf(fp, "-technology.feature_size                 %de-9\n", GET_KNOB(FEATURE_SIZE));
   fprintf(fp, "-technology.component_type               core\n");
   fprintf(fp, "-technology.core_type                    %s\n", 
@@ -1770,7 +1770,7 @@ void ei_power_c::ei_config_gen_small_tech(FILE* fp, int core_id)
 {
   fprintf(fp, "# small core technology\n");
   fprintf(fp, "-technology.ID                           SMALL_CORE\n");	
-  fprintf(fp, "-technology.clock_frequency              %.3fe9 \n", GET_KNOB(GPU_FREQUENCY));
+  fprintf(fp, "-technology.clock_frequency              %.3fe9 \n", GET_KNOB(CLOCK_GPU));
   fprintf(fp, "-technology.feature_size                 %de-9\n", GET_KNOB(FEATURE_SIZE));
   fprintf(fp, "-technology.component_type               core\n");
   fprintf(fp, "-technology.core_type                    %s\n", 
@@ -2521,7 +2521,7 @@ void ei_power_c::ei_config_gen_mc_tech(FILE* fp )
 {
   fprintf(fp, "# llc technology\n");
   fprintf(fp, "-technology.ID                           MemoryController\n");	
-  fprintf(fp, "-technology.clock_frequency              %.3fe9 \n", GET_KNOB(CPU_FREQUENCY));
+  fprintf(fp, "-technology.clock_frequency              %.3fe9 \n", GET_KNOB(CLOCK_CPU));
   fprintf(fp, "-technology.feature_size                 %de-9\n", GET_KNOB(FEATURE_SIZE));
   fprintf(fp, "-technology.component_type               uncore\n");
   fprintf(fp, "-technology.wire_type                    global\n");
@@ -2909,15 +2909,15 @@ void ei_power_c::ei_main()
 
     // set current_time and period 
     if (isa_type == X86) {
-      current_time = (double)GET_CORE_STAT(core_id, CYC_COUNT)/GET_KNOB(CPU_FREQUENCY)/1e9; 
-      period = (double)GET_CORE_STAT(core_id, CYC_COUNT)/GET_KNOB(CPU_FREQUENCY)/1e9; 
+      current_time = (double)GET_CORE_STAT(core_id, CYC_COUNT)/GET_KNOB(CLOCK_CPU)/1e9; 
+      period = (double)GET_CORE_STAT(core_id, CYC_COUNT)/GET_KNOB(CLOCK_CPU)/1e9; 
     }
     else if (isa_type == PTX) {
-      current_time = (double)(GET_CORE_STAT(core_id, CYC_COUNT))/GET_KNOB(GPU_FREQUENCY)/1e9; 
-      period = (double)(GET_CORE_STAT(core_id, CYC_COUNT))/GET_KNOB(GPU_FREQUENCY)/1e9; 
+      current_time = (double)(GET_CORE_STAT(core_id, CYC_COUNT))/GET_KNOB(CLOCK_GPU)/1e9; 
+      period = (double)(GET_CORE_STAT(core_id, CYC_COUNT))/GET_KNOB(CLOCK_GPU)/1e9; 
 
       if (GET_CORE_STAT(core_id, CYC_COUNT) == 0) {
-        period = 1.0/GET_KNOB(GPU_FREQUENCY)/1e9;
+        period = 1.0/GET_KNOB(CLOCK_GPU)/1e9;
       }
     }
 
@@ -3261,12 +3261,12 @@ void ei_power_c::ei_main()
 	// and the last core has 0 cycle count
   // FIXME: Jieun 01-22-2012 : freq needs to be changed if hetero sim
   if (isa_type == X86) {
-    current_time = (double)GET_STAT(CYC_COUNT_TOT)/GET_KNOB(CPU_FREQUENCY)/1e9; 
-    period = (double)GET_STAT(CYC_COUNT_TOT)/GET_KNOB(CPU_FREQUENCY)/1e9; 
+    current_time = (double)GET_STAT(CYC_COUNT_TOT)/GET_KNOB(CLOCK_CPU)/1e9; 
+    period = (double)GET_STAT(CYC_COUNT_TOT)/GET_KNOB(CLOCK_CPU)/1e9; 
   }
   else if (isa_type == PTX) {
-    current_time = (double)GET_STAT(CYC_COUNT_TOT)/GET_KNOB(GPU_FREQUENCY)/1e9; 
-    period = (double)GET_STAT(CYC_COUNT_TOT)/GET_KNOB(GPU_FREQUENCY)/1e9; 
+    current_time = (double)GET_STAT(CYC_COUNT_TOT)/GET_KNOB(CLOCK_GPU)/1e9; 
+    period = (double)GET_STAT(CYC_COUNT_TOT)/GET_KNOB(CLOCK_GPU)/1e9; 
   }
 
 

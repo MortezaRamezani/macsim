@@ -200,6 +200,9 @@ router_c::router_c(macsim_c* simBase, int type, int id)
   fill_n(m_link_avail, m_num_port, 0);
 
   m_pending_credit = new list<credit_c*>;
+
+  // clock
+  m_cycle = 0;
 }
 
 
@@ -270,6 +273,7 @@ void router_c::run_a_cycle(void)
 
   // stats
 //  check_channel();
+  ++m_cycle;
 }
 
 
@@ -281,7 +285,7 @@ bool router_c::inject_packet(mem_req_s* req)
     ++m_injection_buffer_size;
 
     DEBUG("cycle:%-10lld node:%d [IN] req_id:%d src:%d dst:%d\n",
-        CYCLE, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+        m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
     return true;
   }
 
@@ -307,7 +311,7 @@ void router_c::local_packet_injection(void)
       if (m_input_buffer[0][ii].size() + num_flit <= m_buffer_max_size) {
         // flit generation and insert into the buffer
         STAT_EVENT(TOTAL_PACKET_CPU + req->m_ptx);
-        req->m_noc_cycle = CYCLE;
+        req->m_noc_cycle = m_cycle;
 
         ++g_total_packet;
         if (req->m_ptx) {
@@ -337,8 +341,8 @@ void router_c::local_packet_injection(void)
           else new_flit->m_tail = false;
 
           new_flit->m_state      = IB;
-          new_flit->m_timestamp  = CYCLE;
-          new_flit->m_rdy_cycle  = CYCLE;
+          new_flit->m_timestamp  = m_cycle;
+          new_flit->m_rdy_cycle  = m_cycle;
           new_flit->m_id         = jj;
 
           // insert all flits to input_buffer[LOCAL][vc]
@@ -350,7 +354,7 @@ void router_c::local_packet_injection(void)
         req_inserted = true;
 
         DEBUG("cycle:%-10lld node:%d [IB] req_id:%d src:%d dst:%d\n",
-            CYCLE, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+            m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
 
         break;
       }
@@ -373,7 +377,7 @@ void router_c::stage_rc(void)
         continue;
 
       flit_c* flit = m_input_buffer[port][vc].front();
-      if (flit->m_head == true && flit->m_state == IB && flit->m_rdy_cycle <= CYCLE) {
+      if (flit->m_head == true && flit->m_state == IB && flit->m_rdy_cycle <= m_cycle) {
         // ------------------------------
         // shortest distance routing
         // ------------------------------
@@ -402,7 +406,7 @@ void router_c::stage_rc(void)
 
         flit->m_state = RC;
         DEBUG("cycle:%-10lld node:%d [RC] req_id:%d flit_id:%d src:%d dst:%d ip:%d vc:%d rc:%d\n",
-            CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+            m_cycle, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
             flit->m_req->m_msg_dst, port, vc, m_route[port][vc]);
       }
     }
@@ -433,7 +437,7 @@ void router_c::stage_vca(void)
 
           DEBUG("cycle:%-10lld node:%d [VA] req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d "
               "op:%d oc:%d ptx:%d\n",
-              CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+              m_cycle, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
               flit->m_req->m_msg_dst, iport, ivc, m_route[iport][ivc], ovc, flit->m_req->m_ptx);
         }
       }
@@ -526,12 +530,12 @@ int router_c::get_ovc_occupancy(int port, bool type)
 void router_c::stage_sa(void)
 {
   for (int op = 0; op < m_num_port; ++op) {
-    if (m_sw_avail[op] <= CYCLE) {
+    if (m_sw_avail[op] <= m_cycle) {
       int ip, ivc;
       stage_sa_pick_winner(op, ip, ivc, 0); 
 
       if (ip != -1) {
-        m_sw_avail[op]   = CYCLE + 1;
+        m_sw_avail[op]   = m_cycle + 1;
 
         flit_c* flit = m_input_buffer[ip][ivc].front();
         flit->m_state = ST;
@@ -555,13 +559,14 @@ void router_c::stage_sa(void)
           credit_c* credit = m_credit_pool->acquire_entry();
           credit->m_port = m_opposite_dir[ip];
           credit->m_vc = ivc;
-          credit->m_rdy_cycle = CYCLE + 1;
+          credit->m_rdy_cycle = m_cycle + 1;
           m_link[ip]->insert_credit(credit);
         }
 
 
-        DEBUG("cycle:%-10lld node:%d [ST] req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d route:%d port:%d\n",
-            CYCLE, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
+        DEBUG("cycle:%-10lld node:%d [ST] req_id:%d flit_id:%d src:%d dst:%d ip:%d ic:%d op:%d oc:%d "
+            "route:%d port:%d\n",
+            m_cycle, m_id, flit->m_req->m_id, flit->m_id, flit->m_req->m_msg_src, 
             flit->m_req->m_msg_dst, ip, ivc, m_route[ip][ivc], ovc, m_route[ip][ivc], m_output_port_id[ip][ivc]);
       }
     }
@@ -608,7 +613,7 @@ void router_c::stage_st(void)
 void router_c::stage_lt(void)
 {
   for (int port = 0; port < m_num_port; ++port) {
-    if (m_link_avail[port] > CYCLE) 
+    if (m_link_avail[port] > m_cycle) 
       break;
     Counter oldest_cycle = ULLONG_MAX;
     flit_c* f = NULL;
@@ -631,12 +636,12 @@ void router_c::stage_lt(void)
       // insert to next router
       if (port != LOCAL) {
         DEBUG("cycle:%-10lld node:%d [LT] req_id:%d flit_id:%d src:%d dst:%d port:%d vc:%d\n",
-            CYCLE, m_id, f->m_req->m_id, f->m_id, f->m_req->m_msg_src, 
+            m_cycle, m_id, f->m_req->m_id, f->m_id, f->m_req->m_msg_src, 
             f->m_req->m_msg_dst, port, vc);
 
         m_link[port]->insert_packet(f, m_opposite_dir[port], vc);
-        f->m_rdy_cycle  = CYCLE + m_link_latency;
-        m_link_avail[port] = CYCLE + m_link_latency; // link busy
+        f->m_rdy_cycle     = m_cycle + m_link_latency;
+        m_link_avail[port] = m_cycle + m_link_latency; // link busy
       }
 
       // delete flit in the buffer
@@ -648,10 +653,10 @@ void router_c::stage_lt(void)
       // free 1) switch, 2) ivc_avail[ip][ivc], 3) rc, 4) vc
       if (f->m_tail) {
         STAT_EVENT(NOC_AVG_WAIT_IN_ROUTER_BASE);
-        STAT_EVENT_N(NOC_AVG_WAIT_IN_ROUTER, CYCLE - f->m_timestamp);
+        STAT_EVENT_N(NOC_AVG_WAIT_IN_ROUTER, m_cycle - f->m_timestamp);
 
         STAT_EVENT(NOC_AVG_WAIT_IN_ROUTER_BASE_CPU + m_type);
-        STAT_EVENT_N(NOC_AVG_WAIT_IN_ROUTER_CPU + m_type, CYCLE - f->m_timestamp);
+        STAT_EVENT_N(NOC_AVG_WAIT_IN_ROUTER_CPU + m_type, m_cycle - f->m_timestamp);
 
         m_output_vc_avail[port][vc] = true;
 
@@ -666,14 +671,14 @@ void router_c::stage_lt(void)
           }
           m_req_buffer->push(f->m_req);
           DEBUG("cycle:%-10lld node:%d [TT] req_id:%d flit_id:%d src:%d dst:%d vc:%d\n",
-              CYCLE, m_id, f->m_req->m_id, f->m_id, f->m_req->m_msg_src, 
+              m_cycle, m_id, f->m_req->m_id, f->m_id, f->m_req->m_msg_src, 
               f->m_req->m_msg_dst, vc);
 
           STAT_EVENT(NOC_AVG_LATENCY_BASE);
-          STAT_EVENT_N(NOC_AVG_LATENCY, CYCLE - f->m_req->m_noc_cycle);
+          STAT_EVENT_N(NOC_AVG_LATENCY, m_cycle - f->m_req->m_noc_cycle);
 
           STAT_EVENT(NOC_AVG_LATENCY_BASE_CPU + f->m_req->m_ptx);
-          STAT_EVENT_N(NOC_AVG_LATENCY_CPU + f->m_req->m_ptx, CYCLE - f->m_req->m_noc_cycle);
+          STAT_EVENT_N(NOC_AVG_LATENCY_CPU + f->m_req->m_ptx, m_cycle - f->m_req->m_noc_cycle);
         }
       }
 
@@ -706,11 +711,11 @@ void router_c::insert_packet(flit_c* flit, int port, int vc)
   // IB (Input Buffering) stage
   if (flit->m_head)
     DEBUG("cycle:%-10lld node:%d [IB] req_id:%d src:%d dst:%d ip:%d vc:%d\n",
-        CYCLE, m_id, flit->m_req->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst, port, vc);
+        m_cycle, m_id, flit->m_req->m_id, flit->m_req->m_msg_src, flit->m_req->m_msg_dst, port, vc);
 
   m_input_buffer[port][vc].push_back(flit);
   flit->m_state = IB;
-  flit->m_timestamp = CYCLE;
+  flit->m_timestamp = m_cycle;
 }
 
 
@@ -729,7 +734,7 @@ void router_c::process_pending_credit(void)
   auto E = m_pending_credit->end();
   do {
     credit_c* credit = (*I++);
-    if (credit->m_rdy_cycle <= CYCLE) {
+    if (credit->m_rdy_cycle <= m_cycle) {
       ++m_credit[credit->m_port][credit->m_vc];
       m_pending_credit->remove(credit);
       m_credit_pool->release_entry(credit);
@@ -786,7 +791,7 @@ void router_c::check_starvation(void)
     for (int vc = 0; vc < m_num_vc; ++vc) {
       if (!m_input_buffer[0][vc].empty()) {
         flit_c* flit = m_input_buffer[0][vc].front();
-        if (CYCLE - flit->m_timestamp >= 1000) {
+        if (m_cycle - flit->m_timestamp >= 1000) {
           *m_stop_injection = true;
           return ;
         }
@@ -831,6 +836,8 @@ router_wrapper_c::router_wrapper_c(macsim_c* simBase)
 
   m_flit_pool  = new pool_c<flit_c>(100, "flit");
   m_credit_pool = new pool_c<credit_c>(100, "credit");
+
+  m_cycle = 0;
 }
 
 router_wrapper_c::~router_wrapper_c()
@@ -852,10 +859,12 @@ void router_wrapper_c::run_a_cycle(void)
   }
 
 
-  int index = CYCLE % m_num_router;
+  int index = m_cycle % m_num_router;
   for (int ii = index; ii < index + m_num_router; ++ii) {
     m_router[ii % m_num_router]->run_a_cycle();
   }
+
+  ++m_cycle;
 }
 
 // create a router

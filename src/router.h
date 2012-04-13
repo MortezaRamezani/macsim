@@ -289,6 +289,8 @@ class router_c
 
     bool* m_stop_injection;
 
+    Counter m_cycle; /**< clock cycle */
+
 };
 
 
@@ -339,6 +341,8 @@ class router_wrapper_c
     pool_c<flit_c>* m_flit_pool; /**< flit data structure pool */
     pool_c<credit_c>* m_credit_pool;
     bool m_stop_injection;
+
+    Counter m_cycle;
 };
 
 #endif
