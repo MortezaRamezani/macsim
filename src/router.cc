@@ -39,6 +39,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <fstream>
 
 #include "router.h"
+#include "memreq_info.h"
 #include "all_knobs.h"
 #include "all_stats.h"
 #include "utils.h"

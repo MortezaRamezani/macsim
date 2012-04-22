@@ -42,6 +42,7 @@ POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 #include <unordered_map>
 #include <queue>
+#include <list>
 
 #include "macsim.h"
 
