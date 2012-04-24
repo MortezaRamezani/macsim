@@ -1794,9 +1794,6 @@ void ei_power_c::ei_config_gen_small_mod(FILE* fp, int core_id)
 
   fprintf(fp, "# small core modules\n");
 
-  int mc_i;
-  int l3_i;
-
   int pipeline_total = 3*GET_KNOB(FETCH_LATENCY)+GET_KNOB(ALLOC_LATENCY);
 
   fprintf(fp, "#undifferentiated core -- fetch partition\n");
@@ -2621,7 +2618,7 @@ void ei_power_c::ei_config_gen_top()
 
   FILE* fp = fopen(CONFIG_FILE_NAME, "w");
 
-  int i;
+  int i = 0;
 
   int num_large_cores = *m_simBase->m_knobs->KNOB_NUM_SIM_LARGE_CORES;
   int num_medium_cores = *m_simBase->m_knobs->KNOB_NUM_SIM_MEDIUM_CORES;
@@ -2817,13 +2814,12 @@ void ei_power_c::ei_main()
   double area_stage_l2 = 0.0;
   double area_stage_l3 = 0.0;
   double area_stage_mc = 0.0;
-  double area_stage_dram = 0.0;
 
   double period = 0.0;
 	double current_time = 0.0;
  
   Core_Type core_type;
-  ISA_Type isa_type;
+  ISA_Type isa_type = X86; // prevent compilation warning
 	Schedule_Type schedule_type;
 
 	bool l1_bypass;
@@ -2837,7 +2833,6 @@ void ei_power_c::ei_main()
 
   int num_large_cores = *m_simBase->m_knobs->KNOB_NUM_SIM_LARGE_CORES;
   int num_medium_cores = *m_simBase->m_knobs->KNOB_NUM_SIM_MEDIUM_CORES;
-  int num_small_cores = *m_simBase->m_knobs->KNOB_NUM_SIM_SMALL_CORES;
 
 	// to show results in a hierarchical fashion - not implemented yet
   string level(2, ' ');

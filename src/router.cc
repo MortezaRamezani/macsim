@@ -309,7 +309,7 @@ void router_c::local_packet_injection(void)
     bool req_inserted = false;
     for (int ii = 0; ii < m_num_vc; ++ii) {
       // check buffer availability to insert a new request
-      if (m_input_buffer[0][ii].size() + num_flit <= m_buffer_max_size) {
+      if (static_cast<int>(m_input_buffer[0][ii].size()) + num_flit <= m_buffer_max_size) {
         // flit generation and insert into the buffer
         STAT_EVENT(TOTAL_PACKET_CPU + req->m_ptx);
         req->m_noc_cycle = m_cycle;
@@ -915,7 +915,7 @@ void router_wrapper_c::init(void)
     mapping = "0,4,1,5,2,6,3,7,8,9,10,11,12,13"; 
   } 
   int search_pos = 0;
-  int pos;
+  unsigned int pos;
   vector<int> map_func;
   while (1) {
     pos = mapping.find(',', search_pos);
@@ -930,7 +930,7 @@ void router_wrapper_c::init(void)
     search_pos = pos + 1;
   }
 
-  assert(m_num_router == map_func.size());
+  assert(m_num_router == static_cast<int>(map_func.size()));
 
   for (int ii = 0; ii < m_num_router; ++ii) {
     m_router[map_func[ii]]->set_link(LEFT,  m_router[map_func[(ii-1+m_num_router)%m_num_router]]);
