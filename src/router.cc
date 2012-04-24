@@ -919,7 +919,7 @@ void router_wrapper_c::init(void)
   vector<int> map_func;
   while (1) {
     pos = mapping.find(',', search_pos);
-    if (pos == string::npos) {
+    if (pos > mapping.size()) {
       string sub = mapping.substr(search_pos);
       map_func.push_back(atoi(sub.c_str()));
       break;
