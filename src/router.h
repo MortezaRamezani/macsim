@@ -91,16 +91,26 @@ class flit_c
 };
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+/// \brief Credit class - for credit-based flow control
+///////////////////////////////////////////////////////////////////////////////////////////////
 class credit_c
 {
   public:
+    /**
+     * Constructor
+     */
     credit_c();
+
+    /**
+     * Destructor
+     */
     ~credit_c();
 
   public:
-    Counter m_rdy_cycle;
-    int m_port;
-    int m_vc;
+    Counter m_rdy_cycle; /**< credit ready cycle */
+    int m_port; /**< credit port */
+    int m_vc; /**< credit vc */
 };
 
 
@@ -135,7 +145,6 @@ class router_c
 
     /**
      * Insert a packet into the next router
-     * @param credit - whether packet is a credit
      */
     void insert_packet(flit_c* flit, int ip, int ivc);
 
@@ -162,7 +171,7 @@ class router_c
     /**
      * Initialize a router
      */
-    void init(int total_router, int* total_packet, pool_c<flit_c>* flit_pool, pool_c<credit_c>* credit_pool, bool* stop_injection);
+    void init(int total_router, int* total_packet, pool_c<flit_c>* flit_pool, pool_c<credit_c>* credit_pool);
 
     /**
      * Set links for a router
@@ -184,6 +193,16 @@ class router_c
      * RC (Route Calculation) stage
      */
     void stage_rc(void);
+
+    /**
+     * Mesh Routing Calculation
+     */
+    void rc_mesh(void);
+
+    /**
+     * Ring Routing Calculation
+     */
+    void rc_ring(void);
     
     /**
      * VCA (Virtual Channel Allocation) stage
@@ -230,14 +249,24 @@ class router_c
      */
     void check_channel(void);
 
+    /**
+     * Process pending credits to model credit traversal latency
+     */
     void process_pending_credit(void);
 
+    /**
+     * Local packet injection
+     */
     void local_packet_injection(void);
 
+    /**
+     * Insert a credit from previous router
+     */
     void insert_credit(credit_c*);
 
   private:
     macsim_c* m_simBase; /**< pointer to simulation base class */
+    string m_topology; /**< router topology */
     int m_type; /**< router type */
     int m_id; /**< router id */
     int m_total_router; /**< number of total routers */
@@ -248,8 +277,8 @@ class router_c
     int m_link_latency; /**< link latency */
     int m_link_width; /**< link width */
     int* m_total_packet; /**< number of total packets (global) */
-    bool m_enable_vc_partition;
-    int m_num_vc_cpu;
+    bool m_enable_vc_partition; /**< enable virtual channel partition */
+    int m_num_vc_cpu; /**< number of vcs for CPU */
  
     // pools for data structure
     pool_c<flit_c>* m_flit_pool; /**< flit data structure pool */
@@ -264,15 +293,15 @@ class router_c
 
     // buffers
     list<mem_req_s*>* m_injection_buffer; /**< injection queue */
-    int m_injection_buffer_max_size;
-    int m_injection_buffer_size;
+    int m_injection_buffer_max_size; /**< max injection queue size */
     queue<mem_req_s*>* m_req_buffer; /**< ejection queue */
 
     int m_buffer_max_size; /**< input/output buffer max size */
 
     // per input port
     list<flit_c*>** m_input_buffer; /**< input buffer */
-    int** m_route; /**< route information */
+    bool**** m_route; /**< route information */
+    int** m_route_fixed; /**< determined rc for the packet */
     int** m_output_port_id; /**< output port id */
     int** m_output_vc_id; /**< output vc id */
     
@@ -288,10 +317,8 @@ class router_c
     // credit-based flow control
     list<credit_c*>* m_pending_credit; /**< pending credit to model latency */
 
-    bool* m_stop_injection;
-
-    Counter m_cycle; /**< clock cycle */
-
+    // clock
+    Counter m_cycle; /**< router clock */
 };
 
 
@@ -327,6 +354,16 @@ class router_wrapper_c
     void init(void);
 
     /**
+     * Ring initialization
+     */
+    void init_ring(void);
+
+    /**
+     * Mesh initialization
+     */
+    void init_mesh(void);
+
+    /**
      * Print all router information
      */
     void print(void);
@@ -336,14 +373,14 @@ class router_wrapper_c
 
   private:
     macsim_c* m_simBase; /**< sim base */
+    string m_topology; /**< topology */
     vector<router_c*> m_router; /**< all routers */
     int m_num_router; /**< number of routers */
     int m_total_packet; /**< number of total packets */
     pool_c<flit_c>* m_flit_pool; /**< flit data structure pool */
-    pool_c<credit_c>* m_credit_pool;
-    bool m_stop_injection;
+    pool_c<credit_c>* m_credit_pool; /**< credit pool */
 
-    Counter m_cycle;
+    Counter m_cycle; /**< clock cycle */
 };
 
 #endif
