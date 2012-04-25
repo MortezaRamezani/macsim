@@ -1,3 +1,0 @@
-How this scheduler is implemented: \par
- \hypertarget{page1_asdf}{}\section{asdf}\label{page1_asdf}
-The instruction window will hold instructions from multiple threads. the scheduler can switch from one thread to another in any order (depending on the policy), but instructions within a thread must be scheduled inorder. for these reasons, the scheduler is implemented as a list of scheduler queues. each thread is assigned a queue when the thread (block) is assigned to the core. when the thread terminates, the queue is freed. 

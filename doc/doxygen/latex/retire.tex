@@ -1,8 +1,0 @@
-This models retire (commit) stage in the processor pipeline. All instructions are retired in-\/order. However, basic execution is in the micro-\/op granularity. Thus, retirement should carefully handle this cases. \begin{DoxyItemize}
-\item {\ttfamily Instruction termination condition} -\/ All uops of an instruction retired in-\/order \item {\ttfamily Thread termination condition} -\/ Last uop of a thread \item {\ttfamily Process termination condition} -\/ \# of thread terminated == \# of thread created\end{DoxyItemize}
-\hypertarget{retire_retire_cpu}{}\section{CPU retirement stage}\label{retire_retire_cpu}
-Check the front uop in the rob (in-\/order retirement).\hypertarget{retire_retire_gpu}{}\section{GPU retirement stage}\label{retire_retire_gpu}
-Since there are possibly many ready-\/to-\/retire uops from multiple threads. From all ready-\/to-\/retire uops from all threads, we sort them based on the ready cycle (age).
-
-\begin{Desc}
-\item[\hyperlink{todo__todo000003}{Todo}]We need to check thread termination condition carefully. \end{Desc}
