@@ -1007,11 +1007,23 @@ router_c* router_wrapper_c::create_router(int type)
 void router_wrapper_c::init(void)
 {
   // topology - setting router links
+  m_topology = KNOB(KNOB_NOC_TOPOLOGY)->getValue();
+  if (m_topology == "mesh") {
+    int width = sqrt(m_num_router);
+    if ((width * width) != m_num_router) {
+      for (; m_num_router < (width+1)*(width+1) ; ++m_num_router) {
+        report("router:" << m_num_router << " type:dummy created");
+
+        router_c* new_router = new router_c(m_simBase, 0, m_num_router);
+        m_router.push_back(new_router);
+      }
+    }
+  }
+
   for (int ii = 0; ii < m_num_router; ++ii) {
     m_router[ii]->init(m_num_router, &g_total_packet, m_flit_pool, m_credit_pool);
   }
 
-  m_topology = KNOB(KNOB_NOC_TOPOLOGY)->getValue();
   if (m_topology == "ring")
     init_ring();
   else if (m_topology == "mesh")
@@ -1022,6 +1034,8 @@ void router_wrapper_c::init(void)
 
 
 // 2D mesh initialization
+// TODO (jaekyu, 5-9-2012)
+// improve mapping
 void router_wrapper_c::init_mesh(void)
 {
   int* mapping = new int[m_num_router];
@@ -1035,13 +1049,26 @@ void router_wrapper_c::init_mesh(void)
     mapping[count++] = ii;
   } 
 
-  for (int ii = num_large_core+num_small_core; ii < m_num_router; ++ii) {
+  if (num_large_core == 0) {
+    for (int ii = num_large_core; ii < num_large_core+num_small_core; ++ii) {
+      mapping[count++] = ii;
+    }
+  }
+
+  int start_index = num_large_core + num_small_core;
+  int end_index = start_index + *KNOB(KNOB_NUM_L3) + *KNOB(KNOB_DRAM_NUM_MC); 
+  for (int ii = start_index; ii < end_index; ++ii) {
     mapping[count++] = ii;
   }
 
-  for (int ii = num_large_core; ii < num_large_core+num_small_core; ++ii) {
-    mapping[count++] = ii;
+  if (num_large_core != 0) {
+    for (int ii = num_large_core; ii < num_large_core+num_small_core; ++ii) {
+      mapping[count++] = ii;
+    }
   }
+
+  for (int ii = end_index; ii < m_num_router; ++ii)
+    mapping[count++] = ii;
 
   int width = sqrt(m_num_router);
   for (int ii = 0; ii < m_num_router; ++ii) {
@@ -1059,7 +1086,7 @@ void router_wrapper_c::init_mesh(void)
 
     m_router[mapping[ii]]->set_id(ii);
   }
-  
+
   m_router[0]->print_link_info();
 }
 
