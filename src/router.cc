@@ -284,14 +284,21 @@ void router_c::set_link(int dir, router_c* link)
 // Tick fuction
 void router_c::run_a_cycle(void)
 {
+  if (*KNOB(KNOB_IDEAL_NOC)) {
+    stage_vca();
+    stage_rc();
+    local_packet_injection();
+  }
+  else {
 //  check_starvation();
-  process_pending_credit();
-  stage_lt();
-  stage_st();
-  stage_sa();  
-  stage_vca();
-  stage_rc();
-  local_packet_injection();
+    process_pending_credit();
+    stage_lt();
+    stage_st();
+    stage_sa();  
+    stage_vca();
+    stage_rc();
+    local_packet_injection();
+  }
 
   // stats
 //  check_channel();
@@ -332,6 +339,9 @@ void router_c::local_packet_injection(void)
       int num_flit = 1;
       if (req->m_msg_type == NOC_FILL) 
         num_flit += req->m_size / m_link_width; 
+
+      if (*KNOB(KNOB_IDEAL_NOC))
+        num_flit = 1;
 
 
       if (m_input_buffer[0][ii].size() + num_flit <= m_buffer_max_size) {
@@ -518,6 +528,51 @@ void router_c::rc_ring(void)
 
 void router_c::stage_vca(void)
 {
+  if (*KNOB(KNOB_IDEAL_NOC)) {
+    for (int ip = 0; ip < m_num_port; ++ip) {
+      for (int ivc = 0; ivc < m_num_vc; ++ivc) {
+        if (m_input_buffer[ip][ivc].empty()) {
+          continue;
+        }
+
+        flit_c* flit = m_input_buffer[ip][ivc].front();
+        if (flit->m_state != RC || flit->m_timestamp + *KNOB(KNOB_IDEAL_NOC_LATENCY) > m_cycle) {
+          continue;
+        }
+        // insert to next router
+        int port = -1;
+        for (int ii = 0; ii < m_num_port; ++ii) {
+          if (m_route[ip][ivc][0][ii]) {
+            port = ii;
+            break;
+          }
+        }
+        assert(port != -1);
+
+        if (port != LOCAL) {
+          m_link[port]->insert_packet(flit, m_opposite_dir[port], ivc);
+          flit->m_rdy_cycle = m_cycle + 1;
+        }
+
+        // delete flit in the buffer
+        m_input_buffer[ip][ivc].pop_front();
+
+        // free 1) switch, 2) ivc_avail[ip][ivc], 3) rc, 4) vc
+        if (flit->m_tail) {
+          if (port == LOCAL) {
+            m_req_buffer->push(flit->m_req);
+          }
+        }
+
+        if (port == LOCAL) {
+          flit->init();
+          m_flit_pool->release_entry(flit);
+        }
+      }
+    }
+    return ;
+  }
+
   // VCA (Virtual Channel Allocation) stage
   // for each output port
   for (int oport = 0; oport < m_num_port; ++oport) {
