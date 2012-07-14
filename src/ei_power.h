@@ -116,6 +116,13 @@ class ei_power_c
 		void ei_config_gen_small_tech(FILE* fp, int core_id);
 
 		/**
+		 * Generate package and partitions for a small core 
+		 * @param fp - file pointer to the configuration file 
+		 * @param num_cores - number of small cores in the package
+		 */
+		void ei_config_gen_small_pkg(FILE* fp, int num_cores);
+		
+		/**
 		 * Generate module parameters for a small core 
 		 * @param fp - file pointer to the configuration file 
 		 * @param core_id - core id
