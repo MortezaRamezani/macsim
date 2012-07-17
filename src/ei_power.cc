@@ -3819,19 +3819,6 @@ void ei_power_c::ei_main()
   ////////////////////////////////////////////////////////////////////////////////////
   // Main memory 
   ////////////////////////////////////////////////////////////////////////////////////
-	double mem_dyn_power = m_simBase->m_mem_dyn_power;
-	double mem_sta_power = m_simBase->m_mem_sta_power;
-	double mem_tot_power = mem_dyn_power + mem_sta_power;
-
-  cout << "Memory " ; 
-  cout << "0 " ; 
-  cout << mem_dyn_power << " "; 
-  cout << mem_sta_power << " "; 
-  cout << mem_tot_power << " "; 
-  cout << " 0" << endl; 
-  fprintf(fp, "%s ", "Memory"); 
-  fprintf(fp, "%f %f %f %f %f\n", 0.0, mem_dyn_power, mem_sta_power, mem_tot_power, 0.0); 
-
 
 	///////////////////////
 	//	Print Stats
@@ -3896,10 +3883,8 @@ void ei_power_c::ei_main()
 			pow_stage_mc.total - pow_stage_mc.leakage, pow_stage_mc.leakage, pow_stage_mc.total); 
 	fprintf(fp, "%s %f %f %f %f\n","NoC", area_stage_noc, 
 			pow_stage_noc.total - pow_stage_noc.leakage, pow_stage_noc.leakage, pow_stage_noc.total); 
-	fprintf(fp, "%s %f %f %f %f\n","Memory", 0.0, 
-			mem_dyn_power, mem_sta_power, mem_tot_power); 
 	fprintf(fp, "%s %f %f %f %f \n", "TOTAL", area_total*1e6, 
-			(power_total.total - power_total.leakage)+mem_dyn_power, power_total.leakage+mem_sta_power, power_total.total+mem_tot_power );  
+			(power_total.total - power_total.leakage), power_total.leakage, power_total.total);  
 
 	cout << "Jieun IPC: " << total_ipc << endl;
 
