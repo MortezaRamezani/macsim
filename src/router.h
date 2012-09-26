@@ -114,6 +114,7 @@ class credit_c
 };
 
 
+bool router_sort_fn(router_c *a, router_c *b);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 /// \brief Router class
@@ -161,12 +162,12 @@ class router_c
     /**
      * Eject a packet from the router
      */
-    mem_req_s* receive_req(void);
+    mem_req_s* receive_req(int dir = -1);
 
     /**
      * Pop a request
      */
-    void pop_req(void);
+    void pop_req(int dir = -1);
 
     /**
      * Initialize a router
@@ -187,6 +188,10 @@ class router_c
      * Print link information
      */
     void print_link_info();
+
+    void set_dstream_routers(vector<router_c *>&, int);
+
+    void set_ustream_routers(vector<router_c *>&, int);
 
   private:
     /**
@@ -259,6 +264,10 @@ class router_c
      */
     void local_packet_injection(void);
 
+    void packet_injection(void);
+
+    bool try_packet_insert(int src, mem_req_s *req);
+
     /**
      * Insert a credit from previous router
      */
@@ -279,6 +288,7 @@ class router_c
     int* m_total_packet; /**< number of total packets (global) */
     bool m_enable_vc_partition; /**< enable virtual channel partition */
     int m_num_vc_cpu; /**< number of vcs for CPU */
+    int m_next_vc; /**<id of next vc for local packet injection */
  
     // pools for data structure
     pool_c<flit_c>* m_flit_pool; /**< flit data structure pool */
@@ -319,6 +329,28 @@ class router_c
 
     // clock
     Counter m_cycle; /**< router clock */
+
+    // additions for validation
+    vector<router_c *> m_dstream; /**< down stream routers */
+    int m_ds_start;
+    vector<router_c *> m_ustream; /**< up stream routers */
+    int m_us_start;
+    queue<mem_req_s *> m_us_injection_buffer;
+    queue<mem_req_s *> m_ds_injection_buffer;
+    int m_ds_injection_buffer_max_size;
+    int m_us_injection_buffer_max_size;
+
+    Counter m_recv_from_us_avail;
+    Counter m_recv_from_ds_avail;
+    Counter m_send_to_us_avail;
+    Counter m_send_to_ds_avail;
+
+    queue<mem_req_s *> m_packets_from_us;
+    queue<mem_req_s *> m_packets_from_ds;
+    int m_max_pending_flits_from_us;
+    int m_max_pending_flits_from_ds;
+    int m_pending_flits_from_us;
+    int m_pending_flits_from_ds;
 };
 
 
@@ -364,9 +396,16 @@ class router_wrapper_c
     void init_mesh(void);
 
     /**
+     * simple topology for validation
+     */
+    void init_simple_topology(void);
+
+    /**
      * Print all router information
      */
     void print(void);
+
+    void insert_into_router_req_buffer(int router_id, mem_req_s *req);
 
   private:
     router_wrapper_c(); // do not implement
@@ -381,6 +420,10 @@ class router_wrapper_c
     pool_c<credit_c>* m_credit_pool; /**< credit pool */
 
     Counter m_cycle; /**< clock cycle */
+
+    vector<router_c*> m_cores;
+    vector<router_c*> m_caches;
+    vector<router_c*> m_mcs;
 };
 
 #endif

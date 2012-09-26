@@ -131,6 +131,13 @@ credit_c::~credit_c()
 {
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
+bool router_sort_fn(router_c *a, router_c *b)
+{
+  return a->get_id() < b->get_id();
+}
+
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -145,6 +152,7 @@ router_c::router_c(macsim_c* simBase, int type, int id)
   m_arbitration_policy  = *KNOB(KNOB_ARBITRATION_POLICY);
   m_link_width          = *KNOB(KNOB_LINK_WIDTH);
   m_num_vc_cpu          = *KNOB(KNOB_CPU_VC_PARTITION);
+  m_next_vc             = 0;
 
   m_topology = KNOB(KNOB_NOC_TOPOLOGY)->getValue();
   if (m_topology == "ring") {
@@ -156,6 +164,23 @@ router_c::router_c(macsim_c* simBase, int type, int id)
     m_num_port = 5;
     assert(*KNOB(KNOB_NOC_DIMENSION) == 2);
     assert(m_num_vc >= 1);
+  }
+  else if (m_topology == "simple_noc") {
+    m_ds_injection_buffer_max_size = 10;
+    m_us_injection_buffer_max_size = 10;
+
+    m_recv_from_us_avail = 0;
+    m_recv_from_ds_avail = 0;
+    m_send_to_us_avail = 0;
+    m_send_to_ds_avail = 0;
+
+    m_max_pending_flits_from_us = 50;
+    m_max_pending_flits_from_ds = 50;
+    m_pending_flits_from_us = 0;
+    m_pending_flits_from_ds = 0;
+
+    m_ds_start = MAX_INT;
+    m_us_start = MAX_INT;
   }
 
   // link setting
@@ -196,7 +221,8 @@ router_c::router_c(macsim_c* simBase, int type, int id)
       m_route[ii][jj] = new bool*[2];
       for (int kk = 0; kk < 2; ++kk) {
         m_route[ii][jj][kk] = new bool[m_num_port];
-        fill_n(m_route[ii][jj][kk], m_num_vc, false); 
+        //fill_n(m_route[ii][jj][kk], m_num_vc, false); 
+        fill_n(m_route[ii][jj][kk], m_num_port, false); 
       }
     }
 
@@ -280,28 +306,49 @@ void router_c::set_link(int dir, router_c* link)
   else if (dir == DOWN)  opposite_dir = UP;
 }
 
+void router_c::set_dstream_routers(vector<router_c *>& routers, int ds_start)
+{
+  for (auto itr = routers.begin(), end = routers.end(); itr != end; ++itr) {
+    m_dstream.push_back(*itr);
+  }
+  m_ds_start = ds_start;
+}
+
+void router_c::set_ustream_routers(vector<router_c *>& routers, int us_start)
+{
+  for (auto itr = routers.begin(), end = routers.end(); itr != end; ++itr) {
+    m_ustream.push_back(*itr);
+  }
+  m_us_start = us_start;
+}
+
 
 // Tick fuction
 void router_c::run_a_cycle(void)
 {
-  if (*KNOB(KNOB_IDEAL_NOC)) {
-    stage_vca();
-    stage_rc();
-    local_packet_injection();
+  if (m_topology == "simple_noc") {
+    packet_injection();
   }
   else {
-//  check_starvation();
-    process_pending_credit();
-    stage_lt();
-    stage_st();
-    stage_sa();  
-    stage_vca();
-    stage_rc();
-    local_packet_injection();
-  }
+    if (*KNOB(KNOB_IDEAL_NOC)) {
+      stage_vca();
+      stage_rc();
+      local_packet_injection();
+    }
+    else {
+      //  check_starvation();
+      process_pending_credit();
+      stage_lt();
+      stage_st();
+      stage_sa();  
+      stage_vca();
+      stage_rc();
+      local_packet_injection();
+    }
 
-  // stats
-//  check_channel();
+    // stats
+    //  check_channel();
+  }
   ++m_cycle;
 }
 
@@ -309,14 +356,145 @@ void router_c::run_a_cycle(void)
 // insert a packet from the network interface (NI)
 bool router_c::inject_packet(mem_req_s* req)
 {
-  if (m_injection_buffer->size() < m_injection_buffer_max_size) {
-    m_injection_buffer->push_back(req);
+  if (*KNOB(KNOB_USE_ZERO_LATENCY_NOC)) {
+    m_simBase->m_router->insert_into_router_req_buffer(req->m_msg_dst, req);
     return true;
+  }
+  else
+  {
+    if (m_topology == "simple_noc") {
+      assert(req->m_msg_src == m_id);
+      if (req->m_msg_src < req->m_msg_dst) {
+        if (m_ds_injection_buffer.size() < m_ds_injection_buffer_max_size) {
+          m_ds_injection_buffer.push(req);
+
+          DEBUG("cycle:%-10lld node:%d [IP] req_id:%d src:%d dst:%d insert success\n",
+              m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+
+          return true;
+        }
+        else {
+
+          DEBUG("cycle:%-10lld node:%d [IP] req_id:%d src:%d dst:%d insert failure\n",
+              m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+
+          return false;
+        }
+      }
+      else if (req->m_msg_src > req->m_msg_dst) {
+        if (m_us_injection_buffer.size() < m_us_injection_buffer_max_size) {
+          m_us_injection_buffer.push(req);
+
+          DEBUG("cycle:%-10lld node:%d [IP] req_id:%d src:%d dst:%d insert success\n",
+              m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+
+          return true;
+        }
+        else {
+
+          DEBUG("cycle:%-10lld node:%d [IP] req_id:%d src:%d dst:%d insert failure\n",
+              m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+
+          return false;
+        }
+      }
+      else {
+        assert(0);
+      }
+
+    }
+    else {
+      if (m_injection_buffer->size() < m_injection_buffer_max_size) {
+        m_injection_buffer->push_back(req);
+        return true;
+      }
+    }
   }
 
   return false;
 }
 
+bool router_c::try_packet_insert(int src, mem_req_s *req)
+{
+  int num_flits = 1;
+  if (req->m_msg_type == NOC_FILL) num_flits += (req->m_size / m_link_width);
+
+  if (src < m_id) {
+    if (m_recv_from_us_avail <= m_cycle && 
+        ((m_pending_flits_from_us + num_flits) <= m_max_pending_flits_from_us)) {
+      m_packets_from_us.push(req);
+      req->m_rdy_cycle = m_cycle + num_flits;
+
+      m_pending_flits_from_us += num_flits;
+      m_recv_from_us_avail = m_cycle + num_flits;
+
+      DEBUG("cycle:%-10lld node:%d [TPI] req_id:%d src:%d dst:%d num_flits:%d rdy_cycle:%-10lld flit send success\n",
+          m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst, num_flits, req->m_rdy_cycle);
+
+      return true;
+    }
+    else {
+      DEBUG("cycle:%-10lld node:%d [TPI] req_id:%d src:%d dst:%d flit send failure\n",
+          m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+
+      return false;
+    }
+  }
+  else if (src > m_id) {
+    if (m_recv_from_ds_avail <= m_cycle && 
+        ((m_pending_flits_from_ds + num_flits) <= m_max_pending_flits_from_ds)) {
+      m_packets_from_ds.push(req);
+      req->m_rdy_cycle = m_cycle + num_flits;
+
+      m_pending_flits_from_ds += num_flits;
+      m_recv_from_ds_avail = m_cycle + num_flits;
+
+      DEBUG("cycle:%-10lld node:%d [TPI] req_id:%d src:%d dst:%d num_flits:%d rdy_cycle:%-10lld flit send success\n",
+          m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst, num_flits, req->m_rdy_cycle);
+
+      return true;
+    }
+    else {
+      DEBUG("cycle:%-10lld node:%d [TPI] req_id:%d src:%d dst:%d flit send failure\n",
+          m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
+
+      return false;
+    }
+  }
+  else {
+    assert(0);
+  }
+}
+void router_c::packet_injection(void)
+{
+  mem_req_s *req = NULL;
+
+  if (m_ds_injection_buffer.size()) {
+    req = m_ds_injection_buffer.front();
+    if (m_dstream[req->m_msg_dst - m_ds_start]->try_packet_insert(m_id, req)) {
+        DEBUG("cycle:%-10lld node:%d [PI] req_id:%d src:%d dst:%d dsr_id:%d try packet insert success\n",
+            m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst, (req->m_msg_dst - m_ds_start));
+      m_ds_injection_buffer.pop();
+    }
+    else {
+        DEBUG("cycle:%-10lld node:%d [PI] req_id:%d src:%d dst:%d dsr_id:%d try packet insert failure\n",
+            m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst, (req->m_msg_dst - m_ds_start));
+    }
+  }
+
+  if (m_us_injection_buffer.size()) {
+    req = m_us_injection_buffer.front();
+    if (m_ustream[req->m_msg_dst - m_us_start]->try_packet_insert(m_id, req)) {
+        DEBUG("cycle:%-10lld node:%d [PI] req_id:%d src:%d dst:%d dsr_id:%d try packet insert success\n",
+            m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst, (req->m_msg_dst - m_us_start));
+      m_us_injection_buffer.pop();
+    }
+    else {
+        DEBUG("cycle:%-10lld node:%d [PI] req_id:%d src:%d dst:%d dsr_id:%d try packet insert failure\n",
+            m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst, (req->m_msg_dst - m_us_start));
+    }
+  }
+}
 
 // insert a packet from the injection buffer
 void router_c::local_packet_injection(void)
@@ -326,6 +504,9 @@ void router_c::local_packet_injection(void)
       break;
 
     bool req_inserted = false;
+#ifdef GPU_VALIDATION
+    int last_tried_vc = -1;
+#endif
     for (int ii = 0; ii < m_num_vc; ++ii) {
       // check buffer availability to insert a new request
       bool cpu_queue = false;
@@ -344,7 +525,12 @@ void router_c::local_packet_injection(void)
         num_flit = 1;
 
 
+#ifdef GPU_VALIDATION
+      last_tried_vc = (m_next_vc + ii) % m_num_vc;
+      if (m_input_buffer[0][(m_next_vc + ii) % m_num_vc].size() + num_flit <= m_buffer_max_size) {
+#else
       if (m_input_buffer[0][ii].size() + num_flit <= m_buffer_max_size) {
+#endif
         // flit generation and insert into the buffer
         STAT_EVENT(TOTAL_PACKET_CPU + req->m_ptx);
         req->m_noc_cycle = m_cycle;
@@ -385,7 +571,11 @@ void router_c::local_packet_injection(void)
           new_flit->m_dir        = -1;
 
           // insert all flits to input_buffer[LOCAL][vc]
+#ifdef GPU_VALIDATION
+          m_input_buffer[0][(m_next_vc + ii) % m_num_vc].push_back(new_flit);
+#else
           m_input_buffer[0][ii].push_back(new_flit);
+#endif
         }
 
         // pop a request from the injection queue
@@ -395,9 +585,15 @@ void router_c::local_packet_injection(void)
         DEBUG("cycle:%-10lld node:%d [IB] req_id:%d src:%d dst:%d\n",
             m_cycle, m_id, req->m_id, req->m_msg_src, req->m_msg_dst);
 
-        break;
+        break; //why this break?
       }
     }
+
+#ifdef GPU_VALIDATION
+    if (last_tried_vc != -1 && *KNOB(KNOB_USE_RR_FOR_NOC_INSERTION)) {
+      m_next_vc = (last_tried_vc + 1) % m_num_vc;
+    }
+#endif
 
     // Nothing was scheduled. Stop inserting!
     if (!req_inserted)
@@ -825,7 +1021,11 @@ void router_c::stage_lt(void)
 {
   for (int port = 0; port < m_num_port; ++port) {
     if (m_link_avail[port] > m_cycle) 
+#ifdef GPU_VALIDATION
+      continue; //break;
+#else
       break;
+#endif
     Counter oldest_cycle = ULLONG_MAX;
     flit_c* f = NULL;
     int vc = -1;
@@ -946,18 +1146,69 @@ void router_c::process_pending_credit(void)
 }
 
 
-mem_req_s* router_c::receive_req(void)
+mem_req_s* router_c::receive_req(int dir)
 {
-  if (m_req_buffer->empty())
-    return NULL;
-  else
-    return m_req_buffer->front();
+  if (m_topology == "simple_noc") {
+    mem_req_s *req;
+
+    if (dir == 0) {
+      if (m_packets_from_us.size()) {
+        req = m_packets_from_us.front();
+        if (req->m_rdy_cycle <= m_cycle) {
+          return req;
+        }
+      }
+      return NULL;
+    }
+    else if (dir == 1) {
+      if (m_packets_from_ds.size()) {
+        req = m_packets_from_ds.front();
+        if (req->m_rdy_cycle <= m_cycle) {
+          return req;
+        }
+      }
+      return NULL;
+    }
+    else {
+      assert(0);
+    }
+
+  }
+  else {
+    if (m_req_buffer->empty())
+      return NULL;
+    else
+      return m_req_buffer->front();
+  }
 }
 
 
-void router_c::pop_req(void)
+void router_c::pop_req(int dir)
 {
-  m_req_buffer->pop();
+  if (m_topology == "simple_noc") {
+    mem_req_s *req;
+
+    if (dir == 0) {
+      assert(m_packets_from_us.size());
+      req = m_packets_from_us.front();
+      m_packets_from_us.pop();
+
+      m_pending_flits_from_us -= 1 + ((req->m_msg_type == NOC_FILL) ? (req->m_size / m_link_width) : 0);
+      }
+    else if (dir == 1) {
+      assert(m_packets_from_ds.size());
+      req = m_packets_from_ds.front();
+      m_packets_from_ds.pop();
+
+      m_pending_flits_from_ds -= 1 + ((req->m_msg_type == NOC_FILL) ? (req->m_size / m_link_width) : 0);
+    }
+    else {
+      assert(0);
+    }
+  }
+  else {
+    m_req_buffer->pop();
+  }
 }
 
 
@@ -1083,6 +1334,8 @@ void router_wrapper_c::init(void)
     init_ring();
   else if (m_topology == "mesh")
     init_mesh();
+  else if (m_topology == "simple_noc")
+    init_simple_topology();
   else
     assert(0);
 }
@@ -1184,6 +1437,52 @@ void router_wrapper_c::init_ring(void)
   m_router[0]->print_link_info();
 }
 
+void router_wrapper_c::init_simple_topology(void)
+{
+  for(auto itr = m_router.begin(), end = m_router.end(); itr != end; ++itr) {
+    if ((*itr)->m_type == GPU_ROUTER) {
+      m_cores.push_back(*itr);
+    }
+    else if ((*itr)->m_type == L3_ROUTER) {
+      m_caches.push_back(*itr);
+    }
+    else if ((*itr)->m_type == MC_ROUTER) {
+      m_mcs.push_back(*itr);
+    }
+    else {
+      assert(0);
+    }
+  }
+
+  /*
+  int id = 0;
+  for (auto itr = m_cores.begin(), end = m_cores.end(); itr != end; ++itr) {
+    (*itr)->set_id(id++);
+  }
+
+  for (auto itr = m_caches.begin(), end = m_caches.end(); itr != end; ++itr) {
+    (*itr)->set_id(id++);
+  }
+
+  for (auto itr = m_mcs.begin(), end = m_mcs.end(); itr != end; ++itr) {
+    (*itr)->set_id(id++);
+  }
+  */
+
+  for (auto itr = m_cores.begin(), end = m_cores.end(); itr != end; ++itr) {
+    (*itr)->set_dstream_routers(m_caches, m_cores.size());
+  }
+
+  for (auto itr = m_caches.begin(), end = m_caches.end(); itr != end; ++itr) {
+    (*itr)->set_dstream_routers(m_mcs, m_cores.size() + m_caches.size());
+    (*itr)->set_ustream_routers(m_cores, 0);
+  }
+
+  for (auto itr = m_mcs.begin(), end = m_mcs.end(); itr != end; ++itr) {
+    (*itr)->set_ustream_routers(m_caches, m_cores.size());
+  }
+}
+
 
 void router_wrapper_c::print(void)
 {
@@ -1192,6 +1491,11 @@ void router_wrapper_c::print(void)
   for (int ii = 0; ii < m_num_router; ++ii) {
     m_router[ii]->print(out);
   }
+}
+
+void router_wrapper_c::insert_into_router_req_buffer(int router_id, mem_req_s *req)
+{
+  m_router[router_id]->m_req_buffer->push(req);
 }
 
 
