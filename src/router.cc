@@ -417,7 +417,9 @@ bool router_c::inject_packet(mem_req_s* req)
 bool router_c::try_packet_insert(int src, mem_req_s *req)
 {
   int num_flits = 1;
-  if (req->m_msg_type == NOC_FILL) num_flits += (req->m_size / m_link_width);
+  if ((req->m_msg_type == NOC_NEW_WITH_DATA) || (req->m_msg_type == NOC_FILL)) {
+    num_flits += (req->m_size / m_link_width);
+  }
 
   if (src < m_id) {
     if (m_recv_from_us_avail <= m_cycle && 
@@ -518,7 +520,7 @@ void router_c::local_packet_injection(void)
 
       assert(req);
       int num_flit = 1;
-      if (req->m_msg_type == NOC_FILL) 
+      if ((req->m_msg_type == NOC_NEW_WITH_DATA) || (req->m_msg_type == NOC_FILL)) 
         num_flit += req->m_size / m_link_width; 
 
       if (*KNOB(KNOB_IDEAL_NOC))
@@ -1193,14 +1195,14 @@ void router_c::pop_req(int dir)
       req = m_packets_from_us.front();
       m_packets_from_us.pop();
 
-      m_pending_flits_from_us -= 1 + ((req->m_msg_type == NOC_FILL) ? (req->m_size / m_link_width) : 0);
+      m_pending_flits_from_us -= 1 + (((req->m_msg_type == NOC_NEW_WITH_DATA) || (req->m_msg_type == NOC_FILL))? (req->m_size / m_link_width) : 0);
       }
     else if (dir == 1) {
       assert(m_packets_from_ds.size());
       req = m_packets_from_ds.front();
       m_packets_from_ds.pop();
 
-      m_pending_flits_from_ds -= 1 + ((req->m_msg_type == NOC_FILL) ? (req->m_size / m_link_width) : 0);
+      m_pending_flits_from_ds -= 1 + (((req->m_msg_type == NOC_NEW_WITH_DATA) || (req->m_msg_type == NOC_FILL)) ? (req->m_size / m_link_width) : 0);
     }
     else {
       assert(0);
