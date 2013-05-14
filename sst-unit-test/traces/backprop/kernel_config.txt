@@ -1,0 +1,4 @@
+newptx
+131
+-1
+/usr/local/jaekyu/sst/scratch/src/sst-simulator/sst/elements/macsim/sst-unit-test/traces_new/backprop/_Z22bpnn_layerforward_CUDAPfS_S_S_ii_0/Trace.txt
