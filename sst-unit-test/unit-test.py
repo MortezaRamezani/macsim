@@ -38,15 +38,13 @@ def main():
   """
   trace_dir = '%s/traces' % current_dir
   golden_result_dir = '%s/outputs' % current_dir
-  os.chdir(trace_dir)
-  for trace in os.listdir('.'):
-    os.chdir('%s/%s' % (trace_dir, trace))
+  for trace in ['backprop', 'hotspot']:
     """
     Create trace_file_list
     """
     trace_file_list = open('trace_file_list', 'w')
     trace_file_list.write('1\n')
-    trace_file_list.write('%s/kernel_config.txt\n' % os.getcwd())
+    trace_file_list.write('%s/traces/%s/kernel_config.txt\n' % (os.getcwd(), trace))
     trace_file_list.close()
 
 
