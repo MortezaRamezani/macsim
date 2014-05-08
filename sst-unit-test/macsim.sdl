@@ -16,8 +16,9 @@
   <macsimParams>
     <paramFile> ./params.in </paramFile>
     <traceFile> ./trace_file_list </traceFile>
-    <outputDir> ./results </outputDir>
+    <outputDir> . </outputDir>
     <clockFreq> 1 Ghz </clockFreq>
+    <commandLine> --use_memhierarchy=1 --max_insts=100000 </commandLine>
     <printLocation> 0 </printLocation>
     <debugLevel> 8 </debugLevel>
   </macsimParams>
